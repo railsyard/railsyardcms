@@ -1,0 +1,10 @@
+<tr id='article-<%= object.id %>'>
+	<td width="170px"><span><%= link_to object.title, edit_admin_article_path(object) %></span></td>
+	<td width="85px"><%= object.user.login %></td>
+	<td width="85px"><%= object.categories.map{|cat| cat.name}.join(", ") %></td>
+	<td width="60px"><%= object.lang.capitalize %></td>
+	<td width="150px"><%= l object.updated_at, :format => :date_with_parenthesized_time %></td>
+	<td align="center"><%= object.reserved? ? '<div class="icon-lock-bw"><span class="invisible">V</span></div>'.hs : '<div class="icon-unlock-bw"><span class="invisible">V</span></div>'.hs %></td>
+	<td align="center"><%= object.published? ? (link_to_remote "<span class='invisible'>v</span>".hs, :url => toggle_admin_article_path(object, :pagination => params[:pagination]), :html => {:class => 'icon-v'}) : (link_to_remote "<span class='invisible'>x</span>".hs, :url => toggle_admin_article_path(object, :pagination => params[:pagination]), :html => {:class => 'icon-x'}) %></td>
+	<td align="center"><%= link_to "<span class='invisible'>delete</span>".hs, admin_article_path(object), :class => 'icon-delete', :method => :delete, :confirm => "#{t 'admin.general.are_you_sure_to_delete'} '#{object.title}' ?" %></td>
+</tr>

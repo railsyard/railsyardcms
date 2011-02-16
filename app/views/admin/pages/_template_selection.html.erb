@@ -1,0 +1,11 @@
+<div class='box minor right' id='templates-selection'>
+	<span class="box-top-title"><%= t 'admin.templates.templates' %></span>
+	<span class="box-top-buttons"><%= link_to_function t("admin.templates.select_template"),"Effect.SlideDown('templates-select')", :class => 'new' %></span>
+	<div class="templates-sidebar" id="templates-select" style='display:none;'>
+		<ul>
+		<% object.map do |templ| %>
+			<li id='template-<%= templ.id %>'><%= link_to templ.name, apply_template_admin_page_path(page, :template_id => templ.id), :method => :post, :confirm => t('admin.templates.template_apply_warning') %></li>
+		<% end %>
+		</ul>
+	</div>
+</div>

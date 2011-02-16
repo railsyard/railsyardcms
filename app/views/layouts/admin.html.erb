@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Railsyard CMS Administration by Cantiere Creativo</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="railsyard cantiere creativo rails yard" />
+	<meta name="keywords" content= "railsyard cantiere creativo rails yard" />
+	
+	<style type="text/css" media="screen">@import "/stylesheets/reset.css";</style>
+	<style type="text/css" media="screen">@import "/stylesheets/admin/admin.css";</style>
+	<style type="text/css" media="screen">@import "/stylesheets/admin/facebox.css";</style>
+	<style type="text/css" media="screen">@import "/stylesheets/admin/wysihat.css";</style>
+	<style type="text/css" media="screen">@import "/stylesheets/swfupload.css";</style>
+	
+	<link rel="shortcut icon" href="/favicon.ico" type="image/ico" />
+	<!--[if IE]>
+	<style type="text/css" media="screen">@import "/stylesheets/admin/admin-ie.css";</style>
+	<![endif]-->
+	<%= javascript_include_tag :defaults, 'wysihat_engine_pack', 'swfupload', 'swfupload_handlers' %>
+	<%#= javascript_include_tag :defaults, 'wysihat_engine_pack', 'swfupload', 'upload' %>
+	<%#= javascript_include_tag :all %>
+	<%= yield :script %>
+</head>
+<body>
+	<div class="header">
+		<div class="container">
+			<div class="logo-top">
+				<%= link_to image_tag("/images/admin/top-logo.png"), admin_pages_path %>
+			</div>
+			<div class="user-area">
+				<div class="gravatar"><%= gravatar_image_tag(current_user.email, :alt => current_user.login, :gravatar => { :default => "http://#{request.env['HTTP_HOST']}/images/admin/gravatar-default.png"}) %></div>
+				<span class='hi'><%= t('admin.general.hi') %>,</span>
+				<span class='username'><%= current_user.login %></span>
+				<span class='buttons'><%= link_to t('admin.general.profile'), edit_admin_user_path(current_user) %> <%= link_to "Logout", logout_path() %></span>
+				<span class='buttons public-link'><%= link_to t('admin.general.public_site'), "/" %></span>
+			</div>
+			<div class="first-level-menu">
+				<ul>
+					<% if current_user.is_admin? %><li <%= "class =\"current\"".hs if controller.controller_name == "pages" %>><%= link_to "<span>#{t('admin.pages.pages')}</span>".san, admin_pages_url %></li><% end %>
+					<li <%= "class =\"current\"".hs if controller.controller_name == "articles" %>><%= link_to "<span>#{t('admin.articles.articles')}</span>".san, admin_articles_url %></li>
+					<% if current_user.is_admin? %><li <%= "class =\"current\"".hs if controller.controller_name == "users" %>><%= link_to "<span>#{t('admin.users.users')}</span>".san, admin_users_url %></li><% end %>
+					<% if current_user.is_admin? %><li <%= "class =\"current\"".hs if controller.controller_name =~ /settings|templates/ %>><%= link_to "<span>#{t('admin.settings.settings')}</span>".san, edit_admin_settings_url %></li><% end %>
+	  			</ul>
+			</div>
+			<div class="second-level-menu">
+				<%= render :partial => "admin/search/panel" %>
+				<%= yield :secondmenu %>
+	    	</div>
+		</div>	
+	</div>
+	
+	<div class="page-content">
+		<div class="container">
+			<div id='ajax-notice' style='display:none'></div>
+			<% if flash[:notice] %>
+				<div id="notice">
+					<%= flash[:notice] %>
+				</div>
+				<script type="text/javascript">
+					$('notice').blindDown();
+				    setTimeout ( "$('notice').blindUp();", 4000 );
+				</script>
+			<% end %>
+
+			<% if flash[:error] %>
+				<div id="error">
+					<%= flash[:error] %>
+				</div>
+				<script type="text/javascript">
+					$('error').blindDown();
+				    //setTimeout ( "$('error').blindUp();", 2000 );
+				</script>
+			<% end %>
+			
+			<div class="defloater"></div>
+
+			<%= yield %>
+
+			<%= yield :sidebar %>
+
+			<div class="defloater"></div>
+		</div>
+	</div>
+	
+	<div class="footer">
+		<div class="container">
+			<div class="content">
+				<%= link_to "Railsyard", "http://www.railsyard.org" %> is released under MIT License - Copyright (c) 2010 <%= link_to "Cantiere Creativo", "http://www.cantierecreativo.net" %>
+			</div>
+		</div>
+	</div>
+	<!-- Authors: Silvio Relli  (mailto:silvio@relli.org) and Marzo Zampetti (mailto:zaorunner@gmail.com) -->
+</body>
+
+</html>

@@ -1,0 +1,4 @@
+class LastArticleSnippet < Snippet
+  
+  
+end

@@ -1,0 +1,102 @@
+<% if !params[:location].nil?
+	loc = params[:location]
+elsif !object.association.nil? && !object.association.location.nil?
+	loc = object.association.location
+else
+	loc = 'center'
+end %>
+
+	<div>
+		<%= label_tag t 'admin.snippets.type' %><%= f.select(:kind, Snippet.type_to_select, {:selected => object.kind}, {:onchange => "show_hide(this.value);"}) %>	
+	</div>
+<%#= f.select(:type, Snippet.type_to_select, {:selected => object.type}, {:onchange => remote_function(:update => 'snippet-body', :url => {:action => :switch_form}, :with => "'selected='+this.value")}) %>
+
+	<div>
+		<%= f.label t 'admin.snippets.location' %><%= select_tag :location, options_for_select(Snippet.location_to_select, loc) %>
+	</div>
+
+	<div>
+		<%= f.label t 'admin.general.published' %><%= f.check_box :published, :checked => true %>
+	</div>
+		
+		
+	<div id='articles-category'<%= " style=\'display:none\'" unless %w{ArticlesSnippet ArticlesCarouselSnippet LastArticleSnippet}.any? {|s| s.eql? object.type} %>>
+ 		<%= f.label t 'admin.articles.articles_category_to_show' %>:
+  		<ul>
+		    <% @categories.each do |cat| %>
+			  <li><%= check_box_tag "categories[]", cat.id, object.categories.include?(cat) %> <%= cat.name %></li>
+			<% end %>
+		</ul>
+	</div>
+
+	<div id='action-controller'<%= " style=\'display:none\'" if object.type != 'ActionControllerSnippet' %>>
+	  <%= t 'admin.snippets.direct_call' %>
+	  <div><%= f.label t 'admin.snippets.controller' %><%= f.text_field :contr %></div>
+	  <div><%= f.label t 'admin.snippets.action' %><%= f.text_field :act %></div>
+	  <!-- <div><%#= f.label t 'admin.snippets.additional_params' %><%#= f.text_area :additional_params %></div> -->
+	</div>
+	
+	<span id='more-link'><%= link_to_function "More options", "Effect.BlindDown('advanced-box'); Element.hide('more-link'); Element.show('less-link');" %></span>
+    <span id='less-link' style='display:none'><%= link_to_function "Less options", "Effect.BlindUp('advanced-box'); Element.hide('less-link'); Element.show('more-link');" %></span>
+	
+	<div id='advanced-box' style='display:none'>
+	  <div>
+		<%= f.label t 'admin.snippets.name' %><%= f.text_field :name %>
+	  </div>
+
+	  <div>
+		<%= f.label t 'admin.snippets.div_id' %><%= f.text_field :div_id %>
+	  </div>
+	
+	  <div>
+		<%= f.label t 'admin.snippets.div_class' %><%= f.text_field :div_class %>
+	  </div>
+
+      <div>
+		<%= f.label t 'admin.snippets.div_style' %><%= f.text_field :div_style %>
+	  </div>
+	
+	
+	  <div id='menu-options'<%= " style=\'display:none\'" unless %w{FirstlevelMenuSnippet SecondlevelMenuSnippet TwolevelsMenuSnippet ChildrenMenuSnippet SiblingsMenuSnippet SibChildMenuSnippet FooterMenuSnippet}.any? {|s| s.eql? object.type} %>>
+	    <div>
+		  <%= f.label t 'admin.general.go_to_first_child' %><%= f.check_box :go_to_first_child %>
+	    </div>
+	  </div>
+	</div>
+
+	<div id='snippet-body'<%= " style=\'display:none\'" if (!object.type.blank? && (object.type != 'EditableContentSnippet')) %>>
+		<%= f.label 'Body' %><br/>
+		<%= f.wysihat_editor :body %>
+	</div>
+
+	<div id='attachments-snippet'<%= " style=\'display:none\'" unless %w{AttachmentsSnippet GallerySnippet}.any? {|s| s.eql? object.type} %>>
+		<%= render :partial => "admin/assets/panel", :object => @snippet %>
+	</div>
+	
+	
+<script type="text/javascript">
+
+function show_hide(par)
+{	
+	if ( (("EditableContentSnippet,PlainEditableContentSnippet".split(',')).indexOf(par) > -1) && !$('snippet-body').visible()) {Effect.BlindDown('snippet-body');}
+	else if ( (("EditableContentSnippet,PlainEditableContentSnippet".split(',')).indexOf(par) > -1) && $('snippet-body').visible()) {} //do nothing
+	else {Effect.BlindUp('snippet-body');}
+	
+	if ( (("AttachmentsSnippet,GallerySnippet".split(',')).indexOf(par) > -1) && !$('snippet-body').visible() ) {Effect.BlindDown('attachments-snippet');}
+	else if ( (("AttachmentsSnippet,GallerySnippet".split(',')).indexOf(par) > -1) && $('attachments-snippet').visible()) {}
+	else {Effect.BlindUp('attachments-snippet');}	
+	
+	if ( (("ArticlesSnippet,ArticlesCarouselSnippet,LastArticleSnippet".split(',')).indexOf(par) > -1) && !$('articles-category').visible() ) {Effect.BlindDown('articles-category');}
+	else if ( (("ArticlesSnippet,ArticlesCarouselSnippet,LastArticleSnippet".split(',')).indexOf(par) > -1) && $('articles-category').visible()) {} //do nothing
+	else {Effect.BlindUp('articles-category');}
+		
+	if ((par == 'ActionControllerSnippet') && !$('action-controller').visible()) {Effect.BlindDown('action-controller');}
+	else if ((par == 'ActionControllerSnippet') && $('action-controller').visible()) {} //do nothing
+	else {Effect.BlindUp('action-controller');}
+	
+	if ( (("FirstlevelMenuSnippet,SecondlevelMenuSnippet,TwolevelsMenuSnippet,ChildrenMenuSnippet,SiblingsMenuSnippet,SibChildMenuSnippet,FooterMenuSnippet".split(',')).indexOf(par) > -1) && !$('menu-options').visible() ) {Effect.BlindDown('menu-options');}
+	else if ( (("FirstlevelMenuSnippet,SecondlevelMenuSnippet,TwolevelsMenuSnippet,ChildrenMenuSnippet,SiblingsMenuSnippet,SibChildMenuSnippet,FooterMenuSnippet".split(',')).indexOf(par) > -1) && $('menu-options').visible()) {} //do nothing
+	else {Effect.BlindUp('menu-options');}
+}
+
+</script>

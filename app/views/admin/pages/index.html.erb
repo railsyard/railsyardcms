@@ -1,0 +1,32 @@
+<% content_for :secondmenu do %>
+<ul>
+	<li><%#= link_to "<span>#{t 'admin.general.available'}</span>".hs, "" %></li>
+	<li><%#= link_to "<span>#{t 'admin.general.trash'}</span>".hs, "" %></li>
+</ul>
+<%= select_tag "language", options_from_collection_for_select(Language.all, 'short', 'name', @admin_editing_language), :onchange => remote_function(:url => editing_language_admin_pages_path, :with => "'admin_editing_language=' + this.value") %>
+<% end %>
+
+<% content_for :sidebar do %>
+	<%= render :partial => "tree", :object => Page, :locals => {:lang => @admin_editing_language} %>
+<% end %>
+
+<div class="box equal left">
+	<span class="box-top-title"><%= t 'admin.pages.latest_pages' %></span>
+	<span class="box-top-buttons"><%= link_to t('admin.pages.new_page'), new_admin_page_path(), :class => 'new' %></span>
+	<span class="box-top-misc"><%= will_paginate @pages, :param_name => :pagination %></span>
+	<table class="box-item-list">
+		<tr>
+			<th><%= t 'admin.general.title' %></th>
+			<th><%= t 'admin.general.last_update' %></th>
+			<th class="table-icons"><%= t 'admin.general.reserved' %></th>
+			<th class="table-icons"><%= t 'admin.general.published' %></th>
+			<th class="table-icons"><%= t 'admin.general.delete' %></th>
+		</tr>
+		<%= render :partial => "item", :collection => @pages %>
+	</table>
+	<span class="box-bot-misc"><%= will_paginate @pages, :param_name => :pagination %></span>
+</div>
+
+
+
+

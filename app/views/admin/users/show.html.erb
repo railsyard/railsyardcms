@@ -1,0 +1,20 @@
+<% content_for :secondmenu do %>
+<ul>
+	<li><%#= link_to "<span>#{t 'admin.general.available'}</span>".hs, "" %></li>
+	<li><%#= link_to "<span>#{t 'admin.general.trash'}</span>".hs, "" %></li>
+</ul>
+<% end %>
+
+
+<div class="box maximo">
+	<h1><%= @user.login %></h1>
+	<div class="defloater"></div>
+		<p><%= t 'admin.users.username' %>: <%= @user.login %></p>
+		<p><%= t 'admin.users.email' %>: <%= @user.email %></p>
+		<p><%= t 'admin.users.first_name' %>: <%= @user.firstname %></p>
+		<p><%= t 'admin.users.last_name' %>: <%= @user.lastname %></p>
+		<p><%= t 'admin.users.language' %>: <%= language_symbol_to_full(@user.lang) %></p>
+		<p><%= t 'admin.users.roles' %>: <%= @user.roles.join(', ').humanize.split.each { |r| print r.capitalize!, " "}.join(" ") %></p>
+		<p><%= @user.is_enabled? ? t('admin.users.enabled_user') : t('admin.users.disabled_user') %></p>
+		<div class="buttons"><%= (link_to t('admin.general.edit'), edit_admin_user_path(@user), :class => "submit") if current_user.is_admin? %> <%= (link_to t('admin.general.delete'), admin_user_path(@user), :class => "submit", :method  => :delete, :confirm => "#{t 'admin.general.are_you_sure_to_delete'} #{@user.login}?") if current_user.is_admin? %></div>
+</div>

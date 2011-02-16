@@ -1,0 +1,4 @@
+<% remote_form_for object||Category.new, :url => admin_categories_path do |f| %>
+	<%= f.text_field :name %>
+	<%= submit_tag "Crea" %>
+<% end %>

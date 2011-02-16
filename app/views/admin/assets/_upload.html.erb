@@ -1,0 +1,16 @@
+<div id='asset_<%= object.id %>'>
+<ul><% if object.type == "Image" %>
+	<li><%= link_to image_tag(object.source.url(:thumb)), object.source.url.split('?').first %> <%= link_to object.source_file_name, object.source.url.split('?').first, :class => "text-link" %> <%= link_to_remote "<span class='invisible'>delete</span>".hs, {:url => admin_asset_path(object), :method => :delete, :confirm => t('admin.attachments.are_you_sure_to_delete_this_attachment')}, {:class => 'icon-delete delete-attach'} %> <%= clippy("#{root_url.chop}#{object.source.url.split('?').first}") %></li>
+<% elsif object.type == "Document" %>
+	<li><%= link_to "<span class='invisible'>Document</span>".hs, object.source.url.split('?').first, :class => 'icon-file-docu' %> <%= link_to object.source_file_name, object.source.url.split('?').first, :class => "text-link" %> <%= link_to_remote "delete", :url => admin_asset_path(object), :method => :delete, :confirm => t('admin.attachments.are_you_sure_to_delete_this_attachment') %> <%= clippy("#{root_url.chop}#{object.source.url.split('?').first}") %></li>
+<% elsif object.type == "Archive" %>
+	<li><%= link_to "<span class='invisible'>Archive</span>".hs, object.source.url.split('?').first, :class => 'icon-file-arch' %> <%= link_to object.source_file_name, object.source.url.split('?').first, :class => "text-link" %> <%= link_to_remote "delete", :url => admin_asset_path(object), :method => :delete, :confirm => t('admin.attachments.are_you_sure_to_delete_this_attachment') %> <%= clippy("#{root_url.chop}#{object.source.url.split('?').first}") %></li>
+<% elsif object.type == "Video" %>
+	<li><%= link_to "<span class='invisible'>Video</span>".hs, object.source.url.split('?').first, :class => 'icon-file-video' %> <%= link_to object.source_file_name, object.source.url.split('?').first, :class => "text-link" %> <%= link_to_remote "delete", :url => admin_asset_path(object), :method => :delete, :confirm => t('admin.attachments.are_you_sure_to_delete_this_attachment') %> <%= clippy("#{root_url.chop}#{object.source.url.split('?').first}") %></li>
+<% elsif object.type == "Audio" %>
+	<li><%= link_to "<span class='invisible'>Audio</span>".hs, object.source.url.split('?').first, :class => 'icon-file-audio' %> <%= link_to object.source_file_name, object.source.url.split('?').first, :class => "text-link" %> <%= link_to_remote "delete", :url => admin_asset_path(object), :method => :delete, :confirm => t('admin.attachments.are_you_sure_to_delete_this_attachment') %> <%= clippy("#{root_url.chop}#{object.source.url.split('?').first}") %></li>
+<% else %>
+	<li><%= link_to "<span class='invisible'>Generic</span>".hs, object.source.url.split('?').first, :class => 'icon-file-generic' %> <%= link_to object.source_file_name, object.source.url.split('?').first, :class => "text-link" %> <%= link_to_remote "delete", :url => admin_asset_path(object), :method => :delete, :confirm => t('admin.attachments.are_you_sure_to_delete_this_attachment') %> <%= clippy("#{root_url.chop}#{object.source.url.split('?').first}") %></li>
+<% end %></ul>
+</div>
+

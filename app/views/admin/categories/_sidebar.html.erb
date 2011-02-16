@@ -1,0 +1,14 @@
+<div class="box minor right">
+	<span class="box-top-title"><%= t 'admin.categories.categories' %></span>
+	<span class="box-top-buttons"><%= link_to_remote t('admin.categories.new_category'), :url => new_admin_category_path(), :html => { :class  => "new" } %></span>
+	<span class="box-top-dropdown"><div id='new-category' style='display:none'></div></span>
+	<div class="categories-sidebar">
+		<ul>
+		<% object.map do |cat| %>
+			<li id='category-<%= cat.id %>'><%= cat.name %> <%= (link_to_remote "<span class='invisible'>delete</span>".hs, {:url => admin_category_path(cat), :method => :delete, :confirm => "#{t 'admin.general.are_you_sure_to_delete'} '#{cat.name}' ?"}, {:class => 'icon-delete'}) unless cat.id == 1 %></li>
+		<% end %>
+		</ul>
+	</div>
+</div>
+
+

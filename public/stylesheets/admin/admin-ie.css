@@ -1,0 +1,11 @@
+/*-----------------------------------------------------
+ 	Author: Marco Zampetti (mailto:zaorunner@gmail.com)
+---------------------------------------------------- */
+a {cursor: pointer;}
+.box {border: 2px solid #e3e3e3;}
+.box table{	margin-left: 15px;}
+.page-content .container .box{padding-bottom: 10px;}
+.page-content .container .box span.box-top-title,.page-content .container .box span.box-top-buttons a {color: #629508;}
+.page-content .container .box span.box-top-buttons a.new {background: none;padding-right: 15px;}
+.page-content .container .box span.box-top-misc {position: relative;}
+.page-content .container .box span.box-bot-misc {display: none;}

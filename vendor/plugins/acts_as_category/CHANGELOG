@@ -1,0 +1,13 @@
+*2.0 alpha*
+
+Watch out, new version is approaching to support scopes :) Refactored class and test methods.
+
+*1.0 (February 15st, 2009)*
+
+* Positions of complete tree will be rewritten after every category save. This prevents messed up orders which caused the sorted_tree to not work.
+
+* Localization with I18n supported
+
+*< 1.0*
+
+* Changes were not tracked before this version

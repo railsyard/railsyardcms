@@ -1,0 +1,4 @@
+class GallerySnippet < Snippet
+  
+  
+end

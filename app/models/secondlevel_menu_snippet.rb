@@ -1,0 +1,4 @@
+class SecondlevelMenuSnippet < Snippet
+  
+  
+end

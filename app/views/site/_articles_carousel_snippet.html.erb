@@ -1,0 +1,3 @@
+<div class='articles-carousel-snippet<%= " #{object.div_class}" unless object.div_class.blank?%>'<%= " id='#{object.div_id}'" unless object.div_id.blank? %><%= " style='#{object.div_style}'" unless object.div_style.blank? %>>
+	<%= embed_action(:controller => "articles", :action => "carousel", :params => params.merge(:categories => object.categories.map{|cat| cat.id})) %>
+</div>

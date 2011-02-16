@@ -1,0 +1,110 @@
+<% content_for :secondmenu do %>
+<ul>
+	<li><%= link_to "<span>#{t "admin.general.general"}</span>".hs, edit_admin_settings_path %></li>
+	<li><%= link_to "<span>#{t "admin.templates.templates"}</span>".hs, admin_settings_templates_path %></li>
+</ul>
+<% end %>
+
+<% content_for :sidebar do %>
+<div id='templates-sidebar'>
+	<%= render :partial => "sidebar", :object => @templates %>
+</div>	
+<% end %>
+
+<div class="box maior left">
+	<span class="box-top-title"><%= t 'admin.templates.template' %> "<%= @templ.name %>"</span>
+	<div id='snippets'>
+		<div class='snippet-row synth-top' id='snippets_header'>
+			<h4><%= t 'admin.pages.snippets_for_header' %></h4>
+			<ul id="snippets_list_header" style="cursor: move">
+			  <% @templ.snippets.for_header.each do |s| %>
+			    <li id="item_<%= s.id %>">
+			      <%= link_to "<span class='invisible'>Edit</span>".hs, edit_admin_settings_template_snippet_url(params[:id], s.id), :class => 'icon-edit' %> <%= "<span#{' class=\'unpublished\'' if !s.published}>#{s.name}</span>".hs %>
+			    </li>
+			  <% end %>
+			</ul>
+			<p><%= link_to "<span class='invisible'>Add new snippet</span>".hs, new_admin_settings_template_snippet_url(params[:id], :location => "header"), :class => 'icon-add' %></p>
+			<%= sortable_element "snippets_list_header",
+			:url => sort_admin_settings_template_snippets_url(params[:id]),
+			:complete => visual_effect(:highlight, "snippets_list_header")
+			%>
+		</div>
+		<div class='snippet-row synth-left' id='snippets_left'>
+			<h4><%= t 'admin.pages.snippets_for_left_column' %></h4>
+			<ul id="snippets_list_left" style="cursor: move">
+			  <% @templ.snippets.for_left.each do |s| %>
+			    <li id="item_<%= s.id %>">
+			      <%= link_to "<span class='invisible'>Edit</span>".hs, edit_admin_settings_template_snippet_url(params[:id], s.id), :class => 'icon-edit' %> <%= "<span#{' class=\'unpublished\'' if !s.published}>#{s.name}</span>".hs %>
+			    </li>
+			  <% end %>
+			</ul>
+			<p><%= link_to "<span class='invisible'>Add new snippet</span>".hs, new_admin_settings_template_snippet_url(params[:id], :location => "left"), :class => 'icon-add' %></p>
+			<%= sortable_element "snippets_list_left",
+			:url => sort_admin_settings_template_snippets_url(params[:id]),
+			:complete => visual_effect(:highlight, "snippets_list_left")
+			%>
+		</div>
+		<div class='snippet-row synth-middle' id='snippets_center'>
+			<h4><%= t 'admin.pages.snippets_for_center_column' %></h4>
+			<ul id="snippets_list_center" style="cursor: move">
+			  <% @templ.snippets.for_center.each do |s| %>
+			    <li id="item_<%= s.id %>">
+			     <%= link_to "<span class='invisible'>Edit</span>".hs, edit_admin_settings_template_snippet_url(params[:id], s.id), :class => 'icon-edit' %> <%= "<span#{' class=\'unpublished\'' if !s.published}>#{s.name}</span>".hs %>
+			    </li>
+			  <% end %>
+			</ul>
+			<p><%= link_to "<span class='invisible'>Add new snippet</span>".hs, new_admin_settings_template_snippet_url(params[:id], :location => "center"), :class => 'icon-add' %></p>
+			<%= sortable_element "snippets_list_center",
+			:url => sort_admin_settings_template_snippets_url(params[:id]),
+			:complete => visual_effect(:highlight, "snippets_list_center")
+			%>
+		</div>
+		<div class='snippet-row synth-right' id='snippets_right'>
+			<h4><%= t 'admin.pages.snippets_for_right_column' %></h4>
+			<ul id="snippets_list_right" style="cursor: move">
+			  <% @templ.snippets.for_right.each do |s| %>
+			    <li id="item_<%= s.id %>">
+			      <%= link_to "<span class='invisible'>Edit</span>".hs, edit_admin_settings_template_snippet_url(params[:id], s.id), :class => 'icon-edit' %> <%= "<span#{' class=\'unpublished\'' if !s.published}>#{s.name}</span>".hs %>
+			    </li>
+			  <% end %>
+			</ul>
+			<p><%= link_to "<span class='invisible'>Add new snippet</span>".hs, new_admin_settings_template_snippet_url(params[:id], :location => "right"), :class => 'icon-add' %></p>
+			<%= sortable_element "snippets_list_right",
+			:url => sort_admin_settings_template_snippets_url(params[:id]),
+			:complete => visual_effect(:highlight, "snippets_list_right")
+			%>
+		</div>
+		<div class='snippet-row synth-bottom' id='snippets_footer'>
+			<h4><%= t 'admin.pages.snippets_for_footer' %></h4>
+			<ul id="snippets_list_footer" style="cursor: move">
+			  <% @templ.snippets.for_footer.each do |s| %>
+			    <li id="item_<%= s.id %>">
+			    <%= link_to "<span class='invisible'>Edit</span>".hs, edit_admin_settings_template_snippet_url(params[:id], s.id), :class => 'icon-edit' %> <%= "<span#{' class=\'unpublished\'' if !s.published}>#{s.name}</span>".hs %>
+			    </li>
+			  <% end %>
+			</ul>
+			<p><%= link_to "<span class='invisible'>Add new snippet</span>".hs, new_admin_settings_template_snippet_url(params[:id], :location => "footer"), :class => 'icon-add' %></p>
+			<%= sortable_element "snippets_list_footer",
+			:url => sort_admin_settings_template_snippets_url(params[:id]),
+			:complete => visual_effect(:highlight, "snippets_list_footer")
+			%>
+		</div>
+		<div class='snippet-row synth-extra' id='snippets_extra'>
+			<h4><%= t 'admin.pages.snippets_for_extra_area' %></h4>
+			<ul id="snippets_list_extra" style="cursor: move">
+			  <% @templ.snippets.for_extra.each do |s| %>
+			    <li id="item_<%= s.id %>">
+			       <%= link_to "<span class='invisible'>Edit</span>".hs, edit_admin_settings_template_snippet_url(params[:id], s.id), :class => 'icon-edit' %> <%= "<span#{' class=\'unpublished\'' if !s.published}>#{s.name}</span>".hs %>
+			    </li>
+			  <% end %>
+			</ul>
+			<p><%= link_to "<span class='invisible'>Add new snippet</span>".hs, new_admin_settings_template_snippet_url(params[:id], :location => "extra"), :class => 'icon-add' %></p>
+			<%= sortable_element "snippets_list_extra",
+			:url => sort_admin_settings_template_snippets_url(params[:id]),
+			:complete => visual_effect(:highlight, "snippets_list_extra")
+			%>
+		</div>
+			
+	</div> <!-- end snippets -->
+</div> <!-- end center -->
+

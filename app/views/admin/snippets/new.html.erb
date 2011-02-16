@@ -1,0 +1,32 @@
+<% content_for :secondmenu do %>
+<ul>
+	<li><%#= link_to "<span>#{t 'admin.general.available'}</span>".hs, "" %></li>
+	<li><%#= link_to "<span>#{t 'admin.general.trash'}</span>".hs, "" %></li>
+</ul>
+
+<% end %>
+
+<% if params[:template_id] %>
+<div class="box maior left">
+	<span class="box-top-title"><%= t 'admin.snippets.add_a_new_snippet' %></span>
+	<% form_for @snippet, :url => admin_settings_template_snippets_path(params[:id]) do |f| %>
+		<%= error_messages_for :snippet %>
+		<%= render :partial => "form", :object => @snippet, :locals => {:f => f} %>
+		<%= hidden_field_tag "commit_type", "" %> 
+		<div class="buttons">
+			<%= submit_tag t('admin.general.save'), :class => "submit", :OnClick => "$('commit_type').value='save'" %>
+			<%= submit_tag t('admin.general.save_and_close'), :class => "submit", :OnClick => "$('commit_type').value='save_and_close'" %>
+			<%= link_to t('admin.general.back'), admin_settings_template_path(params[:template_id]), :class => "submit" %>
+		</div>	<% end %>
+</div>
+<% else %>
+<div class="box maior left">
+	<span class="box-top-title"><%= t 'admin.snippets.add_a_new_snippet' %></span>
+	<% form_for @snippet, :url => admin_page_snippets_path(params[:page_id]) do |f| %>
+		<%= error_messages_for :snippet %>
+		<%= render :partial => "form", :object => @snippet, :locals => {:f => f} %>
+		<%= hidden_field_tag "commit_type", "" %> 
+		<div class="buttons"><%= submit_tag t('admin.general.save'), :class => "submit", :OnClick => "$('commit_type').value='save'" %> <%= submit_tag t('admin.general.save_and_close'), :class => "submit", :OnClick => "$('commit_type').value='save_and_close'" %> <%= link_to t('admin.general.back'), admin_page_path(params[:page_id]), :class => "submit" %></div>
+	<% end %>
+</div>
+<% end %>

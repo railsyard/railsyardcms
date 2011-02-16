@@ -1,0 +1,5 @@
+<div id='assets-gallery'>
+	<% object.images.map do |i| %>
+		<a href="<%= i.source.url(:large).partition("?").first %>" class="lightwindow" rel="[galleria]"><%= image_tag(i.source.url(:thumb)) %></a>
+	<% end %>
+</div>

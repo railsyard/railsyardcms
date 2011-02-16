@@ -1,0 +1,11 @@
+<div class='footer-menu<%= " #{object.div_class}" unless object.div_class.blank?%>'<%= " id='#{object.div_id}'" unless object.div_id.blank? %><%= " style='#{object.div_style}'" unless object.div_style.blank? %>>
+	<% @first_level_pages.map do |p| %>
+		<% if p.visible_in_menu && p.published && (!p.reserved || (p.reserved && current_user && current_user.is_privileged?)) %>
+		    <% link_destination = (object.go_to_first_child && !p.children.blank? && p.children.first) ? p.children.first : p.pretty_url %>
+			<ul>
+				<li class='footer-roots'><%= link_to p.name, get_yard_url(link_destination) %></li>
+				<%= render :partial => 'site/footer_menu_snippet_item', :collection => p.children unless p.children.empty? %>
+			</ul>
+		<% end %>
+	<% end %>
+</div>

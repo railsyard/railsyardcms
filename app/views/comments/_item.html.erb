@@ -1,0 +1,11 @@
+<% style = style %>
+<div id="comment_<%= object.id %>" style="<%= style %>">
+  <span class="comm-auth"><%= object.user.login %></span>
+  <span class="comm-date"><%= l object.updated_at, :format => :date_with_parenthesized_time %></span>
+  <p class="comm-body"><%= object.body %></p>
+  <span class="comm-del"><% if current_user && (current_user.id == object.user_id || current_user.is_admin?) %>
+    <%= link_to_remote(t("public.comments.delete_comment"), :url => comment_path(object), :method => :delete, :confirm => "#{t("public.general.are_you_sure")}?") %>
+  <% else %>
+	<%= t("public.comments.login_or_signup") %></span>
+  <% end %>
+</div>

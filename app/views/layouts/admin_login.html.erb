@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Railsyard CMS Administration Login</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="railsyard admin rails yard" />
+	<meta name="keywords" content= "railsyard admin rails yard" />
+	<style type="text/css" media="screen">@import "/stylesheets/admin/admin_login.css";</style>
+
+	<link rel="shortcut icon" href="/favicon.ico" type="image/ico" />
+
+	<%= javascript_include_tag :defaults %>
+	<%= yield :script %>
+
+</head>
+
+<body>
+	<div class='wrapper'>
+		<%= yield %>
+		<div class="push"></div>
+	</div>
+	
+	<div class="footer">
+		<p><%= link_to "Railsyard", "http://www.railsyard.org" %> is released under MIT License - Copyright (c) 2010 <%= link_to "Cantiere Creativo", "http://www.cantierecreativo.net" %></p>
+	</div>
+	<!-- Authors: Silvio Relli  (mailto:silvio@relli.org) and Marzo Zampetti (mailto:zaorunner@gmail.com) -->
+</body>
+
+</html>

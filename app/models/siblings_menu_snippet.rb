@@ -1,0 +1,4 @@
+class SiblingsMenuSnippet < Snippet
+  
+  
+end

@@ -1,0 +1,20 @@
+<% content_for :secondmenu do %>
+<ul>
+	<li><%#= link_to "<span>#{t 'admin.general.available'}</span>".hs, "" %></li>
+	<li><%#= link_to "<span>#{t 'admin.general.trash'}</span>".hs, "" %></li>
+</ul>
+<%= select_tag "language", options_from_collection_for_select(Language.all, 'short', 'name', @admin_editing_language), :onchange => remote_function(:url => editing_language_admin_pages_path, :with => "'admin_editing_language=' + this.value") %>
+<% end %>
+
+<% content_for :sidebar do %>
+	<%= render :partial => "tree", :object => Page, :locals => {:lang => @admin_editing_language} %>
+<% end %>
+
+<div class="box maior left">
+	<span class="box-top-title"><%= t 'admin.pages.create_a_new_page' %></span>
+	<% form_for @page, :url => admin_pages_path do |f| %>
+		<%= error_messages_for :page %>
+		<%= render :partial => "form", :object => @page, :locals => {:f => f, :lang => @admin_editing_language} %>
+		<div class="buttons"><%= submit_tag t('admin.general.create'), :class => "submit"  %></div>
+	<% end %>
+</div>

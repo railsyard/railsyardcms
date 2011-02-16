@@ -1,0 +1,4 @@
+<% if object.visible_in_menu && object.published && (!object.reserved || (object.reserved && current_user && current_user.is_privileged?)) %>
+	<li><%= link_to object.name, get_yard_url(object.pretty_url) %></li>
+	<%= render :partial => 'site/footer_menu_snippet_item', :collection => object.children unless object.children.empty? %>
+<% end %>

@@ -1,0 +1,13 @@
+<div class="box maior left" id="layout-boxes">
+	<span class="box-top-title"><%= t 'admin.layouts.layouts' %></span>
+	<div id='snippets'>
+	<% object.map do |l| %>
+		<div class="layout-box snippet-row boxes" id="layout-<%= l.id %>">
+			<h4><%= l.name %></h4>
+			<p>testo esempio</p>
+			<p><%= select_tag "layout-#{l.name}", options_from_collection_for_select(templates, 'id', 'name', (l.template.blank? ? "" : l.template.id)),			
+												:onchange => remote_function(:url => admin_settings_layout_path(l), :method => :put, :with => "'template=' + this.value") %></p>
+		</div>
+	<% end %>
+	</div>
+</div>

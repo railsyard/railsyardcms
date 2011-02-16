@@ -1,0 +1,12 @@
+<div id="comment_form">
+  <% @comment = object.comments.new %>
+  <% remote_form_for (@comment) do |f| %>
+    <fieldset>
+      <legend>Comment</legend>
+      <%= f.hidden_field :commentable_type, :value => object.class.name %>
+      <%= f.hidden_field :commentable_id, :value => object.id %>
+      <div><%= f.text_area :body, :size => "83x5" %></div>
+      <div class="buttons"><%= f.submit (t "public.comments.add_comment") %></div>
+    </fieldset>
+  <% end %>
+</div>

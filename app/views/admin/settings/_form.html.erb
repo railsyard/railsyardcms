@@ -1,0 +1,18 @@
+<div class="required"><%= f.label t('admin.settings.site_name') %><%= f.text_field :site_name %></div>
+
+<div class="required"><%= f.label "#{t('admin.settings.site_base_url')}<br />(www.yourdomain.tld)".hs %><%= f.text_field :site_base_url %></div>
+
+<div><%= f.label t('admin.settings.site_wide_title_metatag') %><%= f.text_field :site_page_title %></div>
+
+<div><%= f.label t('admin.settings.site_wide_keywords_metatag') %><%= f.text_field :site_keyword %></div>
+
+<div><%= f.label t('admin.settings.site_wide_description_metatag') %><%= f.text_field :site_desc %></div>
+
+<div><%= f.label t('admin.settings.comments_enabled_default') %><%= f.check_box :comments_enabled_default %></div>
+
+<div><%= f.label  t('admin.settings.default_language') %><%= f.select :default_lang, options_from_collection_for_select(Language.all, 'short', 'name', object.default_lang) %></div>
+
+<div><%= f.label  t('admin.settings.theme_name') %><%= f.select(:theme_name, options_from_collection_for_select(Theme.all, 'short', 'title', selected = object.theme_name)) %></div>
+<div><%= t('admin.settings.theme_change_warning') %></div>
+
+<div><%= f.label  t('admin.settings.google_analitics_script') %><%= f.text_area :analytics, :size => "83x10" %></div>

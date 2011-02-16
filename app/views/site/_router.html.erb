@@ -1,0 +1,30 @@
+<% case object.class.to_s
+	   when "EditableContentSnippet" || "PlainEditableContentSnippet" %>
+		<%= render :partial => "editable_content_snippet", :object => object %>
+	<% when "FirstlevelMenuSnippet" %>
+   		<%= render :partial => "firstlevel_menu_snippet", :object => object %>
+	<% when "SecondlevelMenuSnippet" %>
+   		<%= render :partial => "secondlevel_menu_snippet", :object => object %>
+	<% when "TwolevelsMenuSnippet" %>
+   		<%= render :partial => "twolevels_menu_snippet", :object => object %>
+	<% when "ChildrenMenuSnippet" %>
+   		<%= render :partial => "children_menu_snippet", :object => object %>
+	<% when "SiblingsMenuSnippet" %>
+	   	<%= render :partial => "siblings_menu_snippet", :object => object %>
+	<% when "SibChildMenuSnippet" %>
+	   	<%= render :partial => "sib_child_menu_snippet", :object => object %>
+	<% when "FooterMenuSnippet" %>
+		<%= render :partial => "footer_menu_snippet", :object => object %>			
+	<% when "ArticlesSnippet" %>
+		<%= render :partial => "articles_snippet", :object => object %>
+	<% when "ArticlesCarouselSnippet" %>
+		<%= render :partial => "articles_carousel_snippet", :object => object %>
+	<% when "LastArticleSnippet" %>
+		<%= render :partial => "last_article_snippet", :object => object %>	
+	<% when "GallerySnippet" %>
+		<%= render :partial => "gallery_snippet", :object => object %>
+	<% when "AttachmentsSnippet" %>
+		<%= render :partial => "attachments_snippet", :object => object %>
+	<% when "ActionControllerSnippet" %>
+		<%= render :partial => "action_controller_snippet", :object => object %>
+<% end %>

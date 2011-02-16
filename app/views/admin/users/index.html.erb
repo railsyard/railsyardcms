@@ -1,0 +1,36 @@
+<div class="box left">
+	<span class="box-top-title"><%= t 'admin.users.users' %></span>
+	<span class="box-top-buttons"><%= link_to t('admin.users.new_user'), new_admin_user_path(), :class => 'new' %></span>
+	<span class="box-top-misc"><%= will_paginate @users, :param_name => :pagination %></span>
+	<table class="box-item-list">
+		<tr>
+			<th><%= t 'admin.users.username' %></th>			
+			<th><%= t 'admin.users.first_name' %></th>
+			<th><%= t 'admin.users.last_name' %></th>
+			<th><%= t 'admin.users.email' %></th>
+			<th><%= t 'admin.users.roles' %></th>
+			<th class="table-icons"><%= t 'admin.users.enabled' %></th>
+			<th class="table-icons"><%= t 'admin.users.delete' %></th>
+		</tr>
+		
+		<% @users.map do |u| %>
+		<tr>
+			<% if current_user.is_admin? %>
+				<td width="150x"><span><%= link_to u.login, edit_admin_user_path(u.id) %></span></td>
+			<% else %>
+				<td width="150x"><%= u.login %></td>
+			<% end %>
+			<td width="150x"><%= u.firstname %></td>
+			<td width="150x"><%= u.lastname %></td>
+			<td width="300x"><%= u.email %></td>
+			<td width="100x"><%= u.roles.join(", ") %></td>
+			<td align="center"><%= u.enabled? ? '<div class="icon-v-bw"><span class="invisible">V</span></div>'.hs : '<div class="icon-x-bw"><span class="invisible">V</span></div>'.hs %></td>
+			<td align="center"><%= link_to "<span class='invisible'>delete</span>".hs, admin_user_path(u), :class => 'icon-delete', 
+:method => :delete, :confirm => "#{t 'admin.general.are_you_sure_to_delete'} '#{u.login}' ?" %></td>
+		</tr>
+		<% end %>
+	</table>
+	<span class="box-bot-misc"><%= will_paginate @users, :param_name => :pagination %></span>
+</div>
+
+	

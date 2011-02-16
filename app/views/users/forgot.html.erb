@@ -1,0 +1,14 @@
+<%= error_messages_for :user %>
+  
+<% form_for :user do |f| %>
+  <p><%= t("public.users.password_reset_request") %></p>
+  <p>
+    <label for="email"><%= t("public.users.email") %></label><br />
+    <%= f.text_field :email %>
+  </p>
+  
+  <p>
+    <%= submit_tag t("public.general.submit") %>
+	<%= link_to t("public.general.cancel"), login_path %>
+  </p>
+<% end %>

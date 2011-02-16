@@ -1,0 +1,190 @@
+/* -----------------------------------------------
+	www.swfupload.org
+	Description: Common Screen Stylesheet for SWFUpload Demos
+	Updated on:  May 1, 2008
+----------------------------------------------- */
+/*-----------------------------------------------
+ 	Edited by: Marco Zampetti (zaorunner@gmail.com)
+----------------------------------------------- */
+.attachments-container  {
+	padding-bottom: 20px;
+}
+
+.attachments-container  .progressWrapper {
+	width: 357px;
+	overflow: hidden;
+}
+
+.attachments-container #divFileProgressContainer {
+	margin: 5px 5px 5px 0px;
+	padding: 4px;
+	height: 25px;
+	width: 300px;
+	float: right;
+}
+#new-upload {
+	width: 420px;
+	margin: 0px 0px 0px 0px;
+}
+#new-upload object {
+	margin: 5px 0 0 5px;
+}
+#spanButtonPlaceHolder {
+	float: left;
+}
+/* Message */
+.attachments-container .message {
+	margin: 1em 0;
+	padding: 10px 20px;
+	border: solid 1px #FFDD99;
+	background-color: #FFFFCC;
+	overflow: hidden;
+}
+/* Error */
+.attachments-container .red {
+	border: solid 1px #B50000;
+	background-color: #FFEBEB;
+}
+
+/* Current */
+.attachments-container .green {
+	border: solid 1px #DDF0DD;
+	background-color: #EBFFEB;
+}
+
+/* Complete */
+.attachments-container .blue {
+	border: solid 1px #CEE2F2;
+	background-color: #F0F5FF;
+}
+
+.attachments-container .progressName {
+	font-size: 8pt;
+	font-weight: 700;
+	color: #555;
+	width: 323px;
+	height: 14px;
+	text-align: left;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.attachments-container .progressBarInProgress,
+.attachments-container .progressBarComplete,
+.attachments-container .progressBarError {
+	font-size: 0;
+	width: 0%;
+	height: 2px;
+	background-color: blue;
+	margin-top: 2px;
+}
+
+.attachments-container .progressBarComplete {
+	width: 100%;
+	background-color: green;
+	visibility: hidden;
+}
+
+.attachments-container .progressBarError {
+	width: 100%;
+	background-color: red;
+	visibility: hidden;
+}
+
+.attachments-container .progressBarStatus {
+	margin-top: 2px;
+	width: 337px;
+	font-size: 7pt;
+	font-family: Arial;
+	text-align: left;
+	white-space: nowrap;
+}
+
+/*a.progressCancel {
+	font-size: 0;
+	display: block;
+	height: 14px;
+	width: 14px;
+	background-image: url(../images/cancelbutton.gif);
+	background-repeat: no-repeat;
+	background-position: -14px 0px;
+	float: right;
+}
+
+a.progressCancel:hover {
+	background-position: 0px 0px;
+}*/
+
+.attachments-container div.fieldset {
+	border:  1px solid #afe14c;
+	margin: 10px 0;
+	padding: 20px 10px;
+}
+.attachments-container div.fieldset span.legend {
+	position: relative;
+	background-color: #FFF;
+	padding: 3px;
+	top: -30px;
+	font: 700 14px Arial, Helvetica, sans-serif;
+	color: #73b304;
+}
+
+.attachments-container div.flash {
+	width: 375px;
+	margin: 10px 5px;
+	border-color: #D9E4FF;
+
+	-moz-border-radius-topleft : 5px;
+	-webkit-border-top-left-radius : 5px;
+    -moz-border-radius-topright : 5px;
+    -webkit-border-top-right-radius : 5px;
+    -moz-border-radius-bottomleft : 5px;
+    -webkit-border-bottom-left-radius : 5px;
+    -moz-border-radius-bottomright : 5px;
+    -webkit-border-bottom-right-radius : 5px;
+
+}
+
+.attachments-container button,
+.attachments-container input,
+.attachments-container select,
+.attachments-container textarea { 
+	border-width: 1px; 
+	margin-bottom: 10px;
+	padding: 2px 3px;
+}
+
+
+
+.attachments-container input[disabled]{ border: 1px solid #ccc } /* FF 2 Fix */
+
+
+.attachments-container label { 
+	width: 150px; 
+	text-align: right; 
+	margin-right: 5px;
+}
+
+.attachments-container #btnSubmit { margin: 0 0 0 155px ; }
+
+#thumbnails li {
+	display: inline-block;
+	margin-left: 15px;
+}
+#thumbnails li a{
+	display: inline-block;
+	float: left;
+	margin: 5px 10px 5px 0;
+	vertical-align: middle;
+	font-size: 12px;
+}
+#thumbnails li a.text-link{
+	padding: 10px 0 0 0;
+}
+#thumbnails li img{
+	vertical-align: middle;
+}
+#thumbnails li object{
+	position: relative;
+	top: 14px;
+}

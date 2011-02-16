@@ -1,0 +1,36 @@
+<div class="required"><%= f.label :name, t('admin.general.title') %><%= f.text_field :name %></div>
+
+<div><%= f.label t('admin.general.parent') %>
+<%= yard_aac_select Page, lang, {:selected => object.parent_id, :name => 'page[parent_id]', :option_nil => "None"} %></div>
+
+<% visible_in_menu_checked = object.visible_in_menu || object.visible_in_menu.nil? %>
+<div><%= f.label t('admin.general.visible_in_menu') %><%= f.check_box :visible_in_menu, :checked => visible_in_menu_checked %></div>
+
+<% published_checked = object.published || object.published.nil? %>
+<div><%= f.label t('admin.general.published') %><%= f.check_box :published, :checked => published_checked %></div>
+
+<div><%= f.label t('admin.general.reserved') %><%= f.check_box :reserved %></div>
+
+<span id='more-link'><%= link_to_function "More options", "Effect.BlindDown('advanced-box'); Element.hide('more-link'); Element.show('less-link');" %></span>
+<span id='less-link' style='display:none'><%= link_to_function "Less options", "Effect.BlindUp('advanced-box'); Element.hide('less-link'); Element.show('more-link');" %></span>
+
+<div id='advanced-box' style='display:none;'>
+  <% selected_layout = object.layout_name || "default" %>
+  <div><%= f.label t('admin.pages.layout_name') %><%= f.select(:layout_name, options_from_collection_for_select(Layout.all(cfg.theme_name), 'short', 'short', selected = selected_layout)) %></div>
+
+  <div><%= f.label t('admin.general.pretty_url') %><%= f.text_field :pretty_url %></div>
+
+  <div><%= f.label 'Meta Title' %><%= f.text_field :meta_title %></div>
+
+  <div><%= f.label 'Meta Keywords' %><%= f.text_field :meta_keyword %></div>
+
+  <div><%= f.label 'Meta Description' %><%= f.text_field :meta_desc %></div>
+
+  <div><%= f.label 'Content div id' %><%= f.text_field :div_id %></div>
+
+  <div><%= f.label 'Content div class' %><%= f.text_field :div_class %></div>
+
+  <div><%= f.label 'Content div style' %><%= f.text_field :div_style %></div>
+
+  <div><%= f.label 'Javascript' %><%= f.text_area :script, :size => "83x10"%></div>
+</div>

@@ -1,0 +1,28 @@
+/*-----------------------------------------------------
+ 	Author: Marco Zampetti (mailto:zaorunner@gmail.com)
+---------------------------------------------------- */
+a {outline:none;color: #333;border: none;}
+img{border: none;}
+.invisible{display: none;}
+.unhover:hover {background-position: top;}
+.unpublished {color: #bababa;}
+#notice, #error {text-align: center;font-size: 14px;height: 30px;}
+a.submit {margin: 0px;padding: 6px;border: 3px solid #86c440;font-size: 14px;background: #fff;cursor: pointer;letter-spacing: 1px;text-decoration: none;font-weight: normal; line-height:normal;}
+input.submit {margin: 0px;padding: 6px;border: 3px solid #86c440;font-size: 14px;background: #fff;cursor: pointer;letter-spacing: 1px;text-decoration: none;font-weight: normal; line-height:normal;}
+input.submit:hover,a.submit:hover {	border: 3px solid #ff8005;font-weight: normal;text-decoration: none;}
+.page-content .container .box form div.errorExplanation {font-size: 11px;float: right;width: 220px; color: #ff8005;padding: 10px 0; border-top:3px solid #ff8005; border-bottom:3px solid #ff8005;}
+.page-content .container .box form div.errorExplanation h2{font-size: 20px;font-weight: lighter;margin:0px;padding: 0px;color: #ff8005; padding-bottom: 5px;}
+.page-content .container .box form div.errorExplanation p{font-size: 11px;margin:0px;padding: 0px;color: #333;}
+.page-content .container .box form div.errorExplanation ul{margin:0px;padding: 5px 0 0 0;}
+.page-content .container .box form div.errorExplanation ul li{margin: 0px 0px 0px 15px;padding: 0px;list-style: circle; color: #333;}
+.page-content .container .box form div.required label,.page-content .container .box form div.required span {font-weight: bold;color: #777;}
+.page-content .container .box form div div.fieldWithErrors input{position: absolute;top: -30px;border: 1px solid #ff8005; padding: 1px;}
+.page-content .container .box form div div.fieldWithErrors textarea{border: 1px solid #ff8005;}
+.page-content .container .box form div div.fieldWithErrors div.calendar_date_select{border: 3px solid #ff8005;}
+/* still unordered stuff */
+div#advanced-box {margin:0px;padding:0px;display:block;}
+.attachments-container {margin:0 0 15px 5px;}
+#thumbnails ul li a {float:left;vertical-align:middle;margin-right:10px;}
+#thumbnails ul li {clear:both;}
+#attachments-snippet ul li {margin-top:0px;margin-bottom:0px;}
+.buttons {clear:both;}

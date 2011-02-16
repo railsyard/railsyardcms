@@ -1,0 +1,360 @@
+// THEME SETTINGS
+
+$lf_width: 160px; // set the left column width
+$rg_width: 300px; // set the right column width
+
+$cLeft:  #747474;         // set the left column border color
+$cRight: #8bb106;        // set the right column border color
+
+$cLink: #8bb106; // set the link color
+$cMain: "red"; // set the link color
+$cGray: #747474;
+$cLightGray: #ccc;
+
+/* MIXIN */
+/************************************************************************/
+@mixin shadow($dist: 10px, $blur: 10px, $color: #000) {
+  box-shadow:$dist $dist $blur $color;
+  -webkit-box-shadow: $dist $dist $blur $color;
+  -moz-box-shadow: $dist $dist $blur $color;
+}
+@mixin rounded($radius: 10px) {
+  -moz-border-radius: $radius $radius $radius $radius; /* FF1+ */
+  -webkit-border-radius: $radius $radius $radius $radius; /* Saf3+, Chrome */
+  border-radius: $radius $radius $radius $radius; /* Opera 10.5, IE 9 */  
+}
+.font{
+  font-family: 'Yanone Kaffeesatz', Georgia;  
+}
+
+// MAIN TAGS
+body{
+  padding: 10px;
+  font-family: "Georgia", Tahoma, Trebuchet, Verdana;
+  font-size: 0.8em;  
+}
+a{
+  color: $cLink;
+  text-decoration: none;
+  border-bottom: 1px dotted $cLink;
+}
+
+h1, h2, h3{
+  @extend .font;
+  text-shadow: 2px 2px 3px #d3d3d3;
+}
+// STRUTTURA
+#header{
+  margin-top: 40px;
+  margin-bottom: 30px;
+  h1{
+    font-size: 4em;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+  h2{
+    font-size: 1.8em;
+    font-style: italic;
+    font-family: "Georgia";
+    color: $cGray;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+}
+#lang_selector{
+  position: absolute;
+  top: 0;
+  right: 20px;
+  list-style: none;
+  border: 1px solid $cLightGray;
+  padding: 10px;
+  &:hover{
+    background-color: $cLink;
+    li a{
+     color: white; 
+    }
+  };
+  
+  // make it rounded
+  -moz-border-radius: 0 0 7px 7px; /* FF1+ */
+  -webkit-border-radius: 0 0 7px 7px; /* Saf3+, Chrome */
+  border-radius: 0 0 7px 7px; /* Opera 10.5, IE 9 */
+  
+  li{
+    display: inline-block;
+    padding: 0 10px;
+    a:hover{
+      text-decoration: underline;
+    };
+  }
+}
+.debug{
+  // just a development class never used in the template
+  border: 1px solid red;
+}
+
+/* TEMPLATE STRUCTURE */
+#wrapper1 {
+  position:relative;
+  text-align:left;
+  width: 100%;
+}
+#wrapper2 {
+  position:relative;
+  text-align:left;
+  width:100%;
+}
+#maincol {
+  position:relative;
+  margin:0;
+  padding:10px;
+  line-height: 1.5em;
+  span.publish-date{
+   color: $cGray;
+   font-style: italic; 
+   display: block;
+   margin: -20px 0 20px 0;
+   float: right;
+   background-color: $cLightGray;
+   padding: 7px;
+   @include rounded(4px);
+  }
+  p.abstract{
+    font-style: italic;
+    font-size: 110%;
+    margin-bottom: 10px;
+  }
+  .article-comments{
+    margin-top: 20px;
+  }
+  h1{
+   font-size: 2.8em;
+   margin-top: 10px;
+   margin-bottom: 15px;
+   line-height: 1.2em;
+   color: $cGray;
+  }
+  h2{
+    font-size: 1.7em;
+    border-bottom: 1px dotted $cGray;
+    margin-bottom: 12px;
+    color: $cGray;
+    width: 80%;
+  }
+  h3{
+    font-size: 1.5em;
+    margin-bottom: 12px;
+    color: $cGray;
+    
+  }
+  p{}
+  b, strong{
+    font-weight: bold;
+  }
+  i, em{
+    font-style: italic;
+  }
+  ul, ol{
+    margin: 1em 0;
+    padding-left: 30px;
+    li{
+      list-style: disc;
+    }
+  }
+  ol{
+    li{
+      list-style: decimal;
+    }
+  }
+}
+
+.menu_ul{
+  margin-left: 0;
+  padding-left: 1em;
+  text-indent: -1em;
+  li{
+   list-style: none;
+   :before {
+     content: "\00BB \0020";
+   }
+ } 
+}
+#leftcol { 
+  border-right: 1px dotted $cLeft;
+  position:relative;
+  top:-10px;
+  left:-10px;
+  float:left;
+  width: $lf_width + 20px;  /* for IE5/WIN */
+  width: $lf_width; /* actual value */
+  margin:0 0 -10px 0;
+  padding:10px;
+  z-index:100;
+  ul{
+   @extend .menu_ul; 
+  }
+}
+#rightcol {
+  border-left: 1px dotted $cRight;
+  position:relative;
+  top:-10px;
+  right:-10px;
+  float:right;
+  width: $rg_width + 20;  /* for IE5/WIN */
+  width: $rg_width; /* actual value */
+  margin:0 0 -10px 0;
+  padding:10px;
+  z-index:99;
+  ul{
+   @extend .menu_ul; 
+  }
+}
+#centercol {
+  position:relative;
+  padding:0 $lf_width+40px;
+}
+#footer {
+  min-height: 120px;
+  position:relative;
+  top: 30px;
+  width:100%;
+  clear:both;
+  margin:0;
+  padding:1% 0;
+  text-align:center;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+#credits{
+  position:relative;
+  clear:both;
+  text-align: right;
+  font-size: 0.8em;
+}
+
+
+/* FORM STYLING */
+form{
+  padding: 10px;
+  fieldset{
+    border: 1px solid $cLightGray;
+    padding: 10px;
+    opacity: 0.5;
+    &:hover{
+      opacity: 1;
+    };
+    legend{
+     @extend .font;
+     font-size: 1.8em;
+     padding: 0 10px;
+     color: $cGray;
+    }
+    label{
+      @extend .font;
+      font-size: 1.3em;
+    }
+    > div{      
+      margin-bottom: 11px;
+    }
+    .buttons{
+      text-align: right;
+    }
+    input{
+      color: $cGray;
+      border: 1px solid $cLightGray;
+    }
+    input[type="text"], input[type="password"]{
+      display: block;
+      padding: 6px;
+      width: 90%;
+      @include rounded(4px);
+      &:focus{
+        border-color: $cLink;
+        border-size: 3px;
+      }
+    } 
+    input[type="checkbox"]{
+ 
+    } 
+    input[type="radio"]{
+ 
+    } 
+    input[type="submit"], input[type="button"]{
+      background-color: $cLink;
+      color: white;
+      padding: 5px;
+      @include rounded(7px);
+      @extend .font;
+      font-size: 1.2em;
+      letter-spacing: 1px;
+      border: none;
+      text-align: center;
+      text-transform: uppercase;
+      cursor: pointer;
+      float: right;
+      margin: 0 4px;
+    }
+    textarea{
+      width: 94%;
+      padding: 20px;
+    }
+  }
+}
+
+#comments_list{
+  $comm_padding: 15px;
+  width: 97%;
+  div{
+    @include rounded(8px);
+    
+    padding: 12px 12px 12px 0;
+    margin-bottom: 16px;
+    border-left: 1px solid $cLightGray;
+    width: 88%;
+    .comm-auth, .comm-date{
+      color: $cGray;
+      font-style: italic;
+    }
+    .comm-auth{
+      padding-left: $comm_padding;
+    }
+    .comm-date{
+      &:before{
+        content: "• "
+      }
+    }
+    .comm-body{
+      padding: $comm_padding;
+      margin: 10px 0;
+    }
+    .comm-del{
+      padding-left: $comm_padding;
+      text-align: right;
+      display: block;
+      a{
+        padding: 2px;
+        background-color: $cLink;
+        @include rounded(4px);
+        color: white;
+        opacity: 0.4;
+        &:hover{
+          opacity: 1;
+        }; 
+      }
+    }
+  }
+  div:nth-child(even) {background: $cLightGray}
+  div:nth-child(odd) {background: #FFF}
+}
+
+#articles-list{
+  p.abstract{
+   font-size: 95%; 
+  }
+  .article-index-meta{
+    font-style: italic;
+    color: $cLightGray;
+    padding-bottom: 20px;
+  }  
+}

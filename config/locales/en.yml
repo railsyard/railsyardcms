@@ -1,0 +1,224 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  conf:
+    language_extended_name: "English"
+    version: "1.0.0"    
+    
+  time:
+    formats:
+      date_with_parenthesized_time: "%B %d %Y (%H:%M)"
+
+  admin:
+    general:
+      hi: Hi
+      settings: Settings
+      logout: Logout
+      last_login: Last login
+      search: Search
+      username: Username
+      password: Password
+      remember_me: Remember me
+      login: Login
+      logout: Logout
+      signup: Signup
+      admin_area: Admin area
+      available: Available
+      trash: Trash
+      title: Title
+      author: Author
+      category: Category
+      last_update: Last update
+      published: Published
+      edit: Edit
+      delete: Delete
+      save: Save
+      save_and_close: Save and close
+      create: Create
+      back: Back
+      attachments: Attachments
+      pretty_url: Pretty url
+      are_you_sure: Are you sure
+      are_you_sure_to_delete: Are you sure to delete
+      parent: Parent
+      visible_in_menu: Visible in menu
+      reserved: Reserved
+      metatag_title: Title metatag
+      metatag_keywords: Keywords metatag
+      metatag_description: Description metatag
+      language: Language
+      profile: Profile
+      public_site: Public site
+      general: General
+      create: Create
+      go_to_first_child: Go to first child
+    pages:
+      pages: Pages
+      latest_pages: Recent pages
+      new_page: New page
+      create_a_new_page: Create a new page
+      edit_page: Edit page
+      snippets_on_page: Snippets on page
+      snippets_for_header: Snippets for header
+      snippets_for_left_column: Snippets for left column
+      snippets_for_center_column: Snippets for center column
+      snippets_for_right_column: Snippets for right column
+      snippets_for_footer: Snippets for footer
+      snippets_for_extra_area: Snippets for extra area
+      create_a_new_page: Create a new page
+      properties_for_page: Properties for page
+      pages_tree: Pages tree
+      page: Page
+      are_you_sure_to_delete: "Are you sure to delete the page \"%{name}\"? Every children page and their snippets will be deleted!"
+      layout_name: "Layout"
+    snippets:
+      add_a_new_snippet: Add a new snippet
+      edit_snippet: Edit snippet
+      name: Name
+      type: Type
+      location: Location
+      div_id: Div id
+      div_class: Div class
+      div_style: Div style
+      body: Body
+      direct_call: Direct call action/controller
+      controller: Controller
+      action: Action
+      additional_params: Parameters
+      snippets: Snippets
+      snippet: Snippet
+    articles:
+      articles: Articles
+      latest_articles: Recent articles
+      new_article: New article
+      write_a_new_article: Write a new article
+      edit_article: Edit article
+      abstract: Abstract
+      body: Body
+      articles_category_to_show: Articles category to show
+      all_categories: All categories
+      language: Language
+      article: Article
+      comments_enabled: Comments enabled
+    users:
+      users: Users
+      new_user: New user
+      edit_user: Edit user
+      username: Username
+      email: Email
+      password: Password
+      password_confirmation: Password confirmation
+      first_name: First name
+      last_name: Last name
+      language: Language
+      roles: Roles
+      enabled: Enabled
+      enabled_user: Enabled user
+      disabled_user: Disabled user
+      delete: Delete
+      admin_panel_language: Admin panel language
+    settings:
+      settings: Settings
+      general_settings: General settings
+      site_name: Site name
+      site_base_url: Site base url
+      site_wide_title_metatag: Site wide title metatag
+      site_wide_keywords_metatag: Site wide keywords metatag
+      site_wide_description_metatag: Site wide description metatag
+      default_language: Default language
+      google_analitics_script: Google Analytics script
+      comments_enabled_default: Comments on articles enabled by default
+      configuration_saved: Configuration saved
+      theme_name: "Theme"
+      theme_change_warning: "Warning: if you change theme, the default layout will be applied to every page!"
+    categories:
+      categories: Categories
+      new_category: New category
+    tags:
+      tags: Tags
+    attachments:
+      attach: Attach
+      are_you_sure_to_delete_this_attachment: Are you sure to delete this attachment?
+      you_must_save_once_before_attaching_files: You must save once before attaching files
+    search:
+      search: Search
+      results_for: Results for
+      no_search_results_for: No search results for
+      search_results_for: Search results for
+    templates:
+      templates: Templates
+      template: Template
+      new_template: New template
+      select_template: Select template
+      template_apply_warning: If you apply a template to the page the current contents will be overwritten. Are you sure to proceed?
+    layouts:
+      layout: Layout
+      layouts: Layouts
+      layout_saved: Layout saved
+      error_saving_layout: Error saving layout
+
+  public:
+    general:
+      hi: Hi
+      settings: Settings
+      logout: Logout
+      last_login: Last login
+      search: Search
+      username: Username
+      password: Password
+      remember_me: Remember me
+      login: Login
+      logout: Logout
+      signup: Signup
+      admin_area: Admin area
+      are_you_sure: Are you sure
+      are_you_sure_to_delete: Are you sure to delete
+      cancel: Cancel
+      submit: Submit
+    comments:
+      comments:
+        one: "1 comment"
+        other: "%{count} comments"
+      add_comment: "Add comment"
+      delete_comment: "Delete comment"
+      login_or_signup: "Login or signup to write a comment"
+    search:
+      search: "Search"
+      no_search_results_for: No search results for
+      search_results_for: Search results for
+    articles:
+      articles: Articles
+      article: Article
+    pages:
+      pages: Pages
+      page: Page
+    users:
+      registration_completed: Thanks for signing up! We're sending you an email with your activation code.
+      activated: Signup complete! Please sign in to continue.
+      activation_code_missing: The activation code was missing.  Please follow the URL from your email.
+      activation_error: We couldn't find a user with that activation code -- check your email? Or maybe you've already activated -- try signing in.
+      reset_code_sent: "Reset code sent to %{email}"
+      address_not_found: "%{email} not found"
+      remember_me: "Remember me"
+      forgot_password: "Forgot password?"
+      password_reset_successfully: "Password reset successfully for \"%{email}\""
+      email: Email
+      password_reset_request: Password reset request
+      choose_a_new_password: "Pick a new password for \"%{email}\""
+      first_name: First name
+      last_name: Last name
+      password: Password
+      confirm_password: Confirm password
+      username: Username
+      signup: Signup
+      edit_user: "Edit user \"%{user}\""
+      user_successfully_modified: "User successfully modified"
+      
+  session:
+    logged_in_successfully: Logged in successfully
+    user_or_password_not_valid: User or password not valid
+    you_have_been_logged_out: You have been logged out
+    
+    
+        

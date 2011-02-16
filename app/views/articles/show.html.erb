@@ -1,0 +1,2 @@
+<%= render :partial => "item", :object => @article %>
+<%= render :partial => "comments/panel", :object => @article if @article.comments_enabled %>

@@ -1,0 +1,46 @@
+	<div class="required">
+		<%= f.label :title, t('admin.general.title') %><%= f.text_field :title, :size => "20x1" %>
+	</div>
+
+	<div>
+		<%= label_tag  t('admin.articles.language') %><%= f.select :lang, options_from_collection_for_select(Language.all, 'short', 'name', object.lang) %>
+	</div>
+	
+	<div>
+		<% published_checked = object.published || object.published.nil? %>
+		<%= f.label :published, "#{t 'admin.general.published'}" %><%= f.check_box :published, :checked => published_checked %>
+	</div>
+	
+	<div>
+		<%= f.label t('admin.general.reserved') %><%= f.check_box :reserved %>
+	</div>
+
+	<div class="required"><span><%= t('admin.categories.categories') %></span>
+		<ul>
+			<% @categories.each do |cat| %>
+				<li><%= check_box_tag "categories[]", cat.id, object.categories.include?(cat) %> <%= cat.name %></li>
+			<% end %>
+		</ul>
+	</div>
+	
+	<span id='more-link'><%= link_to_function "More options", "Effect.BlindDown('advanced-box'); Element.hide('more-link'); Element.show('less-link');" %></span>
+    <span id='less-link' style='display:none'><%= link_to_function "Less options", "Effect.BlindUp('advanced-box'); Element.hide('less-link'); Element.show('more-link');" %></span>
+
+	<div id='advanced-box' style='display:none'>
+	  	<div>
+			<% comments_enabled_checked = object.comments_enabled || (cfg.comments_enabled_default && object.comments_enabled.nil?) %>
+			<%= f.label t('admin.articles.comments_enabled') %><%= f.check_box :comments_enabled, :checked => comments_enabled_checked %>
+		</div>
+      <div>
+			<%= f.label :pretty_url, t('admin.general.pretty_url') %><%= f.text_field :pretty_url %>
+	  </div>
+	</div>
+	
+	<div>
+		<%= f.label :short, t('admin.articles.abstract') %><%= f.text_area :short, :size => "78x5" %>
+	</div>
+	
+	<div id='snippet-body'>
+		<%= f.label :body, t('admin.articles.body') %>
+		<%= f.wysihat_editor :body %>
+	</div>

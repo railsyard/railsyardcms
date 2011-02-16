@@ -1,0 +1,4 @@
+class ArticlesSnippet < Snippet
+  
+  
+end

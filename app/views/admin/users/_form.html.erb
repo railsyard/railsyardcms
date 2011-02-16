@@ -1,0 +1,42 @@
+	<div class="required">
+		<%= label_tag t('admin.users.username') %><%= f.text_field :login %>
+	</div>
+	
+	<div class="required">
+		<%= label_tag t('admin.users.first_name') %><%= f.text_field :firstname %>
+	</div>
+
+	<div class="required">
+		<%= label_tag t('admin.users.last_name') %><%= f.text_field :lastname %>
+	</div>
+
+	<div class="required">
+		<%= label_tag t('admin.users.email') %><%= f.text_field :email %>
+	</div>
+
+	<div>
+		<%= label_tag t('admin.users.password') %><%= f.password_field :password %>
+	</div>
+
+	<div>
+		<%= label_tag t('admin.users.password_confirmation') %><%= f.password_field :password_confirmation %>
+	</div>
+
+	<div>
+		<%= label_tag t('admin.users.admin_panel_language') %><%= f.select :lang, options_from_collection_for_select(Language.all, 'short', 'name', object.lang) %>
+	</div>
+
+	<div class="required"><% if current_user && current_user.is_admin? %>
+	  	<%= f.label :roles %>
+	  	<ul>
+	  	<% for role in User::ROLES %>
+			<li><%= check_box_tag "user[roles][]", role, @user.roles.include?(role) %>
+	    	<%=h role.humanize %></li>
+	  	<% end %>
+	  	<%= hidden_field_tag "user[roles][]", "" %>
+	  	</ul>
+	<% end %>
+	</div>
+	<div>
+		<%= label_tag 'enabled', t('admin.users.enabled') %><%= f.check_box :enabled, :selected => object.enabled %>
+	</div>

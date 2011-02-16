@@ -1,0 +1,7 @@
+<div class='article' id='article-<%= object.id %>'>
+  <h1><%= link_to object.title, get_article_url(object) %></h1>
+  <p class='abstract'><%= render :inline => object.short %></p>
+  <div class="article-index-meta">
+    <%= l object.publish_at.to_date, :format => :long %> &bull; <%= link_to (t 'public.comments.comments', :count => object.comments.count), get_article_url(object) if object.comments_enabled %>
+  </div>
+</div>

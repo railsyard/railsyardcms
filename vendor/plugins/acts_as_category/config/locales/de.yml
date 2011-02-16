@@ -1,0 +1,10 @@
+de:
+  
+  acts_as_category:
+    error:
+      no_descendants: muss existieren und kann kein eigener Nachfahre sein
+    
+  acts_as_category_content:
+    error:
+      no_subcategories: darf keine Unterkategorien haben
+      

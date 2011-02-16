@@ -1,0 +1,9 @@
+se:
+  
+  acts_as_category:
+    error:
+      no_descendants: måste existera och kan inte vara sin egen ättling
+    
+  acts_as_category_content:
+    error:
+      no_subcategories: måste inte har underkategorier

@@ -1,0 +1,9 @@
+en:
+  
+  acts_as_category:
+    error:
+      no_descendants: must exist, and cannot be its own descendant
+    
+  acts_as_category_content:
+    error:
+      no_subcategories: must not have subcategories

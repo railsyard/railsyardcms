@@ -1,0 +1,147 @@
+The "embedded actions" plugin 
+=============================
+
+BASIC USAGE
+  Just like the traditional render :partial, embedded actions allow you to
+  refactor your views and extract presentation logic and templates into separate
+  files.
+
+  Unlike partials, embedded actions also let you define business logic to be
+  performed before the partial is included. That logic is encapsulated in the
+  already well understood metaphor of an action inside a controller.
+
+  So a simple call like
+
+  <%= embed_action :controller => "songs", :action => "top10" %>
+
+  lets you include an html fragment containing the top 10 songs into any of your
+  pages, regardless of which controller, action or view wants to do the including.
+
+CACHING
+  Embedded actions can provide caching of their results (allowing for different 
+  parameters) just like page caching, but at the level of html fragments. 
+  So your dynamic pages can still be rendered dynamically, but some of the embedded
+  actions can be cached (and expired) independently.
+
+  Just declare an action as 'cacheable' in a way similar to page caching, 
+  by invoking "caches_embedded" with the name of the action to cache.
+
+  class TestController < ApplicationController
+    caches_embedded :user_list
+
+    def user_list
+      ...
+    end
+  end
+
+  Cached fragments can be invalidated with calls to expires_embedded, but you must
+  remember to use the same set of parameters used to embed the cached action in
+  the first place.
+
+  Additionally, the underlying fragment caching mechanism can be passed 
+  an options hash in the following manner:
+
+    caches_embedded :user_list, :ttl => 60.minutes
+
+  And you can specify additional arguments to be used when generating the cache name.
+  Which is better explained with an example:
+  
+    caches_embedded :user_list, :options_for_name => Proc.new do |controller| 
+      {:is_admin => controller.current_user.is_admin?}
+    end
+
+  this way, there will be two separate cached versions, one for admin users and one 
+  for regular users. The hash returned is merged with the actual hash passed on
+  the embed_action call, and is used to create an "url-like" name for the cached
+  fragment. So in this case, a call like <%= embed_action :action => "test" %> will
+  produce two different fragments: "/mycontroller/test?is_admin=false" and "...?is_admin=true"
+  depending on the result of controller.current_user.is_admin? when embed_action 
+  is called.
+  
+  
+RESPONDS_TO
+  Actions can use Rails' responds_to to provide different behaviours when invoked 
+  normally or embedded in another view.
+  
+  class TestController < ApplicationController
+    def user_list
+      responds_to do |format|
+        format.html     {render :layout => :application}
+        format.embedded {render :layout => false}
+      end
+    end
+  end
+
+SOURCE CODE
+  The official repository for embedded_actions is in GitHub:
+  
+  http://github.com/sd/embedded-actions/tree/master
+
+
+
+-------------------------------------------------------------------------------
+Copyright (c) 2007, 2008 Sebastian Delmont <sd@notso.net> 
+Copyright (c) 2007, 2008 StreetEasy / NMD Interactive <http://www.streeteasy.com/> 
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice, this 
+list of conditions and the following disclaimer.
+
+* Redistributions in binary form must reproduce the above copyright notice, this
+list of conditions and the following disclaimer in the documentation and/or
+other materials provided with the distribution.
+
+* Neither the name of Sebastian Delmont, nor StreetEasy nor NMD Interactive 
+nor the names of their contributors may be used to endorse or promote products 
+derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-------------------------------------------------------------------------------
+
+CONTRIBUTORS
+- Sebastian Delmont <sd@notso.net>
+- Jerret Taylor <jerrett@gmail.com>
+- Ryan Barber <rfb@skyscraper.nu>
+- Andreas Simon <asimon@med4you.de>
+- Jonathan Boler <galatians@gmail.com>
+
+RELEASE HISTORY
+1.0 - Oct 23 2007
+  First widespread release.
+
+1.0.1 - Oct 30 2007 
+  Fixed bug that was causing a "Content-encoding: identity" to leak 
+  to all requests.
+
+1.0.2 - Nov 29 2007
+  Fixed bug (thanks Jerret) that caused caching settings to leak 
+  to actions with the same name in other controllers.
+
+1.1 - Dec 4 2007
+  Passthrough options for fragment caching (Ryan).
+  Support for namespaced controllers in caching (Jerret). 
+  Minor bug fixes.
+
+1.1.1 - Feb 20 2008
+  Allow symbol names for controllers and actions (Andreas)
+  Fixed deprecated 'require_gem' in test environment (Andreas)
+
+1.1.2 - Dec 5 2008
+  Simplified responds_to behaviour
+  Rails 2.2 compatibility (Jonathan)
+
+1.1.3 - Mar 24 2009
+  Fixed issues with content-type leakage
+  Rails 2.3 compatibility

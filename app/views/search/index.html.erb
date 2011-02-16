@@ -1,0 +1,29 @@
+<div id='search-results'>
+<% if @articles.blank? && @snippets.blank? %>
+  <h1><%= t "public.search.no_search_results_for" %> "<%= @query %>"</h1>
+<% else %>
+  <h1><%= t "public.search.search_results_for" %> "<%= @query %>"</h1>
+  <% if !@articles.blank? %>
+    <h2>in <%= t "public.articles.articles" %></h2>
+    <ul>
+      <% @articles.map do |a| %>
+	  <li>
+		  <h3><%= link_to a.title, get_article_url(a) %></h3>
+		  <p><%= truncate(a.short, :length => 200) %></p>
+	  </li>
+      <% end %>
+    </ul>
+  <% end %>
+  <% if !@snippets.blank? %>
+  <h2>in <%= t "public.pages.pages" %></h2>
+  <ul>
+    <% @snippets.map do |s| %>
+	  <li>
+		<h3><%= link_to s.page.name, get_yard_url(s.page) if s.page %></h3>
+		<p><%= truncate(s.body, :length => 200) %></p>
+	  </li>
+    <% end %>
+  </ul>
+  <%end %>
+<% end %>
+</div>

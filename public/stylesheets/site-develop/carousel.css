@@ -1,0 +1,89 @@
+/* Horizontal Carousel */
+#horizontal_carousel {
+  float:left;
+  width: 960px;
+  height: 200px;
+  top: 0px;
+  position: relative;  
+}         
+
+#horizontal_carousel .slider {
+  position: absolute;
+  top: 5px;
+  left: 37px;  
+  width: 876px;
+  height: 144px;
+  overflow:hidden;   
+}            
+
+#horizontal_carousel .previous_button {
+  position: absolute;
+  top: 25px;
+  left: 0px;
+  width: 42px;
+  height: 144px;
+  background: url(/images/site/carousel/left.png);
+  z-index: 100;    
+  cursor:pointer;
+}        
+
+#horizontal_carousel .previous_button_disabled {
+  background: url(/images/site/carousel/left-disabled.png);
+  cursor:default;
+}
+
+#horizontal_carousel .next_button {
+  position: absolute;
+  top: 25px;
+  right: 0px;
+  width: 42px;
+  height: 144px;
+  background: url(/images/site/carousel/right.png);
+  z-index: 100;
+  cursor:pointer;
+}   
+
+#horizontal_carousel .next_button_disabled {
+  background: url(/images/site/carousel/right-disabled.png);
+  cursor:default;
+}
+
+#horizontal_carousel ul {
+  margin: 0;
+  padding:0;
+  width: 100000px;
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 144px;
+}                      
+
+#horizontal_carousel ul li img {
+  border:1px solid #999999;
+  display:block;             
+  background:#E3EDFA;  
+}                                           
+#horizontal_carousel ul li {
+  border:0px solid green;
+  margin:0pt;
+  padding:18px 10px 10px 18px;
+  width:270px;
+  list-style:none;   
+  float:left;
+}
+#horizontal_carousel ul li a {
+	text-decoration: none;
+	color: #4782c6;
+}
+#horizontal_carousel ul li a:hover {
+	color: #333333;
+}
+#horizontal_carousel ul li h1{
+	text-transform: uppercase;
+	font-size: 20px;
+	padding: 0 0 10px 0;
+}
+#horizontal_carousel ul li p{
+	color: #000000;
+	font-size: 12px;
+}

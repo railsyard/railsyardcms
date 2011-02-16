@@ -1,0 +1,17 @@
+<div><%= label_tag t("public.users.first_name") %>
+<%= f.text_field :firstname %></div>
+
+<div><%= label_tag t("public.users.last_name") %>
+<%= f.text_field :lastname %></div>
+
+<div><%= label_tag t("public.users.email") %>
+<%= f.text_field :email %></div>
+
+<div><%= label_tag t("public.users.username") %>
+<%= f.text_field :login %></div>
+
+<div><%= label_tag t("public.users.password") %>
+<%= f.password_field :password %></div>
+
+<div><%= label_tag 'password_confirmation', t("public.users.confirm_password") %>
+<%= f.password_field :password_confirmation %></div>

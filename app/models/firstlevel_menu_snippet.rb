@@ -1,0 +1,4 @@
+class FirstlevelMenuSnippet < Snippet
+  
+  
+end

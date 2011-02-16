@@ -1,0 +1,5 @@
+class Audio < Asset
+  
+  
+end
+

@@ -1,0 +1,82 @@
+/* MIXIN */
+/************************************************************************/
+.font, h1, h2, h3, form fieldset legend, form fieldset label, form fieldset input[type="submit"], form fieldset input[type="button"] { font-family: 'Yanone Kaffeesatz', Georgia; }
+
+body { padding: 10px; font-family: "Georgia", Tahoma, Trebuchet, Verdana; font-size: 0.8em; }
+
+a { color: #8bb106; text-decoration: none; border-bottom: 1px dotted #8bb106; }
+
+h1, h2, h3 { text-shadow: 2px 2px 3px #d3d3d3; }
+
+#header { margin-top: 40px; margin-bottom: 30px; }
+#header h1 { font-size: 4em; font-weight: bold; letter-spacing: -1px; }
+#header h2 { font-size: 1.8em; font-style: italic; font-family: "Georgia"; color: #747474; padding-top: 10px; padding-left: 20px; }
+
+#lang_selector { position: absolute; top: 0; right: 20px; list-style: none; border: 1px solid #cccccc; padding: 10px; -moz-border-radius: 0 0 7px 7px; /* FF1+ */ -webkit-border-radius: 0 0 7px 7px; /* Saf3+, Chrome */ border-radius: 0 0 7px 7px; /* Opera 10.5, IE 9 */ }
+#lang_selector:hover { background-color: #8bb106; }
+#lang_selector:hover li a { color: white; }
+#lang_selector li { display: inline-block; padding: 0 10px; }
+#lang_selector li a:hover { text-decoration: underline; }
+
+.debug { border: 1px solid red; }
+
+/* TEMPLATE STRUCTURE */
+#wrapper1 { position: relative; text-align: left; width: 100%; }
+
+#wrapper2 { position: relative; text-align: left; width: 100%; }
+
+#maincol { position: relative; margin: 0; padding: 10px; line-height: 1.5em; }
+#maincol span.publish-date { color: #747474; font-style: italic; display: block; margin: -20px 0 20px 0; float: right; background-color: #cccccc; padding: 7px; -moz-border-radius: 4px 4px 4px 4px; /* FF1+ */ -webkit-border-radius: 4px 4px 4px 4px; /* Saf3+, Chrome */ border-radius: 4px 4px 4px 4px; /* Opera 10.5, IE 9 */ }
+#maincol p.abstract { font-style: italic; font-size: 110%; margin-bottom: 10px; }
+#maincol .article-comments { margin-top: 20px; }
+#maincol h1 { font-size: 2.8em; margin-top: 10px; margin-bottom: 15px; line-height: 1.2em; color: #747474; }
+#maincol h2 { font-size: 1.7em; border-bottom: 1px dotted #747474; margin-bottom: 12px; color: #747474; width: 80%; }
+#maincol h3 { font-size: 1.5em; margin-bottom: 12px; color: #747474; }
+#maincol b, #maincol strong { font-weight: bold; }
+#maincol i, #maincol em { font-style: italic; }
+#maincol ul, #maincol ol { margin: 1em 0; padding-left: 30px; }
+#maincol ul li, #maincol ol li { list-style: disc; }
+#maincol ol li { list-style: decimal; }
+
+.menu_ul, #leftcol ul, #rightcol ul { margin-left: 0; padding-left: 1em; text-indent: -1em; }
+.menu_ul li, #leftcol ul li, #rightcol ul li { list-style: none; }
+.menu_ul li :before, #leftcol ul li :before, #rightcol ul li :before { content: "\00BB \0020"; }
+
+#leftcol { border-right: 1px dotted #747474; position: relative; top: -10px; left: -10px; float: left; width: 180px; /* for IE5/WIN */ width: 160px; /* actual value */ margin: 0 0 -10px 0; padding: 10px; z-index: 100; }
+
+#rightcol { border-left: 1px dotted #8bb106; position: relative; top: -10px; right: -10px; float: right; width: 320px; /* for IE5/WIN */ width: 300px; /* actual value */ margin: 0 0 -10px 0; padding: 10px; z-index: 99; }
+
+#centercol { position: relative; padding: 0 200px; }
+
+#footer { min-height: 120px; position: relative; top: 30px; width: 100%; clear: both; margin: 0; padding: 1% 0; text-align: center; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; }
+
+#credits { position: relative; clear: both; text-align: right; font-size: 0.8em; }
+
+/* FORM STYLING */
+form { padding: 10px; }
+form fieldset { border: 1px solid #cccccc; padding: 10px; opacity: 0.5; }
+form fieldset:hover { opacity: 1; }
+form fieldset legend { font-size: 1.8em; padding: 0 10px; color: #747474; }
+form fieldset label { font-size: 1.3em; }
+form fieldset > div { margin-bottom: 11px; }
+form fieldset .buttons { text-align: right; }
+form fieldset input { color: #747474; border: 1px solid #cccccc; }
+form fieldset input[type="text"], form fieldset input[type="password"] { display: block; padding: 6px; width: 90%; -moz-border-radius: 4px 4px 4px 4px; /* FF1+ */ -webkit-border-radius: 4px 4px 4px 4px; /* Saf3+, Chrome */ border-radius: 4px 4px 4px 4px; /* Opera 10.5, IE 9 */ }
+form fieldset input[type="text"]:focus, form fieldset input[type="password"]:focus { border-color: #8bb106; border-size: 3px; }
+form fieldset input[type="submit"], form fieldset input[type="button"] { background-color: #8bb106; color: white; padding: 5px; -moz-border-radius: 7px 7px 7px 7px; /* FF1+ */ -webkit-border-radius: 7px 7px 7px 7px; /* Saf3+, Chrome */ border-radius: 7px 7px 7px 7px; /* Opera 10.5, IE 9 */ font-size: 1.2em; letter-spacing: 1px; border: none; text-align: center; text-transform: uppercase; cursor: pointer; float: right; margin: 0 4px; }
+form fieldset textarea { width: 94%; padding: 20px; }
+
+#comments_list { width: 97%; }
+#comments_list div { -moz-border-radius: 8px 8px 8px 8px; /* FF1+ */ -webkit-border-radius: 8px 8px 8px 8px; /* Saf3+, Chrome */ border-radius: 8px 8px 8px 8px; /* Opera 10.5, IE 9 */ padding: 12px 12px 12px 0; margin-bottom: 16px; border-left: 1px solid #cccccc; width: 88%; }
+#comments_list div .comm-auth, #comments_list div .comm-date { color: #747474; font-style: italic; }
+#comments_list div .comm-auth { padding-left: 15px; }
+#comments_list div .comm-date:before { content: "• "; }
+#comments_list div .comm-body { padding: 15px; margin: 10px 0; }
+#comments_list div .comm-del { padding-left: 15px; text-align: right; display: block; }
+#comments_list div .comm-del a { padding: 2px; background-color: #8bb106; -moz-border-radius: 4px 4px 4px 4px; /* FF1+ */ -webkit-border-radius: 4px 4px 4px 4px; /* Saf3+, Chrome */ border-radius: 4px 4px 4px 4px; /* Opera 10.5, IE 9 */ color: white; opacity: 0.4; }
+#comments_list div .comm-del a:hover { opacity: 1; }
+#comments_list div:nth-child(even) { background: #cccccc; }
+#comments_list div:nth-child(odd) { background: #FFF; }
+
+#articles-list p.abstract { font-size: 95%; }
+#articles-list .article-index-meta { font-style: italic; color: #cccccc; padding-bottom: 20px; }

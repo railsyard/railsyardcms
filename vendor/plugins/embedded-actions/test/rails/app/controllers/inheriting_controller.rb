@@ -1,0 +1,2 @@
+class InheritingController < TestController
+end
