@@ -1,46 +1,63 @@
 class Admin::PagesController < Admin::AdminController
-
+  
+  ## manual authorization
   before_filter do |controller|
-    controller.check_role("Admin")
+    controller.check_role("admin")
   end
+  
+  ## CanCan authorization - see Ability model
+  authorize_resource
   
   def index
     @admin_editing_language = admin_editing_language
-    @pages = Page.paginate  :all,
-                            :conditions => ["lang = ?", @admin_editing_language],
-                            :order => "updated_at DESC",
-                            :page => params[:pagination]
+    @pages = Page.without_roots.where(:lang => @admin_editing_language).order("updated_at DESC")
+    @root_page = Page.where(:title => @admin_editing_language, :ancestry => nil).first
   end
   
   def show
     @admin_editing_language = admin_editing_language
     @page = Page.find(params[:id])
-    @templates = Template.all
+    @snippets_available = Snippet.available
+    @layouts = Layout.all(cfg.theme_name)
+    @current_layout = Layout.find(cfg.theme_name, @page.layout_name)
+    @snippets = @page.snippets.includes(:association).order("associations.position")
   end
-
+  
   def new
     @admin_editing_language = admin_editing_language
-    @page = current_user.pages.new
+    @page = Page.new
+    @root_page = Page.where(:title => @admin_editing_language, :ancestry => nil).first 
+    @layouts = Layout.all(cfg.theme_name)
+    @current_layout = @layouts.first
   end
   
   def create
     @admin_editing_language = admin_editing_language
-    @page = current_user.pages.new(params[:page])
-    @page.pretty_url = @page.pretty_url.urlify.blank? ? @page.name.urlify : @page.pretty_url.urlify
+    @page = Page.new(params[:page])
+    @page.pretty_url = @page.pretty_url.urlify.blank? ? @page.title.urlify : @page.pretty_url.urlify
     @page.lang = @admin_editing_language
-    @page.meta_desc = @page.name if @page.meta_desc.blank?
-    @page.meta_title = @page.name if @page.meta_title.blank?
+    @page.meta_description = @page.title if @page.meta_description.blank?
+    @page.meta_title = @page.title if @page.meta_title.blank?
     @page.publish_at = Time.now if @page.published
+    @page.position = Page.where(:lang => @admin_editing_language, :ancestry => nil).first.children.order("position ASC").last.position+1
+    # TO-DO selettore posizione pagina nell'albero
+    if @page.parent.blank?
+      lang_root_page = Page.find_by_title(@admin_editing_language)
+      @page.parent = lang_root_page unless lang_root_page.blank?
+    end
     if @page && @page.save && @page.errors.empty?
       redirect_to admin_pages_path()
     else
       render :action => "new"
     end
   end
-
+  
   def edit
     @admin_editing_language = admin_editing_language
     @page = Page.find(params[:id])
+    @root_page = Page.where(:title => @admin_editing_language, :ancestry => nil).first
+    @layouts = Layout.all(cfg.theme_name)
+    @current_layout = Layout.find(cfg.theme_name, @page.layout_name)
   end
   
   def update
@@ -48,11 +65,16 @@ class Admin::PagesController < Admin::AdminController
     @page = Page.find(params[:id])
     if @page
       @page.attributes = params[:page]
-      @page.pretty_url = @page.pretty_url.urlify.blank? ? @page.name.urlify : @page.pretty_url.urlify
+      @page.pretty_url = @page.pretty_url.urlify.blank? ? @page.title.urlify : @page.pretty_url.urlify
       @page.lang = @admin_editing_language
-      @page.meta_desc = @page.name if @page.meta_desc.blank?
-      @page.meta_title = @page.name if @page.meta_title.blank?
+      @page.meta_description = @page.title if @page.meta_description.blank?
+      @page.meta_title = @page.title if @page.meta_title.blank?
       @page.publish_at = Time.now if @page.published
+      # TO-DO selettore posizione pagina nell'albero
+      if @page.parent.blank?
+        lang_root_page = Page.find_by_title(@admin_editing_language)
+        @page.parent = lang_root_page unless lang_root_page.blank?
+      end
       if @page.save && @page.errors.empty?
         redirect_to admin_pages_path()
       else
@@ -61,75 +83,62 @@ class Admin::PagesController < Admin::AdminController
     end
   end
   
-  # Warning: this is a cascade delete, it deletes all children pages
   def destroy
     page = Page.find(params[:id])
-    page.descendants.map {|d| d.destroy}
-    page = Page.find(params[:id]) # I need to reload the page from db for a bug of acts_as_category gem, as on deleting the parent it tries to update the children already deleted
-    page.destroy   
-    redirect_to admin_pages_path()
-  end
-  
-  def update_positions
-    #acts_as_category original way of sorting:
-    #Page.update_positions(params)
-    
-    #My HACK: due to multi-language the original method no longer works
-    params.each_key do |key|
-      if key.include?('aac_sortable_tree_')
-        params[key].each_with_index do |id, pos|
-          Page.find(id).update_attribute(:position, pos+1) #positions starts form 1, not from 0, for being compliant with original acts_as_category
+    if page
+      if !page.children.blank? && (lang_root_page = Page.find_by_title(page.lang))
+        page.children.map do |c|
+          c.parent = lang_root_page
+          c.save
         end
       end
+      page.destroy
+      redirect_to admin_pages_path()
     end
-    render :nothing => true
+  end
+  
+  def sort    
+    # TO-DO some checks and robust code
+    error = false;
+    root_page = Page.where(:title => params[:admin_editing_language], :ancestry => nil).first
+    serialized_tree = params[:page]   
+    serialized_tree.split('&').each_with_index do |node, i| 
+      page_string = node[node.rindex('[')+1..node.rindex(']')-1]
+      parent_string = node[node.rindex('=')+1..node.length]   
+      page = Page.where(:id => page_string.to_i).first
+      page.parent_id = (parent_string == 'root' ? root_page.id : parent_string.to_i)
+      page.position = i+1
+      page.save
+      error = true unless page.errors.empty?
+    end
+   @result = error ? "Error updating pages tree." : "Pages tree updated."
+   # Renders sort.js.erb
   end
   
   def toggle
-    pg = Page.find(params[:id])
-    if pg
-      pg.toggle
-      render :update do |page|
-        page.replace "page-#{pg.id}", :partial => 'admin/pages/item', :object => pg
-      end
-    else
-      logger.error "Admin page toggle error"
-    end
-  end
-  
-  def editing_language
-    session[:admin_editing_language] = params[:admin_editing_language] unless params[:admin_editing_language].blank?
-    render :update do |page|
-      if params[:redirect_to_index] == 'true'
-      	page.redirect_to :action => :index
-  	  else
-        page << "window.location.reload()"
-      end
-    end
-  end
-  
-  def apply_template
     @page = Page.find(params[:id])
-    @templ = Template.find(params[:template_id])
-    if @page && @templ
-      @page.snippets.each {|s| s.destroy}
-      @templ.snippets.each do |templ_snippet|
-        cloned_snippet = templ_snippet.clone
-        cloned_snippet.page = @page
-        cloned_snippet.save
-        cloned_snippet.association.update_attribute(:location, templ_snippet.association.location)
-      end
-    else
-      logger.error "Problem applying page template"
+    @error = true unless @page && @page.toggle
+    # Renders toggle.js.erb
+  end
+  
+  def set_editing_language
+    session[:admin_editing_language] = params[:admin_editing_language] unless params[:admin_editing_language].blank?
+    # Renders set_editing_language.js.erb
+  end
+  
+  def apply_layout
+    @page = Page.find(params[:id])
+    if Layout.find(cfg.theme_name, params[:selected_layout])
+      @page.snippets.map{|s| s.update_attribute(:area, "limbo")}
+      @page.update_attribute(:layout_name, params[:selected_layout])
     end
-    redirect_to admin_page_path(@page)
+    # Renders apply_layout.js.erb
   end
   
   private
   
   def admin_editing_language
-    session[:admin_editing_language].blank? ? 'en' : session[:admin_editing_language]
+    session[:admin_editing_language].blank? ? cfg.default_lang : session[:admin_editing_language]
   end
-
+  
 end
-# Author::    Silvio Relli  (mailto:silvio@relli.org)

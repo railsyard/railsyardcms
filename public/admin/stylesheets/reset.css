@@ -1,0 +1,149 @@
+/* http://meyerweb.com/eric/tools/css/reset/ */
+/* v1.0 | 20080212 */
+html{
+    overflow-y: scroll;
+    }
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+    outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+    text-decoration: none;
+}
+del {
+    text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+@charset "utf-8";
+/* CSS Document */
+
+a:focus { 
+    outline: none; 
+}
+button:focus { 
+    outline: none; 
+}
+
+button::-moz-focus-inner { border: 0; }
+
+ol, ul{
+    margin:0;
+    padding:0;
+}
+
+ul li, ol li{
+    margin:0;
+    padding:0;
+}
+
+a{
+    color:#555;
+    text-decoration:none;
+}
+
+a:hover{
+    text-decoration:none;
+    color:#000;
+}
+
+button{
+    cursor:pointer;
+}
+
+input, textarea{    font: 12px/1.5 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, sans-serif;
+}
+
+dl,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ol,
+ul,
+pre,
+table,
+address,
+fieldset {
+    margin-bottom: 0px;
+    line-height:1;
+}
+
+p{
+    margin-bottom:10px;
+}
+
+
+/* slightly enhanced, universal clearfix hack */
+.clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: ".";
+     clear: both;
+     height: 0;
+     line-height:0;
+     overflow: hidden;
+     }
+     
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+
+* html .clearfix { height: 1%; }
+
+.clearfix { display: block; }
+/* close commented backslash hack */
+
+span.hide_text{
+    visibility:hidden;
+}
+
+.clear_right{clear:right;}
+.clear_left{clear:left;}
+
+body{
+-webkit-text-size-adjust: none !important;
+}

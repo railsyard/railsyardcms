@@ -1,20 +1,26 @@
-<% content_for :secondmenu do %>
-<ul>
-	<li><%#= link_to "<span>#{t 'admin.general.available'}</span>".hs, "" %></li>
-	<li><%#= link_to "<span>#{t 'admin.general.trash'}</span>".hs, "" %></li>
-</ul>
-<%= select_tag "language", options_from_collection_for_select(Language.all, 'short', 'name', @admin_editing_language), :onchange => remote_function(:url => editing_language_admin_pages_path, :with => "'admin_editing_language=' + this.value") %>
+<%= content_for :title do %>Nuova pagina<% end %>
+
+<header class="page_description">
+    <h2>Crea una nuova pagina</h2>
+    <p>Descrizione opzionale</p>        
+</header>
+
+<section class="">
+     <% unless @page.errors.blank? %>
+     <div class="alert alert_red">
+         <img height="24" width="24" src="/admin/images/icons/small/white/Alarm%20Bell.png">
+         Errors: <%= errors_for @page %>
+     </div>
+     <% end %>
+</section>
+
+<%= form_for @page, :url => admin_pages_path do |f| %>
+    <%= render :partial => "form", :object => @page, :as => :page, :locals => {:f => f, :lang => @admin_editing_language} %>
+
+    <div class="buttons">
+        <button type="submit" class="green skin_colour round_all"><img height="24" width="24" alt="Salva pagina" src="/admin/images/icons/small/white/Bended%20Arrow%20Right.png"><span>Salva</span></button>
+
+        <button type="button" onclick="window.location.href='<%= admin_pages_url %>'" class="red skin_colour round_all"><img height="24" width="24" alt="Annulla" src="/admin/images/icons/small/white/Bended%20Arrow%20Left.png"><span>Annulla</span></button>
+    </div>
 <% end %>
 
-<% content_for :sidebar do %>
-	<%= render :partial => "tree", :object => Page, :locals => {:lang => @admin_editing_language} %>
-<% end %>
-
-<div class="box maior left">
-	<span class="box-top-title"><%= t 'admin.pages.create_a_new_page' %></span>
-	<% form_for @page, :url => admin_pages_path do |f| %>
-		<%= error_messages_for :page %>
-		<%= render :partial => "form", :object => @page, :locals => {:f => f, :lang => @admin_editing_language} %>
-		<div class="buttons"><%= submit_tag t('admin.general.create'), :class => "submit"  %></div>
-	<% end %>
-</div>

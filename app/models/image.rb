@@ -1,4 +1,0 @@
-class Image < Asset
-  
-  
-end

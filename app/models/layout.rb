@@ -1,32 +1,34 @@
 class Layout
+  attr_reader :title, :filename, :path, :areas
   
-  attr_reader :path, :short, :name
-  
+  # title = descriptive title
+  # filename = filename with extension
   # path = absolute path on filesystem
-  # short = filename without extension
-  # name = filename with extension
-  def initialize(path, short, name)
-    @path, @short, @name = path, short, name
+  def initialize(title, filename, path, areas)
+    @title, @filename, @path, @areas = title, filename, path, areas
   end
   
-  def self.all(theme)
-    layouts = []
-    search_layouts(theme.to_s).map do |layout_path|
-      layouts << self.new(layout_path, File.basename("#{layout_path}").split('.')[0], File.basename("#{layout_path}"))
+  
+  # Thats the only way to memoize class methods (self methods)
+  class << self
+    extend ActiveSupport::Memoizable
+    
+    def all(theme_name)
+      theme = Theme.find(theme_name)
+      theme_conf = YAML.load_file("#{theme.path}/theme_conf.yml")
+      layouts = []
+      theme_conf["layouts"].map do |lay|
+        layouts << self.new(lay["title"], lay["filename"], "#{theme.path}/views/layouts/#{lay["filename"]}", lay["areas"])
+      end
+      layouts.compact.flatten.uniq
     end
-    layouts.compact.uniq
-  end
-  
-  def self.find(theme, short)
-    all(theme.to_s).select{|t| t.short.eql? short.to_s}.first
-  end
-  
-  def self.search_layouts(theme)
-    layouts_path = "#{RAILS_ROOT}/themes/#{theme.to_s}/layouts/*"
-    Dir.glob(layouts_path).select do |file|
-      File.readable?("#{file}")
-    end.compact.uniq
+    memoize :all
+    
+    def find(theme, filename)
+      all(theme.to_s).select{|t| t.filename.eql? filename.to_s}.first
+    end
+    memoize :find
+    
   end
   
 end
-# Author::    Silvio Relli  (mailto:silvio@relli.org)

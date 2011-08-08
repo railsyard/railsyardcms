@@ -1,8 +1,0 @@
-<%= link_to_function "<div class=\"search-button\"><span>#{t "public.search.search"}</span></div>".hs, "$('search-panel').toggle();" %>
-
-<div id='search-panel' style='display:none'>
-  <% form_tag '/search' do %>
-    <%= text_field_tag :search, 'Enter your search here', :class => 'hintTextbox' %>
-    <%= submit_tag "", :class => 'button' %>
-  <% end %>
-</div>

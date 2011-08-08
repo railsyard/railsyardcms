@@ -1,0 +1,27 @@
+cell:
+    name:   Menu
+    class:  menu
+    actions:
+        -   name:   First level menu
+            method: first_level
+            desc:   Menu of the pages on the first level
+        -   name:   Two levels menu
+            method: two_levels
+            desc:   Menu of the pages on the first level and their children
+        -   name:   Siblings menu
+            method: siblings
+            desc:   Menu of the pages on the same level of the current page
+        -   name:   Children menu
+            method: children
+            desc:   Menu of the children pages of the current page
+        -   name:   Siblings and children menu
+            method: siblings_and_children
+            desc:   Menu of the pages on the same level of the current page and their children
+        -   name:   Footer menu
+            method: footer
+            desc:   "Menu of all the pages, divided by the first level"
+        -   name:   Navigation menu
+            method: nav
+            desc:   Horizontal navigation menu with the current page path
+
+        

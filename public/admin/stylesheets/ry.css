@@ -1,0 +1,35 @@
+.debug { border: 1px solid red; }
+
+.bg_reset { background-repeat: no-repeat; background-color: transparent; background-position: top left; }
+
+/*
+$cBlueNavy: #253a55;
+$cBlueLight: #064792;
+$cBlueLighter: #52a9ff;
+*/
+/**/
+.blue_backround, body .grad_colour, #login_box #bar, .slider-content .selected .title, table.static thead tr th, .wizard .wizard_steps ul, .progress_in_header.ui-progressbar .ui-progressbar-value { background: #90b61e; border: none; zoom: 1; text-shadow: none; }
+
+/* Grey Header Gradients eg. Nav, Sidebar, Accordion, etc. */
+body .grad_grey, .content_accordion h3.bar, .list_slider .slider-nav, .slider-content .title, .list_slider .slide-up, .list_slider .slide-down, #sidebar ul#side_links li a, div.main_container .tabs ul.tab_header li a, div.main_container .tabs ul.tab_sider li a, .fc .fc-agenda-slots tr th, .wizard .wizard_steps ul li.current { background: #dadada; /* old browsers */ background: -moz-linear-gradient(top, #f1f1f1 0%, #e3e3e3 99%); /* firefox */ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e6ecef), color-stop(99%, #d0d6da)); /* webkit */ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#E6ECEF', endColorstr='#D0D6DA',GradientType=0 ); /* ie */ zoom: 1; }
+
+/* Theme Button and some ON states */
+button, button.skin_colour, div.main_container .gallery ul li a, #feature_container a.features, .fc-header .ui-state-active { background: #4c5766; /* old browsers */ background: -moz-linear-gradient(top, #4c5766 0%, #313841 99%); /* firefox */ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4c5766), color-stop(99%, #313841)); /* webkit */ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4c5766', endColorstr='#313841',GradientType=0 ); /* ie */ border: 1px solid #313841; -moz-box-shadow: 0px 1px 0px white, inset 0px 1px 0px rgba(255, 255, 255, 0.2); -webkit-box-shadow: 0px 1px 0px white, inset 0px 1px 0px rgba(255, 255, 255, 0.2); text-shadow: 0px -1px 1px black, 0px 1px 0px rgba(255, 255, 255, 0.2); border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; zoom: 1; }
+
+button:hover, button.skin_colour:hover, div.main_container .gallery ul li a:hover, #feature_container a.features:hover, .fc-header .ui-state-active:hover { background: #313841; /* old browsers */ background: -moz-linear-gradient(top, #313841 0%, #4c5766 99%); /* firefox */ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #313841), color-stop(99%, #4c5766)); /* webkit */ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#313841', endColorstr='#4c5766',GradientType=0 ); /* ie */ zoom: 1; -webkit-transition: background 5000ms ease-in; /* Saf3.2+, Chrome */ -moz-transition: background 5000ms ease-in; /* FF3.7+ */ -o-transition: background 5000ms ease-in; /* Opera 10.5+ */ transition: background 5000ms ease-in; /* futureproofing */ }
+
+body div.main_container .grad_colour, body div.main_container .grad_grey { filter: none\9 !important; }
+
+/* THEME BLUE Coloured Header Gradients, eg. Sortable Boxes, Tab Boxes, Date-picker, etc. */
+body .grad_colour, .slider .slide-up, .slider .slide-down, .slider-content .selected .title { background-color: #2876af; /* old browsers */ background: -moz-linear-gradient(top, #2876af 0%, #2876af 99%); /* firefox */ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #2876af), color-stop(99%, #2876af)); /* webkit */ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$cBlue', endColorstr='$cBlue',GradientType=0 ); /* ie */ border: 1px solid #2876af; zoom: 1; }
+
+/* Theme Button and some ON states */
+button, button.skin_colour { background: #2876af; /* old browsers */ background: -moz-linear-gradient(top, #2876af 0%, #2876af 99%); /* firefox */ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #2876af), color-stop(99%, #2876af)); /* webkit */ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$cBlue', endColorstr='$cBlue',GradientType=0 ); /* ie */ border: 1px solid #2876af; -moz-box-shadow: 0px 1px 0px white, inset 0px 1px 0px rgba(255, 255, 255, 0.2); -webkit-box-shadow: 0px 1px 0px white, inset 0px 1px 0px rgba(255, 255, 255, 0.2); text-shadow: 0px -1px 1px black, 0px 1px 0px rgba(255, 255, 255, 0.2); border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; zoom: 1; }
+
+button:hover, button.skin_colour:hover, div.main_container .gallery ul li a:hover { background: #2876af; /* old browsers */ background: -moz-linear-gradient(top, #2876af 0%, #2876af 99%); /* firefox */ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #2876af), color-stop(99%, #2876af)); /* webkit */ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$cBlue', endColorstr='$cBlue',GradientType=0 ); /* ie */ zoom: 1; }
+
+div.main_container a:hover, ul#side_links li a:hover, #sidebar h3 a:hover, div.main_container .tabs ul.tab_header li a:hover, div.main_container .tabs ul.tab_sider li a:hover { color: #5eb6f6; }
+
+div.main_container .tabs ul.tab_header li a, div.main_container .tabs ul.tab_sider li a { background-color: #2876af; }
+
+div.main_container .datepicker .ui-state-active { background-color: #5eb6f6 !important; }

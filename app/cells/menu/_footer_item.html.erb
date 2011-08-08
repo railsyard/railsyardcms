@@ -1,0 +1,4 @@
+<% if footer_item.visible_in_menu && footer_item.published && (!footer_item.reserved || (footer_item.reserved && current_user && current_user.is_privileged?)) %>
+	<li><%= link_to "<span>#{footer_item.title}</span>".hs, get_yard_url(footer_item) %></li>
+	<%= render :partial => 'footer_item', :collection => footer_item.children unless footer_item.children.empty? %>
+<% end %>

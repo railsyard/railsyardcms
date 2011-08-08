@@ -1,4 +1,0 @@
-<%#= puts "---------------------------------------- #{params.merge(object.additional_params.hs).inspect}" %>
-<div class='action-controller-snippet<%= " #{object.div_class}" unless object.div_class.blank?%>'<%= " id='#{object.div_id}'" unless object.div_id.blank? %><%= " style='#{object.div_style}'" unless object.div_style.blank? %>>
-	<%= embed_action(:controller => object.contr, :action => object.act, :params => params) unless (object.contr.blank? || object.act.blank?) %>
-</div>

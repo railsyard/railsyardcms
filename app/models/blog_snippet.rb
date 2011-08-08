@@ -1,5 +1,0 @@
-class BlogSnippet < Snippet
-  
-  
-  
-end

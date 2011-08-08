@@ -1,4 +1,0 @@
-class FirstlevelMenuSnippet < Snippet
-  
-  
-end

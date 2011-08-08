@@ -1,4 +1,5 @@
 class Theme
+  extend ActiveSupport::Memoizable
   
   attr_reader :path, :short, :title, :description, :author
   
@@ -19,10 +20,12 @@ class Theme
     end
     themes.compact.uniq
   end
+  #memoize :all
   
   def self.find(short)
     all.select{|t| t.short.eql? short.to_s}.first
   end
+  #memoize :find
   
   def self.search_themes
     themes_path = "#{RAILS_ROOT}/themes/[a-zA-Z0-9]*"
@@ -30,6 +33,6 @@ class Theme
       File.readable?("#{file}/theme_conf.yml")
     end.compact.uniq
   end
+  #memoize :search_themes
   
 end
-# Author::    Silvio Relli  (mailto:silvio@relli.org)

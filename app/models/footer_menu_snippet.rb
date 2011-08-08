@@ -1,4 +1,0 @@
-class FooterMenuSnippet < Snippet
-  
-  
-end

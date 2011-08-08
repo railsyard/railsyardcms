@@ -1,4 +1,0 @@
-class Video < Asset
-  
-  
-end

@@ -1,45 +1,38 @@
 class SiteController < ApplicationController
-  layout "site" # default layout 
-
-  def spawn
+  
+  skip_authorization_check
+  
+  def show
     @cfg = cfg # get global configuration, see application controller
     @hp = yard_home
-
     if params[:page_url].blank? && params[:lang].blank?
       redirect_to yard_home_link
-    elsif params[:page_url].blank? && !params[:lang].blank?
-      lang_home = Page.roots.find(:first, :order => "position ASC", :conditions => ["lang = ?", params[:lang]])
-      redirect_to get_yard_url(lang_home.id, :options => {:lang => params[:lang]})
-    else
-      page_url = params[:page_url]
-      @pg = Page.find(:first, :conditions => ["pretty_url = ?", page_url.last]) unless page_url.last.nil?
-      if @pg && @pg.is_reserved? && (current_user.nil? || !current_user.is_privileged?)
-        logger.error("401 displayed")
-        render(:file	=> "#{RAILS_ROOT}/public/401.html", :status	=> "401 Unauthorized")
-      elsif @pg && @pg.published && (@pg.lang == params[:lang])
-        @meta_title = @pg.meta_title.blank? ? "#{@cfg.site_name} #{@cfg.site_page_title}" : "#{@pg.meta_title} - #{@cfg.site_name} #{@cfg.site_page_title}"
-        @meta_desc = @pg.meta_desc.blank? ? "#{@cfg.site_desc}" : "#{@pg.meta_desc} #{@cfg.site_desc}"
-        @meta_keyword = @pg.meta_keyword.blank? ? "#{@cfg.site_keyword}" : "#{@pg.meta_keyword}, #{@cfg.site_keyword}"
+    elsif params[:page_url].blank? && !params[:lang].blank? && params[:lang] =~ $AVAILABLE_LANGUAGES
+      lang_home = yard_home(params[:lang])
+      redirect_to get_yard_url(lang_home.id)
+    elsif !params[:page_url].blank?
+      splitted_page_url = params[:page_url].split('/')
+      @page = Page.where(:pretty_url => splitted_page_url.last).first unless splitted_page_url.last.nil?
+      acestors_and_self = (@page.ancestors.map{|a| a.title.urlify} - [params[:lang]]) << @page.title.urlify unless @page.blank?
+      url_and_page_ancestors_matching = splitted_page_url == acestors_and_self
+      if @page && @page.is_reserved? && (current_user.nil? || !current_user.is_privileged?)
+        render_error('401')
+      elsif @page && @page.published && (@page.lang == params[:lang]) # && url_and_page_ancestors_matching
+        @meta_title = @page.meta_title.blank? ? "#{@cfg.site_name} #{@cfg.site_page_title}" : "#{@page.meta_title} - #{@cfg.site_name} #{@cfg.site_page_title}"
+        @meta_description = @page.meta_description.blank? ? "#{@cfg.site_desc}" : "#{@page.meta_description} #{@cfg.site_desc}"
+        @meta_keywords = @page.meta_keywords.blank? ? "#{@cfg.site_keywords}" : "#{@page.meta_keywords}, #{@cfg.site_keywords}"
         
-        # for menu snippets
-        @first_level_pages = @hp.self_and_siblings.for_language(@pg.lang)
-        @current_level_pages = @pg.self_and_siblings.for_language(@pg.lang)
-        @family_pages_ids = [@pg.id] #parents and sons, no siblings
-        @family_pages_ids << @pg.ancestors.map{|a| a.id}
-        @family_pages_ids = @family_pages_ids.compact.flatten
-        
-        @layout_name = Layout.find(@cfg.theme_name, @pg.layout_name).path
-        render :layout => @layout_name unless @layout_name.blank?
+        # @layout_name = Layout.find(@cfg.theme_name, @page.layout_name).path
+        # render :layout => @layout_name unless @layout_name.blank?    
+        render :layout => Layout.find(@cfg.theme_name, @page.layout_name).path      
       else
-        logger.error("404 displayed")
-        render(:file	=> "#{RAILS_ROOT}/public/404.html", :status	=> "404 Not Found")
+        render_error('404')
       end
+    else
+      render_error('404')
     end
   end
   
-  private
   
   
-
 end
-# Author::    Silvio Relli  (mailto:silvio@relli.org)

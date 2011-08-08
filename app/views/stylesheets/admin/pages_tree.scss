@@ -1,0 +1,54 @@
+@import "commons"; // mixin and common classes even for others scss to be implemented
+@import "colors"; // mixin and common classes even for others scss to be implemented
+
+/* PAGES TREE */
+/**********************************/
+#pages-tree{
+    background-image: url(img/bg_page_tree.jpg);
+    background-position: top left;
+    padding: 20px 0;
+    .placeholder{
+        background-color: rgba($cGreen, 0.5);
+        border-bottom: 1px solid $cGray;
+    }
+    ol{
+        margin: 0;
+        list-style: none;
+        
+        li{
+            div{
+                background-color: rgba(255, 255, 255, 0.5);
+                border: none;
+                border-bottom: 1px dotted black;
+                padding: 10px;
+                margin: 0;
+                cursor: move;
+            }
+            a{
+                float: right;
+                margin-left: 5px;
+                font-size: 90%;
+                color: $cGrayDark;
+                &:hover{
+                    color: $cGraySmoke;
+                };
+            }
+            ol{
+                padding-left: 25px;
+            }
+        }
+    }
+    ol.sortable{
+        padding: 0 0 0 25px;        
+    }
+    .actions{
+        text-align: right;
+        margin-top: 20px;
+        padding: 5px;
+        input{
+        }
+    }
+}
+/* END PAGES TREE  */
+
+

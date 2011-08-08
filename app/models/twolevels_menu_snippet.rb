@@ -1,4 +1,0 @@
-class TwolevelsMenuSnippet < Snippet
-  
-  
-end

@@ -1,4 +1,0 @@
-class ArticlesCarouselSnippet < Snippet
-  
-  
-end

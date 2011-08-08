@@ -1,111 +1,120 @@
-<% content_for :secondmenu do %>
-<ul>
-	<li><%#= link_to "<span>#{t 'admin.general.available'}</span>".hs, "" %></li>
-	<li><%#= link_to "<span>#{t 'admin.general.trash'}</span>".hs, "" %></li>
-</ul>
-<%= select_tag "language", options_from_collection_for_select(Language.all, 'short', 'name', @admin_editing_language), :onchange => remote_function(:url => editing_language_admin_pages_path, :with => "'redirect_to_index=true&admin_editing_language=' + this.value") %>
+<header class="page_description">
+    <h2><%= @page.title %> - gestione contenuto</h2>
+    <p>Ultima modifica effettuata il <%= l(@page.updated_at, :format=>:date_with_parenthesized_time) %> ed è stata pubblicata il <%= l(@page.publish_at, :format=>:date_with_parenthesized_time) %> </p>
+</header>
 
-<% end %>
+<%= render :partial => "available_areas", :locals => {:current_layout => @current_layout, :snippets => @snippets} %>
 
-<% content_for :sidebar do %>
-	<%= render :partial => "template_selection", :object => @templates, :locals => {:page => @page} %>
-	<%= render :partial => "tree", :object => Page, :locals => {:lang => @admin_editing_language} %>
-<% end %>
+<div class="wrap cell_8">
+    <header>
+        <h2>Layout</h2>
+    </header>
+    <p class="cell_9 omega">Cambiando layout alla pagina gli snippet correnti verranno spostati nel cestino, ma non cancellati.</p>
+    <form id='layout_form' class="cell_7 alpha">
+        <%= select_tag "layout", options_from_collection_for_select(@layouts.map, 'filename', 'title', @current_layout.filename) %>
+    </form>
+</div>
 
-<div class="box maior left">
-	<span class="box-top-title"><%= t 'admin.pages.snippets_on_page' %> "<%= @page.name %>"</span>
-	<span class="box-top-buttons"></span>
-	<div id='snippets'>
-		<div class='snippet-row synth-top' id='snippets_header'>
-			<h4><%= t 'admin.pages.snippets_for_header' %></h4>
-			<ul id="snippets_list_header" style="cursor: move">
-			  <% @page.snippets.for_header.each do |s| %>
-			    <li id="item_<%= s.id %>">
-			      <%= link_to "<span class='invisible'>Edit</span>".hs, edit_admin_page_snippet_url(params[:id], s.id), :class => 'icon-edit' %> <%= "<span#{' class=\'unpublished\'' if !s.published}>#{s.name}</span>".hs %>
-			    </li>
-			  <% end %>
-			</ul>
-			<p><%= link_to "<span class='invisible'>Add new snippet</span>".hs, new_admin_page_snippet_url(params[:id], :location => "header"), :class => 'icon-add' %></p>
-			<%= sortable_element "snippets_list_header",
-			:url => sort_admin_page_snippets_url(params[:id]),
-			:complete => visual_effect(:highlight, "snippets_list_header")
-			%>
-		</div>
-		<div class='snippet-row synth-left' id='snippets_left'>
-			<h4><%= t 'admin.pages.snippets_for_left_column' %></h4>
-			<ul id="snippets_list_left" style="cursor: move">
-			  <% @page.snippets.for_left.each do |s| %>
-			    <li id="item_<%= s.id %>">
-			      <%= link_to "<span class='invisible'>Edit</span>".hs, edit_admin_page_snippet_url(params[:id], s.id), :class => 'icon-edit' %> <%= "<span#{' class=\'unpublished\'' if !s.published}>#{s.name}</span>".hs %>
-			    </li>
-			  <% end %>
-			</ul>
-			<p><%= link_to "<span class='invisible'>Add new snippet</span>".hs, new_admin_page_snippet_url(params[:id], :location => "left"), :class => 'icon-add' %></p>
-			<%= sortable_element "snippets_list_left",
-			:url => sort_admin_page_snippets_url(params[:id]),
-			:complete => visual_effect(:highlight, "snippets_list_left")
-			%>
-		</div>
-		<div class='snippet-row synth-middle' id='snippets_center'>
-			<h4><%= t 'admin.pages.snippets_for_center_column' %></h4>
-			<ul id="snippets_list_center" style="cursor: move">
-			  <% @page.snippets.for_center.each do |s| %>
-			    <li id="item_<%= s.id %>">
-			     <%= link_to "<span class='invisible'>Edit</span>".hs, edit_admin_page_snippet_url(params[:id], s.id), :class => 'icon-edit' %> <%= "<span#{' class=\'unpublished\'' if !s.published}>#{s.name}</span>".hs %>
-			    </li>
-			  <% end %>
-			</ul>
-			<p><%= link_to "<span class='invisible'>Add new snippet</span>".hs, new_admin_page_snippet_url(params[:id], :location => "center"), :class => 'icon-add' %></p>
-			<%= sortable_element "snippets_list_center",
-			:url => sort_admin_page_snippets_url(params[:id]),
-			:complete => visual_effect(:highlight, "snippets_list_center")
-			%>
-		</div>
-		<div class='snippet-row synth-right' id='snippets_right'>
-			<h4><%= t 'admin.pages.snippets_for_right_column' %></h4>
-			<ul id="snippets_list_right" style="cursor: move">
-			  <% @page.snippets.for_right.each do |s| %>
-			    <li id="item_<%= s.id %>">
-			      <%= link_to "<span class='invisible'>Edit</span>".hs, edit_admin_page_snippet_url(params[:id], s.id), :class => 'icon-edit' %> <%= "<span#{' class=\'unpublished\'' if !s.published}>#{s.name}</span>".hs %>
-			    </li>
-			  <% end %>
-			</ul>
-			<p><%= link_to "<span class='invisible'>Add new snippet</span>".hs, new_admin_page_snippet_url(params[:id], :location => "right"), :class => 'icon-add' %></p>
-			<%= sortable_element "snippets_list_right",
-			:url => sort_admin_page_snippets_url(params[:id]),
-			:complete => visual_effect(:highlight, "snippets_list_right")
-			%>
-		</div>
-		<div class='snippet-row synth-bottom' id='snippets_footer'>
-			<h4><%= t 'admin.pages.snippets_for_footer' %></h4>
-			<ul id="snippets_list_footer" style="cursor: move">
-			  <% @page.snippets.for_footer.each do |s| %>
-			    <li id="item_<%= s.id %>">
-			    <%= link_to "<span class='invisible'>Edit</span>".hs, edit_admin_page_snippet_url(params[:id], s.id), :class => 'icon-edit' %> <%= "<span#{' class=\'unpublished\'' if !s.published}>#{s.name}</span>".hs %>
-			    </li>
-			  <% end %>
-			</ul>
-			<p><%= link_to "<span class='invisible'>Add new snippet</span>".hs, new_admin_page_snippet_url(params[:id], :location => "footer"), :class => 'icon-add' %></p>
-			<%= sortable_element "snippets_list_footer",
-			:url => sort_admin_page_snippets_url(params[:id]),
-			:complete => visual_effect(:highlight, "snippets_list_footer")
-			%>
-		</div>
-		<div class='snippet-row synth-extra' id='snippets_extra'>
-			<h4><%= t 'admin.pages.snippets_for_extra_area' %></h4>
-			<ul id="snippets_list_extra" style="cursor: move">
-			  <% @page.snippets.for_extra.each do |s| %>
-			    <li id="item_<%= s.id %>">
-			       <%= link_to "<span class='invisible'>Edit</span>".hs, edit_admin_page_snippet_url(params[:id], s.id), :class => 'icon-edit' %> <%= "<span#{' class=\'unpublished\'' if !s.published}>#{s.name}</span>".hs %>
-			    </li>
-			  <% end %>
-			</ul>
-			<p><%= link_to "<span class='invisible'>Add new snippet</span>".hs, new_admin_page_snippet_url(params[:id], :location => "extra"), :class => 'icon-add' %></p>
-			<%= sortable_element "snippets_list_extra",
-			:url => sort_admin_page_snippets_url(params[:id]),
-			:complete => visual_effect(:highlight, "snippets_list_extra")
-			%>
-		</div>
-			
-	</div> <!-- end snippets -->
-</div> <!-- end center -->
+<div class="wrap cell_8">
+    <header>
+        <h2>
+           Snippet disponibili da draggare nelle aree
+        </h2>           
+    </header>
+    <% @snippets_available.map do |snip| %>
+        <div class="area_box">
+            <h2><%= snip["name"] %></h2>
+            <section id="<%= snip["class"] %>" class='drag_source'>
+                <% snip["actions"].map do |act| %>    
+                    <div class="available_widget sortable_item drag_item" id="<%= snip["class"] %>%<%= act["method"] %>" >
+                        <header>
+                            <h2><%= act["name"] %></h2>
+                        </header>
+                        <a href="#" class="icon grabber">&nbsp;</a>
+                        <a href="#" class="toggle toggle_closed">&nbsp;</a>
+                        <div class="toggle_container" style="display:none;">                  
+                            <div class="block">
+                                <p><%= act["desc"] %></p>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+            </section>
+        </div>
+    <% end %>
+</div>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+       
+    // This sets the unique id to the cloned snippet
+    // WARNING this function runs two times.. still wondering why. TO-DO fix it running just one time
+    // Drag and drop of snippets to areas
+    // drag_item(s) are the 'source' snippets on the right, items available to be dropped inside areas. drag_source is the container.
+    $('.drag_item','.drag_source').draggable({ // This means every drag_item inside drag_source
+        handle:'.grabber',  // The element which is used to 'grab' the item
+        items:'div.wrap', // The item to be sorted when grabbed!
+        connectToSortable: '.drop_target', // Link to the drop destination
+        helper:'clone' // Clone the item when dragged instead of moving it
+    });
+    
+    // This sets the unique id to the cloned snippet
+    $('.drop_target').livequery(function(){
+         $(this).droppable("destroy");
+         $(this).droppable({
+              drop: function(event, ui) {
+                  if (ui.draggable.hasClass('drag_item')){ // ui.draggable is the dragged item just dropped
+                    time = new Date().getTime();
+                    newid = ui.draggable.attr('id') + '%' + time;
+                    ui.draggable.removeClass("drag_item");
+                    ui.draggable.attr('id', newid);
+                  };
+              }
+         });
+    });
+    
+    // Provides both the creation and the sorting of snippets, submitting the list of snippets present in every area
+    $('.drop_target').sortable({
+        items:'.sortable_item',
+        forceHelperSize:true,
+        placeholder: 'dashed_placeholder',        
+        forcePlaceholderSize:true,
+        connectWith: '.drop_target',
+        stop: function(event, ui){
+            var sortorder={};
+            $('.drop_target').each(function(){
+                var itemorder=$(this).sortable('toArray');
+                var targetId=$(this).attr('id');
+                sortorder[targetId] = itemorder.toString();
+            });
+            $.ajax({
+                type: 'put',
+                url: '<%= sort_admin_page_snippets_path(@page) %>',
+                data: ({'areas':sortorder}),
+                // complete: function(response) {
+                //     console.debug(response);
+                // }
+            });
+        } 
+    });8
+    
+    $("#layout_form").change(function () {
+        var selection = "";
+        $("#layout_form option:selected").each(function () {
+            selection += $(this).attr('value');
+        });
+        if (confirm("Are you sure to change layout? All the current snippets on page will be moved to the Limbo."))
+            $.ajax({
+                type: "put",
+                url: '<%= apply_layout_admin_page_path(@page) %>',
+                data: "selected_layout="+selection,
+                // success: function(response) {
+                //     console.debug(response);
+                // }
+            });
+        return false;
+    });
+
+}); // $(document).ready()
+</script>

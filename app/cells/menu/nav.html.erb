@@ -1,0 +1,9 @@
+<div class='nav-menu'>
+    <ol>
+        <% @ancestors.map do |p| %>
+            <% if p.visible_in_menu && p.published && (!p.reserved || (p.reserved && current_user && current_user.is_privileged?)) %>       
+                <li><%= link_to "<span>#{p.title}</span>".hs, get_yard_url(p) %></li>
+            <% end %>
+        <% end %>
+    </ol>
+</div>

@@ -1,0 +1,26 @@
+cell:
+    name:   Content
+    class:  content
+    actions:
+        -   name:   Text widget
+            method: text_widget
+            desc:   A plain text widget
+            serialized_attributes:
+                body: text
+        -   name:   Rich text editor widget
+            method: rich_text_widget
+            desc:   A text widget editable with a rich text editor
+            serialized_attributes:
+                body: editor
+        -   name:   Twitter stream
+            method: twitter_stream
+            desc:   Stream of tweets from a twitter account
+            serialized_attributes:
+                username: string
+                limit:  integer
+        -   name:   Downloads widget
+            method: downloads_widget
+            desc:   A downloads widget
+            serialized_attributes:
+                name: string
+        

@@ -1,0 +1,22 @@
+.debug { border: 1px solid red; }
+
+.bg_reset { background-repeat: no-repeat; background-color: transparent; background-position: top left; }
+
+/*
+$cBlueNavy: #253a55;
+$cBlueLight: #064792;
+$cBlueLighter: #52a9ff;
+*/
+/* PAGES TREE */
+/**********************************/
+#pages-tree { background-image: url(img/bg_page_tree.jpg); background-position: top left; padding: 20px 0; }
+#pages-tree .placeholder { background-color: rgba(144, 182, 30, 0.5); border-bottom: 1px solid #dadada; }
+#pages-tree ol { margin: 0; list-style: none; }
+#pages-tree ol li div { background-color: rgba(255, 255, 255, 0.5); border: none; border-bottom: 1px dotted black; padding: 10px; margin: 0; cursor: move; }
+#pages-tree ol li a { float: right; margin-left: 5px; font-size: 90%; color: #a6a3a3; }
+#pages-tree ol li a:hover { color: #5b5f4f; }
+#pages-tree ol li ol { padding-left: 25px; }
+#pages-tree ol.sortable { padding: 0 0 0 25px; }
+#pages-tree .actions { text-align: right; margin-top: 20px; padding: 5px; }
+
+/* END PAGES TREE  */

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Railsyard 2</title>
+  <meta name="description" content="Railsyard 2" />
+  <meta name="keywords" content= "railsyard, railsyard2" /> 
+  <meta name="authors" content= "Matteo Papadopoulos, Silvio Relli, Cantiere Creativo" />
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag 'jquery.min.js','jquery-ui.min.js','rails','application','jquery.ui.nestedSortable' %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+    <notices>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+    </notices>
+    <header>
+        <title>Railsyard 2</title>
+        <h1>======= Tema <%= @cfg.theme_name %> =======</h1>
+        <%= yield_snippets(@page, "header") if @page %>
+    </header>
+    
+    <container>
+        <h2>Container</h2>
+        <%= yield_snippets(@page, "center") if @page %>
+        <%= yield unless @page %>
+    </container>
+    
+    <aside>
+        <h2>Container</h2>
+        <%= yield_snippets(@page, "side") if @page %>
+    </aside>
+    
+    <footer>
+        <h2>Footer</h2>
+        <%= yield_snippets(@page, "footer") if @page %>
+    </footer>
+</body>
+</html>

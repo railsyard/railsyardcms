@@ -1,32 +1,56 @@
-<% content_for :secondmenu do %>
-<ul>
-	<li><%#= link_to "<span>#{t 'admin.general.available'}</span>".hs, "" %></li>
-	<li><%#= link_to "<span>#{t 'admin.general.trash'}</span>".hs, "" %></li>
-</ul>
-<%= select_tag "language", options_from_collection_for_select(Language.all, 'short', 'name', @admin_editing_language), :onchange => remote_function(:url => editing_language_admin_pages_path, :with => "'admin_editing_language=' + this.value") %>
+<%= content_for :extra_header do %>
+    <link rel="stylesheet" type="text/css" href="/admin/stylesheets/pages_tree.css" media="screen">
 <% end %>
+<%= content_for :title do %>Elenco pagine<% end %>
 
-<% content_for :sidebar do %>
-	<%= render :partial => "tree", :object => Page, :locals => {:lang => @admin_editing_language} %>
-<% end %>
-
-<div class="box equal left">
-	<span class="box-top-title"><%= t 'admin.pages.latest_pages' %></span>
-	<span class="box-top-buttons"><%= link_to t('admin.pages.new_page'), new_admin_page_path(), :class => 'new' %></span>
-	<span class="box-top-misc"><%= will_paginate @pages, :param_name => :pagination %></span>
-	<table class="box-item-list">
-		<tr>
-			<th><%= t 'admin.general.title' %></th>
-			<th><%= t 'admin.general.last_update' %></th>
-			<th class="table-icons"><%= t 'admin.general.reserved' %></th>
-			<th class="table-icons"><%= t 'admin.general.published' %></th>
-			<th class="table-icons"><%= t 'admin.general.delete' %></th>
-		</tr>
-		<%= render :partial => "item", :collection => @pages %>
-	</table>
-	<span class="box-bot-misc"><%= will_paginate @pages, :param_name => :pagination %></span>
+<div class="lang_selector">
+    <%= select_tag "language", options_from_collection_for_select(Language.all, 'short', 'name', @admin_editing_language),
+        :onchange => "$.post('#{set_editing_language_admin_pages_path}', {'_method':'put', 'admin_editing_language':this.value} );" %>    
 </div>
 
 
+<header class="page_description">
+    <h2>Gestione Pagine</h2>
+</header>
+
+<div class="wrap cell_16 round_all">
+    <table class="fancy_rows datatable">
+        <thead>
+            <tr>
+                <th>Titolo</th> 
+                <th>Ultima modifica</th> 
+                <th>Riservato</th> 
+                <th>Pubblicato</th> 
+                <th>Azioni</th> 
+            </tr>
+        </thead>
+        <tbody>
+            <%= render :partial => "item", :collection => @pages %>
+        </tbody>
+    </table>
+</div>
 
 
+<header class="page_description">
+    <h2>Albero</h2>
+    <p>Trascina le pagine per posizionarle all'interno dell'albero. </p>
+</header>
+<div class="wrap cell_16 round_all"> 
+    <div id='pages-tree'>
+        <%= page_tree(@root_page) -%>
+        <div class="actions">
+            <%= button_to_function "Save page order", "submit_tree()" %>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function submit_tree(){
+            serialized_tree = $('ol.sortable').nestedSortable('serialize');
+            $.ajax({
+                type: "POST",
+                url: '/admin/pages/sort',
+                data: { _method:'PUT', page: serialized_tree, admin_editing_language: '<%= @admin_editing_language %>' }
+            });
+        }
+    </script>
+</div>

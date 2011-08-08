@@ -1,2 +1,0 @@
-class InheritingController < TestController
-end

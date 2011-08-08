@@ -1,0 +1,42 @@
+<div id='twitter_stream'>
+     <p id="stream_term">Search jQuery</p>
+     <div id='twitter_results'></div>
+</div>
+
+<script type="text/javascript">
+$("document").ready(function() {
+	load_tweets();
+	setInterval(load_tweets, 20000);
+});
+
+function load_tweets() {
+	var last_ID = $(".tweet_result:first").attr("ID");
+	
+	if (last_ID) {
+		last_ID = last_ID.replace("tweet", "");
+		var url = "http://search.twitter.com/search.json?q=jQuery&since_id=" + last_ID + "&callback=?";
+	} else {
+		var url = "http://search.twitter.com/search.json?q=jQuery&rpp=5&callback=?"; 
+	}
+	
+	$.getJSON(url, function(json) { 
+		var results = '';
+		$(json.results).each(function() {
+			if (this.id == undefined) return;
+			results += "<p class='tweet_result' id='tweet" + this.id + "'><a href='http://twitter.com/" + this.from_user + "' class='tweet_user'><img width='16' height='16' alt='" + this.from_user + " on Twitter' src='" + this.profile_image_url + "' /></a>" + linkify(this.text) + "</p>";
+		});
+		$("#twitter_results").prepend(results);
+	});
+
+	$(".tweet_result:gt(20)").remove();
+}
+
+function linkify(text) {
+    // modified from TwitterGitter by David Walsh (davidwalsh.name)
+    // courtesy of Jeremy Parrish (rrish.org)
+    return text.replace(/(https?:\/\/[\w\-:;?&=+.%#\/]+)/gi, '<a href="$1">$1</a>')
+               .replace(/(^|\W)@(\w+)/g, '$1<a href="http://twitter.com/$2">@$2</a>')
+               .replace(/(^|\W)#(\w+)/g, '$1#<a href="http://search.twitter.com/search?q=%23$2">$2</a>');
+}
+
+</script>

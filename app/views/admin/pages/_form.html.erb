@@ -1,36 +1,73 @@
-<div class="required"><%= f.label :name, t('admin.general.title') %><%= f.text_field :name %></div>
+<div class="box cell_16 round_all">
+     <h2 class="box_head grad_colour">Dati primari</h2>
+     <div class="">
+         <div class="block">                
+             <%= f.label :title, t('admin.general.title') %>
+             <%= f.text_field :title, {:id=>"notempty", :title=>"il campo non può rimanere vuoto", :class=>"large required", :autofocus=>""} %>
 
-<div><%= f.label t('admin.general.parent') %>
-<%= yard_aac_select Page, lang, {:selected => object.parent_id, :name => 'page[parent_id]', :option_nil => "None"} %></div>
-
-<% visible_in_menu_checked = object.visible_in_menu || object.visible_in_menu.nil? %>
-<div><%= f.label t('admin.general.visible_in_menu') %><%= f.check_box :visible_in_menu, :checked => visible_in_menu_checked %></div>
-
-<% published_checked = object.published || object.published.nil? %>
-<div><%= f.label t('admin.general.published') %><%= f.check_box :published, :checked => published_checked %></div>
-
-<div><%= f.label t('admin.general.reserved') %><%= f.check_box :reserved %></div>
-
-<span id='more-link'><%= link_to_function "More options", "Effect.BlindDown('advanced-box'); Element.hide('more-link'); Element.show('less-link');" %></span>
-<span id='less-link' style='display:none'><%= link_to_function "Less options", "Effect.BlindUp('advanced-box'); Element.hide('less-link'); Element.show('more-link');" %></span>
-
-<div id='advanced-box' style='display:none;'>
-  <% selected_layout = object.layout_name || "default" %>
-  <div><%= f.label t('admin.pages.layout_name') %><%= f.select(:layout_name, options_from_collection_for_select(Layout.all(cfg.theme_name), 'short', 'short', selected = selected_layout)) %></div>
-
-  <div><%= f.label t('admin.general.pretty_url') %><%= f.text_field :pretty_url %></div>
-
-  <div><%= f.label 'Meta Title' %><%= f.text_field :meta_title %></div>
-
-  <div><%= f.label 'Meta Keywords' %><%= f.text_field :meta_keyword %></div>
-
-  <div><%= f.label 'Meta Description' %><%= f.text_field :meta_desc %></div>
-
-  <div><%= f.label 'Content div id' %><%= f.text_field :div_id %></div>
-
-  <div><%= f.label 'Content div class' %><%= f.text_field :div_class %></div>
-
-  <div><%= f.label 'Content div style' %><%= f.text_field :div_style %></div>
-
-  <div><%= f.label 'Javascript' %><%= f.text_area :script, :size => "83x10"%></div>
+             <label>Opzioni pagina aaa</label>
+             <%= f.select :layout_name, options_from_collection_for_select(@layouts.map, 'filename', 'title', @current_layout.filename) %> Layout
+             <div class="input_group">
+                 <% visible_in_menu_checked = page.visible_in_menu || page.visible_in_menu.nil? %>
+                 <%= f.check_box :visible_in_menu, :checked => visible_in_menu_checked %> Visibile in menu<br>
+                 <% published_checked = page.published || page.published.nil? %>
+                 <%= f.check_box :published, :checked => published_checked %> Pubblicato<br>
+                 <%= f.check_box :reserved %> Riservato
+             </div>
+        </div>
+    </div>    
 </div>
+
+<div class="box cell_16 round_all">
+    <ul class="block content_accordion no_header">
+        <li>
+            <a href="#" class="handle">&nbsp;</a>
+            <h3 class="bar">Opzioni avanzate</h3>
+            <div class="content">
+                <%= f.label t('admin.general.pretty_url') %>
+                <%= f.text_field :pretty_url, {
+                    :title=>"se non inserito il pretty ulr sarà impostato automaticamente con il titolo della pagina",
+                    :class=>"large"
+                } %>
+
+                <%= f.label 'Meta Title' %>
+                <%= f.text_field :meta_title %>
+
+                <%# TODO inserire testi help nella form pagina %>
+                <%= f.label 'Meta Keywords' %>
+                <%= f.text_field :meta_keywords, {
+                    :title=>"a cosa servono le metakeyword?",
+                    :class=>"large"
+                } %>
+
+                <%= f.label 'Meta Description' %>
+                <%= f.text_field :meta_description, {
+                    :title=>"a cosa servono le metakeyword?",
+                    :class=>"large"
+                } %>
+
+                <%= f.label 'Content div id' %>
+                <%= f.text_field :div_id %>
+
+                <%= f.label 'Content div class' %>
+                <%= f.text_field :div_class %>
+
+                <%= f.label 'Content div style' %>
+                <%= f.text_field :div_style %>
+
+                <%= f.label 'Javascript' %>
+                <%= f.text_area :script, :size => "110x20"%>
+            </div>
+        </li>
+    </ul>
+</div>    
+
+<script type="text/javascript"> 
+    var notempty = new LiveValidation('notempty');
+    notempty.add( Validate.Presence );
+    
+    // var realemail = new LiveValidation('realemail');
+    // realemail.add( Validate.Email );
+    // var atleast = new LiveValidation('atleast');
+    // atleast.add( Validate.Length, { minimum: 30 } );
+</script>

@@ -1,4 +1,0 @@
-class SibChildMenuSnippet < Snippet
-  
-  
-end

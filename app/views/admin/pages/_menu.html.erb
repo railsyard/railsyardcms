@@ -1,0 +1,16 @@
+<nav id="top_bar" class="clearfix  round_top">
+    <ul class="clearfix">
+        <%# TODO fare helper per verifica del path in cui sono %>
+        <li<%= " class='current'" if controller.controller_name == "pages" and controller.action_name == "index" %>>
+            <%= link_to( image_tag("/admin/images/icons/small/white/List.png") + "Elenco pagine", admin_pages_url() )%>
+        </li>
+        <li<%= " class='current'" if controller.controller_name == "pages" and controller.action_name == "new" %>>
+            <%= link_to( image_tag("/admin/images/icons/small/white/Pencil.png") + "Nuova pagina", new_admin_page_path() )%>
+        </li>
+        <li <%= " class='current'" if controller.controller_name == "pages" and controller.action_name == "tree" %>>
+            <%= link_to( image_tag("/admin/images/icons/small/white/List%20w_%20Images.png") + "Albero pagine", tree_admin_pages_path() )%>
+        </li>
+    </ul>
+</nav>
+<%# TODO correggere il link menu che punta all'albero delle pagine %>
+

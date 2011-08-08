@@ -1,95 +1,160 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html dir="ltr">
 <head>
-	<title>Railsyard CMS Administration by Cantiere Creativo</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="description" content="railsyard cantiere creativo rails yard" />
-	<meta name="keywords" content= "railsyard cantiere creativo rails yard" />
-	
-	<style type="text/css" media="screen">@import "/stylesheets/reset.css";</style>
-	<style type="text/css" media="screen">@import "/stylesheets/admin/admin.css";</style>
-	<style type="text/css" media="screen">@import "/stylesheets/admin/facebox.css";</style>
-	<style type="text/css" media="screen">@import "/stylesheets/admin/wysihat.css";</style>
-	<style type="text/css" media="screen">@import "/stylesheets/swfupload.css";</style>
-	
-	<link rel="shortcut icon" href="/favicon.ico" type="image/ico" />
-	<!--[if IE]>
-	<style type="text/css" media="screen">@import "/stylesheets/admin/admin-ie.css";</style>
-	<![endif]-->
-	<%= javascript_include_tag :defaults, 'wysihat_engine_pack', 'swfupload', 'swfupload_handlers' %>
-	<%#= javascript_include_tag :defaults, 'wysihat_engine_pack', 'swfupload', 'upload' %>
-	<%#= javascript_include_tag :all %>
-	<%= yield :script %>
+    <meta charset="utf-8">
+    <meta name="description" content="Raylsyard CMS admininistration">
+    <meta name="author" content="Cantiere Creativo @teamcantiere - Silvio Relli @silviorelli - Matteo Papadopoulos @spleenteo">
+
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <!-- will render the page using Google Chrome rather than Internet Explorer -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Railsyard Admin Panel - <%= yield :title %></title>        
+    
+    <%= stylesheet_link_tag "/admin/stylesheets/all.css" %>
+
+    <!--[if IE 6]><link rel="stylesheet" type="text/css" href="/admin/stylesheets/ie6.css" media="screen" /><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" type="text/css" href="/admin/stylesheets/ie.css" media="screen" /><![endif]-->
+    
+    
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
+    <%= javascript_include_tag 'jquery_ujs' %>
+    <%= javascript_include_tag :ckeditor %>
+    
+    <%= javascript_include_tag "/admin/javascripts/jquery.livequery.js",
+                               "/admin/javascripts/jquery.ui.nestedSortable.js",
+                               "/admin/javascripts/uniform/jquery.uniform.js",
+                               "/admin/javascripts/livevalidation/livevalidation_standalone.js",
+                               "/admin/javascripts/tipsy/jquery.tipsy.js",
+                               "/admin/javascripts/uitotop/js/jquery.ui.totop.js",
+                               "/admin/javascripts/DataTables/jquery.dataTables.min.js",
+                               "/admin/javascripts/application.js"
+    %>
+    
+    <%#= javascript_include_tag "/admin/javascripts/fancybox/jquery.fancybox-1.3.4",
+                                "/admin/javascripts/jqueryFileTree/jqueryFileTree",
+                                "/admin/javascripts/fullcalendar/fullcalendar.min",
+                                "/admin/javascripts/fullcalendar/gcal"
+    %>
+    
+    <%= yield :extra_header %>
+    <%= csrf_meta_tag %>
 </head>
 <body>
-	<div class="header">
-		<div class="container">
-			<div class="logo-top">
-				<%= link_to image_tag("/images/admin/top-logo.png"), admin_pages_path %>
-			</div>
-			<div class="user-area">
-				<div class="gravatar"><%= gravatar_image_tag(current_user.email, :alt => current_user.login, :gravatar => { :default => "http://#{request.env['HTTP_HOST']}/images/admin/gravatar-default.png"}) %></div>
-				<span class='hi'><%= t('admin.general.hi') %>,</span>
-				<span class='username'><%= current_user.login %></span>
-				<span class='buttons'><%= link_to t('admin.general.profile'), edit_admin_user_path(current_user) %> <%= link_to "Logout", logout_path() %></span>
-				<span class='buttons public-link'><%= link_to t('admin.general.public_site'), "/" %></span>
-			</div>
-			<div class="first-level-menu">
-				<ul>
-					<% if current_user.is_admin? %><li <%= "class =\"current\"".hs if controller.controller_name == "pages" %>><%= link_to "<span>#{t('admin.pages.pages')}</span>".san, admin_pages_url %></li><% end %>
-					<li <%= "class =\"current\"".hs if controller.controller_name == "articles" %>><%= link_to "<span>#{t('admin.articles.articles')}</span>".san, admin_articles_url %></li>
-					<% if current_user.is_admin? %><li <%= "class =\"current\"".hs if controller.controller_name == "users" %>><%= link_to "<span>#{t('admin.users.users')}</span>".san, admin_users_url %></li><% end %>
-					<% if current_user.is_admin? %><li <%= "class =\"current\"".hs if controller.controller_name =~ /settings|templates/ %>><%= link_to "<span>#{t('admin.settings.settings')}</span>".san, edit_admin_settings_url %></li><% end %>
-	  			</ul>
-			</div>
-			<div class="second-level-menu">
-				<%= render :partial => "admin/search/panel" %>
-				<%= yield :secondmenu %>
-	    	</div>
-		</div>	
-	</div>
-	
-	<div class="page-content">
-		<div class="container">
-			<div id='ajax-notice' style='display:none'></div>
-			<% if flash[:notice] %>
-				<div id="notice">
-					<%= flash[:notice] %>
-				</div>
-				<script type="text/javascript">
-					$('notice').blindDown();
-				    setTimeout ( "$('notice').blindUp();", 4000 );
-				</script>
-			<% end %>
+    <div class="hive_16 clearfix">
+        <div class="cell_3">
+            <aside id="left_bar">
+                <a href="/admin" class="logo"><span>Railsyard CSM</span></a>
+                <section class="user clearfix">
+                    <h3><%= current_user.email %></h3>
+                    <%= gravatar_image_tag(current_user.email, :alt => current_user, :width=>"55px") %>
+                    <div class="user_details">
+                        <% if current_user.is_admin? %>
+                            <h2>Administrator</h2>
+                        <% end %>
+                        <ul>
+                            <li><%= link_to t('admin.general.profile'), edit_admin_user_path(current_user) %> <span class="divider">|</span></li>
+                            <li><%= link_to "logout", logout_path() %></li>
+                        </ul>
+                    </div>
+                </section><!-- #user_wrap -->
+                
+                <form id="aside_search"><input class="round_all" type="text" value="Search" onclick="value=''"></form>
 
-			<% if flash[:error] %>
-				<div id="error">
-					<%= flash[:error] %>
-				</div>
-				<script type="text/javascript">
-					$('error').blindDown();
-				    //setTimeout ( "$('error').blindUp();", 2000 );
-				</script>
-			<% end %>
-			
-			<div class="defloater"></div>
-
-			<%= yield %>
-
-			<%= yield :sidebar %>
-
-			<div class="defloater"></div>
-		</div>
-	</div>
-	
-	<div class="footer">
-		<div class="container">
-			<div class="content">
-				<%= link_to "Railsyard", "http://www.railsyard.org" %> is released under MIT License - Copyright (c) 2010 <%= link_to "Cantiere Creativo", "http://www.cantierecreativo.net" %>
-			</div>
-		</div>
-	</div>
-	<!-- Authors: Silvio Relli  (mailto:silvio@relli.org) and Marzo Zampetti (mailto:zaorunner@gmail.com) -->
+                <ul id="accordion">
+                    <li><a class="top_level"><img src="/admin/images/icons/small/grey/Home.png"/>Home</a>
+                        <ul class="drawer">
+                            <li><a href="/admin">Admin dashboard</a></li>
+                            <li><a href="/" target="_blank">Public site</a></li>
+                        </ul>
+                    </li>
+                    <li><a <%= set_class(:class => "top_level", :controller => "pages") %>><img src="/admin/images/icons/small/grey/Documents.png"/>Pagine</a>
+                        <ul class="drawer">
+                            <li <%= set_class(:controller => "pages", :action => "index") %>><%= link_to "Elenco", admin_pages_path() %></li>
+                            <li <%= set_class(:controller => "pages", :action => "new") %>><%= link_to "Nuova", new_admin_page_path() %></li>
+                            <!-- <li <%#= set_class("pages", "preset") %>><a href="#">Preset</a></li> -->
+                        </ul>
+                    </li>
+                    <li><a <%= set_class(:class => "top_level", :controller => ["settings","users"]) %>><img src="/admin/images/icons/small/grey/Cog%202.png"/>Impostazioni</a>
+                        <ul class="drawer">
+                            <li <%= set_class(:controller => "settings", :action => "edit") %>><%= link_to "Generali", edit_admin_settings_path(1) %></li>
+                            <li <%= set_class(:controller => "users", :action => "index") %>><%= link_to "Il tuo profilo", edit_admin_user_path(current_user) %></li>
+                        </ul>
+                    </li>
+                    <% if false %>
+                    <li><a class="top_level"><img src="/admin/images/icons/small/grey/Write.png"/>Articoli</a>
+                        <ul class="drawer">
+                            <li <%= set_class("articles", "index") %>><a href="#">Elenco</a></li>
+                            <li <%= set_class("articles", "new") %>><a href="#">Nuovo</a></li>
+                            <li><a href="#">Categorie</a></li>
+                            <li><a href="#">Commenti</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="top_level"><img src="/admin/images/icons/small/grey/Users.png"/>Utenti</a>
+                        <ul class="drawer">
+                            <li><a href="#">Elenco</a></li>
+                            <li><a href="#">Nuovo</a></li>
+                            <li><a href="#">Esporta</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="top_level"><img src="/admin/images/icons/small/grey/Paperclip.png"/>Media</a>
+                        <ul class="drawer">
+                            <li><a href="#">Tutti</a></li>
+                            <li><a href="#">Immagini</a></li>
+                            <li><a href="#">Documenti</a></li>
+                            <li><a href="#">Video</a></li>
+                            <li><a href="#">Audio</a></li>
+                        </ul>
+                    </li>
+                    <% end %>
+                </ul>
+                <script type="text/javascript">
+                    $(document).ready(function(){
+                        $(function(){
+                          /*
+                           * Si apre l'accordion se un elemento
+                           * ha sia la classe this_controller che top_level
+                           */
+                          var top_level = $(".this_controller.top_level");
+                          var i = top_level.parent().prevAll().length;
+                          $("#accordion").accordion({active: i});
+                          
+                          /*
+                           * indivuo l'oggetto con classe this_action
+                           * per mettere il trinagolo al lato della barra
+                           */
+                          var basic_tr = $("#left_bar > .menu_triangle");
+                          basic_tr.clone().appendTo(".this_controller.this_action");
+                          basic_tr.remove();
+                          var tr = $(".menu_triangle", ".ui-accordion-content-active");
+                          tr.css({"display": "block" });
+                        });
+                    });
+                </script>
+                
+                <ul id="side_links" class="text_shadow" >
+                    <li><%= link_to "Documentazione", "https://github.com/cantierecreativo/railsyardcms/wiki", :target=>"_blank" %></li>
+                    <li><%= link_to "Updates su Twitter", "http://twitter.com/railsyard", :target=>"_blank" %></li>
+                    <li><%= link_to "Railsyard su Github", "https://github.com/cantierecreativo/railsyardcms", :target=>"_blank" %></li>
+                    <li><%= link_to "Cantiere Creativo", "http://www.cantierecreativo.net", :target=>"_blank" %></li>
+                </ul>
+                <div class="menu_triangle"></div>
+            </aside><!-- #sidebar -->
+        </div>
+        
+        <div class="cell_13">
+            <div id="main_container" class="clearfix">
+                <%= yield %>
+            </div>            
+        </div>
+    </div><!-- #wrapper -->
+    <div class="hive_16">
+        <footer id="template_options" class="clearfix">
+            Railsyard CMS &bull; v.0.2.0 &bull; <a href="http://www.cantierecreativo.net">credits</a>
+        </footer>
+    </div>
+    
 </body>
-
 </html>

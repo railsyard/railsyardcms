@@ -4,6 +4,10 @@ tmp/**/*
 Thumbs.db
 public/assets/**/*
 public/system/**/*
+public/ckeditor_assets/**/*
 config/database.yml
 config/deploy.rb
 sublime-develop.sublime-project
+devise/**/*
+devise/*
+

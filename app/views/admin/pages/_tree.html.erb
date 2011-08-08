@@ -1,7 +1,0 @@
-<div class="box right <%= controller.action_name == 'index' ? 'equal' : 'minor'  %>">
-	<span class="box-top-title"><%= t 'admin.pages.pages_tree' %></span>
-	<div class="defloater"></div>
-	<div id='pages-list'>	
-		<%= page_tree(object, lang, {:url => update_positions_admin_pages_url}) %>	
-	</div>
-</div>

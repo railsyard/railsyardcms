@@ -1,0 +1,9 @@
+<div class='firstlevel-menu'>
+	<ul>
+		<% @first_level_pages.map do |p| %>
+		    <% if p.visible_in_menu && p.published && (!p.reserved || (p.reserved && current_user && current_user.is_privileged?)) %>
+			    <li<%= " class =\"current\"".hs if p.id == @page.id || @family_pages_ids.include?(p.id) %>><%= link_to "<span>#{p.title}</span>".hs, get_yard_url(p) %></li>
+			<% end %>
+		<% end %>
+	</ul>
+</div>

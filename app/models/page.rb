@@ -1,35 +1,38 @@
-class Page < ActiveRecord::Base
-  acts_as_category
+class Page < ActiveRecord::Base 
+  attr_accessible :title, :pretty_url, :published, :publish_at, :visible_in_menu, :meta_title, :meta_description, :meta_keywords, :script, :div_id, :div_class, :div_style, :reserved, :layout_name
+  has_ancestry
+  default_scope :order => "position ASC"
   
-  # will paginate
-  cattr_reader :per_page
-  @@per_page = 20
+  #acts_as_list :scope => :ancestry
+  # acts_as_list
+  # # Scope conditions for acts_as_list
+  # # Scopes both for parent_id and position
+  # def scope_condition
+  #   "#{connection.quote_column_name("ancestry")} = #{quote_value(ancestry)} AND #{connection.quote_column_name("lang")} = #{quote_value(lang)}" 
+  #   # Equals to:  "\'ancestry\' = \'#{ancestry}\' AND \'lang\' = \'#{lang}\'" 
+  # end
   
   has_many :associations, :dependent => :destroy
   has_many :snippets, :through => :associations, :dependent => :destroy
   
-  belongs_to :user
-  
-  validates_presence_of   :name
-  validates_length_of     :name, :minimum => 3
+  validates_presence_of   :title
+  validates_length_of     :title, :minimum => 2
   validates_presence_of   :pretty_url
   validates_uniqueness_of :pretty_url
   validates_presence_of   :lang
-  validates_presence_of   :user_id
   
-  default_scope :conditions => {:deleted => false}
-  
-  named_scope :published, :conditions => ["published = ?", true]
-  named_scope :drafts, :conditions => ["published = ?", false]
-  named_scope :for_language, lambda {|lang| {:conditions => ["lang = ?", lang]} }
-  named_scope :not_reserved, :conditions => ["reserved = ?", false]
+  scope :published, :conditions => ["published = ?", true]
+  scope :drafts, :conditions => ["published = ?", false]
+  scope :for_language, lambda {|lang| {:conditions => ["lang = ?", lang]} }
+  scope :not_reserved, :conditions => ["reserved = ?", false]
+  scope :without_roots, :conditions => ["ancestry != ?", 'NULL']
   
   def publish
     update_attributes!(:published => true, :publish_at => Time.now)
   end
   
   def unpublish
-    update_attributes!(:published => false)
+    update_attributes!(:published => false, :publish_at => nil)
   end
   
   def toggle
@@ -45,4 +48,3 @@ class Page < ActiveRecord::Base
   end
   
 end
-# Author::    Silvio Relli  (mailto:silvio@relli.org)

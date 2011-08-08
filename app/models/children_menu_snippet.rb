@@ -1,4 +1,0 @@
-class ChildrenMenuSnippet < Snippet
-  
-  
-end

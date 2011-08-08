@@ -1,0 +1,45 @@
+---
+
+base_conf:
+    title: "Railsyard default blue theme"
+    short: "blue" # use the same name as the theme main directory
+    description: "Railsyard default blue theme"
+    author: "Silvio Relli, Matteo Papadopoulos - Cantiere Creativo"
+
+layouts:
+    -   title:   "Single columns"
+        filename: "single_column.html.erb"
+        areas:
+            -   title: "Header"
+                short: "header"
+            -   title: "Body"
+                short: "body"
+            -   title: "Footer"
+                short: "footer"
+    -   title:   "Two columns"
+        filename: "two_columns.html.erb"
+        areas:
+            -   title: "Header"
+                short: "header"
+            -   title: "Center section"
+                short: "center"
+            -   title: "Side column"
+                short: "side"
+            -   title: "Footer"
+                short: "footer"
+    -   title:   "Three columns"
+        filename: "three_columns.html.erb"
+        areas:
+            -   title: "Header"
+                short: "header"
+            -   title: "Center section"
+                short: "center"
+            -   title: "Left column"
+                short: "left"
+            -   title: "Right column"
+                short: "right"
+            -   title: "Footer"
+                short: "footer"
+
+options:
+    dummy_placeholder: "Dummy setting place holder"

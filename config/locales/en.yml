@@ -53,6 +53,8 @@ en:
       general: General
       create: Create
       go_to_first_child: Go to first child
+      properties: Properties
+      contents: Contents
     pages:
       pages: Pages
       latest_pages: Recent pages
@@ -70,7 +72,7 @@ en:
       properties_for_page: Properties for page
       pages_tree: Pages tree
       page: Page
-      are_you_sure_to_delete: "Are you sure to delete the page \"%{name}\"? Every children page and their snippets will be deleted!"
+      are_you_sure_to_delete: "Are you sure to delete the page \"%{name}\"?"
       layout_name: "Layout"
     snippets:
       add_a_new_snippet: Add a new snippet
@@ -221,4 +223,3 @@ en:
     you_have_been_logged_out: You have been logged out
     
     
-        

@@ -1,4 +1,0 @@
-<div class='articles' id='articles-list'>
-	<%= render :partial => "/articles/item_slim.html.erb", :collection => @articles %>
-	<%= will_paginate @articles, :param_name => :pagination, :class => 'pagination ajax' %>
-</div>

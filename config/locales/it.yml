@@ -46,6 +46,8 @@ it:
       general: Generali
       create: Crea
       go_to_first_child: Vai al primo figlio
+      properties: Proprietà
+      contents: Contenuti
     pages:
       pages: Pagine
       latest_pages: Pagine recenti
@@ -63,7 +65,7 @@ it:
       properties_for_page: Proprietà della pagina
       pages_tree: Albero delle pagine
       page: Pagina
-      are_you_sure_to_delete: "Sei sicuro di voler cancellare la pagina \"%{name}\"? Ogni pagina figlia ed i suoi snippet verranno cancellati!"
+      are_you_sure_to_delete: "Sei sicuro di voler cancellare la pagina \"%{name}\"?"
       layout_name: "Layout"
     snippets:
       add_a_new_snippet: Aggiungi un nuovo snippet

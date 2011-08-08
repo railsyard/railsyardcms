@@ -1,4 +1,0 @@
-class ActionControllerSnippet < Snippet
-  
-  
-end

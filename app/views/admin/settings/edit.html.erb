@@ -1,15 +1,8 @@
-<% content_for :secondmenu do %>
-<ul>
-	<li><%= link_to "<span>#{t "admin.general.general"}</span>".hs, edit_admin_settings_path %></li>
-	<li><%= link_to "<span>#{t "admin.templates.templates"}</span>".hs, admin_settings_templates_path %></li>
-</ul>
-<% end %>
-
 <div class="box maior left">
 	<span class="box-top-title"><%= t 'admin.settings.general_settings' %></span>
-	<% form_for @setting, :url => admin_settings_path(@setting) do |f| %>
-		<%= error_messages_for :setting %>
-		<%= render :partial => "form", :object => @setting, :locals => {:f => f} %>
+	<%= form_for @setting, :url => admin_settings_path(@setting) do |f| %>
+		<%= errors_for @setting %>
+		<%= render :partial => "form", :object => @setting, :as => :setting, :locals => {:f => f} %>
 		<div class="buttons"><%= submit_tag t('admin.general.save'), :class => "submit" %></div>
 	<% end %>
 </div>

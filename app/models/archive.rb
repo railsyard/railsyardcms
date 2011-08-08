@@ -1,4 +1,0 @@
-class Archive < Asset
-  
-  
-end

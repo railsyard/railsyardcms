@@ -1,5 +1,4 @@
-class Language
-  
+class Language 
   attr_reader :path, :short, :name, :version
   
   # path = absolute file path on filesystem
@@ -15,7 +14,13 @@ class Language
     search_languages.map do |lang_path|
       file_read = YAML.load_file(lang_path)
       short = lang_path.split('/').last.split('.').first
-      languages << self.new(lang_path, short, file_read[short]["conf"]["language_extended_name"], file_read[short]["conf"]["version"])
+      languages << self.new(lang_path,
+                            short,
+                            file_read[short]["conf"]["language_extended_name"],
+                            file_read[short]["conf"]["version"]) if (file_read[short] && 
+                                                                     file_read[short]["conf"] &&
+                                                                     file_read[short]["conf"]["language_extended_name"] && 
+                                                                     file_read[short]["conf"]["version"])
     end
     languages.compact.uniq
   end
@@ -29,11 +34,10 @@ class Language
   end
   
   def self.search_languages
-    languages_path = "#{RAILS_ROOT}/config/locales/*.yml"
+    languages_path = "#{Rails.root.to_s}/config/locales/*.yml"
     Dir.glob(languages_path).select do |file|
       File.readable?("#{file}")
     end.compact.uniq
   end
   
 end
-# Author::    Silvio Relli  (mailto:silvio@relli.org)

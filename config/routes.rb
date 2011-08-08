@@ -1,54 +1,104 @@
-ActionController::Routing::Routes.draw do |map|
-  # The priority is based upon order of creation: first created -> highest priority.
+Railsyard2::Application.routes.draw do
   
-  # For wysihat editor uploads
-  map.resources :wysihat_files
+  root :to => "site#show"
+  themes_for_rails
   
-  # root
-  map.root :controller => "site", :action => "spawn"
+  ## Devise routes
+  devise_for :users, :path_names => { :sign_in => 'login', :sign_out => 'logout', :sign_up => 'signup'}
   
-  # Public articles feed
-  map.resources :feeds, :only => [:index]
+  ## The following named routes are not working - maybe a Devise issue
+  #match 'login' => 'devise/sessions#new', :via => :get
+  #match 'logout' => 'devise/sessions#destroy', :via => :get
+  #match 'signup' => 'devise/registrations#new', :via => :get
+  ## The redirects instead are working...
+  match "/login" => redirect("/users/login")
+  match "/logout" => redirect("/users/logout")
+  match "/signup" => redirect("/users/signup")
+  match "/admin" => redirect("/admin/pages")
   
-  #session routes
-  map.logout '/logout', :controller => 'sessions', :action => 'destroy'
-  map.login '/login', :controller => 'sessions', :action => 'new'
-  map.signup '/signup', :controller => 'users', :action => 'new'
-  map.forgot '/forgot', :controller => 'users', :action => 'forgot'  
-  map.reset 'reset/:reset_code', :controller => 'users', :action => 'reset'
-  map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate'
-  map.resources :users
-  map.resource :session
-  
-  #Admin routes
-  map.admin 'admin', :controller => 'admin/pages'
-  map.admin_login 'admin/login', :controller => 'admin/admin', :action => 'login'
-  
-  map.namespace :admin do |admin|
-    admin.resources :pages, :collection => {:update_positions => :post, :editing_language => :post}, :member => {:toggle => :post, :apply_template => :post} do |page|
-      page.resources :snippets, :collection => {:sort => :post}, :member => {:toggle => :post}
-    end
-    admin.resource :settings do |setting|
-      setting.resources :templates do |template|
-        template.resources :snippets, :collection => {:sort => :post}, :member => {:toggle => :post}
+  # Admin routes
+  namespace :admin do 
+    resources :pages do
+      put 'sort', :on => :collection
+      put 'set_editing_language', :on => :collection
+      post 'toggle', :on => :member
+      post 'apply_template', :on => :member
+      put 'apply_layout', :on => :member
+      resources :snippets do
+        put 'sort', :on => :collection
+        post 'toggle', :on => :member
       end
-      setting.resources :layouts
     end
-    admin.resources :users
-    admin.resources :articles, :member => {:toggle => :post}
-    admin.resources :assets
-    admin.resources :categories
-    admin.resources :tags
+    resources :users
+    resource :settings
   end
   
-  #Public routes
-  #map.resources :articles, :collection => {:carousel => :get}, :only => [:index, :carousel] #to be deleted if not used!!
-  map.resources :articles, :collection => {:carousel => :get}, :only => [:carousel]
-  map.resources :comments, :only => [:create, :destroy]
-  map.show_article ':lang/article/:year/:month/:day/:pretty_url', :controller => 'articles', :action => 'show', :requirements => {:lang => /en|it|gr/, :year => /\d+/, :month => /\d+/, :day => /\d+/}
-  map.connect ':lang/*page_url', :controller => 'site', :action => "spawn", :requirements => {:lang => /en|it|gr/}
+  # Public routes
+  # resources :users, :only => [:index, :show]
+  resources :users
+  # resources :pages
   
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+  # Main public pages globbing route
+  match '/:lang' => "site#show", :constraints => {:lang => /[a-z]{2}/}
+  scope "/:lang" do
+    match "*page_url" => "site#show", :constraints => {:lang => /[a-z]{2}/}
+  end
+  
+  
+  # The priority is based upon order of creation:
+  # first created -> highest priority.
+
+  # Sample of regular route:
+  #   match 'products/:id' => 'catalog#view'
+  # Keep in mind you can assign values other than :controller and :action
+
+  # Sample of named route:
+  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
+  # This route can be invoked with purchase_url(:id => product.id)
+
+  # Sample resource route (maps HTTP verbs to controller actions automatically):
+  #   resources :products
+
+  # Sample resource route with options:
+  #   resources :products do
+  #     member do
+  #       get 'short'
+  #       post 'toggle'
+  #     end
+  #
+  #     collection do
+  #       get 'sold'
+  #     end
+  #   end
+
+  # Sample resource route with sub-resources:
+  #   resources :products do
+  #     resources :comments, :sales
+  #     resource :seller
+  #   end
+
+  # Sample resource route with more complex sub-resources
+  #   resources :products do
+  #     resources :comments
+  #     resources :sales do
+  #       get 'recent', :on => :collection
+  #     end
+  #   end
+
+  # Sample resource route within a namespace:
+  #   namespace :admin do
+  #     # Directs /admin/products/* to Admin::ProductsController
+  #     # (app/controllers/admin/products_controller.rb)
+  #     resources :products
+  #   end
+
+  # You can have the root of your site routed with "root"
+  # just remember to delete public/index.html.
+  # root :to => "welcome#index"
+
+  # See how all your routes lay out with "rake routes"
+
+  # This is a legacy wild controller route that's not recommended for RESTful applications.
+  # Note: This route will make all actions in every controller accessible via GET requests.
+  # match ':controller(/:action(/:id(.:format)))'
 end
-# Author::    Silvio Relli  (mailto:silvio@relli.org)
