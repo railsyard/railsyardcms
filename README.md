@@ -42,7 +42,7 @@ Raquirements:
 
 Installation
 ------------
-We really suggest the use of Ruby RVM
+    We really suggest the use of Ruby RVM
     run 'rvm install ruby-1.9.2-p290'
     run 'rvm use ruby-1.9.2-p290'
     run 'rvm gemset create "railsyard"'
@@ -56,20 +56,20 @@ We really suggest the use of Ruby RVM
 	
 Usage
 -----
-*Admin interface* is on yoursite.tld/admin
-	username: admin@example.com
-	password: password
+Admin interface is on yoursite.tld/admin
+username: admin@example.com
+password: password
 
 Themes
 ------
-    Drop themes in /themes
-    *To-do full documentation*
+Drop themes in /themes
+*To-do full documentation*
     
 Snippets plugins
 ----------------
-    Snippets are implemented using Rails Cells
-    Drop them in /app/cells
-    *To-do full documentation*
+Snippets are implemented using Rails Cells
+Drop them in /app/cells
+*To-do full documentation*
 
 	
 Credits
