@@ -1,5 +1,5 @@
 class Page < ActiveRecord::Base 
-  attr_accessible :title, :pretty_url, :published, :publish_at, :visible_in_menu, :meta_title, :meta_description, :meta_keywords, :script, :div_id, :div_class, :div_style, :reserved, :layout_name
+  attr_accessible :title, :pretty_url, :published, :publish_at, :visible_in_menu, :meta_title, :meta_description, :meta_keywords, :script, :div_id, :div_class, :div_style, :reserved, :layout_name, :lang
   has_ancestry
   default_scope :order => "position ASC"
   
