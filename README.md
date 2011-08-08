@@ -60,7 +60,7 @@ Admin interface is on yoursite.tld/admin
 
 username: admin@example.com
 
-password: password
+password: changeme
 
 Themes
 ------
