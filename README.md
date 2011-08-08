@@ -57,18 +57,23 @@ Installation
 Usage
 -----
 Admin interface is on yoursite.tld/admin
+
 username: admin@example.com
+
 password: password
 
 Themes
 ------
 Drop themes in /themes
+
 *To-do full documentation*
     
 Snippets plugins
 ----------------
 Snippets are implemented using Rails Cells
+
 Drop them in /app/cells
+
 *To-do full documentation*
 
 	
