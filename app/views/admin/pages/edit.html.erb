@@ -15,11 +15,9 @@
     <%= form_for @page, :url => admin_page_path(@page) do |f| %>
         <%= render :partial => "form", :object => @page, :as => :page, :locals => {:f => f, :lang => @admin_editing_language} %>
         <div class="buttons">
-            <button type="submit" class="green skin_colour round_all"><img height="24" width="24" alt="Aggiorna pagina" src="/admin/images/icons/small/white/Bended%20Arrow%20Right.png"><span>Aggiorna</span></button>
-
             <%= submit_tag t('admin.general.save'), :class => "submit" %>    
             <%= link_to t('admin.general.back'), admin_pages_url, :class => "submit" %>
-            <%= link_to t('admin.general.delete'), admin_page_url(@page), :method => :delete, :confirm => t('admin.pages.are_you_sure_to_delete', :name => @page.title), :class => "submit"  %>
+            <%= link_to t('admin.general.delete'), admin_page_url(@page), :method => :delete, :confirm => t('admin.pages.are_you_sure_to_delete', :name => @page.title), :class => "submit delete"  %>
         </div>
 </div>
 <% end %>

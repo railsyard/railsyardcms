@@ -23,26 +23,82 @@ body{
 
 /* BUTTONS */
 /**********************************/
-button{
-    display: block;
+.button_face{
     clear: both;
-    float: left;
     color: #fff;
+    font-weight: bold;
     border: 1px solid transparent;
-    padding: 7px 0px 7px 11px;
-    background-color: #4C5766;
-    border-radius: 3px;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-}
-#button_display button{
-    clear: none;
-    span{
-        display: none;
+    padding: 7px 7px 7px 11px;
+    background-color: $cGreen;
+    @include rounded(3px);
+    overflow: visible;
+    white-space: nowrap;
+    margin-bottom: 15px;
+    margin-right: 8px;
+    img{
+        display: inline-block;
+        margin: -8px 0px;
+        width: 24px;
     }
-    .block{
-        padding-bottom: 10px;
+    span{
+        display: inline-block;
+        text-transform: capitalize;
+        margin: -2px 5px 0 5px;
+    }
+}
+.buttons{
+    display: block;
+    padding-right: 20px;
+    text-align: right;
+
+    button, input[type=submit], a{
+        clear: both;
+        color: #fff !important;
+        font-weight: bold;
+        border: 1px solid transparent;
+        padding: 7px 7px 7px 11px;
+        @include rounded(3px);
+        overflow: visible;
+        white-space: nowrap;
+        margin-bottom: 15px;
+        margin-right: 8px;
+        cursor: pointer;
+        img{
+            display: inline-block;
+            margin: -8px 0px;
+            width: 24px;
         }
+        span{
+            display: inline-block;
+            text-transform: capitalize;
+            margin: -2px 5px 0 5px;
+        }
+    }
+    input[type=submit]{
+        padding: 5px 9px;
+    }
+    button, input[type=submit], a.submit{
+        background-color: $cGreen;
+    }
+    a.delete{
+        background-color: red;
+    }
+}
+
+#button_display{
+    button{
+        float: left;
+        clear: none;
+        padding-bottom: 0px;
+        span{
+            display: none;
+        }
+        .block{
+            padding-bottom: 0px;
+            padding-right: 0px;
+            padding-top: 20px;
+        }
+    }
 }
 /* END BUTTONS  */
 
@@ -759,50 +815,6 @@ button{
 .wrap .block .input_group{
     margin-bottom: 15px;
 }
-
-button{
-    padding: 7px 0px 5px 0px;
-    margin-bottom: 15px;
-    margin-right: 8px;
-    border: 1px solid transparent;
-    border-radius: 3px;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    color: #fff;
-    float: left;
-    white-space: nowrap;
-    width: auto;
-    overflow: visible;
-}
-button img{
-    display: inline-block;
-    margin: -8px 0px;
-    width: 24px;}
-
-button span{
-    display: inline-block;
-    text-transform: capitalize;
-    margin: -2px 5px 0 5px;
-}
-
-
-#button_display button{
-    float: left;
-}
-
-
-#button_display button span{
-    display: none;
-}
-
-#button_display{
-padding-bottom: 0px;}
-
-#button_display .block{
-    padding-bottom: 0px;
-    padding-right: 0px;
-    padding-top: 20px;}
-
 
 
 .wrap .block textarea{

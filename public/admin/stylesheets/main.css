@@ -18,11 +18,21 @@ body { background-color: #fff; padding-bottom: 39px; }
 /* END GENERIC CLASSES  */
 /* BUTTONS */
 /**********************************/
-button { display: block; clear: both; float: left; color: #fff; border: 1px solid transparent; padding: 7px 0px 7px 11px; background-color: #4C5766; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
+.button_face { clear: both; color: #fff; font-weight: bold; border: 1px solid transparent; padding: 7px 7px 7px 11px; background-color: #90b61e; -moz-border-radius: 3px 3px 3px 3px; /* FF1+ */ -webkit-border-radius: 3px 3px 3px 3px; /* Saf3+, Chrome */ border-radius: 3px 3px 3px 3px; /* Opera 10.5, IE 9 */ behavior: url("/css/PIE.htc"); overflow: visible; white-space: nowrap; margin-bottom: 15px; margin-right: 8px; }
+.button_face img { display: inline-block; margin: -8px 0px; width: 24px; }
+.button_face span { display: inline-block; text-transform: capitalize; margin: -2px 5px 0 5px; }
 
-#button_display button { clear: none; }
+.buttons { display: block; padding-right: 20px; text-align: right; }
+.buttons button, .buttons input[type=submit], .buttons a { clear: both; color: #fff !important; font-weight: bold; border: 1px solid transparent; padding: 7px 7px 7px 11px; -moz-border-radius: 3px 3px 3px 3px; /* FF1+ */ -webkit-border-radius: 3px 3px 3px 3px; /* Saf3+, Chrome */ border-radius: 3px 3px 3px 3px; /* Opera 10.5, IE 9 */ behavior: url("/css/PIE.htc"); overflow: visible; white-space: nowrap; margin-bottom: 15px; margin-right: 8px; cursor: pointer; }
+.buttons button img, .buttons input[type=submit] img, .buttons a img { display: inline-block; margin: -8px 0px; width: 24px; }
+.buttons button span, .buttons input[type=submit] span, .buttons a span { display: inline-block; text-transform: capitalize; margin: -2px 5px 0 5px; }
+.buttons input[type=submit] { padding: 5px 9px; }
+.buttons button, .buttons input[type=submit], .buttons a.submit { background-color: #90b61e; }
+.buttons a.delete { background-color: red; }
+
+#button_display button { float: left; clear: none; padding-bottom: 0px; }
 #button_display button span { display: none; }
-#button_display button .block { padding-bottom: 10px; }
+#button_display button .block { padding-bottom: 0px; padding-right: 0px; padding-top: 20px; }
 
 /* END BUTTONS  */
 /* LEFTBAR IN ASIDE MAIN TEMPLATE */
@@ -167,20 +177,6 @@ button { display: block; clear: both; float: left; color: #fff; border: 1px soli
 .wrap .block input.large { width: 70%; }
 
 .wrap .block .input_group { margin-bottom: 15px; }
-
-button { padding: 7px 0px 5px 0px; margin-bottom: 15px; margin-right: 8px; border: 1px solid transparent; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; color: #fff; float: left; white-space: nowrap; width: auto; overflow: visible; }
-
-button img { display: inline-block; margin: -8px 0px; width: 24px; }
-
-button span { display: inline-block; text-transform: capitalize; margin: -2px 5px 0 5px; }
-
-#button_display button { float: left; }
-
-#button_display button span { display: none; }
-
-#button_display { padding-bottom: 0px; }
-
-#button_display .block { padding-bottom: 0px; padding-right: 0px; padding-top: 20px; }
 
 .wrap .block textarea { display: block; border: 1px solid #b5b8bb; background-color: #e7edef; margin-bottom: 15px; height: 100px; padding: 5px 0; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; text-indent: 5px; }
 
