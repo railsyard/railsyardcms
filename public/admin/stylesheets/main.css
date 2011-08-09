@@ -320,7 +320,7 @@ div.main_container .wrap ul.content_accordion li:last-child .content { border-bo
 
 ul.content_accordion li { position: relative; padding: 0; margin: 0; width: 100%; display: block; border: none; }
 
-ul.content_accordion li a.handle { background: url(../images/grabber-trans.png) no-repeat; line-height: 22px; height: 22px; width: 22px; position: absolute; right: 6px; top: 6px; z-index: 10; cursor: move; zoom: 1; }
+ul.content_accordion li a.handle { line-height: 22px; height: 22px; width: 22px; position: absolute; right: 6px; top: 6px; z-index: 10; cursor: move; zoom: 1; }
 
 /*----- End of Accordion -------*/
 .wrap .no_padding .dataTables_wrapper .ui-corner-tl { color: #5b5f4f; text-shadow: 0 1px 0 #FFFFFF; border-left: 1px solid #FFFFFF; border-right: 1px solid #AAAAAA; border-top: 1px solid #FFFFFF; border-bottom: 1px solid #AAAAAA; background-image: none; background-color: #DFE2E4; -webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px; -webkit-border-top-left-radius: 3px; -webkit-border-bottom-left-radius: 3px; -moz-border-radius-topleft: 3px; -moz-border-radius-bottomleft: 3px; border-top-left-radius: 3px; border-bottom-left-radius: 3px; }
