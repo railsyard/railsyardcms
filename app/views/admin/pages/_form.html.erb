@@ -1,5 +1,4 @@
-<div class="box cell_16 round_all">
-     <h2 class="box_head grad_colour">Dati primari</h2>
+<div class="wrap block">
      <div class="">
          <div class="block">                
              <%= f.label :title, t('admin.general.title') %>
@@ -18,31 +17,33 @@
     </div>    
 </div>
 
-<div class="box cell_16 round_all">
-    <ul class="block content_accordion no_header">
+<div class="wrap block">
+    <ul class="content_accordion no_header">
         <li>
             <a href="#" class="handle">&nbsp;</a>
             <h3 class="bar">Opzioni avanzate</h3>
             <div class="content">
                 <%= f.label t('admin.general.pretty_url') %>
                 <%= f.text_field :pretty_url, {
-                    :title=>"se non inserito il pretty ulr sarà impostato automaticamente con il titolo della pagina",
+                    :title=>"se non inserito il pretty url sarà impostato automaticamente con il titolo della pagina",
                     :class=>"large"
                 } %>
 
                 <%= f.label 'Meta Title' %>
-                <%= f.text_field :meta_title %>
+                <%= f.text_field :meta_title, {
+                    :title=>"Il titolo della pagina (importante per il SEO)",
+                }%>
 
                 <%# TODO inserire testi help nella form pagina %>
                 <%= f.label 'Meta Keywords' %>
                 <%= f.text_field :meta_keywords, {
-                    :title=>"a cosa servono le metakeyword?",
+                    :title=>"Inserisci le metakeyword della pagina",
                     :class=>"large"
                 } %>
 
                 <%= f.label 'Meta Description' %>
                 <%= f.text_field :meta_description, {
-                    :title=>"a cosa servono le metakeyword?",
+                    :title=>"Una descrizione del contenuto della pagina",
                     :class=>"large"
                 } %>
 

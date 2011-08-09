@@ -452,7 +452,6 @@ ul#calendar_drag_list li a { padding: 10px; display: block; cursor: move; }
 --------------------------------*/
 /*  iPad Portrait and Landscape */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) { #template_options { position: relative !important; } }
-
 /*  iPhone Landscape */
 @media screen and (min-width: 321px) and (max-width: 480px) { body div.main_container { margin: 10px 0 10px 1% !important; padding: 20px 2% 5px !important; width: 94% !important; }
   body div.fullsize { padding: none !important; }
@@ -467,7 +466,6 @@ ul#calendar_drag_list li a { padding: 10px; display: block; cursor: move; }
   div.fullsize { padding: 0 !important; }
   div.fullsize .wrap { margin: -20px -2% -5px !important; padding: 0% !important; width: 104% !important; }
   body { padding-bottom: 0 !important; } }
-
 /*  iPhone Portrait */
 @media screen and (max-width: 320px) { a.logo { width: 50px; }
   #top_bar { display: block; }
@@ -488,7 +486,6 @@ ul#calendar_drag_list li a { padding: 10px; display: block; cursor: move; }
   div.fullsize { padding: 0 !important; }
   div.fullsize .wrap { margin: -20px -2% -5px !important; padding: 0% !important; width: 104% !important; }
   body { padding-bottom: 0 !important; } }
-
 /*----- End of iPhone -------*/
 /*-------------------------------- Flot Graph
 --------------------------------*/

@@ -1,24 +1,25 @@
-<%#= select_tag "language", options_from_collection_for_select(Language.all, 'short', 'name', @admin_editing_language),
-    :onchange => "$.post('#{editing_language_admin_pages_path}', {'_method':'put', 'admin_editing_language':this.value} );" %>
+<%= content_for :title do %>Modifica pagina<% end %>
 
-<div class="flat_area cell_16">
-     <h2>Modifica pagina: <%= @page.title %></h2>
-     <% unless @page.errors.blank? %>
-     <div class="alert alert_red">
-         <img height="24" width="24" src="/admin/images/icons/small/white/Alarm%20Bell.png">
-         Errors: <%= errors_for @page %>
-     </div>
-     <% end %>
+<header class="page_description">
+  <h2>Modifica pagina: <%= @page.title %></h2>
+</header>
+
+<div class="wrap cell_16">
+    <% unless @page.errors.blank? %>
+    <div class="alert alert_red">
+        <img height="24" width="24" src="/admin/images/icons/small/white/Alarm%20Bell.png">
+        Errors: <%= errors_for @page %>
+    </div>
+    <% end %>
+    
+    <%= form_for @page, :url => admin_page_path(@page) do |f| %>
+        <%= render :partial => "form", :object => @page, :as => :page, :locals => {:f => f, :lang => @admin_editing_language} %>
+        <div class="buttons">
+            <button type="submit" class="green skin_colour round_all"><img height="24" width="24" alt="Aggiorna pagina" src="/admin/images/icons/small/white/Bended%20Arrow%20Right.png"><span>Aggiorna</span></button>
+
+            <%= submit_tag t('admin.general.save'), :class => "submit" %>    
+            <%= link_to t('admin.general.back'), admin_pages_url, :class => "submit" %>
+            <%= link_to t('admin.general.delete'), admin_page_url(@page), :method => :delete, :confirm => t('admin.pages.are_you_sure_to_delete', :name => @page.title), :class => "submit"  %>
+        </div>
 </div>
-
-<%= form_for @page, :url => admin_page_path(@page) do |f| %>
-    <%= render :partial => "form", :object => @page, :as => :page, :locals => {:f => f, :lang => @admin_editing_language} %>
-
-    <div class="buttons">
-        <button type="submit" class="green skin_colour round_all"><img height="24" width="24" alt="Aggiorna pagina" src="/admin/images/icons/small/white/Bended%20Arrow%20Right.png"><span>Aggiorna</span></button>
-
-        <%= submit_tag t('admin.general.save'), :class => "submit" %>    
-        <%= link_to t('admin.general.back'), admin_pages_url, :class => "submit" %>
-        <%= link_to t('admin.general.delete'), admin_page_url(@page), :method => :delete, :confirm => t('admin.pages.are_you_sure_to_delete', :name => @page.title), :class => "submit"  %>
-    </div>        
 <% end %>
