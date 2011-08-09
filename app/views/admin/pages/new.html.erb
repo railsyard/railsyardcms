@@ -2,7 +2,6 @@
 
 <header class="page_description">
     <h2>Crea una nuova pagina</h2>
-    <p>Descrizione opzionale</p>        
 </header>
 
 <section class="">
@@ -14,12 +13,14 @@
      <% end %>
 </section>
 
-<%= form_for @page, :url => admin_pages_path do |f| %>
+<div class="wrap cell_16">
+    <%= form_for @page, :url => admin_pages_path do |f| %>
     <%= render :partial => "form", :object => @page, :as => :page, :locals => {:f => f, :lang => @admin_editing_language} %>
 
     <div class="buttons">
         <%= submit_tag t('admin.general.save'), :class => "submit" %>    
         <%= link_to t('admin.general.back'), admin_pages_url, :class => "submit" %>
     </div>
+</div>
 <% end %>
 
