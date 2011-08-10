@@ -80,7 +80,7 @@
                     <li><a <%= set_class(:class => "top_level", :controller => ["settings","users"]) %>><img src="/admin/images/icons/small/grey/Cog%202.png"/>Impostazioni</a>
                         <ul class="drawer">
                             <li <%= set_class(:controller => "settings", :action => "edit") %>><%= link_to "Generali", edit_admin_settings_path(1) %></li>
-                            <li <%= set_class(:controller => "users", :action => "index") %>><%= link_to "Il tuo profilo", edit_admin_user_path(current_user) %></li>
+                            <!-- <li <%#= set_class(:controller => "users", :action => "index") %>><%#= link_to "Il tuo profilo", edit_admin_user_path(current_user) %></li> -->
                         </ul>
                     </li>
                     <% if false %>
