@@ -1,7 +1,7 @@
 ---
 
 base_conf:
-    title: "Railsyard default blue theme"
+    title: "Railsyard default green theme"
     short: "green" # use the same name as the theme main directory
     description: "Railsyard default blue theme"
     author: "Silvio Relli, Matteo Papadopoulos - Cantiere Creativo"
