@@ -35,11 +35,11 @@
     <h2>Albero</h2>
     <p>Trascina le pagine per posizionarle all'interno dell'albero. </p>
 </header>
-<div class="wrap cell_16 round_all"> 
+<div class="wrap cell_16"> 
     <div id='pages-tree'>
         <%= page_tree(@root_page) -%>
-        <div class="actions">
-            <%= button_to_function "Save page order", "submit_tree()" %>
+        <div class="buttons">
+            <%= button_to_function "Salva modifica", "submit_tree()" %>
         </div>
     </div>
 
