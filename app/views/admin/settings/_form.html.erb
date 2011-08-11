@@ -1,18 +1,13 @@
-<div class="required"><%= f.label t('admin.settings.site_name') %><%= f.text_field :site_name %></div>
+<div class="wrap block">
+    <%= f.label t('admin.settings.site_name') %><%= f.text_field :site_name %>
+    <%= f.label "#{t('admin.settings.site_base_url')}<br />(www.yourdomain.tld)".hs %><%= f.text_field :site_base_url %>
+    <%= f.label t('admin.settings.site_wide_title_metatag') %><%= f.text_field :site_page_title %>
+    <%= f.label t('admin.settings.site_wide_keywords_metatag') %><%= f.text_field :site_keywords %>
+    <%= f.label t('admin.settings.site_wide_description_metatag') %><%= f.text_field :site_desc %>
+    <%#= f.label t('admin.settings.comments_enabled_default') %><%#= f.check_box :comments_enabled_default %>
+    <%= f.label  t('admin.settings.default_language') %><%= f.select :default_lang, options_from_collection_for_select(Language.all, 'short', 'name', setting.default_lang) %>
+    <%= f.label  t('admin.settings.theme_name') %><%= f.select(:theme_name, options_from_collection_for_select(Theme.all, 'short', 'title', selected = setting.theme_name)) %>
+    <small><%= t('admin.settings.theme_change_warning') %></small>
 
-<div class="required"><%= f.label "#{t('admin.settings.site_base_url')}<br />(www.yourdomain.tld)".hs %><%= f.text_field :site_base_url %></div>
-
-<div><%= f.label t('admin.settings.site_wide_title_metatag') %><%= f.text_field :site_page_title %></div>
-
-<div><%= f.label t('admin.settings.site_wide_keywords_metatag') %><%= f.text_field :site_keywords %></div>
-
-<div><%= f.label t('admin.settings.site_wide_description_metatag') %><%= f.text_field :site_desc %></div>
-
-<div><%#= f.label t('admin.settings.comments_enabled_default') %><%#= f.check_box :comments_enabled_default %></div>
-
-<div class="required"><%= f.label  t('admin.settings.default_language') %><%= f.select :default_lang, options_from_collection_for_select(Language.all, 'short', 'name', setting.default_lang) %></div>
-
-<div class="required"><%= f.label  t('admin.settings.theme_name') %><%= f.select(:theme_name, options_from_collection_for_select(Theme.all, 'short', 'title', selected = setting.theme_name)) %></div>
-<div><%= t('admin.settings.theme_change_warning') %></div>
-
-<div><%= f.label  t('admin.settings.google_analitics_script') %><%= f.text_area :analytics, :size => "83x10" %></div>
+    <%= f.label  t('admin.settings.google_analitics_script') %><%= f.text_area :analytics, :size => "83x10" %>
+</div>
