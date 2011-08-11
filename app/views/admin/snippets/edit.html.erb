@@ -1,18 +1,22 @@
-<div class="flat_area grid_16">
-     <h2>Modifica snippet: <%= @snippet.title %></h2>
-     <% unless @snippet.errors.blank? %>
-     <div class="alert alert_red">
-         <img height="24" width="24" src="/admin/images/icons/small/white/Alarm%20Bell.png">
-         Errors: <%= errors_for @snippet %>
-     </div>
-     <% end %>
-</div>
+<header class="page_description">
+    <h2>Modifica snippet: <%= @snippet.title %></h2>
+    <% unless @snippet.errors.blank? %>
+    <div class="alert alert_red">
+        <img height="24" width="24" src="/admin/images/icons/small/white/Alarm%20Bell.png">
+        Errors: <%= errors_for @snippet %>
+    </div>
+    <% end %>
+</header>
 
-<% form_for @snippet, :url => admin_page_snippet_path(@snippet.page.id, @snippet.id), :html => { :multipart => true } do |f| %>
-	<%= errors_for(@snippet) %>
-	<%= render :partial => "form", :object => @article, :locals => {:f => f} %>
-	
-	<%= submit_tag t('admin.general.save'), :class => "submit" %>    
-    <%= link_to t('admin.general.back'), admin_page_url(@snippet.page.id), :class => "submit" %>
-    <%= link_to t('admin.general.delete'), admin_page_snippet_path(@snippet.page.id, @snippet.id), :method => :delete, :confirm => t('admin.pages.are_you_sure_to_delete', :name => @snippet.title), :class => "submit"  %>
-<% end %>
+<div class="wrap cell_16">
+    <% form_for @snippet, :url => admin_page_snippet_path(@snippet.page.id, @snippet.id), :html => { :multipart => true } do |f| %>
+    <%= errors_for(@snippet) %>
+    <%= render :partial => "form", :object => @article, :locals => {:f => f} %>
+
+    <div class="buttons">
+        <%= submit_tag t('admin.general.save'), :class => "submit" %>    
+        <%= link_to t('admin.general.back'), admin_page_url(@snippet.page.id), :class => "submit" %>
+        <%= link_to t('admin.general.delete'), admin_page_snippet_path(@snippet.page.id, @snippet.id), :method => :delete, :confirm => t('admin.pages.are_you_sure_to_delete', :name => @snippet.title), :class => "submit delete"  %>
+    </div>
+    <% end %>
+</div>
