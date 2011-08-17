@@ -120,6 +120,7 @@ en:
       disabled_user: Disabled user
       delete: Delete
       admin_panel_language: Admin panel language
+      are_you_sure_to_delete: "Are you sure to delete the user \"%{name}\"?"
     settings:
       settings: Settings
       general_settings: General settings

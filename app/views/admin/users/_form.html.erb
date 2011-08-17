@@ -1,0 +1,44 @@
+<div class="wrap block">
+    <div class="">
+        <div class="block">                
+            <%= f.label :firstname, t('admin.users.first_name') %>
+            <%= f.text_field :firstname, {:id=>"firstname", :title=>"User first name, can\'t be blank", :class=>"large required"} %>
+            
+            <%= f.label :lastname, t('admin.users.last_name') %>
+            <%= f.text_field :lastname, {:id=>"lastname", :title=>"User last name or surame, can\'t be blank", :class=>"large required"} %>
+            
+            <%= f.label :email, t('admin.users.email') %>
+            <%= f.text_field :email, {:id=>"email", :title=>"User e-mail address, can\'t be blank", :class=>"large required"} %>
+            
+            <%= f.label :password , t('admin.users.password')%>
+            <%= f.password_field :password, {:id=>"password", :title=>"Type a strong password, 6 chars minimum", :class=>"large required"} %>
+
+            <%= f.label :password_confirmation, t('admin.users.password_confirmation') %>
+            <%= f.password_field :password_confirmation, {:id=>"password_confirmation", :title=>"Retype the password", :class=>"large required"} %>
+            
+            <%= f.label :enabled, t('admin.users.enabled') %>
+            <%= f.check_box :enabled, {:id=>"enabled", :title=>"Immediately enable user without requiring user confirmation", :class=>"large", :checked => user.enabled} %>
+        </div>
+    </div>    
+</div>
+
+
+<script type="text/javascript"> 
+    var firstname = new LiveValidation('firstname');
+    firstname.add( Validate.Presence );
+    
+    var lastname = new LiveValidation('lastname');
+    lastname.add( Validate.Presence );
+    
+    var email = new LiveValidation('email');
+    email.add( Validate.Email );
+    
+    // var password = new LiveValidation('password');
+    // password.add( Validate.Presence );
+    // password.add( Validate.Length, { minimum: 6 } );
+    
+    var password_confirmation = new LiveValidation('password_confirmation');
+    // password_confirmation.add( Validate.Presence );
+    password_confirmation.add( Validate.Confirmation, { match: 'password' } );
+    
+</script>

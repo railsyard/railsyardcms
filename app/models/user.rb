@@ -41,4 +41,17 @@ class User < ActiveRecord::Base
     return !!self.roles.find_by_name(role.to_s)
   end
   
+  def toggle
+    self.update_attribute(:enabled, !self.enabled)
+  end
+  
+  def enable!
+    self.update_attribute(:enabled, true)
+    self.update_attribute(:confirmed_at, Time.now) if self.confirmed_at.blank?
+  end
+  
+  def disable!
+    self.update_attribute(:enabled, false)
+  end
+  
 end

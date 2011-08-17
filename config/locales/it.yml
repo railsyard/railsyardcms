@@ -113,6 +113,7 @@ it:
       disabled_user: Utente disabilitato
       delete: Elimina
       admin_panel_language: Lingua pannello amministrativo
+      are_you_sure_to_delete: "Vuoi davvero cancellare \"%{name}\"?"
     settings:
       settings: Impostazioni
       general_settings: Impostazioni generali

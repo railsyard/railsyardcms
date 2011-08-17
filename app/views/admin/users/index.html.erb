@@ -1,0 +1,25 @@
+<%= content_for :extra_header do %>
+    <link rel="stylesheet" type="text/css" href="/admin/stylesheets/pages_tree.css" media="screen">
+<% end %>
+<%= content_for :title do %>Users management<% end %>
+
+<header class="page_description">
+    <h2>Users list</h2>
+</header>
+
+<div class="wrap cell_16 round_all">
+    <table class="fancy_rows datatable">
+        <thead>
+            <tr>
+                <th>First name</th> 
+                <th>Last name</th> 
+                <th>e-mail</th> 
+                <th>Enabled</th> 
+                <th>Actions</th> 
+            </tr>
+        </thead>
+        <tbody>
+            <%= render :partial => "item", :collection => @users %>
+        </tbody>
+    </table>
+</div>

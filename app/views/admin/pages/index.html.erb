@@ -1,7 +1,7 @@
 <%= content_for :extra_header do %>
     <link rel="stylesheet" type="text/css" href="/admin/stylesheets/pages_tree.css" media="screen">
 <% end %>
-<%= content_for :title do %>Elenco pagine<% end %>
+<%= content_for :title do %>Pages management<% end %>
 
 <div class="lang_selector">
     <%= select_tag "language", options_from_collection_for_select(Language.all, 'short', 'name', @admin_editing_language),
@@ -10,18 +10,18 @@
 
 
 <header class="page_description">
-    <h2>Gestione Pagine</h2>
+    <h2>Pages list</h2>
 </header>
 
 <div class="wrap cell_16 round_all">
     <table class="fancy_rows datatable">
         <thead>
             <tr>
-                <th>Titolo</th> 
-                <th>Ultima modifica</th> 
-                <th>Riservato</th> 
-                <th>Pubblicato</th> 
-                <th>Azioni</th> 
+                <th>Title</th> 
+                <th>Last update</th> 
+                <th>Reserved</th> 
+                <th>Published</th> 
+                <th>Actions</th> 
             </tr>
         </thead>
         <tbody>
@@ -32,8 +32,8 @@
 
 
 <header class="page_description">
-    <h2>Albero</h2>
-    <p>Trascina le pagine per posizionarle all'interno dell'albero. </p>
+    <h2>Pages tree</h2>
+    <p>Drag the page to sort them</p>
 </header>
 <div class="wrap cell_16"> 
     <div id='pages-tree'>

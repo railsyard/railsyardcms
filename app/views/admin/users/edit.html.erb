@@ -1,0 +1,27 @@
+<%= content_for :title do %>Edit user<% end %>
+
+<header class="page_description">
+    <h2>Edit user <%= @user.email %></h2>
+</header>
+
+<section class="">
+     <% unless @user.errors.blank? %>
+     <div class="alert alert_red">
+         <img height="24" width="24" src="/admin/images/icons/small/white/Alarm%20Bell.png">
+         Errors: <%= errors_for @user %>
+     </div>
+     <% end %>
+</section>
+
+<div class="wrap cell_16">
+    <%= form_for @user, :url => admin_user_path(@user) do |f| %>
+    <%= render :partial => "form", :object => @user, :as => :user, :locals => {:f => f} %>
+
+    <div class="buttons">
+        <%= link_to "Delete", admin_user_path(@user), :class => 'submit', :method => :delete, :confirm => t('admin.users.are_you_sure_to_delete', :name => @user.email) %>
+        <%= link_to t('admin.general.back'), admin_pages_url, :class => "submit" %>
+        <%= submit_tag t('admin.general.save'), :class => "submit" %>          
+    </div>
+</div>
+<% end %>
+

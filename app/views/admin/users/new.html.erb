@@ -1,0 +1,26 @@
+<%= content_for :title do %>New user<% end %>
+
+<header class="page_description">
+    <h2>Create a new user</h2>
+</header>
+
+<section class="">
+     <% unless @user.errors.blank? %>
+     <div class="alert alert_red">
+         <img height="24" width="24" src="/admin/images/icons/small/white/Alarm%20Bell.png">
+         Errors: <%= errors_for @user %>
+     </div>
+     <% end %>
+</section>
+
+<div class="wrap cell_16">
+    <%= form_for @user, :url => admin_users_path do |f| %>
+    <%= render :partial => "form", :object => @user, :as => :user, :locals => {:f => f} %>
+
+    <div class="buttons">
+        <%= submit_tag t('admin.general.save'), :class => "submit" %>    
+        <%= link_to t('admin.general.back'), admin_pages_url, :class => "submit" %>
+    </div>
+</div>
+<% end %>
+

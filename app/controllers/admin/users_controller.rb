@@ -1,5 +1,4 @@
-class Admin::UsersController < ApplicationController
-  layout :set_layout
+class Admin::UsersController < Admin::AdminController
   
   ## manual authorization
   before_filter do |controller|
@@ -10,27 +9,52 @@ class Admin::UsersController < ApplicationController
   authorize_resource
   
   def index
-    @users = Users.all
+    @users = User.all
   end
   
   def new
-    
+    @user = User.new
   end
   
   def create
-    
+    @user = User.new(params[:user])
+    if @user && @user.save && @user.errors.empty?
+      params[:user][:enabled] == '1' ? @user.enable! : @user.disable!
+      redirect_to admin_users_path
+    else
+      render :action => "new"
+    end
   end
   
   def edit
-    
+    @user = User.find(params[:id])
   end
   
   def update
-    
+    @user = User.find(params[:id])
+    # Deletes password parameters if empty field so you can edit user details without changing password
+    if params[:user][:password].empty? && params[:user][:password_confirmation].empty?
+      params[:user].delete(:password)
+      params[:user].delete(:password_confirmation)
+    end
+    @user.attributes = params[:user] unless @user.blank?
+    if @user && @user.save && @user.errors.empty?
+      params[:user][:enabled] == '1' ? @user.enable! : @user.disable!
+      redirect_to admin_users_path
+    else
+      render :action => "edit"
+    end
   end
   
   def destroy
-    
+    User.find(params[:id]).destroy
+    redirect_to admin_users_path
+  end
+  
+  def toggle
+    @user = User.find(params[:id])
+    @error = true unless @user && @user.toggle
+    # Renders toggle.js.erb
   end
   
 end

@@ -29,7 +29,9 @@ Railsyard2::Application.routes.draw do
         post 'toggle', :on => :member
       end
     end
-    resources :users
+    resources :users do
+      post 'toggle', :on => :member
+    end
     resource :settings
   end
   

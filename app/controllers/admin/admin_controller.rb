@@ -21,11 +21,11 @@ class Admin::AdminController < ApplicationController
   end
   
   def check_role(role)
-    render_error('401') unless current_user && current_user.role?(role)
+    render_error('401') unless current_user && current_user.role?(role) && current_user.enabled
   end
   
   def check_roles(roles_array)
-    render_error('401') unless current_user && current_user.roles?(roles_array)
+    render_error('401') unless current_user && current_user.roles?(roles_array) && current_user.enabled
   end
   
   

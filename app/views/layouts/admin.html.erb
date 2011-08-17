@@ -77,10 +77,17 @@
                             <!-- <li <%#= set_class("pages", "preset") %>><a href="#">Preset</a></li> -->
                         </ul>
                     </li>
-                    <li><a <%= set_class(:class => "top_level", :controller => ["settings","users"]) %>><img src="/admin/images/icons/small/grey/Cog%202.png"/>Impostazioni</a>
+                    <li><a <%= set_class(:class => "top_level", :controller => ["settings"]) %>><img src="/admin/images/icons/small/grey/Cog%202.png"/>Impostazioni</a>
                         <ul class="drawer">
                             <li <%= set_class(:controller => "settings", :action => "edit") %>><%= link_to "Generali", edit_admin_settings_path(1) %></li>
                             <!-- <li <%#= set_class(:controller => "users", :action => "index") %>><%#= link_to "Il tuo profilo", edit_admin_user_path(current_user) %></li> -->
+                        </ul>
+                    </li>
+                    <li><a <%= set_class(:class => "top_level", :controller => ["users"]) %>><img src="/admin/images/icons/small/grey/Users.png"/>Users</a>
+                        <ul class="drawer">
+                            <li <%= set_class(:controller => "users", :action => "index") %>><%= link_to "List", admin_users_path %></li>
+                            <li <%= set_class(:controller => "users", :action => "new") %>><%= link_to "New", new_admin_user_path %></li>
+                            <!-- <li><a href="#">Esporta</a></li> -->
                         </ul>
                     </li>
                     <% if false %>
@@ -90,13 +97,6 @@
                             <li <%= set_class("articles", "new") %>><a href="#">Nuovo</a></li>
                             <li><a href="#">Categorie</a></li>
                             <li><a href="#">Commenti</a></li>
-                        </ul>
-                    </li>
-                    <li><a class="top_level"><img src="/admin/images/icons/small/grey/Users.png"/>Utenti</a>
-                        <ul class="drawer">
-                            <li><a href="#">Elenco</a></li>
-                            <li><a href="#">Nuovo</a></li>
-                            <li><a href="#">Esporta</a></li>
                         </ul>
                     </li>
                     <li><a class="top_level"><img src="/admin/images/icons/small/grey/Paperclip.png"/>Media</a>

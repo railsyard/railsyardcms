@@ -2,9 +2,9 @@
      <div class="">
          <div class="block">                
              <%= f.label :title, t('admin.general.title') %>
-             <%= f.text_field :title, {:id=>"notempty", :title=>"il campo non può rimanere vuoto", :class=>"large required", :autofocus=>""} %>
+             <%= f.text_field :title, {:id=>"title", :title=>"Page title, can\'t be blank", :class=>"large required"} %>
 
-             <label>Opzioni pagina aaa</label>
+             <label>Opzioni pagina</label>
              <%= f.select :layout_name, options_from_collection_for_select(@layouts.map, 'filename', 'title', @current_layout.filename) %> Layout
              <div class="input_group">
                  <% visible_in_menu_checked = page.visible_in_menu || page.visible_in_menu.nil? %>
@@ -64,8 +64,8 @@
 </div>    
 
 <script type="text/javascript"> 
-    var notempty = new LiveValidation('notempty');
-    notempty.add( Validate.Presence );
+    var title = new LiveValidation('title');
+    title.add( Validate.Presence );
     
     // var realemail = new LiveValidation('realemail');
     // realemail.add( Validate.Email );
