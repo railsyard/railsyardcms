@@ -18,6 +18,15 @@
             
             <%= f.label :enabled, t('admin.users.enabled') %>
             <%= f.check_box :enabled, {:id=>"enabled", :title=>"Immediately enable user without requiring user confirmation", :class=>"large", :checked => user.enabled} %>
+            
+            <%= f.label "Roles" %>
+            <% Role.all.map do |role| %>  
+                <div>  
+                  <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>  
+                  <%= role.name %>  
+                </div>  
+            <% end %>
+        
         </div>
     </div>    
 </div>

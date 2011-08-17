@@ -37,6 +37,7 @@ class Admin::UsersController < Admin::AdminController
       params[:user].delete(:password)
       params[:user].delete(:password_confirmation)
     end
+    @user.set_roles(params[:user][:role_ids])
     @user.attributes = params[:user] unless @user.blank?
     if @user && @user.save && @user.errors.empty?
       params[:user][:enabled] == '1' ? @user.enable! : @user.disable!

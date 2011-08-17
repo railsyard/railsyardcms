@@ -41,6 +41,13 @@ class User < ActiveRecord::Base
     return !!self.roles.find_by_name(role.to_s)
   end
   
+  def set_roles(roles=[])
+    self.roles.clear
+    roles.map do |role|
+      self.roles << Role.find(role)
+    end
+  end
+  
   def toggle
     self.update_attribute(:enabled, !self.enabled)
   end
