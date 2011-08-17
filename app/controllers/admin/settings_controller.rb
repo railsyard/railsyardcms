@@ -18,7 +18,7 @@ class Admin::SettingsController < Admin::AdminController
     if @setting
       @setting.attributes = params[:setting]
       if @setting.save && @setting.errors.empty?
-        #change_theme unless params[:setting][:theme_name].eql? current_theme
+        change_theme(params[:setting][:theme_name]) unless params[:setting][:theme_name].eql? current_theme
         flash[:notice] = "<p>#{t 'admin.settings.configuration_saved'}</p>".hs
         redirect_to edit_admin_settings_path()
       else
@@ -29,11 +29,12 @@ class Admin::SettingsController < Admin::AdminController
   
   private
   
-  # def change_theme
-  #   Page.all.map do |p|
-  #     p.layout_name = "default"
-  #     p.save
-  #   end
-  # end
+  def change_theme(theme)
+    first_layout = Layout.all(theme).first.filename
+    Page.all.map do |p|
+      p.snippets.map{|s| s.update_attribute(:area, "limbo")}
+      p.update_attribute(:layout_name, first_layout)
+    end
+  end
 
 end

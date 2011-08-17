@@ -133,7 +133,7 @@ en:
       comments_enabled_default: Comments on articles enabled by default
       configuration_saved: Configuration saved
       theme_name: "Theme"
-      theme_change_warning: "Warning: if you change theme, the default layout will be applied to every page!"
+      theme_change_warning: "Warning: if you change theme, the first layout will be applied to every page and all the snippets will be moved to limbo!"
     categories:
       categories: Categories
       new_category: New category

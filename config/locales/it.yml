@@ -126,7 +126,7 @@ it:
       comments_enabled_default: Commenti su articoli abilitati di default
       configuration_saved: Configurazione salvata
       theme_name: "Tema"
-      theme_change_warning: "Attenzione: cambiando tema verranno sostituiti i layout di tutte le pagine con il layout di default!"
+      theme_change_warning: "Attenzione: cambiando tema verrà applicato il primo layout a tutte le pagine e tutti gli snippet saranno spostati nel limbo!"
     categories:
       categories: Categorie
       new_category: Nuova categoria
