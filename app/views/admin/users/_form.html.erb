@@ -16,6 +16,9 @@
             <%= f.label :password_confirmation, t('admin.users.password_confirmation') %>
             <%= f.password_field :password_confirmation, {:id=>"password_confirmation", :title=>"Retype the password", :class=>"large required"} %>
             
+            <%= f.label :lang, t('admin.users.admin_panel_language') %>
+            <%= f.select :lang, options_from_collection_for_select(Language.all, 'short', 'name', user.lang) %>
+        		
             <%= f.label :enabled, t('admin.users.enabled') %>
             <%= f.check_box :enabled, {:id=>"enabled", :title=>"Immediately enable user without requiring user confirmation", :class=>"large", :checked => user.enabled} %>
             
@@ -23,7 +26,7 @@
             <% Role.all.map do |role| %>  
                 <div>  
                   <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>  
-                  <%= role.name %>  
+                  <%= role.name.humanize %>  
                 </div>  
             <% end %>
         

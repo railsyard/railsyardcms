@@ -17,9 +17,9 @@
     <%= form_for @user, :url => admin_users_path do |f| %>
     <%= render :partial => "form", :object => @user, :as => :user, :locals => {:f => f} %>
 
-    <div class="buttons">
-        <%= submit_tag t('admin.general.save'), :class => "submit" %>    
-        <%= link_to t('admin.general.back'), admin_pages_url, :class => "submit" %>
+    <div class="buttons">    
+        <%= link_to t('admin.general.back'), admin_users_url, :class => "submit" %>
+        <%= submit_tag t('admin.general.save'), :class => "submit" %>
     </div>
 </div>
 <% end %>

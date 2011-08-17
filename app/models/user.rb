@@ -4,17 +4,22 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable, :trackable, :validatable, :timeoutable, :lockable, :omniauthable
   
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :firstname, :lastname, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :firstname, :lastname, :email, :password, :password_confirmation, :remember_me, :lang
   
   has_many :grades
   has_many :roles, :through => :grades
   accepts_nested_attributes_for :grades
   
-  before_create :assign_user_role
+  # before_create :assign_user_role
+  before_save :set_default_values
   
-  def assign_user_role
-    self.roles << Role.find_by_name('registered_user')
+  def set_default_values
+    self.lang = 'en' unless self.lang
   end
+  
+  # def assign_user_role
+  #   self.roles << Role.find_by_name('registered_user')
+  # end
   
   def is_admin?
     self.role?('admin')
@@ -43,8 +48,10 @@ class User < ActiveRecord::Base
   
   def set_roles(roles=[])
     self.roles.clear
-    roles.map do |role|
-      self.roles << Role.find(role)
+    unless roles.blank?
+      roles.map do |role|
+        self.roles << Role.find(role)
+      end
     end
   end
   

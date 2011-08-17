@@ -18,6 +18,7 @@ class Admin::UsersController < Admin::AdminController
   
   def create
     @user = User.new(params[:user])
+    @user.set_roles(params[:user][:role_ids])
     if @user && @user.save && @user.errors.empty?
       params[:user][:enabled] == '1' ? @user.enable! : @user.disable!
       redirect_to admin_users_path
