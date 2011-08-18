@@ -3,7 +3,16 @@ module ApplicationHelper
   def yield_snippets(page, area)
     out = ""
     page.snippets.for_area(area).map do |snip|
+      # If there is a value 'extra_class' is defined in the options, these will be assigned to the *div*
+      # surrounding the snippet
+      extra_class = (snip.options.is_a?(Hash) && snip.options.has_key?(:extra_class)) ? snip.options[:extra_class] : ""
+      
+      # The snippet has a class *snippet*. You can give a default style to all snippets by using this class.
+      # The extra_class clan be set in the backend for some snippets and can be used to give a specific file to this
+      # special snipit.
+      out << "<div class=\"snippet #{extra_class}\" id=\"snippet-#{snip.id}\">"
       out << render_cell(snip.cell_controller, snip.cell_action, :page => page, :options => snip.options, :snip_id => snip.id)
+      out << "</div>"
     end
     out.hs
   end
