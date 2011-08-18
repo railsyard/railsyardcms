@@ -4,6 +4,9 @@ class CreateCategories < ActiveRecord::Migration
       t.string :name
       t.timestamps
     end
+    
+    Category.create :name => "General"
+    Category.create :name => "Nerdy stuff"
   end
 
   def self.down

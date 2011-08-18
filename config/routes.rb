@@ -35,6 +35,7 @@ Railsyard2::Application.routes.draw do
     resources :articles do
       post 'toggle', :on => :member
     end
+    resources :categories
     resource :settings
   end
   

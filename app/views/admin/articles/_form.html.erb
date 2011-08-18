@@ -16,6 +16,23 @@
             <%= f.label t('admin.general.reserved') %>
             <%= f.check_box :reserved, {:id=>"reserved", :title=>"Makes the article be visible only to premium users", :class=>"large", :checked => article.reserved} %>
             
+            <%= f.label "Categories" %>
+            <div id='categories_list'>   
+            <% Category.all.map do |category| %> 
+              <%= render :partial => "/admin/categories/checkbox", :object => category, :as => :category, :locals =>{:article => @article} %>
+              <%#= check_box_tag "article[category_ids][]", category.id, @article.categories.include?(category) %>  
+              <%#= category.name.humanize %>
+            <% end %>
+            </div> 
+            </br>
+            <%= link_to "Add a new category","#", :id => "new_category_link" %></br>
+            <div id='new_category_form' style="display:none">
+              <span>  
+              <%= text_field(:category, :name) %>
+              <%= link_to "Save","#", :id => "save_category_link" %>
+            </div>
+            </br>
+            </br>
             <%= f.label :short, t('admin.articles.abstract') %>
             <%= f.cktext_area :short %>
             
@@ -26,4 +43,19 @@
     </div>    
 </div>
 
+<script type="text/javascript"> 
+  $('#new_category_link').click(function() {
+    $('#new_category_form').show();
+  });
+  $('#save_category_link').click(function() {
+    typed_cat_name = $('#category_name').val();
+    $.ajax({
+      type: 'POST',
+      url: "<%= admin_categories_path %>",
+      data: "category[name]="+typed_cat_name,
+      dataType: "script"
+    });
+  });
+</script>
 
+    

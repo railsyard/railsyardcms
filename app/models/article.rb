@@ -1,7 +1,7 @@
 class Article < ActiveRecord::Base
   has_many :categorizations
   has_many :categories, :through => :categorizations
-  has_many :tags, :through => :categorizations
+  accepts_nested_attributes_for :categorizations
   
   belongs_to :user
   

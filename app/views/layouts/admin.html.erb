@@ -81,8 +81,8 @@
                         <ul class="drawer">
                             <li <%= set_class(:controller => "articles", :action => "index") %>><%= link_to "List", admin_articles_path() %></li>
                             <li <%= set_class(:controller => "articles", :action => "new") %>><%= link_to "New", new_admin_article_path() %></li>
-                            <li><a href="#">Categories</a></li>
-                            <!-- <li><a href="#">Commenti</a></li> -->
+                            <!-- <li><a href="#">Categories</a></li> -->
+                            <!-- <li><a href="#">Comments</a></li> -->
                         </ul>
                     </li>
                     <li><a <%= set_class(:class => "top_level", :controller => ["users"]) %>><img src="/admin/images/icons/small/grey/Users.png"/>Users</a>
