@@ -72,15 +72,17 @@
                     </li>
                     <li><a <%= set_class(:class => "top_level", :controller => "pages") %>><img src="/admin/images/icons/small/grey/Documents.png"/>Pagine</a>
                         <ul class="drawer">
-                            <li <%= set_class(:controller => "pages", :action => "index") %>><%= link_to "Elenco", admin_pages_path() %></li>
-                            <li <%= set_class(:controller => "pages", :action => "new") %>><%= link_to "Nuova", new_admin_page_path() %></li>
+                            <li <%= set_class(:controller => "pages", :action => "index") %>><%= link_to "List", admin_pages_path() %></li>
+                            <li <%= set_class(:controller => "pages", :action => "new") %>><%= link_to "New", new_admin_page_path() %></li>
                             <!-- <li <%#= set_class("pages", "preset") %>><a href="#">Preset</a></li> -->
                         </ul>
                     </li>
-                    <li><a <%= set_class(:class => "top_level", :controller => ["settings"]) %>><img src="/admin/images/icons/small/grey/Cog%202.png"/>Impostazioni</a>
+                    <li><a <%= set_class(:class => "top_level", :controller => "articles") %>><img src="/admin/images/icons/small/grey/Write.png"/>Articoli</a>
                         <ul class="drawer">
-                            <li <%= set_class(:controller => "settings", :action => "edit") %>><%= link_to "Generali", edit_admin_settings_path(1) %></li>
-                            <!-- <li <%#= set_class(:controller => "users", :action => "index") %>><%#= link_to "Il tuo profilo", edit_admin_user_path(current_user) %></li> -->
+                            <li <%= set_class(:controller => "articles", :action => "index") %>><%= link_to "List", admin_articles_path() %></li>
+                            <li <%= set_class(:controller => "articles", :action => "new") %>><%= link_to "New", new_admin_article_path() %></li>
+                            <li><a href="#">Categories</a></li>
+                            <!-- <li><a href="#">Commenti</a></li> -->
                         </ul>
                     </li>
                     <li><a <%= set_class(:class => "top_level", :controller => ["users"]) %>><img src="/admin/images/icons/small/grey/Users.png"/>Users</a>
@@ -90,15 +92,13 @@
                             <!-- <li><a href="#">Esporta</a></li> -->
                         </ul>
                     </li>
-                    <% if false %>
-                    <li><a class="top_level"><img src="/admin/images/icons/small/grey/Write.png"/>Articoli</a>
+                    <li><a <%= set_class(:class => "top_level", :controller => ["settings"]) %>><img src="/admin/images/icons/small/grey/Cog%202.png"/>Impostazioni</a>
                         <ul class="drawer">
-                            <li <%= set_class("articles", "index") %>><a href="#">Elenco</a></li>
-                            <li <%= set_class("articles", "new") %>><a href="#">Nuovo</a></li>
-                            <li><a href="#">Categorie</a></li>
-                            <li><a href="#">Commenti</a></li>
+                            <li <%= set_class(:controller => "settings", :action => "edit") %>><%= link_to "General", edit_admin_settings_path(1) %></li>
+                            <!-- <li <%#= set_class(:controller => "users", :action => "index") %>><%#= link_to "Il tuo profilo", edit_admin_user_path(current_user) %></li> -->
                         </ul>
                     </li>
+                    <% if false %>
                     <li><a class="top_level"><img src="/admin/images/icons/small/grey/Paperclip.png"/>Media</a>
                         <ul class="drawer">
                             <li><a href="#">Tutti</a></li>

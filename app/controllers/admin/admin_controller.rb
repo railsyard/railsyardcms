@@ -28,5 +28,8 @@ class Admin::AdminController < ApplicationController
     render_error('401') unless current_user && current_user.roles?(roles_array) && current_user.enabled
   end
   
+  def admin_editing_language
+    session[:admin_editing_language].blank? ? cfg.default_lang : session[:admin_editing_language]
+  end
   
 end

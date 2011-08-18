@@ -62,7 +62,7 @@ $(function() {
     "sPaginationType": "full_numbers",
     "bRetrieve": true,
     "aLengthMenu": [[5, 10, 30, -1], [5, 10, 30, "All"]],
-    "iDisplayLength": 5
+    "iDisplayLength": 10
   });
   
   $(window).bind('resize', function () {

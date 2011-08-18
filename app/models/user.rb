@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :grades
   has_many :roles, :through => :grades
   accepts_nested_attributes_for :grades
+  has_many :articles
   
   # before_create :assign_user_role
   before_save :set_default_values

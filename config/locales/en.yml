@@ -103,6 +103,7 @@ en:
       language: Language
       article: Article
       comments_enabled: Comments enabled
+      are_you_sure_to_delete: "Are you sure to delete the article \"%{title}\"?"
     users:
       users: Users
       new_user: New user

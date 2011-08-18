@@ -1,0 +1,26 @@
+<%= content_for :title do %>New article<% end %>
+
+<header class="page_description">
+    <h2>Create a new article</h2>
+</header>
+
+<section class="">
+     <% unless @article.errors.blank? %>
+     <div class="alert alert_red">
+         <img height="24" width="24" src="/admin/images/icons/small/white/Alarm%20Bell.png">
+         Errors: <%= errors_for @article %>
+     </div>
+     <% end %>
+</section>
+
+<div class="wrap cell_16">
+    <%= form_for @article, :url => admin_articles_path do |f| %>
+    <%= render :partial => "form", :object => @article, :as => :article, :locals => {:f => f} %>
+
+    <div class="buttons">    
+        <%= link_to t('admin.general.back'), admin_articles_url, :class => "submit" %>
+        <%= submit_tag t('admin.general.save'), :class => "submit" %>
+    </div>
+</div>
+<% end %>
+

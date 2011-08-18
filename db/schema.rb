@@ -10,12 +10,45 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110718155100) do
+ActiveRecord::Schema.define(:version => 20110818074816) do
+
+  create_table "articles", :force => true do |t|
+    t.string   "title"
+    t.text     "short"
+    t.text     "body"
+    t.string   "meta_title"
+    t.string   "meta_keyword"
+    t.string   "meta_desc"
+    t.string   "pretty_url"
+    t.boolean  "published"
+    t.datetime "publish_at"
+    t.integer  "user_id"
+    t.text     "script"
+    t.string   "lang"
+    t.boolean  "reserved"
+    t.boolean  "comments_enabled"
+    t.boolean  "hot"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "associations", :force => true do |t|
     t.integer  "page_id"
     t.integer  "snippet_id"
     t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categorizations", :force => true do |t|
+    t.integer  "article_id"
+    t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

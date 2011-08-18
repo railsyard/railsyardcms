@@ -135,10 +135,4 @@ class Admin::PagesController < Admin::AdminController
     # Renders apply_layout.js.erb
   end
   
-  private
-  
-  def admin_editing_language
-    session[:admin_editing_language].blank? ? cfg.default_lang : session[:admin_editing_language]
-  end
-  
 end

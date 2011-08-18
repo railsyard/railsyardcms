@@ -1,0 +1,29 @@
+<div class="wrap block">
+    <div class="">
+        <div class="block">
+            <%= f.label :title, t('admin.general.title') %>
+            <%= f.text_field :title, {:id=>"title", :title=>"The main title of the article", :class=>"large"} %>
+            
+            <%= f.label :pretty_url, t('admin.general.pretty_url') %>
+            <%= f.text_field :pretty_url, {:id=>"pretty_url", :title=>"You can leave this blank and the system will generate the pretty url", :class=>"large"} %>
+            
+            <%= f.label :lang, t('admin.articles.language') %>
+            <%= f.select :lang, options_from_collection_for_select(Language.all, 'short', 'name', @admin_editing_language) %>
+            
+            <%= f.label :published, t('admin.general.published') %>
+            <%= f.check_box :published, {:id=>"published", :title=>"Immediately publish the article", :class=>"large", :checked => article.published} %>
+            
+            <%= f.label t('admin.general.reserved') %>
+            <%= f.check_box :reserved, {:id=>"reserved", :title=>"Makes the article be visible only to premium users", :class=>"large", :checked => article.reserved} %>
+            
+            <%= f.label :short, t('admin.articles.abstract') %>
+            <%= f.cktext_area :short %>
+            
+            <%= f.label :body, t('admin.articles.body') %>
+            <%= f.cktext_area :body %>
+            
+        </div>
+    </div>    
+</div>
+
+

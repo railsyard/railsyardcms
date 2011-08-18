@@ -1,0 +1,43 @@
+<%= content_for :extra_header do %>
+    <link rel="stylesheet" type="text/css" href="/admin/stylesheets/pages_tree.css" media="screen">
+<% end %>
+<%= content_for :title do %>Articles management<% end %>
+
+<div class="lang_selector">
+    <%= select_tag "language", options_from_collection_for_select(Language.all, 'short', 'name', @admin_editing_language),
+        :onchange => "$.post('#{set_editing_language_admin_pages_path}', {'_method':'put', 'admin_editing_language':this.value} );" %>    
+</div>
+
+<header class="page_description">
+    <h2>Articles list</h2>
+</header>
+
+<div class="wrap cell_16 round_all">
+    <table class="fancy_rows datatable">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th> 
+                <th>Last update</th> 
+                <th>Reserved</th> 
+                <th>Published</th> 
+                <th>Actions</th> 
+            </tr>
+        </thead>
+        <tbody>
+            <%= render :partial => "item", :collection => @articles %>
+        </tbody>
+    </table>
+</div>
+
+
+<script type="text/javascript">
+    function submit_tree(){
+        serialized_tree = $('ol.sortable').nestedSortable('serialize');
+        $.ajax({
+            type: "POST",
+            url: '/admin/pages/sort',
+            data: { _method:'PUT', page: serialized_tree, admin_editing_language: '<%= @admin_editing_language %>' }
+        });
+    }
+</script>
