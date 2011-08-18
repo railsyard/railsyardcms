@@ -57,6 +57,17 @@ class Admin::SnippetsController < Admin::AdminController
     #TO-DO empty trash bin (limbo)
   end
   
+  def destroy
+    @snippet = Snippet.find(params[:id])
+    if @snippet
+      if @snippet.destroy && @snippet.errors.empty?
+        redirect_to admin_page_url(@snippet.page.id)
+      else
+        render :action => "edit"
+      end
+    end
+  end
+  
 end
 
 
