@@ -16,6 +16,12 @@ class ContentCell < Cell::Rails
     render
   end
   
+  def articles_list(args)
+    @articles = Article.published.not_reserved.all
+    render
+  end
+  
+  
   def download_widget(args)
     @options = args[:options]
     render

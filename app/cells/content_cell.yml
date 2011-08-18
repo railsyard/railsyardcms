@@ -18,9 +18,14 @@ cell:
             serialized_attributes:
                 username: string
                 limit:  integer
-        -   name:   Downloads widget
-            method: downloads_widget
-            desc:   A downloads widget
+        -   name:   Articles list
+            method: articles_list
+            desc:   A list of articles with category filter
             serialized_attributes:
-                name: string
+                categories_ids: string
+        # -   name:   Downloads widget
+        #     method: downloads_widget
+        #     desc:   A downloads widget
+        #     serialized_attributes:
+        #         name: string
         

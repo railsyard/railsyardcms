@@ -1,0 +1,9 @@
+<div class="articles_list">
+  <% @articles.map do |a| %>
+    <div id="article_<%= a.id %>">
+      <h2><%= a.title %></h2>
+      <div id="abstract"><%= render :inline => a.short %></div>
+      <div id="body"><%= render :inline => a.body %></div>
+    </div>
+  <% end %>
+</div>
