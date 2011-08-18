@@ -3,7 +3,7 @@ module ApplicationHelper
   def yield_snippets(page, area)
     out = ""
     page.snippets.for_area(area).map do |snip|
-      out << render_cell(snip.cell_controller, snip.cell_action, :page => page, :options => snip.options)
+      out << render_cell(snip.cell_controller, snip.cell_action, :page => page, :options => snip.options, :snip_id => snip.id)
     end
     out.hs
   end
