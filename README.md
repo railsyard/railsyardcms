@@ -90,7 +90,6 @@ Run the rails console and execute:
 
 Themes
 ------
-Drop themes in /themes
 
 Take a look to the current themes to understand how they work. They are placed in /themes/.
 
@@ -104,7 +103,6 @@ Snippets plugins
 ----------------
 Snippets are implemented using Rails Cells
 
-Drop them in /app/cells
 
 Take a look to the current snippets to understand how they work. They are placed in /app/cells/.
 
