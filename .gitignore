@@ -10,4 +10,4 @@ config/deploy.rb
 sublime-develop.sublime-project
 devise/**/*
 devise/*
-
+Gemfile.lock
