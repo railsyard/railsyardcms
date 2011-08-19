@@ -1,17 +1,17 @@
-.snippet .controlls {
-  display: none;
-}
-
-.snippet:hover .controlls {
+.snippet .controls {
   display: block;
   background-color: gray;
   padding: 3px;
   float: right;
-  opacity: .5;
+  opacity: .3;
 }
 
-.snippet .controlls a {
-  display: inline-block;
+.snippet:hover .controls {
+  opacity: .8;
+}
+
+.snippet .controls a {
+  display: none;
   width: 16px;
   height: 16px;
   background-image: url(../images/error.png);
@@ -19,14 +19,26 @@
   background-position: center center;
 }
 
-.snippet .controlls a.delete {
+.snippet:hover .controls a {
+  display: inline-block;
+}
+
+.snippet .controls .title {
+  font-family: Tahoma;
+  font-size: 11px;
+  font-weight: bold;
+  vertical-align: top;
+  text-shadow: 0 1px 0 silver;
+}
+
+.snippet .controls a.delete {
   background-image: url(../images/delete.png);
 }
 
-.snippet .controlls a.edit {
+.snippet .controls a.edit {
   background-image: url(../images/edit.png);
 }
 
-.snippet .controlls a span {
+.snippet .controls a span {
   display: none;
 }

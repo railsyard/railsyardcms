@@ -12,9 +12,10 @@ module ApplicationHelper
       # special snipit.
       out << "<div class=\"snippet #{div_class}\" id=\"snippet-#{snip.id}\">"
       if current_user && current_user.is_admin? && cfg.frontend_controls
-        out << "<div class=\"controlls\" id=\"snippet-controlls-#{snip.id}\">"
+        out << "<div class=\"controls\" id=\"snippet-controls-#{snip.id}\">"
         out << link_to_function("<span>#{t('admin.general.delete')}</span>".hs, "if(confirm('#{t('admin.snippets.are_you_sure_to_delete', :name => snip.title)}')) removeSnip(#{snip.id}, '#{admin_page_snippet_path(snip.page.id, snip.id, :format => :json)}')", :class => "delete")
         out << link_to("<span>#{t('admin.general.edit')}</span>".hs, edit_admin_page_snippet_path(snip.page.id, snip.id), :class => "edit")
+        out << "<span class=\"title\">#{snip.title}</span>"
         out << "</div>"
       end
       out << render_cell(snip.cell_controller, snip.cell_action, :page => page, :options => snip.options, :snip_id => snip.id)
