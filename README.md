@@ -45,23 +45,23 @@ Installation
 ------------
 We really suggest the use of Ruby RVM and Ruby 1.9.2
 
-  run 'rvm install ruby-1.9.2-p290'
-  run 'rvm use ruby-1.9.2-p290'
-  run 'rvm gemset create "railsyard"'
-	run 'git clone https://github.com/cantierecreativo/railsyardcms.git'
-	run 'cd railsyardcms'
-	run 'gem install rails -v="3.0.9"'
-	run 'gem install bundler'
-	run 'bundle install'
-	edit config/database.yml according to your configuration
-	run 'rake db:migrate'
+    run 'rvm install ruby-1.9.2-p290'
+    run 'rvm use ruby-1.9.2-p290'
+    run 'rvm gemset create "railsyard"'
+	  run 'git clone https://github.com/cantierecreativo/railsyardcms.git'
+	  run 'cd railsyardcms'
+	  run 'gem install rails -v="3.0.9"'
+	  run 'gem install bundler'
+	  run 'bundle install'
+	  edit config/database.yml according to your configuration
+	  run 'rake db:migrate'
 
 Using with Ruby 1.8.7
 ---------------------
 Comment out line 3 and 4 inside /config/boot.rb
 
-  require 'yaml'
-  YAML::ENGINE.yamler= 'syck'
+    require 'yaml'
+    YAML::ENGINE.yamler= 'syck'
   
 Update .rvmrc according to your Ruby version
 
@@ -81,11 +81,11 @@ Add a translated I18n yaml file inside /config/locales/, look at en.yml for refe
 
 Run the rails console and execute:
 
-  lang = 'de'
-  first_theme = Theme.all.first.short
-  first_layout = Layout.all(first_theme).first.filename
-  root = Page.create :title => lang, :pretty_url => lang, :lang => lang
-  root.children.create :title => "Home #{lang}", :pretty_url => "home_#{lang}", :lang => lang, :visible_in_menu => true, :reserved => false, :published => true, :position => 1, :layout_name => first_layout, :publish_at => Time.now, :meta_title => "Home #{lang}", :meta_description => "Home #{lang}"
+    lang = 'de'
+    first_theme = Theme.all.first.short
+    first_layout = Layout.all(first_theme).first.filename
+    root = Page.create :title => lang, :pretty_url => lang, :lang => lang
+    root.children.create :title => "Home #{lang}", :pretty_url => "home_#{lang}", :lang => lang, :visible_in_menu => true, :reserved => false, :published => true, :position => 1, :layout_name => first_layout, :publish_at => Time.now, :meta_title => "Home #{lang}", :meta_description => "Home #{lang}"
 
 
 Themes
