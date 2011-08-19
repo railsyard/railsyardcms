@@ -48,13 +48,13 @@ We really suggest the use of Ruby RVM and Ruby 1.9.2
     run 'rvm install ruby-1.9.2-p290'
     run 'rvm use ruby-1.9.2-p290'
     run 'rvm gemset create "railsyard"'
-	  run 'git clone https://github.com/cantierecreativo/railsyardcms.git'
-	  run 'cd railsyardcms'
-	  run 'gem install rails -v="3.0.9"'
-	  run 'gem install bundler'
-	  run 'bundle install'
-	  edit config/database.yml according to your configuration
-	  run 'rake db:migrate'
+    run 'git clone https://github.com/cantierecreativo/railsyardcms.git'
+    run 'cd railsyardcms'
+    run 'gem install rails -v="3.0.9"'
+    run 'gem install bundler'
+    run 'bundle install'
+    edit config/database.yml according to your configuration
+    run 'rake db:migrate'
 
 Using with Ruby 1.8.7
 ---------------------
@@ -130,5 +130,5 @@ Contributors
 ------------
 If you contributed to this project committing even a single bit feel free to add your name here!
 
-*[Paul Spieker](https://github.com/spieker)
+* [Paul Spieker](https://github.com/spieker)
 	
