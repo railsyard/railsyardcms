@@ -41,7 +41,7 @@ module Railsyard2
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
     
-    $AVAILABLE_LANGUAGES = /en|it/
+    $AVAILABLE_LANGUAGES = /en|it|de/
     
     
   end
