@@ -12,7 +12,7 @@ class Snippet < ActiveRecord::Base
   
   scope :published, :conditions => ["published = ?", true]
   scope :drafts, :conditions => ["published = ?", false]
-  scope :for_area, lambda {|area| where("area = ?", area)}
+  scope :for_area, lambda {|area| where("area = ?", area).order('`associations`.position')}
   
   def publish
     update_attributes!(:published => true, :publish_at => Time.now)
