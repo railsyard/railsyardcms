@@ -90,6 +90,7 @@ en:
       additional_params: Parameters
       snippets: Snippets
       snippet: Snippet
+      are_you_sure_to_delete: "Are you sure to delete the snippet \"%{name}\"?"
     articles:
       articles: Articles
       latest_articles: Recent articles
@@ -136,6 +137,7 @@ en:
       configuration_saved: Configuration saved
       theme_name: "Theme"
       theme_change_warning: "Warning: if you change theme, the first layout will be applied to every page and all the snippets will be moved to limbo!"
+      frontend_controls: "Controls on frontend"
     categories:
       categories: Categories
       new_category: New category

@@ -11,9 +11,9 @@ module ApplicationHelper
       # The extra_class clan be set in the backend for some snippets and can be used to give a specific file to this
       # special snipit.
       out << "<div class=\"snippet #{div_class}\" id=\"snippet-#{snip.id}\">"
-      if current_user && current_user.is_admin?
+      if current_user && current_user.is_admin? && cfg.frontend_controls
         out << "<div class=\"controlls\" id=\"snippet-controlls-#{snip.id}\">"
-        out << link_to_function("<span>#{t('admin.general.delete')}</span>".hs, "if(confirm('#{t('admin.pages.are_you_sure_to_delete', :name => snip.title)}')) removeSnip(#{snip.id}, '#{admin_page_snippet_path(snip.page.id, snip.id, :format => :json)}')", :class => "delete")
+        out << link_to_function("<span>#{t('admin.general.delete')}</span>".hs, "if(confirm('#{t('admin.snippets.are_you_sure_to_delete', :name => snip.title)}')) removeSnip(#{snip.id}, '#{admin_page_snippet_path(snip.page.id, snip.id, :format => :json)}')", :class => "delete")
         out << link_to("<span>#{t('admin.general.edit')}</span>".hs, edit_admin_page_snippet_path(snip.page.id, snip.id), :class => "edit")
         out << "</div>"
       end

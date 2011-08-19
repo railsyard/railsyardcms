@@ -1,5 +1,7 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
+
+// Removes a snippet directly from the frontend when frontend controls are enabled
 function removeSnip(snip_id, url) {
   jQuery.ajax({
     url: url,
