@@ -1,0 +1,32 @@
+.snippet .controlls {
+  display: none;
+}
+
+.snippet:hover .controlls {
+  display: block;
+  background-color: gray;
+  padding: 3px;
+  float: right;
+  opacity: .5;
+}
+
+.snippet .controlls a {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-image: url(../images/error.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.snippet .controlls a.delete {
+  background-image: url(../images/delete.png);
+}
+
+.snippet .controlls a.edit {
+  background-image: url(../images/edit.png);
+}
+
+.snippet .controlls a span {
+  display: none;
+}

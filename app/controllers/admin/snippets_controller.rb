@@ -60,10 +60,14 @@ class Admin::SnippetsController < Admin::AdminController
   def destroy
     @snippet = Snippet.find(params[:id])
     if @snippet
-      if @snippet.destroy && @snippet.errors.empty?
-        redirect_to admin_page_url(@snippet.page.id)
-      else
-        render :action => "edit"
+      respond_to do |format|
+        if @snippet.destroy && @snippet.errors.empty?
+          format.html { redirect_to admin_page_url(@snippet.page.id) }
+          format.json { render json: {} }
+        else
+          format.html { render action: 'edit' }
+          format.json { render json: @snippet.errors.merge({ message: 'There was an error!' }), status: :unprocessable_entity }
+        end
       end
     end
   end
