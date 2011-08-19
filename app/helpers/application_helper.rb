@@ -2,6 +2,7 @@ module ApplicationHelper
   
   def yield_snippets(page, area)
     out = ""
+    out << "<div class=\"snippets drop_target\" id=\"#{area}\">" if current_user && current_user.is_admin? && cfg.frontend_controls
     page.snippets.for_area(area).map do |snip|
       # If there is a value 'extra_class' is defined in the options, these will be assigned to the *div*
       # surrounding the snippet
@@ -10,6 +11,7 @@ module ApplicationHelper
       # The snippet has a class *snippet*. You can give a default style to all snippets by using this class.
       # The extra_class clan be set in the backend for some snippets and can be used to give a specific file to this
       # special snipit.
+      out << "<div class=\"drag_item\" id=\"#{snip.handler}\">" if current_user && current_user.is_admin? && cfg.frontend_controls
       out << "<div class=\"snippet #{div_class}\" id=\"snippet-#{snip.id}\">"
       if current_user && current_user.is_admin? && cfg.frontend_controls
         out << "<div class=\"controls\" id=\"snippet-controls-#{snip.id}\">"
@@ -20,7 +22,9 @@ module ApplicationHelper
       end
       out << render_cell(snip.cell_controller, snip.cell_action, :page => page, :options => snip.options, :snip_id => snip.id)
       out << "</div>"
+      out << "</div>" if current_user && current_user.is_admin? && cfg.frontend_controls
     end
+    out << "</div>" if current_user && current_user.is_admin? && cfg.frontend_controls
     out.hs
   end
     

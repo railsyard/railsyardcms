@@ -18,3 +18,36 @@ function removeSnip(snip_id, url) {
     }
   });
 }
+
+$(document).ready(function() {
+    // Provides sorting of snippets, submitting the list of snippets present in every area
+    $('.snippets').sortable({
+        items:'.drag_item',
+        forceHelperSize:true,
+        placeholder: 'dashed_placeholder',        
+        forcePlaceholderSize:true,
+        connectWith: '.drop_target',
+        handle: '.title',
+        start: function(event, ui) {
+          $('.drop_target').addClass('dragging');
+        },
+        stop: function(event, ui){
+          $('.drop_target').removeClass('dragging');
+            var sortorder={};
+            $('.drop_target').each(function(){
+                var itemorder=$(this).sortable('toArray');
+                var targetId=$(this).attr('id');
+                sortorder[targetId] = itemorder.toString();
+            });
+            $.ajax({
+                type: 'put',
+                url: '/admin/pages/4/snippets/sort',
+                data: ({'areas':sortorder}),
+                error: function(data, textStatus, jqXHR) {
+                  alert(data.statusText + ' ('+data.status+')');
+                  location.reload();
+                }
+            });
+        } 
+    });
+});

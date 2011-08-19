@@ -29,6 +29,11 @@
   font-weight: bold;
   vertical-align: top;
   text-shadow: 0 1px 0 silver;
+  cursor: move;
+  background-image: url(../images/move.png);
+  background-position: right center;
+  background-repeat: no-repeat;
+  padding: 0px 16px 0px 0px;
 }
 
 .snippet .controls a.delete {
@@ -41,4 +46,13 @@
 
 .snippet .controls a span {
   display: none;
+}
+
+.drop_target.dragging {
+  min-height: 30px;
+  border: 2px dotted #DADADA;
+}
+.dashed_placeholder {
+  background-color: silver;
+  height: 50;
 }
