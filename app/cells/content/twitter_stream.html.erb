@@ -6,7 +6,7 @@
 <script type="text/javascript">
 $("document").ready(function() {
 	load_tweets_<%= @snip_id %>();
-	setInterval(load_tweets_<%= @snip_id %>, 20000);
+	setInterval(load_tweets_<%= @snip_id %>, 90000);
 });
 
 function load_tweets_<%= @snip_id %>() {
@@ -23,10 +23,10 @@ function load_tweets_<%= @snip_id %>() {
 	
 	$.getJSON(url, function(json) { 
 		var results = '';
-		debugger;
+    // debugger;
 		$(json).each(function() {
 			if (this.id == undefined) return;
-			results += "<p class='tweet_result' id='tweet" + this.id + "'><a href='http://twitter.com/" + this.from_user + "' class='tweet_user'><img width='16' height='16' alt='" + this.from_user + " on Twitter' src='" + this.profile_image_url + "' /></a>" + linkify_<%= @snip_id %>(this.text) + "</p>";
+			results += "<p class=\'tweet_result\' id=\'tweet" + this.id + "\'><a href=\'http://twitter.com/" + username + "\' class=\'tweet_user\'><img width=\'16\' height=\'16\' alt=\'" + username + " on Twitter\' src=\'" + this.profile_image_url + "\' /></a> " + linkify_<%= @snip_id %>(this.text) + "</p>";
 		});
 		$("#twitter_results-<%= @snip_id %>").prepend(results);
 	});

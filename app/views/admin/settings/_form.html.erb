@@ -4,6 +4,7 @@
     <%= f.label t('admin.settings.site_wide_title_metatag') %><%= f.text_field :site_page_title %>
     <%= f.label t('admin.settings.site_wide_keywords_metatag') %><%= f.text_field :site_keywords %>
     <%= f.label t('admin.settings.site_wide_description_metatag') %><%= f.text_field :site_desc %>
+    <%= f.label t('admin.settings.frontend_controls') %><%= f.check_box :frontend_controls, {}, checked_value = setting.frontend_controls %>
     <%#= f.label t('admin.settings.comments_enabled_default') %><%#= f.check_box :comments_enabled_default %>
     <%= f.label  t('admin.settings.default_language') %><%= f.select :default_lang, options_from_collection_for_select(Language.all, 'short', 'name', setting.default_lang) %>
     <%= f.label  t('admin.settings.theme_name') %><%= f.select(:theme_name, options_from_collection_for_select(Theme.all, 'short', 'title', selected = setting.theme_name)) %>

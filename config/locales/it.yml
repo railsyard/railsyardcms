@@ -83,6 +83,7 @@ it:
       additional_params: Parameters
       snippets: Snippets
       snippet: Snippet
+      are_you_sure_to_delete: "Sei sicuro di voler cancellare lo snippet \"%{name}\"?"
     articles:
       articles: Articoli
       latest_articles: Articoli recenti
@@ -129,6 +130,7 @@ it:
       configuration_saved: Configurazione salvata
       theme_name: "Tema"
       theme_change_warning: "Attenzione: cambiando tema verrà applicato il primo layout a tutte le pagine e tutti gli snippet saranno spostati nel limbo!"
+      frontend_controls: "Controlli sul frontend"
     categories:
       categories: Categorie
       new_category: Nuova categoria
