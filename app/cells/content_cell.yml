@@ -7,6 +7,7 @@ cell:
             desc:   A plain text widget
             serialized_attributes:
                 body: text
+                div_class: string
         -   name:   Rich text editor widget
             method: rich_text_widget
             desc:   A text widget editable with a rich text editor
