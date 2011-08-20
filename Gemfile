@@ -34,6 +34,7 @@ group :development, :test do
   gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
   gem 'launchy'
   gem 'growl'
+  gem 'growl_notify'
   gem 'database_cleaner'
   gem 'factory_girl'
 end
