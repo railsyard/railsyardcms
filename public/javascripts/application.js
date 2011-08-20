@@ -19,6 +19,65 @@ function removeSnip(snip_id, url) {
   });
 }
 
+function openDialog(title, url) {
+  $( "#yd_dialog").dialog({
+    height: 'auto',
+    width: 800,
+    modal: true,
+    title: 'Configuration: ' + title,
+    open: function() {
+      // loading the dialog content
+      $("#yd_dialog_content").load(url, function() {
+        $("#yd_dialog .loading").hide();
+        $("#yd_dialog").height(400);
+        $("#yd_dialog").dialog('option', 'position', 'center');
+        // Change all forms to be an ajax form using jquery.form.js
+        $("#yd_dialog form").ajaxForm({
+          beforeSubmit: function () {
+            $("#yd_dialog form").hide();
+            $("#yd_dialog .loading").show();
+            $("#yd_dialog").height('auto');
+            $("#yd_dialog").dialog('option', 'position', 'center');
+          },
+          success: function() {
+            location.reload();
+          },
+          error: function(data, textStatus, jqXHR) {
+            alert(data.statusText + ' ('+data.status+')');
+          }
+        });
+      });
+    },
+    close: function() {
+      location.reload();
+    }
+  });
+}
+
+function submitDialog(form) {
+  debugger;
+   
+  $(this).ajaxSubmit({
+    success: function() {
+      alert('done');
+      //location.reload();
+    },
+    error: function(data, textStatus, jqXHR) {
+      alert(data.statusText + ' ('+data.status+')');
+    }
+  });
+  return;
+  $.ajax({
+      type: 'put',
+      url: '/admin/pages/4/snippets/sort',
+      data: ({'areas':sortorder}),
+      error: function(data, textStatus, jqXHR) {
+        alert(data.statusText + ' ('+data.status+')');
+        location.reload();
+      }
+  });
+}
+
 $(document).ready(function() {
     // Provides sorting of snippets, submitting the list of snippets present in every area
     $('.snippets').sortable({

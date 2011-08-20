@@ -6,11 +6,6 @@
   <meta name="description" content="Railsyard 2" />
   <meta name="keywords" content= "railsyard, railsyard2" /> 
   <meta name="authors" content= "Matteo Papadopoulos, Silvio Relli, Cantiere Creativo" />
-  <%= stylesheet_link_tag :all %>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
-  <%= javascript_include_tag 'jquery_ujs' %>
-  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -34,5 +29,7 @@
         <h2>Footer</h2>
         <%= yield_snippets(@page, "footer") if @page %>
     </footer>
+    
+    <%= render 'layouts/support' %>
 </body>
 </html>

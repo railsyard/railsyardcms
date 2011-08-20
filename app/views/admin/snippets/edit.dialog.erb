@@ -1,0 +1,10 @@
+<div class="popup">
+    <% form_for @snippet, :url => admin_page_snippet_path(@snippet.page.id, @snippet.id), :html => { :multipart => true } do |f| %>
+    <%= errors_for(@snippet) %>
+    <%= render :partial => "form", :object => @article, :locals => {:f => f} %>
+
+    <div class="buttons">
+        <%= submit_tag t('admin.general.save'), :class => "submit" %>
+    </div>
+    <% end %>
+</div>

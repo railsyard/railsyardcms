@@ -1,3 +1,123 @@
+@import '../admin/stylesheets/jqueryui.css';
+
+.ui-dialog {
+  font-family: Tahoma;
+}
+
+#yd_dialog .loading {
+  text-align: center;
+  padding: 10px;
+}
+
+#yd_dialog .loading span {
+  background-image: url(../images/ajax-loader.gif);
+  background-position: left center;
+  background-repeat: no-repeat;
+  padding-left: 60px;
+}
+
+/* BUTTONS */
+/**********************************/
+#yd_dialog .button_face { 
+  clear: both; color: #fff; font-weight: bold; border: 1px solid transparent; padding: 7px 7px 7px 11px; background-color: #90b61e; -moz-border-radius: 3px 3px 3px 3px; /* FF1+ */ -webkit-border-radius: 3px 3px 3px 3px; /* Saf3+, Chrome */ border-radius: 3px 3px 3px 3px; /* Opera 10.5, IE 9 */ behavior: url("/css/PIE.htc"); overflow: visible; white-space: nowrap; margin-bottom: 15px; margin-right: 8px; 
+}
+
+#yd_dialog .button_face img { 
+  display: inline-block; margin: -8px 0px; width: 24px; 
+}
+
+#yd_dialog .button_face span { 
+  display: inline-block; text-transform: capitalize; margin: -2px 5px 0 5px; 
+}
+
+#yd_dialog .buttons { 
+  display: block; padding-right: 20px; text-align: right; 
+}
+
+#yd_dialog .buttons button, #yd_dialog .buttons input[type=submit], #yd_dialog .buttons a { 
+  font-size: 12px;
+  text-decoration: none;
+  clear: both; color: #fff !important; font-weight: bold; border: 1px solid transparent; padding: 7px 7px 7px 11px; -moz-border-radius: 3px 3px 3px 3px; /* FF1+ */ -webkit-border-radius: 3px 3px 3px 3px; /* Saf3+, Chrome */ border-radius: 3px 3px 3px 3px; /* Opera 10.5, IE 9 */ behavior: url("/css/PIE.htc"); overflow: visible; white-space: nowrap; margin-bottom: 15px; margin-right: 8px; cursor: pointer; 
+}
+
+#yd_dialog .buttons button img, #yd_dialog .buttons input[type=submit] img, #yd_dialog .buttons a img { 
+  display: inline-block; margin: -8px 0px; width: 24px; 
+}
+
+#yd_dialog .buttons button span, #yd_dialog .buttons input[type=submit] span, #yd_dialog .buttons a span { 
+  display: inline-block; text-transform: capitalize; margin: -2px 5px 0 5px; 
+}
+
+#yd_dialog .buttons input[type=submit] { 
+  padding: 5px 9px; 
+}
+
+#yd_dialog .buttons button, #yd_dialog .buttons input[type=submit], #yd_dialog .buttons a.submit { 
+  background-color: #90b61e; 
+}
+
+#yd_dialog .buttons a.delete { 
+  background-color: red; 
+}
+
+#yd_dialog #button_display button { 
+  float: left; clear: none; padding-bottom: 0px; 
+}
+
+#yd_dialog #button_display button span { 
+  display: none; 
+}
+
+#yd_dialog #button_display button .block { 
+  padding-bottom: 0px; padding-right: 0px; padding-top: 20px; 
+}
+/* END BUTTONS  */
+
+#yd_dialog label { 
+  display: block; font-size: 1.0em; font-weight: bold; color: #5b5f4f; margin-bottom: 5px; clear: both; 
+}
+
+#yd_dialog label small { 
+  font-size: 0.9em; color: #666; 
+}
+
+#yd_dialog input { 
+  display: block; border: 1px solid #b5b8bb; background-color: #e7edef; height: 1.8em; margin-bottom: 15px; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; text-indent: 5px; 
+}
+
+#yd_dialog input:hover, #yd_dialog textarea:hover { 
+  border-color: #777; 
+}
+
+#yd_dialog input:focus, #yd_dialog textarea:focus { 
+  border-color: #444; 
+}
+
+#yd_dialog input.small { 
+  width: 20%; 
+}
+
+#yd_dialog input.medium { 
+  width: 35%; 
+}
+
+#yd_dialog input.large { 
+  width: 70%; 
+}
+
+#yd_dialog .input_group { 
+  margin-bottom: 15px; 
+}
+
+#yd_dialog textarea { 
+  display: block; border: 1px solid #b5b8bb; background-color: #e7edef; margin-bottom: 15px; height: 100px; padding: 5px 0; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; text-indent: 5px; 
+}
+
+#yd_dialog .dashed_placeholder { 
+  float: left; display: block; border: 1px dashed #aaa; background-color: #ddd; margin-bottom: 13px !important; margin-left: 1%; margin-right: 0.6%; width: 90%; 
+}
+
+
 .snippet .controls {
   display: block;
   background-color: gray;
@@ -46,6 +166,10 @@
 
 .snippet .controls a span {
   display: none;
+}
+
+.drag_item .cleanup {
+  clear: both;
 }
 
 .drop_target.dragging {

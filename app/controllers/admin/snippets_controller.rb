@@ -10,6 +10,10 @@ class Admin::SnippetsController < Admin::AdminController
   
   def edit
     @snippet = Snippet.find(params[:id])  
+    respond_to do |format|
+      format.html { render }
+      format.dialog { render :layout => false }
+    end
   end
   
   def update
