@@ -29,6 +29,13 @@ group :development, :test do
   gem 'webrat', '>= 0.7.3'
   gem 'capybara', '>= 1.0.0'
   gem 'deadweight', '>=0.2.1'
+  gem 'guard'
+  gem 'guard-cucumber'
+  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
+  gem 'launchy'
+  gem 'growl'
+  gem 'database_cleaner'
+  gem 'factory_girl'
 end
 
 

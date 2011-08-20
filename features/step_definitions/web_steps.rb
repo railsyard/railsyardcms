@@ -209,3 +209,7 @@ end
 Then /^show me the page$/ do
   save_and_open_page
 end
+
+Then /^wait for (\d+) seconds$/ do |s|
+  sleep(s.to_f)
+end
