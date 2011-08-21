@@ -34,16 +34,30 @@ function openDialog(title, url) {
         // Change all forms to be an ajax form using jquery.form.js
         $("#yd_dialog form").ajaxForm({
           beforeSubmit: function () {
+            $("#yd_dialog .error").hide();
             $("#yd_dialog form").hide();
             $("#yd_dialog .loading").show();
             $("#yd_dialog").height('auto');
             $("#yd_dialog").dialog('option', 'position', 'center');
           },
-          success: function() {
-            location.reload();
-          },
-          error: function(data, textStatus, jqXHR) {
-            alert(data.statusText + ' ('+data.status+')');
+          // success: function() {
+          //   location.reload();
+          // },
+          // error: function(data, textStatus, jqXHR) {
+          //   alert(data.statusText + ' ('+data.status+')');
+          // }
+          complete: function(data, textStatus, jqXHR) {
+            if (data.responseText == 'success') {
+              location.reload();
+            } else {
+              $("#yd_dialog .error").text(data.responseText);
+              $("#yd_dialog .error").show();
+              $("#yd_dialog .loading").hide();
+              $("#yd_dialog").height(400);
+              $("#yd_dialog form").show();
+              $("#yd_dialog").dialog('option', 'position', 'center');
+              //alert(data.responseText);
+            }
           }
         });
       });
@@ -51,30 +65,6 @@ function openDialog(title, url) {
     close: function() {
       location.reload();
     }
-  });
-}
-
-function submitDialog(form) {
-  debugger;
-   
-  $(this).ajaxSubmit({
-    success: function() {
-      alert('done');
-      //location.reload();
-    },
-    error: function(data, textStatus, jqXHR) {
-      alert(data.statusText + ' ('+data.status+')');
-    }
-  });
-  return;
-  $.ajax({
-      type: 'put',
-      url: '/admin/pages/4/snippets/sort',
-      data: ({'areas':sortorder}),
-      error: function(data, textStatus, jqXHR) {
-        alert(data.statusText + ' ('+data.status+')');
-        location.reload();
-      }
   });
 }
 
