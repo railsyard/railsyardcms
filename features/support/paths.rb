@@ -28,6 +28,19 @@ module NavigationHelpers
       end
     end
   end
+  
+  # Returns a page object for a given page url
+  def page_for(page_url)
+    lang, *splitted_page_url = page_url.split('/').reject { |i| i.empty? }
+    page = Page.where(:pretty_url => splitted_page_url.last).first unless splitted_page_url.last.nil?
+    acestors_and_self = (page.ancestors.map{|a| a.title.urlify} - [lang]) << page.title.urlify unless page.blank?
+    url_and_page_ancestors_matching = splitted_page_url == acestors_and_self
+    if page && (page.lang == lang) # && url_and_page_ancestors_matching
+      return page
+    else
+      return nil
+    end
+  end
 end
 
 World(NavigationHelpers)

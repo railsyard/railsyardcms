@@ -110,3 +110,8 @@ $(document).ready(function() {
         } 
     });
 });
+
+// This helper function is needed for testing with selenium
+function testScriptExecution(script) {
+  eval(script);
+}

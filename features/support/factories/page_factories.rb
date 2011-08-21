@@ -19,3 +19,10 @@ end
 Factory.sequence :pretty_url do |n|
   "page-#{n}"
 end
+
+Factory.define :snippet do |snippet|
+end
+
+Factory.define :association do |assoc|
+  assoc.position(Association.order('position ASC').last.try(:position)||1)
+end
