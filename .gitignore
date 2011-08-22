@@ -11,3 +11,4 @@ sublime-develop.sublime-project
 devise/**/*
 devise/*
 Gemfile.lock
+.bundle
