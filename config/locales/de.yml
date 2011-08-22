@@ -1,0 +1,226 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  conf:
+    language_extended_name: "Deutsch"
+    version: "1.0.0"    
+    
+  time:
+    formats:
+      date_with_parenthesized_time: "%d.%B.%Y (%H:%M)"
+
+  admin:
+    general:
+      hi: Hi
+      settings: Einstellungen
+      logout: Abmelden
+      last_login: Letzte Anmeldung
+      search: Suche
+      username: Benutzername
+      password: Passwort
+      remember_me: Angemeldet bleiben
+      login: Anmelden
+      signup: Registrieren
+      admin_area: Administrationsbereich
+      available: Verfügbar
+      trash: Mülleimer
+      title: Titel
+      author: Autor
+      category: Kategorie
+      last_update: Letztes Update
+      published: Veröffentlicht
+      edit: Bearbeiten
+      delete: Löschen
+      save: Speichern
+      save_and_close: Speichern und schließen
+      create: Anlegen
+      back: Zurück
+      attachments: Anhänge
+      pretty_url: Schöne URL
+      are_you_sure: Sind Sie sicher
+      are_you_sure_to_delete: Möchten Sie dies wirklich löschen
+      parent: Übergeordnet
+      visible_in_menu: Im Menü sichtbar
+      reserved: reserviert
+      metatag_title: Titel metatag
+      metatag_keywords: Schlüsselwörter metatag
+      metatag_description: Beschreibung metatag
+      language: Sprache
+      profile: Profil
+      public_site: Öffentliche Seite
+      general: Generell
+      go_to_first_child: Gehe zum ersten Unterelement
+      properties: Eigenschaften
+      contents: Inhalte
+    pages:
+      pages: Seiten
+      latest_pages: Letzte Seiten
+      new_page: Neue Seite
+      create_a_new_page: Neue Seite anlegen
+      edit_page: Seite bearbeiten
+      snippets_on_page: Snippets auf der Seite
+      snippets_for_header: Snippets im Bereich header
+      snippets_for_left_column: Snippets im Bereich left column
+      snippets_for_center_column: Snippets im Bereich center column
+      snippets_for_right_column: Snippets im Bereich right column
+      snippets_for_footer: Snippets im Bereich footer
+      snippets_for_extra_area: Snippets im Bereich extra area
+      properties_for_page: Seiteneigenschaften
+      pages_tree: Seitenbaum
+      page: Seite
+      are_you_sure_to_delete: "Möchten Sie die Seite \"%{name}\" wirklich löschen?"
+      layout_name: "Layout"
+    snippets:
+      add_a_new_snippet: Neues Snippet hinzufügen
+      edit_snippet: Snippet bearbeiten
+      name: Name
+      type: Typ
+      location: Position
+      div_id: Div id
+      div_class: Div class
+      div_style: Div style
+      body: Body
+      direct_call: Direct call action/controller
+      controller: Controller
+      action: Action
+      additional_params: Parameter
+      snippets: Snippets
+      snippet: Snippet
+      are_you_sure_to_delete: "Möchten Sie das Snippet \"%{name}\" wirklich entfernen?"
+    articles:
+      articles: Artikel
+      latest_articles: Letzte Artikel
+      new_article: Neuer Artikel
+      write_a_new_article: Neuen Artikel schreiben
+      edit_article: Artikel bearbeiten
+      abstract: Abstract
+      body: Body
+      articles_category_to_show: Articles category to show
+      all_categories: All categories
+      language: Sprache
+      article: Artikel
+      comments_enabled: Kommentare erlauben
+      are_you_sure_to_delete: "Möchten Sie den Artikel \"%{title}\" wirklich löschen?"
+    users:
+      users: Benutzer
+      new_user: Neuer Benutzer
+      edit_user: Benutzer bearbeiten
+      username: Benutzername
+      email: E-Mail
+      password: Passwort
+      password_confirmation: Passwortbestätigung
+      first_name: Vorname
+      last_name: Nachname
+      language: Sprache
+      roles: Rollen
+      enabled: Aktiviert
+      enabled_user: Aktivierte Benutzer
+      disabled_user: Deaktivierte Benutzer
+      delete: Löschen
+      admin_panel_language: Sprache des Administrationsbereichs
+      are_you_sure_to_delete: "Möchten Sie den Benutzer \"%{name}\" wirklich löschen?"
+    settings:
+      settings: Einstellungen
+      general_settings: Allgemeine Einstellungen
+      site_name: Seitenname
+      site_base_url: Seiten URL
+      site_wide_title_metatag: Seitenweiter Titel-Metatag
+      site_wide_keywords_metatag: Seitenweiter Stichwörter-Metatag
+      site_wide_description_metatag: Seitenweiter Beschreibungs-Metatag
+      default_language: Standardsprache
+      google_analitics_script: Google Analytics Script
+      comments_enabled_default: Artikelkommentare standardmäßig aktivieren
+      configuration_saved: Einstellungen speichern
+      theme_name: "Theme"
+      theme_change_warning: "Achtung: Wenn Sie das Theme ändern, wird allen Seiten das erste Layout zugewiesen und alle Snippets werden in den Limbo-Bereich verschoben!"
+      frontend_controls: "Snippet-Controls im Frontend anzeigen"
+    categories:
+      categories: Kategorien
+      new_category: Neue Kategorie
+    tags:
+      tags: Tags
+    attachments:
+      attach: Anhängen
+      are_you_sure_to_delete_this_attachment: Möchden Sie diesen Anhang wirklich löschen?
+      you_must_save_once_before_attaching_files: "Sie müssen erst speichern, bevor Sie Anhänge anhängen können."
+    search:
+      search: Suche
+      results_for: Ergebnisse für
+      no_search_results_for: Keine Suchergebnisse für
+      search_results_for: Suchergebnisse für
+    templates:
+      templates: Templates
+      template: Template
+      new_template: Neues Template
+      select_template: Template auswählen
+      template_apply_warning: "Wenn Sie der Seite ein Template zuweisen wird der Inhalt überschrieben. Sind Sie sicher, dass Sie fortfahren möchten?"
+    layouts:
+      layout: Layout
+      layouts: Layouts
+      layout_saved: Layout gespeichert
+      error_saving_layout: Es ist ein Fehler beim Speichern des Layouts aufgetreten
+
+  public:
+    general:
+      hi: Hi
+      settings: Einstellungen
+      logout: Abmelden
+      last_login: Letze Anmeldung
+      search: Suche
+      username: Benutzername
+      password: Passwort
+      remember_me: Angemeldet bleiben
+      login: Anmelden
+      signup: Registrieren
+      admin_area: Administrationsbereich
+      are_you_sure: Sind Sie sicher
+      are_you_sure_to_delete: Are you sure to delete
+      cancel: Cancel
+      submit: Submit
+    comments:
+      comments:
+        one: "1 comment"
+        other: "%{count} comments"
+      add_comment: "Add comment"
+      delete_comment: "Delete comment"
+      login_or_signup: "Login or signup to write a comment"
+    search:
+      search: "Search"
+      no_search_results_for: Möchten Sie dies wirklich löschen
+      search_results_for: Suchergebnisse für
+    articles:
+      articles: Artikel
+      article: Artikel
+    pages:
+      pages: Seiten
+      page: Seite
+    users:
+      registration_completed: "Vielen Dank für Ihre Anmeldung! Wir haben Ihnen eine E-Mail mit Ihrem Aktivierungscode zugeschickt."
+      activated: "Registrierung abgeschlossen! Bitte melden Sie sich an um fortzufahren."
+      activation_code_missing: "Der Aktivierungscode fehlt. Bitte öffnen Sie den Link aus Ihrere E-Mail."
+      activation_error: "Der Aktivierungscode ist ungültig, bitte überprüfen Sie ihn. Wenn Sie Ihren Account bereits aktiviert haben, melden Sie sich bitte an."
+      reset_code_sent: "Reset code sent to %{email}"
+      reset_code_sent: "Der Code zum Zurücksetzen Ihres Passworts wurde Ihnen an die E-Mail-Adresse '%{email}' gesendet."
+      address_not_found: "Die E-Mail-Adresse '%{email}' existiert nicht"
+      remember_me: "Angemeldet bleiben"
+      forgot_password: "Passwort vergessen?"
+      password_reset_successfully: "Das Passwort für den Benutzeraccount \"%{email}\" wurde geändert."
+      email: E-Mail
+      password_reset_request: Anfrage zum Zurücksetzen des Passworts
+      choose_a_new_password: "Wählen Sie ein neues Passwort für den Account \"%{email}\""
+      first_name: Vorname
+      last_name: Nachname
+      password: Passwort
+      confirm_password: Passwortbestätigung
+      username: Benutzername
+      signup: Registrieren
+      edit_user: "Benutzer \"%{user}\" bearbeiten"
+      user_successfully_modified: "Die Benutzerdaten wurden gespeichert"
+      
+  session:
+    logged_in_successfully: Sie haben sich erfolgreich angemeldet
+    user_or_password_not_valid: Benutzername oder Passwort sind ungültig
+    you_have_been_logged_out: Sie sind abgemeldet
+    
+    

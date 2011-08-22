@@ -28,7 +28,7 @@ class Theme
   #memoize :find
   
   def self.search_themes
-    themes_path = "#{RAILS_ROOT}/themes/[a-zA-Z0-9]*"
+    themes_path = "#{Rails.root.to_s}/themes/[a-zA-Z0-9]*"
     Dir.glob(themes_path).select do |file|
       File.readable?("#{file}/theme_conf.yml")
     end.compact.uniq

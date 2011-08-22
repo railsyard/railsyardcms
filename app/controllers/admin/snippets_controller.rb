@@ -10,16 +10,24 @@ class Admin::SnippetsController < Admin::AdminController
   
   def edit
     @snippet = Snippet.find(params[:id])  
+    respond_to do |format|
+      format.html { render }
+      format.dialog { render :layout => false }
+    end
   end
   
   def update
     @snippet = Snippet.find(params[:id])
     if @snippet
       @snippet.attributes = params[:snippet]
-      if @snippet.save && @snippet.errors.empty?
-        redirect_to admin_page_url(@snippet.page.id)
-      else
-        render :action => "edit"
+      respond_to do |format|
+        if @snippet.save && @snippet.errors.empty?
+          format.html { redirect_to admin_page_url(@snippet.page.id) }
+          format.dialog { render :text => "success", :status => 400 }
+        else
+          format.html { render :action => "edit" }
+          format.dialog { render :text => "#{@snippet.errors.full_messages.each { |m| "<li>#{m}</li>"}.join('') }", :layout => false }
+        end
       end
     end
   end
