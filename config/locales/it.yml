@@ -48,6 +48,8 @@ it:
       go_to_first_child: Vai al primo figlio
       properties: Proprietà
       contents: Contenuti
+      toggle: Toggle
+      featured_image: Immagine rappresentativa
     pages:
       pages: Pagine
       latest_pages: Pagine recenti

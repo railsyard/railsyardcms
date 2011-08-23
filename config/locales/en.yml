@@ -55,6 +55,8 @@ en:
       go_to_first_child: Go to first child
       properties: Properties
       contents: Contents
+      toggle: Toggle
+      featured_image: Featured image
     pages:
       pages: Pages
       latest_pages: Recent pages

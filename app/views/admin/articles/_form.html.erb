@@ -10,6 +10,9 @@
             <%= f.label :lang, t('admin.articles.language') %>
             <%= f.select :lang, options_from_collection_for_select(Language.all, 'short', 'name', @admin_editing_language) %>
             
+            <%= f.label :lang, t('admin.articles.featured_image') %>
+            <%= f.file_field :featured_image %>
+            
             <%= f.label "Options" %>
             <div id='options_list'>
               <div><%= f.check_box :published, {:id=>"published", :title=>"Immediately publish the article", :class=>"large", :checked => article.published} %><%= t('admin.general.published') %></div>

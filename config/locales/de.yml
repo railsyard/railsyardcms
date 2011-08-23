@@ -53,6 +53,8 @@ de:
       go_to_first_child: Gehe zum ersten Unterelement
       properties: Eigenschaften
       contents: Inhalte
+      toggle: Toggle
+      featured_image: Featured image
     pages:
       pages: Seiten
       latest_pages: Letzte Seiten

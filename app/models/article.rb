@@ -10,6 +10,9 @@ class Article < ActiveRecord::Base
   validates_uniqueness_of :pretty_url
   # validates_presence_of :categories
   
+  # paperclip
+  has_attached_file :featured_image, :styles => {:large => "500x500>", :medium => "300x300>", :thumb => "100x100>", :highlight => "307x132>" }
+  
   scope :published, :conditions => ["published = ?", true]
   scope :drafts, :conditions => ["published = ?", false]
   scope :not_reserved, :conditions => ["reserved = ?", false]
