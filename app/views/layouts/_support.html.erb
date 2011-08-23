@@ -1,4 +1,4 @@
-<% if current_user && current_user.is_admin? && cfg.frontend_controls %>
+<% if has_frontend_controls? %>
   <%= stylesheet_link_tag :all %>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
@@ -13,4 +13,12 @@
     <div id="yd_dialog_content"></div>
     <div class="loading"><span>Loading data, please wait!</span></div>
   </div>
+  
+  <%= javascript_tag <<-JAVASCRIPT
+  var admin_snippet_sort_url = '/admin/pages/#{@page.id}/snippets/sort';
+  $(document).ready(function() {
+    adminInitSnippetSortable();
+  });
+  JAVASCRIPT
+  %>
 <% end %>
