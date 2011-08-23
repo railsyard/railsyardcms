@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110823120136) do
+ActiveRecord::Schema.define(:version => 20110823123613) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -98,6 +98,10 @@ ActiveRecord::Schema.define(:version => 20110823120136) do
     t.string   "layout_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "featured_image_file_name"
+    t.string   "featured_image_content_type"
+    t.integer  "featured_image_file_size"
+    t.datetime "featured_image_updated_at"
   end
 
   add_index "pages", ["ancestry"], :name => "index_pages_on_ancestry"

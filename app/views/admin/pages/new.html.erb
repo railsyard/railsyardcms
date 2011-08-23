@@ -14,13 +14,14 @@
 </section>
 
 <div class="wrap cell_16">
-    <%= form_for @page, :url => admin_pages_path do |f| %>
+    <%= form_for @page, :url => admin_pages_path, :html => { :multipart => true } do |f| %>
     <%= render :partial => "form", :object => @page, :as => :page, :locals => {:f => f, :lang => @admin_editing_language} %>
 
     <div class="buttons">
         <%= submit_tag t('admin.general.save'), :class => "submit" %>    
         <%= link_to t('admin.general.back'), admin_pages_url, :class => "submit" %>
     </div>
+    <% end %>
 </div>
-<% end %>
+
 

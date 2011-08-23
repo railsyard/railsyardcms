@@ -46,6 +46,9 @@
                     :title=>"Una descrizione del contenuto della pagina",
                     :class=>"large"
                 } %>
+                
+                <%= f.label :lang, t('admin.general.featured_image') %>
+                <%= f.file_field :featured_image %>
 
                 <%= f.label 'Content div id' %>
                 <%= f.text_field :div_id %>

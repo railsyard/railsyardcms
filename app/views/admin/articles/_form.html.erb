@@ -10,7 +10,7 @@
             <%= f.label :lang, t('admin.articles.language') %>
             <%= f.select :lang, options_from_collection_for_select(Language.all, 'short', 'name', @admin_editing_language) %>
             
-            <%= f.label :lang, t('admin.articles.featured_image') %>
+            <%= f.label :lang, t('admin.general.featured_image') %>
             <%= f.file_field :featured_image %>
             
             <%= f.label "Options" %>
