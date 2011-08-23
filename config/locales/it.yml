@@ -98,6 +98,7 @@ it:
       article: Articolo
       comments_enabled: Commenti abilitati
       are_you_sure_to_delete: "Vuoi davvero cancellare l\'articolo \"%{title}\"?"
+      hot: "In evidenza"
     users:
       users: Utenti
       new_user: Nuovo utente

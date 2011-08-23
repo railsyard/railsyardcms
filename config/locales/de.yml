@@ -102,6 +102,7 @@ de:
       article: Artikel
       comments_enabled: Kommentare erlauben
       are_you_sure_to_delete: "Möchten Sie den Artikel \"%{title}\" wirklich löschen?"
+      hot: "Highlight"
     users:
       users: Benutzer
       new_user: Neuer Benutzer

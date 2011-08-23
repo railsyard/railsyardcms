@@ -10,11 +10,12 @@
             <%= f.label :lang, t('admin.articles.language') %>
             <%= f.select :lang, options_from_collection_for_select(Language.all, 'short', 'name', @admin_editing_language) %>
             
-            <%= f.label :published, t('admin.general.published') %>
-            <%= f.check_box :published, {:id=>"published", :title=>"Immediately publish the article", :class=>"large", :checked => article.published} %>
-            
-            <%= f.label t('admin.general.reserved') %>
-            <%= f.check_box :reserved, {:id=>"reserved", :title=>"Makes the article be visible only to premium users", :class=>"large", :checked => article.reserved} %>
+            <%= f.label "Options" %>
+            <div id='options_list'>
+              <div><%= f.check_box :published, {:id=>"published", :title=>"Immediately publish the article", :class=>"large", :checked => article.published} %><%= t('admin.general.published') %></div>
+              <div><%= f.check_box :reserved, {:id=>"reserved", :title=>"Makes the article be visible only to premium users", :class=>"large", :checked => article.reserved} %><%= t('admin.general.reserved') %></div>
+              <div><%= f.check_box :hot, {:id=>"hot", :title=>"Highlight/sticky news", :class=>"large", :checked => article.hot} %><%= t('admin.general.hot') %></div>
+            </div>
             
             <%= f.label "Categories" %>
             <div id='categories_list'>   
