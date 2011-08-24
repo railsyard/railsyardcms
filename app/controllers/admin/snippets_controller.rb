@@ -35,24 +35,29 @@ class Admin::SnippetsController < Admin::AdminController
   ## Creation, sorting and moving between areas
   # TO-DO more efficient code. I'm rushing.
   def sort
-    @page_snippets = Page.find(params[:page_id]).snippets 
+    if params[:article_layout_id]
+      @resource_snippets = ArticleLayout.find(params[:article_layout_id]).snippets
+    elsif params[:page_id]
+      @resource_snippets = Page.find(params[:page_id]).snippets
+    end
+    
     params[:areas].map do |area|
       unless area[1].blank?
         area_name = area[0]
         received_snippets = area[1].split(',')
         received_snippets.each_with_index do |rec_snip, position|
           # New snippet creation
-          unless @page_snippets.map{|snip| snip.handler}.include?(rec_snip) # checks if the snippet was already present on page
+          unless @resource_snippets.map{|snip| snip.handler}.include?(rec_snip) # checks if the snippet was already present on page
             rec_snip_class, rec_snip_action = rec_snip.split('%')[0], rec_snip.split('%')[1]
             available_snippet = Snippet.find_available(rec_snip_class, rec_snip_action) # search the received snippet in the available snippets
-            @new_snippet = @page_snippets.create :area => area_name,                    # and creates the real snippet for the area on db
+            @new_snippet = @resource_snippets.create :area => area_name,                    # and creates the real snippet for the area on db
                                                  :handler => rec_snip,
                                                  :title => available_snippet["name"],
                                                  :cell_action => available_snippet["method"],
                                                  :cell_controller => rec_snip_class
           end
           # Snippets sorting and area change
-          current_snippet = @page_snippets.find_by_handler(rec_snip)
+          current_snippet = @resource_snippets.find_by_handler(rec_snip)
           current_snippet.association.update_attribute(:position, position+1)
           current_snippet.update_attribute(:area, area_name)
         end

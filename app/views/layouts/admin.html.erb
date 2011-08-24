@@ -77,10 +77,11 @@
                             <!-- <li <%#= set_class("pages", "preset") %>><a href="#">Preset</a></li> -->
                         </ul>
                     </li>
-                    <li><a <%= set_class(:class => "top_level", :controller => "articles") %>><img src="/admin/images/icons/small/grey/Write.png"/>Articoli</a>
+                    <li><a <%= set_class(:class => "top_level", :controller => ["articles","article_layouts"]) %>><img src="/admin/images/icons/small/grey/Write.png"/>Articoli</a>
                         <ul class="drawer">
                             <li <%= set_class(:controller => "articles", :action => "index") %>><%= link_to "List", admin_articles_path() %></li>
                             <li <%= set_class(:controller => "articles", :action => "new") %>><%= link_to "New", new_admin_article_path() %></li>
+                            <li <%= set_class(:controller => "article_layouts", :action => "edit") %>><%= link_to "Design", edit_admin_article_layout_path(@admin_editing_language) %></li>
                             <!-- <li><a href="#">Categories</a></li> -->
                             <!-- <li><a href="#">Comments</a></li> -->
                         </ul>

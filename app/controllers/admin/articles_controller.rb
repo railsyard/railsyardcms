@@ -46,6 +46,7 @@ class Admin::ArticlesController < Admin::AdminController
   end
   
   def edit
+    @admin_editing_language = admin_editing_language
     @article = Article.find(params[:id])
   end
   

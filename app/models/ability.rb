@@ -7,14 +7,14 @@ class Ability
       can :manage, :all
     elsif user.role? :article_writer
       can :manage, [Article]
-      can :read, [Page, User, Setting]
+      can :read, [Page, User, Setting, ArticleLayout]
     elsif user.role? :premium_user
-      can :read, [Article, Page, User, Setting]
+      can :read, [Article, Page, User, Setting, ArticleLayout]
     else
       can :read, Article do |art|
         !article.reserved
       end
-      can :read, [Page, User, Setting]
+      can :read, [Page, User, Setting, ArticleLayout]
     end
   end
   

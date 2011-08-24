@@ -35,6 +35,13 @@ Railsyard2::Application.routes.draw do
     resources :articles do
       post 'toggle', :on => :member
     end
+    resources :article_layouts do
+      put 'apply_layout', :on => :member
+      resources :snippets do
+        put 'sort', :on => :collection
+        post 'toggle', :on => :member
+      end
+    end
     resources :categories
     resource :settings
   end
