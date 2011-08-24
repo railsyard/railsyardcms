@@ -37,6 +37,7 @@ group :development, :test do
   gem 'growl_notify'
   gem 'database_cleaner'
   gem 'factory_girl'
+  gem 'railroady'
 end
 
 
