@@ -1,5 +1,6 @@
 class ContentCell < Cell::Rails
   include Yard
+  helper_method :yard_home, :get_lang, :get_yard_url, :get_article_url # coming from lib/yard
   
   def text_widget(args)
     @options = args[:options]

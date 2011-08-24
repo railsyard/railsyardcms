@@ -11,8 +11,8 @@ class ApplicationController < ActionController::Base
   # check_authorization
   
   helper :all # include all helpers, all the time
-  helper_method :yard_home_link, :cfg, :get_article_url # listed methods became helpers
-  helper_method :yard_home, :get_lang, :get_yard_url # coming from lib/yard - listed methods became helpers
+  helper_method :yard_home_link, :cfg # listed methods became helpers
+  helper_method :yard_home, :get_lang, :get_yard_url, :get_article_url # coming from lib/yard - listed methods became helpers
   before_filter :set_locale
   
   rescue_from CanCan::AccessDenied do |exception|
@@ -60,10 +60,6 @@ class ApplicationController < ActionController::Base
       when "500" then render(:layout => false, :file	=> "#{Rails.root.to_s}/public/500.html", :status	=> "500 Internal Server Error")
     end
   end
-  
-  # def get_article_url(article)
-  #   show_article_path(article.lang, article.publish_at.year, article.publish_at.month, article.publish_at.day, article.pretty_url)
-  # end
   
   # def rescue_action_in_public(exception)
   #   logger.error("rescue_action_in_public executed")

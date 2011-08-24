@@ -1,6 +1,6 @@
 class MenuCell < Cell::Rails
   include Yard
-  helper_method :yard_home, :get_lang, :get_yard_url # coming from lib/yard
+  helper_method :yard_home, :get_lang, :get_yard_url, :get_article_url # coming from lib/yard
   
   def first_level(args)
     @page = args[:page]
