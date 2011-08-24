@@ -19,10 +19,11 @@ class Admin::SnippetsController < Admin::AdminController
   def update
     @snippet = Snippet.find(params[:id])
     if @snippet
+      back_url = @snippet.article_layout ? edit_admin_article_layout_path(@snippet.article_layout.lang) : admin_page_path(@snippet.page.id)
       @snippet.attributes = params[:snippet]
       respond_to do |format|
         if @snippet.save && @snippet.errors.empty?
-          format.html { redirect_to admin_page_url(@snippet.page.id) }
+          format.html { redirect_to back_url }
           format.dialog { render :text => "success", :status => 400 }
         else
           format.html { render :action => "edit" }

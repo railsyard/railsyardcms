@@ -9,14 +9,16 @@
 </header>
 
 <div class="wrap cell_16">
-    <%= form_for @snippet, :url => admin_page_snippet_path(@snippet.page.id, @snippet.id), :html => { :multipart => true } do |f| %>
+    <% destination = @snippet.article_layout ? admin_article_layout_snippet_path(@snippet.article_layout.id, @snippet.id) : admin_page_snippet_path(@snippet.page.id, @snippet.id) %>
+    <% back_url = @snippet.article_layout ? edit_admin_article_layout_path(@snippet.article_layout.lang) : admin_page_path(@snippet.page.id) %>
+    <%= form_for @snippet, :url => destination, :html => { :multipart => true } do |f| %>
     <%= errors_for(@snippet) %>
     <%= render :partial => "form", :object => @article, :locals => {:f => f} %>
 
     <div class="buttons">
         <%= submit_tag t('admin.general.save'), :class => "submit" %>    
-        <%= link_to t('admin.general.back'), admin_page_url(@snippet.page.id), :class => "submit" %>
-        <%= link_to t('admin.general.delete'), admin_page_snippet_path(@snippet.page.id, @snippet.id), :method => :delete, :confirm => t('admin.pages.are_you_sure_to_delete', :name => @snippet.title), :class => "submit delete"  %>
+        <%= link_to t('admin.general.back'), back_url, :class => "submit" %>
+        <%= link_to t('admin.general.delete'), destination, :method => :delete, :confirm => t('admin.pages.are_you_sure_to_delete', :name => @snippet.title), :class => "submit delete"  %>
     </div>
     <% end %>
 </div>
