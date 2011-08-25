@@ -37,6 +37,7 @@ Railsyard2::Application.routes.draw do
     end
     resources :article_layouts do
       put 'apply_layout', :on => :member
+      put 'set_editing_language', :on => :collection
       resources :snippets do
         put 'sort', :on => :collection
         post 'toggle', :on => :member

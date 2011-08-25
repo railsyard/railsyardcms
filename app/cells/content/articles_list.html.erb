@@ -3,7 +3,7 @@
     <div id="article_<%= a.id %>">
       <h2><%= a.title %></h2>
       <div class="article_abstract"><%= render :inline => a.short %></div>
-      <div class="article_body"><%= render :inline => a.body %></div>
+      <!-- <div class="article_body"><%#= render :inline => a.body %></div>-->
       <div><%= link_to "Full article", get_article_url(a) %></div>
     </div>
   <% end %>

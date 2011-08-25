@@ -26,4 +26,10 @@ class Admin::ArticleLayoutsController < Admin::AdminController
     # Renders apply_layout.js.erb
   end
   
+  def set_editing_language
+    session[:admin_editing_language] = params[:admin_editing_language] unless params[:admin_editing_language].blank?
+    @admin_editing_language = session[:admin_editing_language]
+    # Renders set_editing_language.js.erb
+  end
+  
 end

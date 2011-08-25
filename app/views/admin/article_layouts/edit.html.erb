@@ -2,6 +2,11 @@
     <h2>Selecting snippets on article page - <%= @article_layout.lang %></h2>
 </header>
 
+<div class="lang_selector">
+    <%= select_tag "language", options_from_collection_for_select(Language.all, 'short', 'name', @admin_editing_language),
+        :onchange => "$.post('#{set_editing_language_admin_article_layouts_path}', {'_method':'put', 'admin_editing_language':this.value} );" %>    
+</div>
+
 <%= render :partial => "available_areas", :locals => {:current_layout => @current_layout, :snippets => @snippets} %>
 
 <div class="wrap cell_8">
