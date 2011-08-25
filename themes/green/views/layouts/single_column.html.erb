@@ -24,17 +24,19 @@
         <title>Railsyard 2</title>
         <h1>======= Tema <%= @cfg.theme_name %> =======</h1>
         <%= yield_snippets(@page, "header") if @page %>
+        <%= yield_article_snippets(@article_layout, "header", @article) if @article %>
     </header>
     
     <container>
         <h2>Container</h2>
         <%= yield_snippets(@page, "body") if @page %>
-        <%= yield unless @page %>
+        <%= yield_article_snippets(@article_layout, "body", @article) if @article %>
     </container>
     
     <footer>
         <h2>Footer</h2>
         <%= yield_snippets(@page, "footer") if @page %>
+        <%= yield_article_snippets(@article_layout, "footer", @article) if @article %>
     </footer>
 
     <%= render 'layouts/support' %>
