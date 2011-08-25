@@ -10,6 +10,7 @@ class Admin::SettingsController < Admin::AdminController
   
   def edit
     @setting = cfg
+    @admin_editing_language = admin_editing_language
   end
   
   def update
