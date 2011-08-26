@@ -9,10 +9,12 @@ class Admin::UsersController < Admin::AdminController
   authorize_resource
   
   def index
+    @admin_editing_language = admin_editing_language
     @users = User.all
   end
   
   def new
+    @admin_editing_language = admin_editing_language
     @user = User.new
   end
   
@@ -28,6 +30,7 @@ class Admin::UsersController < Admin::AdminController
   end
   
   def edit
+    @admin_editing_language = admin_editing_language
     @user = User.find(params[:id])
   end
   
