@@ -16,7 +16,7 @@ gem 'rake', '0.9.2'
 gem 'paperclip', '>= 2.3.15'
 gem "ckeditor", '3.6.0.pre'
 
-gem 'railsyard-markdown-content', :path => '/Users/spieker/Sites/railsyardcms/vendor/gems/railsyard-markdown-content'
+gem 'railsyard-markdown-content', :path => 'vendor/gems/railsyard-markdown-content'
 
 #gem 's3', '>= 0.3.7'
 #gem 'heroku', '>= 1.17.14'
