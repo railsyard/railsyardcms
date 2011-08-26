@@ -39,8 +39,9 @@ class Snippet < ActiveRecord::Base
   end
   
   def self.search_cells
-    cells_path = "#{Rails.root.to_s}/app/cells"
-    Dir.glob("#{cells_path}/*.yml").select do |file|
+    #cells_path = "#{Rails.root.to_s}/app/cells"
+    files = RAILSYARD_WIDGET_PATHS.map { |p| p + '/*.yml' }
+    Dir.glob(files).select do |file|
       File.readable?("#{file}")
     end.compact.uniq
   end
