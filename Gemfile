@@ -16,6 +16,8 @@ gem 'rake', '0.9.2'
 gem 'paperclip', '>= 2.3.15'
 gem "ckeditor", '3.6.0.pre'
 
+gem 'railsyard-markdown-content', :path => 'vendor/gems/railsyard-markdown-content'
+
 #gem 's3', '>= 0.3.7'
 #gem 'heroku', '>= 1.17.14'
 #gem 'haml', '>= 3.0.25'
@@ -37,6 +39,7 @@ group :development, :test do
   gem 'growl_notify'
   gem 'database_cleaner'
   gem 'factory_girl'
+  gem 'railroady'
 end
 
 

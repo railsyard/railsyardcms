@@ -18,7 +18,7 @@ Feature: Accessing the admin panel
     Given the page is setup in basic mode
     And I am logged in as "admin@example.com" with password "changeme"
     And I go to the admin page
-    When I follow "cancella" within "table.datatable"
+    When I follow "Delete" within "table.datatable"
     And I go to the new admin page page
     And I fill in "title" with "My new page"
     And I check "page_visible_in_menu"
