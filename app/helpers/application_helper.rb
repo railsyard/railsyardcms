@@ -8,7 +8,7 @@ module ApplicationHelper
     out << "<div class=\"snippets drop_target\" id=\"#{area}\">" if has_frontend_controls?
     page.snippets.for_area(area).map do |snip|
       div_class = (snip.options.is_a?(Hash) && snip.options.has_key?(:div_class)) ? snip.options[:div_class] : ""      
-      out << "<div class=\"drag_item\" id=\"#{snip.handler}\"><div id=\"snippet-modal-dialog-#{snip.id}\" title=\"Configuration: #{h snip.title}\"></div>" if frontend_administration_enabled
+      out << "<div class=\"drag_item\" id=\"#{snip.handler}\"><div id=\"snippet-modal-dialog-#{snip.id}\" title=\"Configuration: #{h snip.title}\"></div>" if has_frontend_controls?
       out << "<div class=\"snippet #{div_class}\" id=\"snippet-#{snip.id}\">"
       if has_frontend_controls?
         out << "<div class=\"controls\" id=\"snippet-controls-#{snip.id}\">"
@@ -27,12 +27,11 @@ module ApplicationHelper
   end
   
   def yield_article_snippets(article_layout, area, article)
-    frontend_administration_enabled = current_user && current_user.is_admin? && cfg.frontend_controls
     out = ""
-    out << "<div class=\"snippets drop_target\" id=\"#{area}\">" if frontend_administration_enabled
+    out << "<div class=\"snippets drop_target\" id=\"#{area}\">" if has_frontend_controls?
     article_layout.snippets.for_area(area).map do |snip|
       div_class = (snip.options.is_a?(Hash) && snip.options.has_key?(:div_class)) ? snip.options[:div_class] : ""      
-      out << "<div class=\"drag_item\" id=\"#{snip.handler}\"><div id=\"snippet-modal-dialog-#{snip.id}\" title=\"Configuration: #{h snip.title}\"></div>" if frontend_administration_enabled
+      out << "<div class=\"drag_item\" id=\"#{snip.handler}\"><div id=\"snippet-modal-dialog-#{snip.id}\" title=\"Configuration: #{h snip.title}\"></div>" if has_frontend_controls?
       out << "<div class=\"snippet #{div_class}\" id=\"snippet-#{snip.id}\">"
       if current_user && current_user.is_admin? && cfg.frontend_controls
         out << "<div class=\"controls\" id=\"snippet-controls-#{snip.id}\">"
@@ -43,10 +42,10 @@ module ApplicationHelper
       end
       out << render_cell(snip.cell_controller, snip.cell_action, :article_layout => article_layout, :article => article, :options => snip.options, :snip_id => snip.id)
       out << "</div>"
-      out << "<div class=\"cleanup\"></div>" if frontend_administration_enabled
-      out << "</div>" if frontend_administration_enabled
+      out << "<div class=\"cleanup\"></div>" if has_frontend_controls?
+      out << "</div>" if has_frontend_controls?
     end
-    out << "</div>" if frontend_administration_enabled
+    out << "</div>" if has_frontend_controls?
     out.hs
   end
     
