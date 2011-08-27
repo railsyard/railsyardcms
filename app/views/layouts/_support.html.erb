@@ -14,8 +14,15 @@
     <div class="loading"><span>Loading data, please wait!</span></div>
   </div>
   
+  <%
+    if @page
+      admin_snippet_sort_url = '/admin/pages/#{@page.id}/snippets/sort'
+    elsif @article_layout
+      admin_snippet_sort_url = sort_admin_article_layout_snippets_path(@article_layout)
+    end 
+  %>
   <%= javascript_tag <<-JAVASCRIPT
-  var admin_snippet_sort_url = '/admin/pages/#{@page.id}/snippets/sort';
+  var admin_snippet_sort_url = '#{admin_snippet_sort_url}';
   $(document).ready(function() {
     adminInitSnippetSortable();
   });
