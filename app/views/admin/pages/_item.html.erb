@@ -12,8 +12,8 @@
         <%= item.published ? (link_to "v", toggle_admin_page_path(item), :remote => true, :method => :post, :html => {:class => 'icon-v'}) : (link_to "x".hs, toggle_admin_page_path(item), :remote => true, :method => :post, :html => {:class => 'icon-x'}) %>
     </td>
     <td class="center">
-        <%= link_to "opzioni", edit_admin_page_path(item) %>
-        <%= link_to "contenuto", admin_page_path(item) %>
-        <%= link_to "cancella", admin_page_path(item), :class => 'icon-delete', :method => :delete, :confirm => t('admin.pages.are_you_sure_to_delete', :name => item.title) %>
+        <%= link_to t("admin.general.properties"), edit_admin_page_path(item) %>
+        <%= link_to t("admin.general.contents"), admin_page_path(item) %>
+        <%= link_to t("admin.general.delete"), admin_page_path(item), :class => 'icon-delete', :method => :delete, :confirm => t('admin.pages.are_you_sure_to_delete', :name => item.title) %>
     </td>
 </tr>

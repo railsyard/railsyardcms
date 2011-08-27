@@ -14,7 +14,7 @@
 </section>
 
 <div class="wrap cell_16">
-    <%= form_for @article, :url => admin_articles_path do |f| %>
+    <%= form_for @article, :url => admin_articles_path, :html => { :multipart => true } do |f| %>
     <%= render :partial => "form", :object => @article, :as => :article, :locals => {:f => f} %>
 
     <div class="buttons">    

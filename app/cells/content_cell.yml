@@ -21,9 +21,13 @@ cell:
                 limit:  integer
         -   name:   Articles list
             method: articles_list
-            desc:   A list of articles with category filter
-            serialized_attributes:
-                categories_ids: string
+            desc:   A list of articles #with category filter
+            # serialized_attributes:
+            #     categories_ids: string
+        -   name:   Article show
+            method: article_show
+            desc:   Shows the article if available
+        
         # -   name:   Downloads widget
         #     method: downloads_widget
         #     desc:   A downloads widget

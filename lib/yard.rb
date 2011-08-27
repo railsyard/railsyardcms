@@ -40,5 +40,8 @@ module Yard
     lang
   end
   
+  def get_article_url(article)
+    show_article_path(article.lang, article.publish_at.year, article.publish_at.month, article.publish_at.day, article.pretty_url)
+  end
   
 end

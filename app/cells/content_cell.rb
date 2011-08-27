@@ -1,5 +1,6 @@
 class ContentCell < Cell::Rails
   include Yard
+  helper_method :yard_home, :get_lang, :get_yard_url, :get_article_url # coming from lib/yard
   
   def text_widget(args)
     @options = args[:options]
@@ -25,12 +26,17 @@ class ContentCell < Cell::Rails
     render
   end
   
-  
-  def download_widget(args)
-    @options = args[:options]
+  def article_show(args)
+    @article = args[:article]
     @snip_id = args[:snip_id]
     render
   end
+  
+  # def download_widget(args)
+  #   @options = args[:options]
+  #   @snip_id = args[:snip_id]
+  #   render
+  # end
   
   
 end

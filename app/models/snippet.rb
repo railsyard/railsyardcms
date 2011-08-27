@@ -1,8 +1,9 @@
 class Snippet < ActiveRecord::Base
   extend ActiveSupport::Memoizable
-  attr_accessible :title, :description, :published, :publish_at, :div_id, :div_class, :div_style, :rea, :cell_controller, :cell_action, :handler, :options
+  attr_accessible :title, :description, :published, :publish_at, :div_id, :div_class, :div_style, :area, :cell_controller, :cell_action, :handler, :options
   has_one :association, :dependent => :destroy
   has_one :page, :through => :association
+  has_one :article_layout, :through => :association
   has_many :snippet_components
   accepts_nested_attributes_for :snippet_components
   

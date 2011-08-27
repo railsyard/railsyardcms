@@ -1,0 +1,23 @@
+<div class="wrap cell_8" id='available_areas'>
+    <header>
+        <h2>
+           Aree disponibili in questo layout
+        </h2>        
+    </header>
+    <div class="area_box">
+        <% current_layout.areas.map do |area| %>
+            <h2><%= area["title"] %></h2>
+            <section id="<%= area["short"] %>" class='drop_target'>
+                <%= render :partial => "snippet_in_area", :collection => snippets.where('area' => area["short"]), :as => :snip %>
+            </section>
+        <% end %>
+    </div>
+    
+    <div class="area_box">
+        <h2>Limbo</h2>
+        <section id="limbo" class='area_box drop_target'>
+            <%= render :partial => "snippet_in_area", :collection => snippets.where('area' => 'limbo'), :as => :snip %>
+        </section>
+    </div>
+    
+</div>

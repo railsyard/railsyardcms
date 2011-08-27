@@ -1,7 +1,7 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
-en:
+de:
   conf:
     language_extended_name: "Deutsch"
     version: "1.0.0"    
@@ -53,6 +53,8 @@ en:
       go_to_first_child: Gehe zum ersten Unterelement
       properties: Eigenschaften
       contents: Inhalte
+      toggle: Toggle
+      featured_image: Featured image
     pages:
       pages: Seiten
       latest_pages: Letzte Seiten
@@ -102,6 +104,7 @@ en:
       article: Artikel
       comments_enabled: Kommentare erlauben
       are_you_sure_to_delete: "Möchten Sie den Artikel \"%{title}\" wirklich löschen?"
+      hot: "Highlight"
     users:
       users: Benutzer
       new_user: Neuer Benutzer

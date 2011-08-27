@@ -1,9 +1,10 @@
 class MenuCell < Cell::Rails
   include Yard
-  helper_method :yard_home, :get_lang, :get_yard_url # coming from lib/yard
+  helper_method :yard_home, :get_lang, :get_yard_url, :get_article_url # coming from lib/yard
   
   def first_level(args)
     @page = args[:page]
+    @page = yard_home if @page.blank?
     @first_level_pages = yard_home.siblings
     @snip_id = args[:snip_id]
     fill_menu_variables(@page)
@@ -12,6 +13,7 @@ class MenuCell < Cell::Rails
 
   def two_levels(args)
     @page = args[:page]
+    @page = yard_home if @page.blank?
     @first_level_pages = yard_home.siblings
     @snip_id = args[:snip_id]
     fill_menu_variables(@page)
@@ -20,6 +22,7 @@ class MenuCell < Cell::Rails
 
   def siblings(args)
     @page = args[:page]
+    @page = yard_home if @page.blank?
     fill_menu_variables(@page)
     @snip_id = args[:snip_id]
     render
@@ -27,6 +30,7 @@ class MenuCell < Cell::Rails
 
   def children(args)
     @page = args[:page]
+    @page = yard_home if @page.blank?
     fill_menu_variables(@page)
     @snip_id = args[:snip_id]
     render
@@ -34,6 +38,7 @@ class MenuCell < Cell::Rails
 
   def siblings_and_children(args)
     @page = args[:page]
+    @page = yard_home if @page.blank?
     fill_menu_variables(@page)
     @snip_id = args[:snip_id]
     render
@@ -41,6 +46,7 @@ class MenuCell < Cell::Rails
 
   def footer(args)
     @page = args[:page]
+    @page = yard_home if @page.blank?
     @first_level_pages = yard_home.siblings
     fill_menu_variables(@page)
     @snip_id = args[:snip_id]
@@ -49,6 +55,7 @@ class MenuCell < Cell::Rails
   
   def nav(args)
     @page = args[:page]
+    @page = yard_home if @page.blank?
     @ancestors = @page.ancestors
     @ancestors << @page
     @snip_id = args[:snip_id]

@@ -15,8 +15,8 @@
         <%= item.published ? 'v' : 'x' %>
     </td>
     <td class="center">
-        <%= link_to "edit", edit_admin_article_path(item) %>
-        <%= link_to "toggle", toggle_admin_article_path(item), :remote => true, :method => :post %>
-        <%= link_to "delete", admin_article_path(item), :class => 'icon-delete', :method => :delete, :confirm => t('admin.articles.are_you_sure_to_delete', :title => item.title) %>
+        <%= link_to t("admin.general.edit"), edit_admin_article_path(item) %>
+        <%= link_to t("admin.general.toggle"), toggle_admin_article_path(item), :remote => true, :method => :post %>
+        <%= link_to t("admin.general.delete"), admin_article_path(item), :class => 'icon-delete', :method => :delete, :confirm => t('admin.articles.are_you_sure_to_delete', :title => item.title) %>
     </td>
 </tr>

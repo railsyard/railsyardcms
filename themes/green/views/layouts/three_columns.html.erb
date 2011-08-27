@@ -11,6 +11,8 @@
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
   <%= javascript_include_tag 'jquery_ujs' %>
   <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag '/admin/javascripts/jquery.form.js' %>
+  <%= javascript_include_tag :ckeditor %>
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -22,27 +24,31 @@
         <title>Railsyard 2</title>
         <h1>======= Tema <%= @cfg.theme_name %> =======</h1>
         <%= yield_snippets(@page, "header") if @page %>
+        <%= yield_article_snippets(@article_layout, "header", @article) if @article %>
     </header>
     
     <aside id='aside_left'>
         <h2>Container</h2>
         <%= yield_snippets(@page, "left") if @page %>
+        <%= yield_article_snippets(@article_layout, "left", @article) if @article %>
     </aside>
     
     <container>
         <h2>Container</h2>
         <%= yield_snippets(@page, "center") if @page %>
-        <%= yield unless @page %>
+        <%= yield_article_snippets(@article_layout, "center", @article) if @article %>
     </container>
     
     <aside id='aside_right'>
         <h2>Container</h2>
         <%= yield_snippets(@page, "right") if @page %>
+        <%= yield_article_snippets(@article_layout, "right", @article) if @article %>
     </aside>
     
     <footer>
         <h2>Footer</h2>
         <%= yield_snippets(@page, "footer") if @page %>
+        <%= yield_article_snippets(@article_layout, "footer", @article) if @article %>
     </footer>
     
     <%= render 'layouts/support' %>

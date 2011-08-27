@@ -1,7 +1,11 @@
 <header class="page_description">
-    <h2><%= @page.title %> - gestione contenuto</h2>
-    <p>Ultima modifica effettuata il <%= l(@page.updated_at, :format=>:date_with_parenthesized_time) %> ed è stata pubblicata il <%= l(@page.publish_at, :format=>:date_with_parenthesized_time) %> </p>
+    <h2>Selecting snippets on article page - <%= @article_layout.lang %></h2>
 </header>
+
+<div class="lang_selector">
+    <%= select_tag "language", options_from_collection_for_select(Language.all, 'short', 'name', @admin_editing_language),
+        :onchange => "$.post('#{set_editing_language_admin_article_layouts_path}', {'_method':'put', 'admin_editing_language':this.value} );" %>    
+</div>
 
 <%= render :partial => "available_areas", :locals => {:current_layout => @current_layout, :snippets => @snippets} %>
 
@@ -90,7 +94,7 @@ $(document).ready(function() {
             });
             $.ajax({
                 type: 'put',
-                url: '<%= sort_admin_page_snippets_path(@page) %>',
+                url: '<%= sort_admin_article_layout_snippets_path(@article_layout) %>',
                 data: ({'areas':sortorder}),
                 // complete: function(response) {
                 //     console.debug(response);
@@ -107,7 +111,7 @@ $(document).ready(function() {
         if (confirm("Are you sure to change layout? All the current snippets on page will be moved to the Limbo."))
             $.ajax({
                 type: "put",
-                url: '<%= apply_layout_admin_page_path(@page) %>',
+                url: '<%= apply_layout_admin_article_layout_path(@article_layout.id) %>',
                 data: "selected_layout="+selection,
                 // success: function(response) {
                 //     console.debug(response);

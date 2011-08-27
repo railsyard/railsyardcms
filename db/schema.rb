@@ -10,7 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110819084751) do
+ActiveRecord::Schema.define(:version => 20110824160233) do
+
+  create_table "article_layouts", :force => true do |t|
+    t.string   "layout_name"
+    t.string   "lang"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -30,6 +37,10 @@ ActiveRecord::Schema.define(:version => 20110819084751) do
     t.boolean  "hot"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "featured_image_file_name"
+    t.string   "featured_image_content_type"
+    t.integer  "featured_image_file_size"
+    t.datetime "featured_image_updated_at"
   end
 
   create_table "associations", :force => true do |t|
@@ -38,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20110819084751) do
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "article_layout_id"
   end
 
   create_table "categories", :force => true do |t|
@@ -94,6 +106,10 @@ ActiveRecord::Schema.define(:version => 20110819084751) do
     t.string   "layout_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "featured_image_file_name"
+    t.string   "featured_image_content_type"
+    t.integer  "featured_image_file_size"
+    t.datetime "featured_image_updated_at"
   end
 
   add_index "pages", ["ancestry"], :name => "index_pages_on_ancestry"

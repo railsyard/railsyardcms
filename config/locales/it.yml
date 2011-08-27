@@ -48,6 +48,8 @@ it:
       go_to_first_child: Vai al primo figlio
       properties: Proprietà
       contents: Contenuti
+      toggle: Toggle
+      featured_image: Immagine rappresentativa
     pages:
       pages: Pagine
       latest_pages: Pagine recenti
@@ -98,6 +100,7 @@ it:
       article: Articolo
       comments_enabled: Commenti abilitati
       are_you_sure_to_delete: "Vuoi davvero cancellare l\'articolo \"%{title}\"?"
+      hot: "In evidenza"
     users:
       users: Utenti
       new_user: Nuovo utente

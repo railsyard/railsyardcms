@@ -35,6 +35,14 @@ Railsyard2::Application.routes.draw do
     resources :articles do
       post 'toggle', :on => :member
     end
+    resources :article_layouts do
+      put 'apply_layout', :on => :member
+      put 'set_editing_language', :on => :collection
+      resources :snippets do
+        put 'sort', :on => :collection
+        post 'toggle', :on => :member
+      end
+    end
     resources :categories
     resource :settings
   end
@@ -42,8 +50,8 @@ Railsyard2::Application.routes.draw do
   # Public routes
   # resources :users, :only => [:index, :show]
   resources :users
-  # resources :pages
-  
+  match ':lang/article/:year/:month/:day/:pretty_url' => 'articles#show', :as => 'show_article', :constraints => {:lang => $AVAILABLE_LANGUAGES, :year => /\d+/, :month => /\d+/, :day => /\d+/}
+    
   # Main public pages globbing route
   match '/:lang' => "site#show", :constraints => {:lang => /[a-z]{2}/}
   scope "/:lang" do

@@ -1,7 +1,6 @@
 <% if @new_snippet %>
-	// jQuery id selector broken with '%' inside id string
-	//$("#<%= @new_snippet.handler %>").append("<%= escape_javascript(link_to 'edit', edit_admin_page_snippet_path(@new_snippet.page.id, @new_snippet.id), :class => 'icon edit') %>");
-	jQuery(document.getElementById('<%= @new_snippet.handler %>')).append("<%= escape_javascript(link_to 'edit', edit_admin_page_snippet_path(@new_snippet.page.id, @new_snippet.id), :class => 'icon edit') %>").addClass("active_widget");
+	<% destination = @new_snippet.article_layout ? edit_admin_article_layout_snippet_path(@new_snippet.article_layout.id, @new_snippet.id) : edit_admin_page_snippet_path(@new_snippet.page.id, @new_snippet.id) %>
+	jQuery(document.getElementById('<%= @new_snippet.handler %>')).append("<%= escape_javascript(link_to 'edit', destination, :class => 'icon edit') %>").addClass("active_widget");
 <% end %>
 
 

@@ -1,5 +1,5 @@
 class Page < ActiveRecord::Base 
-  attr_accessible :title, :pretty_url, :published, :publish_at, :visible_in_menu, :meta_title, :meta_description, :meta_keywords, :script, :div_id, :div_class, :div_style, :reserved, :layout_name, :lang, :position
+  attr_accessible :title, :pretty_url, :published, :publish_at, :visible_in_menu, :meta_title, :meta_description, :meta_keywords, :script, :div_id, :div_class, :div_style, :reserved, :layout_name, :lang, :position, :featured_image
   has_ancestry
   default_scope :order => "position ASC"
   
@@ -20,6 +20,11 @@ class Page < ActiveRecord::Base
   validates_presence_of   :pretty_url
   validates_uniqueness_of :pretty_url
   validates_presence_of   :lang
+  
+  # paperclip
+  has_attached_file :featured_image,
+                    :styles => {:large => "500x500>", :medium => "300x300>", :thumb => "100x100>", :banner => "960x303>" },
+                    :path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension"
   
   scope :published, :conditions => ["published = ?", true]
   scope :drafts, :conditions => ["published = ?", false]

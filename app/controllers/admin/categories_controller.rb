@@ -29,6 +29,4 @@ class Admin::CategoriesController < Admin::AdminController
     end
   end
   
-  
-  
 end

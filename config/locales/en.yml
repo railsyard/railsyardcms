@@ -55,6 +55,8 @@ en:
       go_to_first_child: Go to first child
       properties: Properties
       contents: Contents
+      toggle: Toggle
+      featured_image: Featured image
     pages:
       pages: Pages
       latest_pages: Recent pages
@@ -105,6 +107,7 @@ en:
       article: Article
       comments_enabled: Comments enabled
       are_you_sure_to_delete: "Are you sure to delete the article \"%{title}\"?"
+      hot: "Highlight"
     users:
       users: Users
       new_user: New user
