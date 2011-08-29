@@ -30,6 +30,14 @@ body{
                     display: none;
                 }
             }
+            ul.langs_menu{
+                position: absolute;
+                top: 20px;
+                right: 10px;
+                li{
+                    display: inline-block;
+                }
+            }
         }
     }
     nav{

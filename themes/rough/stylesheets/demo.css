@@ -5,6 +5,8 @@
 body { font-family: "lucida grande", Tahoma, Verdana; font-size: 0.7em; color: #403d3d; background-image: -webkit-gradient(linear, right bottom, left top, color-stop(0.08, #f8f8f8), color-stop(0.77, #dfdfdf)); background-image: -moz-linear-gradient(right bottom, #f8f8f8 8%, #dfdfdf 77%); }
 body header h1 { font-size: 2em; padding: 5px 0; margin-bottom: 10px; }
 body header.main hgroup h1 span { display: none; }
+body header.main hgroup ul.langs_menu { position: absolute; top: 20px; right: 10px; }
+body header.main hgroup ul.langs_menu li { display: inline-block; }
 body nav ul li { display: inline-block; margin-right: 20px; }
 body article { line-height: 1.4em; }
 body article ul { margin: 10px; padding-left: 20px; }

@@ -11,16 +11,7 @@
 
 <body>
     <div class="hive_12">
-        <div class="cell_12">
-            <header class="main">
-                <hgroup>
-                    <h1><a href="/"><img src="<%= current_theme_image_path('logo.jpg') %>" /><span><%= @cfg.site_name %></span></a></h1>
-                    <h2><%= @cfg.site_desc %></h2>
-                </hgroup>
-                <%= yield_snippets(@page, "header") if @page %>
-            </header>
-        </div>
-    
+        <%= render :partial => "partials/header" %><%# it contains the header snippet %>
         <div class="cell_12">
             <article>
                 <%= yield_snippets(@page, "body") if @page %>
@@ -32,6 +23,5 @@
                 <%= yield_snippets(@page, "footer") if @page %>
             </footer>
         </div>
-
     </div>
 </body>
