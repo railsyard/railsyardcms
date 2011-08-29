@@ -1,7 +1,31 @@
-<% if current_user && current_user.is_admin? && cfg.frontend_controls %>
+<% if has_frontend_controls? %>
+  <%= stylesheet_link_tag :all %>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
+  <%= javascript_include_tag 'jquery_ujs' %>
+  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag '/admin/javascripts/jquery.form.js' %>
+  
+  <%= javascript_include_tag :ckeditor %>
+  
   <div id="yd_dialog" style="display: none;">
     <notice class="error" style="display: none;"></notice>
     <div id="yd_dialog_content"></div>
     <div class="loading"><span>Loading data, please wait!</span></div>
   </div>
+  
+  <%
+    if @page
+      admin_snippet_sort_url = '/admin/pages/#{@page.id}/snippets/sort'
+    elsif @article_layout
+      admin_snippet_sort_url = sort_admin_article_layout_snippets_path(@article_layout)
+    end 
+  %>
+  <%= javascript_tag <<-JAVASCRIPT
+  var admin_snippet_sort_url = '#{admin_snippet_sort_url}';
+  $(document).ready(function() {
+    adminInitSnippetSortable();
+  });
+  JAVASCRIPT
+  %>
 <% end %>

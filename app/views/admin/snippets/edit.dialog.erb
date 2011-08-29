@@ -1,5 +1,5 @@
 <div class="popup">
-    <% destination = @snippet.article_layout ? admin_article_layout_snippet_path(@snippet.article_layout.id, @snippet.id) : admin_page_snippet_path(@snippet.page.id, @snippet.id) %>
+    <% destination = @snippet.article_layout ? admin_article_layout_snippet_path(@snippet.article_layout.id, @snippet.id, :format => :dialog) : admin_page_snippet_path(@snippet.page.id, @snippet.id, :format => :dialog) %>
     <%= form_for @snippet, :url => destination, :html => { :multipart => true } do |f| %>
     <%= errors_for(@snippet) %>
     <%= render :partial => "form", :object => @article, :locals => {:f => f} %>
