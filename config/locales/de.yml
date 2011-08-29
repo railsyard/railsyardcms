@@ -55,12 +55,24 @@ de:
       contents: Inhalte
       toggle: Toggle
       featured_image: Featured image
+      railsyard_admin_panel: "Railsyard Admin Panel"
+      administrator: "Administrator"
+      admin_dashboard: "Admin dashboard"
+      new: "New"
+      list: "List"
+      design: "Design"
+      documentation: "Documentation"
+      updates_on_railsyard: "Updates on Railsyard"
+      sourcecode_on_github: "Sourcecode on Github"
+      cantiere_creativo: "Cantiere Creativo"
+      errors: "Errors"
+      actions: "Actions"
     pages:
       pages: Seiten
       latest_pages: Letzte Seiten
       new_page: Neue Seite
       create_a_new_page: Neue Seite anlegen
-      edit_page: Seite bearbeiten
+      edit_page: "Seite \"%{title}\" bearbeiten"
       snippets_on_page: Snippets auf der Seite
       snippets_for_header: Snippets im Bereich header
       snippets_for_left_column: Snippets im Bereich left column
@@ -73,6 +85,13 @@ de:
       page: Seite
       are_you_sure_to_delete: "Möchten Sie die Seite \"%{name}\" wirklich löschen?"
       layout_name: "Layout"
+      manage_contents: "Manage contents"
+      changing_layout: "When you change layout all the snippets on the page will be moved to the Limbo, but not deleted."
+      pages_management: "Pages management"
+      pages_list: "Pages list"
+      drag_pages_to_sort_them: "Drag pages to sort them"
+      page_options: "Page options"
+      advanced_options: "Advanced options"
     snippets:
       add_a_new_snippet: Neues Snippet hinzufügen
       edit_snippet: Snippet bearbeiten
@@ -90,12 +109,13 @@ de:
       snippets: Snippets
       snippet: Snippet
       are_you_sure_to_delete: "Möchten Sie das Snippet \"%{name}\" wirklich entfernen?"
+      snippets_available_to_drag_in_areas: "Available snippets to be dragged in areas"
     articles:
       articles: Artikel
       latest_articles: Letzte Artikel
       new_article: Neuer Artikel
       write_a_new_article: Neuen Artikel schreiben
-      edit_article: Artikel bearbeiten
+      edit_article: "Artikel \"%{title}\" bearbeiten"
       abstract: Abstract
       body: Body
       articles_category_to_show: Articles category to show
@@ -105,6 +125,8 @@ de:
       comments_enabled: Kommentare erlauben
       are_you_sure_to_delete: "Möchten Sie den Artikel \"%{title}\" wirklich löschen?"
       hot: "Highlight"
+      articles_management: "Articles management"
+      articles_list: "Articles list"
     users:
       users: Benutzer
       new_user: Neuer Benutzer

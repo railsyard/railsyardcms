@@ -4,7 +4,7 @@
              <%= f.label :title, t('admin.general.title') %>
              <%= f.text_field :title, {:id=>"title", :title=>"Page title, can\'t be blank", :class=>"large required"} %>
 
-             <label>Opzioni pagina</label>
+             <label><%= t('admin.pages.page_options') %></label>
              <%= f.select :layout_name, options_from_collection_for_select(@layouts.map, 'filename', 'title', @current_layout.filename) %> Layout
              <div class="input_group">
                  <% visible_in_menu_checked = page.visible_in_menu || page.visible_in_menu.nil? %>
@@ -21,7 +21,7 @@
     <ul class="content_accordion no_header">
         <li>
             <a href="#" class="handle">&nbsp;</a>
-            <h3 class="bar">Opzioni avanzate</h3>
+            <h3 class="bar"><%= t('admin.pages.advanced_options') %></h3>
             <div class="content">
                 <%= f.label t('admin.general.pretty_url') %>
                 <%= f.text_field :pretty_url, {

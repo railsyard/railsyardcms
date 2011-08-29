@@ -1,14 +1,14 @@
-<%= content_for :title do %>New page<% end %>
+<%= content_for :title do %><%= t('admin.pages.new_page') %><% end %>
 
 <header class="page_description">
-    <h2>Create a new page</h2>
+    <h2><%= t('admin.pages.create_a_new_page') %></h2>
 </header>
 
 <section class="">
      <% unless @page.errors.blank? %>
      <div class="alert alert_red">
          <img height="24" width="24" src="/admin/images/icons/small/white/Alarm%20Bell.png">
-         Errors: <%= errors_for @page %>
+         <%= t('admin.general.errors') %>: <%= errors_for @page %>
      </div>
      <% end %>
 </section>
