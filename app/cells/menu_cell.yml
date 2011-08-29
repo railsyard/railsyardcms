@@ -16,7 +16,7 @@ cell:
                 class: string
         -   name:   Siblings menu
             method: siblings
-            desc:   Menu of the pages on the same level of the current page
+            desc:   Menu of the pages on the same level of the current page with optional parent title
             serialized_attributes:
                 id: string
                 class: string
