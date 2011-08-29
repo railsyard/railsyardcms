@@ -7,7 +7,10 @@ cell:
             desc:   Menu of the pages on the first level
         -   name:   Two levels menu
             method: two_levels
-            desc:   Menu of the pages on the first level and their children
+            desc:   Nav Tag for first level Menu of the pages and their children
+            serialized_attributes:
+                id: string
+                class: string
         -   name:   Siblings menu
             method: siblings
             desc:   Menu of the pages on the same level of the current page

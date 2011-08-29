@@ -6,7 +6,7 @@ class MenuCell < Cell::Rails
     @page = args[:page]
     @page = yard_home if @page.blank?
     @first_level_pages = yard_home.siblings
-    @snip_id = args[:snip_id]
+    @snip_id = args[:snip_id]<
     fill_menu_variables(@page)
     render
   end
@@ -16,6 +16,7 @@ class MenuCell < Cell::Rails
     @page = yard_home if @page.blank?
     @first_level_pages = yard_home.siblings
     @snip_id = args[:snip_id]
+    @options = args[:options]
     fill_menu_variables(@page)
     render
   end
