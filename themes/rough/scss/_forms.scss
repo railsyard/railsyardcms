@@ -1,0 +1,76 @@
+@import "colors"; // the main color palette
+
+/* BASIC FORMS STYLE */
+/*********************/
+form{
+    fieldset{
+        legend{
+            
+        }
+        label{
+            span{
+                display: none;
+            }
+        }
+        input{
+            
+        }
+        input, textarea, select{
+            margin-bottom: 4px;
+        }
+        input[type="text"], input[type="password"], textarea{
+            
+        }
+        input[type="radio"], input[type="checkbox"]{
+            
+        }
+        textarea{
+            
+        }
+        select{
+            
+        }
+        div.field{
+            padding: 5px 0;
+            .help-text{
+                font-style: italic;
+            }
+        }
+        div.required{
+            label{
+                border-left: 2px solid red;
+                &:before{
+                    content: "* ";
+                };
+            }
+        }
+        div.error{
+             label{
+                 color: red;
+             }
+             input[type="text"],input[type="password"]{
+                 border-left: 2px solid red;
+             }
+             ul.errorlist{
+                 color: red;
+                 li{
+                     font-style: italic;
+                     padding-left: 15px;
+                     font-size: 90%;
+                     &:before{
+                         display: inline;
+                     }
+                 }
+             }
+         }
+         .inline{
+             display: inline;
+         }
+         .short{
+             width: 30%;
+         }
+         .medium{
+             width: 45%;
+         }
+    }
+}

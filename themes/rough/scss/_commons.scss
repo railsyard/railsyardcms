@@ -1,0 +1,51 @@
+// **** MIXIN **** //
+
+// IE 6/7/8 does not support CSS3 behaviours. PIE.htc make shadows and rounded corners possible
+// PIE.htc must be setted in absolute path
+$pie_path: "/css/PIE.htc";
+
+@mixin shadow($dist: 10px, $blur: 10px, $color: #000) {
+  box-shadow:$dist $dist $blur $color;
+  -webkit-box-shadow: $dist $dist $blur $color;
+  -moz-box-shadow: $dist $dist $blur $color;
+  behavior: url($pie_path);
+  
+}
+@mixin rounded($radius: 10px) {
+  -moz-border-radius: $radius $radius $radius $radius; /* FF1+ */
+  -webkit-border-radius: $radius $radius $radius $radius; /* Saf3+, Chrome */
+  border-radius: $radius $radius $radius $radius; /* Opera 10.5, IE 9 */
+  behavior: url($pie_path);
+}
+@mixin rotated($angle: 10deg) {
+    -moz-transform: rotate($angle);     /* FF3.5+ */
+    -o-transform: rotate($angle);       /* Opera 10.5 */
+    -webkit-transform: rotate($angle);  /* Saf3.1+, Chrome */
+    behavior: url($pie_path);
+}
+@mixin specialFont($size: 10px) {
+    font-size: $size;
+    @extend .special_font;
+}
+@mixin bg($color, $value: 1){
+    // this is a special mix for blac or white transparent background
+    // as IE 7/8 doesn't support rgba, the value will be replaced with a semi transparent png file
+    @if $color == "b" {
+        $img: "#{$color}#{$value}.png";
+        $c: #000;
+        background: transparent url("img/#{$img}");
+        background: rgba($c, $value) none;
+    } @else {
+        $img: "#{$color}#{$value}.png";
+        $c: #fff;
+        background: transparent url("img/#{$img}");
+        background: rgba($c, $value) none;
+
+    }
+}
+.debug{ border: 1px solid red; }
+.bg_reset{
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-position: top left;
+}

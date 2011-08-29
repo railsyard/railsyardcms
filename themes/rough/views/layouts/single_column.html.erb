@@ -1,0 +1,37 @@
+<!doctype html>
+<!--[if IE 7 ]>    <html class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+
+<head>
+    <%= render :partial => "partials/head" %>
+    <link rel="stylesheet" href="<%= current_theme_stylesheet_path('single') %>">
+</head>
+
+<body>
+    <div class="hive_12">
+        <div class="cell_12">
+            <header class="main">
+                <hgroup>
+                    <h1><a href="/"><img src="<%= current_theme_image_path('logo.jpg') %>" /><span><%= @cfg.site_name %></span></a></h1>
+                    <h2><%= @cfg.site_desc %></h2>
+                </hgroup>
+                <%= yield_snippets(@page, "header") if @page %>
+            </header>
+        </div>
+    
+        <div class="cell_12">
+            <article>
+                <%= yield_snippets(@page, "body") if @page %>
+            </article>
+        </div>
+
+        <div class="cell_12">
+            <footer>
+                <%= yield_snippets(@page, "footer") if @page %>
+            </footer>
+        </div>
+
+    </div>
+</body>

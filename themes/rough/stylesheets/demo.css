@@ -1,0 +1,17 @@
+.debug { border: 1px solid red; }
+
+.bg_reset { background-repeat: no-repeat; background-color: transparent; background-position: top left; }
+
+body { font-family: "lucida grande", Tahoma, Verdana; font-size: 0.7em; color: #403d3d; background-image: -webkit-gradient(linear, right bottom, left top, color-stop(0.08, #f8f8f8), color-stop(0.77, #dfdfdf)); background-image: -moz-linear-gradient(right bottom, #f8f8f8 8%, #dfdfdf 77%); }
+body header h1 { font-size: 2em; padding: 5px 0; margin-bottom: 10px; }
+body header.main hgroup h1 span { display: none; }
+body nav ul li { display: inline-block; margin-right: 20px; }
+body article { line-height: 1.4em; }
+body article ul { margin: 10px; padding-left: 20px; }
+body article ul li { padding: 5px 5px 5px 15px; list-style: circle; }
+
+header, nav, section, article, aside { background-color: #fff; padding: 10px; border: 1px solid #ccc; margin-top: 10px; }
+
+p { line-height: 1.94em; }
+
+@media screen and (max-width : 620px) { nav ul li { display: block; width: 100%; padding: 5px 0; border-bottom: 1px dotted gray; } }
