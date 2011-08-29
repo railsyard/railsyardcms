@@ -16,9 +16,8 @@ gem 'cells', '>= 3.6.5'
 gem 'rake', '0.9.2'
 gem 'paperclip', '>= 2.3.16'
 gem 'ckeditor', '3.6.1'
-
-# releasing a new gem Paul? :D
-# gem 'railsyard-markdown-content', :path => 'vendor/gems/railsyard-markdown-content'
+# Example of snippet got via external gem
+gem 'railsyard-markdown-content', :path => 'vendor/gems/railsyard-markdown-content'
 
 #gem 's3', '>= 0.3.7'
 #gem 'heroku', '>= 1.17.14'
