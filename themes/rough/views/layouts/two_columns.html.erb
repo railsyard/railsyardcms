@@ -1,50 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<!--[if IE 7 ]>    <html class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+
 <head>
-  <meta charset="utf-8" />
-  <title>Railsyard 2</title>
-  <meta name="description" content="Railsyard 2" />
-  <meta name="keywords" content= "railsyard, railsyard2" /> 
-  <meta name="authors" content= "Matteo Papadopoulos, Silvio Relli, Cantiere Creativo" />
-  <%= stylesheet_link_tag :all %>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
-  <%= javascript_include_tag 'jquery_ujs' %>
-  <%= javascript_include_tag 'application' %>
-  <%= javascript_include_tag '/admin/javascripts/jquery.form.js' %>
-  <%= javascript_include_tag :ckeditor %>
-  <%= csrf_meta_tag %>
+    <%= render :partial => "partials/head" %>
+    <link rel="stylesheet" href="<%= current_theme_stylesheet_path('single') %>">
 </head>
+
 <body>
-    <notices>
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-    </notices>
-    <header>
-        <title>Railsyard 2</title>
-        <h1>======= Tema <%= @cfg.theme_name %> =======</h1>
-        <%= yield_snippets(@page, "header") if @page %>
-        <%= yield_article_snippets(@article_layout, "header", @article) if @article %>
-    </header>
+    <div class="hive_12">
+        <div class="cell_12">
+            <header class="main">
+                <hgroup>
+                    <h1><a href="/"><img src="<%= current_theme_image_path('logo.jpg') %>" /><span><%= @cfg.site_name %></span></a></h1>
+                    <h2><%= @cfg.site_desc %></h2>
+                </hgroup>
+                <%= yield_snippets(@page, "header") if @page %>
+            </header>
+        </div>
     
-    <container>
-        <h2>Container</h2>
-        <%= yield_snippets(@page, "center") if @page %>
-        <%= yield_article_snippets(@article_layout, "center", @article) if @article %>
-    </container>
-    
-    <aside>
-        <h2>Container</h2>
-        <%= yield_snippets(@page, "side") if @page %>
-        <%= yield_article_snippets(@article_layout, "side", @article) if @article %>
-    </aside>
-    
-    <footer>
-        <h2>Footer</h2>
-        <%= yield_snippets(@page, "footer") if @page %>
-        <%= yield_article_snippets(@article_layout, "footer", @article) if @article %>
-    </footer>
-    
-    <%= render 'layouts/support' %>
+        <div class="cell_9">
+            <article>
+                <%= yield_snippets(@page, "center") if @page %>
+            </article>
+        </div>
+        <div class="cell_3">
+            <aside>
+                <%= yield_snippets(@page, "side") if @page %>
+            </aside>
+        </div>
+
+        <div class="cell_12">
+            <footer>
+                <%= yield_snippets(@page, "footer") if @page %>
+            </footer>
+        </div>
+
+    </div>
 </body>
-</html>
