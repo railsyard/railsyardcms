@@ -1,15 +1,14 @@
 <header class="page_description">
-    <h2><%= @page.title %> - gestione contenuto</h2>
-    <p>Ultima modifica effettuata il <%= l(@page.updated_at, :format=>:date_with_parenthesized_time) %> ed è stata pubblicata il <%= l(@page.publish_at, :format=>:date_with_parenthesized_time) %> </p>
+    <h2><%= @page.title %> - <%= t('admin.pages.manage_contents') %></h2>
 </header>
 
 <%= render :partial => "available_areas", :locals => {:current_layout => @current_layout, :snippets => @snippets} %>
 
 <div class="wrap cell_8">
     <header>
-        <h2>Layout</h2>
+        <h2><%= t('admin.pages.layout') %></h2>
     </header>
-    <p class="cell_9 omega">Cambiando layout alla pagina gli snippet correnti verranno spostati nel cestino, ma non cancellati.</p>
+    <p class="cell_9 omega"><%= t('admin.pages.changing_layout') %></p>
     <form id='layout_form' class="cell_7 alpha">
         <%= select_tag "layout", options_from_collection_for_select(@layouts.map, 'filename', 'title', @current_layout.filename) %>
     </form>
@@ -18,7 +17,7 @@
 <div class="wrap cell_8">
     <header>
         <h2>
-           Snippet disponibili da draggare nelle aree
+            <%= t('admin.pages.snippets_available_to_drag_in_areas') %>
         </h2>           
     </header>
     <% @snippets_available.map do |snip| %>

@@ -1,14 +1,14 @@
-<%= content_for :title do %>New article<% end %>
+<%= content_for :title do %><%= t "admin.article.new_article" %><% end %>
 
 <header class="page_description">
-    <h2>Create a new article</h2>
+    <h2><%= t "admin.article.write_a_new_article" %></h2>
 </header>
 
 <section class="">
      <% unless @article.errors.blank? %>
      <div class="alert alert_red">
          <img height="24" width="24" src="/admin/images/icons/small/white/Alarm%20Bell.png">
-         Errors: <%= errors_for @article %>
+         <%= t "admin.general.errors" %>: <%= errors_for @article %>
      </div>
      <% end %>
 </section>
