@@ -4,7 +4,7 @@
 public
 
 def generate_page(parent, title, pretty_url, the_layout)
-  pg = parent.children.create :title => title, :pretty_url => "#{pretty_url}#{'-cn' if parent.lang=='cn'}", :lang => parent.lang, :visible_in_menu => true, :reserved => false, :published => true, :layout_name => the_layout, :publish_at => Time.now, :meta_title => title, :meta_description => title
+  pg = parent.children.create :title => title, :pretty_url => "#{pretty_url}#{"-"+parent.lang if parent.lang!='en'}", :lang => parent.lang, :visible_in_menu => true, :reserved => false, :published => true, :layout_name => the_layout, :publish_at => Time.now, :meta_title => title, :meta_description => title
   
   pg.snippets.create :title => "Two levels menu", :area => "header", :cell_controller => "menu", :cell_action => "two_levels", :handler => "menu%two_levels%#{rand(99999).to_s.center(5, rand(9).to_s)}"
   
