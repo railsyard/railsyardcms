@@ -1,5 +1,5 @@
 <header class="page_description">
-    <h2>Selecting snippets on article page - <%= @article_layout.lang %></h2>
+    <h2><%= t "admin.article_layouts.select_snippets" %> - <%= @article_layout.lang %></h2>
 </header>
 
 <div class="lang_selector">
@@ -11,9 +11,9 @@
 
 <div class="wrap cell_8">
     <header>
-        <h2>Layout</h2>
+        <h2><%= t "admin.layouts.layout" %></h2>
     </header>
-    <p class="cell_9 omega">Cambiando layout alla pagina gli snippet correnti verranno spostati nel cestino, ma non cancellati.</p>
+    <p class="cell_9 omega"><%= t "admin.layouts.changing_layout" %></p>
     <form id='layout_form' class="cell_7 alpha">
         <%= select_tag "layout", options_from_collection_for_select(@layouts.map, 'filename', 'title', @current_layout.filename) %>
     </form>
@@ -22,7 +22,7 @@
 <div class="wrap cell_8">
     <header>
         <h2>
-           Snippet disponibili da draggare nelle aree
+           <%= t "admin.snippets.snippets_available_to_drag_in_areas" %>
         </h2>           
     </header>
     <% @snippets_available.map do |snip| %>
@@ -108,7 +108,7 @@ $(document).ready(function() {
         $("#layout_form option:selected").each(function () {
             selection += $(this).attr('value');
         });
-        if (confirm("Are you sure to change layout? All the current snippets on page will be moved to the Limbo."))
+        if (confirm('<%= t("admin.layouts.layout_change_confirm") %>'))
             $.ajax({
                 type: "put",
                 url: '<%= apply_layout_admin_article_layout_path(@article_layout.id) %>',

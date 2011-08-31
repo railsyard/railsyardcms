@@ -62,6 +62,7 @@ it:
       cantiere_creativo: "Cantiere Creativo"
       errors: "Errori"
       actions: "Azioni"
+      field_cant_be_blank: "Questo campo non può essere lasciato vuoto"
     pages:
       pages: Pagine
       latest_pages: Pagine recenti
@@ -88,9 +89,17 @@ it:
       drag_pages_to_sort_them: "Trascina le pagine per ordinarle"
       page_options: "Opzioni pagina"
       advanced_options: "Opzioni avanzate"
+      hint_pretty_url: "Se non inserito il pretty url sarà impostato automaticamente con il titolo della pagina"
+      hint_meta_title: "Il titolo visibile sulla barra in cima al browser e usato dai motori di ricerca in vari modi"
+      hint_meta_keywords: "Alcune parole chiave che descrivono il contenuto della pagina, utili ai motori di ricerca"
+      hint_meta_description: "Una descrizione più completa dei contenuti della pagina, utile ai motori di ricerca"
+      hint_div_id: "Id del div più esterno della pagina"
+      hint_div_class: "Classe del div più esterno della pagina"
+      hint_div_style: "Style del div più esterno della pagina"
+      hint_javascript: "Javascript eseguito al caricamento della pagina"
     snippets:
       add_a_new_snippet: Aggiungi un nuovo snippet
-      edit_snippet: Modifica lo snippet
+      edit_snippet: "Modifica lo snippet \"%{title}\""
       name: Nome
       type: Tipo
       location: Posizione
@@ -141,6 +150,12 @@ it:
       delete: Elimina
       admin_panel_language: Lingua pannello amministrativo
       are_you_sure_to_delete: "Vuoi davvero cancellare l\'utente \"%{name}\"?"
+      hint_type_a_long_password: "Scrivi una password efficace, 8 caratteri minimo"
+      hint_retype_password: "Riscrivi la stessa password"
+      hint_enable_user: "Abilita subito l'utente senza chiedergli la conferma"
+      edit_user: "Modifica l'utente \"%{email}\""
+      users_management: "Gestione utenti"
+      users_list: "Lista utenti"
     settings:
       settings: Impostazioni
       general_settings: Impostazioni generali
@@ -181,6 +196,10 @@ it:
       layouts: Layout
       layout_saved: Layout salvato
       error_saving_layout: Errore durante il salvataggio del layout
+      layout_change_confirm: "Sei sicuro di voler cambiare layout? Tutti gli snippet presenti sulla pagina verranno spostati nel Limbo."
+    article_layouts:
+      select_snippets: "Sepeziona gli snippet sulla pagina degli articoli"
+      changing_layout: "Quando cambi layout tutti gli snippet verranno spostati nel Limbo, ma non cancellati."
 
   public:
     general:

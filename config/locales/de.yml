@@ -67,6 +67,7 @@ de:
       cantiere_creativo: "Cantiere Creativo"
       errors: "Errors"
       actions: "Actions"
+      field_cant_be_blank: "This field can't be left blank"
     pages:
       pages: Seiten
       latest_pages: Letzte Seiten
@@ -92,9 +93,17 @@ de:
       drag_pages_to_sort_them: "Drag pages to sort them"
       page_options: "Page options"
       advanced_options: "Advanced options"
+      hint_pretty_url: "If left blank it will be automatically generated with the page title"
+      hint_meta_title: "The title visible in the top bar of the browser and used by search engines in many ways"
+      hint_meta_keywords: "Some keywords describing the page contens, useful for search engines"
+      hint_meta_description: "A more extensive description of the page contents, useful for search engines"
+      hint_div_id: "Id of the most external page div"
+      hint_div_class: "Class of the most external page div"
+      hint_div_style: "Style of the most external page div"
+      hint_javascript: "Javascript to be run on page load"
     snippets:
       add_a_new_snippet: Neues Snippet hinzufügen
-      edit_snippet: Snippet bearbeiten
+      edit_snippet: "Snippet \"%{title}\" bearbeiten"
       name: Name
       type: Typ
       location: Position
@@ -145,6 +154,12 @@ de:
       delete: Löschen
       admin_panel_language: Sprache des Administrationsbereichs
       are_you_sure_to_delete: "Möchten Sie den Benutzer \"%{name}\" wirklich löschen?"
+      hint_type_a_long_password: "Type a strong password, 8 characters minimum"
+      hint_retype_password: "Retype the same password"
+      hint_enable_user: "Immediately enable user without requiring user confirmation"
+      edit_user: "Edit user \"%{email}\""
+      users_management: "Users management"
+      users_list: "Users list"
     settings:
       settings: Einstellungen
       general_settings: Allgemeine Einstellungen
@@ -185,6 +200,10 @@ de:
       layouts: Layouts
       layout_saved: Layout gespeichert
       error_saving_layout: Es ist ein Fehler beim Speichern des Layouts aufgetreten
+      layout_change_confirm: "Are you sure to change layout? All the current snippets on page will be moved to the Limbo."
+    article_layouts:
+      select_snippets: "Select snippets on article page"
+      changing_layout: "When you change layout all the snippets on the page will be moved to the Limbo, but not deleted."
 
   public:
     general:

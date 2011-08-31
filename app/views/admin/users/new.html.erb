@@ -1,14 +1,14 @@
-<%= content_for :title do %>New user<% end %>
+<%= content_for :title do %><%= t "admin.users.new_user" %><% end %>
 
 <header class="page_description">
-    <h2>Create a new user</h2>
+    <h2><%= t "admin.users.new_user" %></h2>
 </header>
 
 <section class="">
      <% unless @user.errors.blank? %>
      <div class="alert alert_red">
          <img height="24" width="24" src="/admin/images/icons/small/white/Alarm%20Bell.png">
-         Errors: <%= errors_for @user %>
+         <%= t "admin.general.errors" %>: <%= errors_for @user %>
      </div>
      <% end %>
 </section>

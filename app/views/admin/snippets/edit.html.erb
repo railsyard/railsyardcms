@@ -1,9 +1,9 @@
 <header class="page_description">
-    <h2>Modifica snippet: <%= @snippet.title %></h2>
+    <h2><%= t('admin.snippets.edit_snippet', :title => @snippet.title) %></h2>
     <% unless @snippet.errors.blank? %>
     <div class="alert alert_red">
         <img height="24" width="24" src="/admin/images/icons/small/white/Alarm%20Bell.png">
-        Errors: <%= errors_for @snippet %>
+        <%= t('admin.general.errors') %>: <%= errors_for @snippet %>
     </div>
     <% end %>
 </header>

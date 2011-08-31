@@ -17,7 +17,7 @@
 <div class="wrap cell_8">
     <header>
         <h2>
-            <%= t('admin.pages.snippets_available_to_drag_in_areas') %>
+            <%= t('admin.snippets.snippets_available_to_drag_in_areas') %>
         </h2>           
     </header>
     <% @snippets_available.map do |snip| %>
@@ -103,7 +103,7 @@ $(document).ready(function() {
         $("#layout_form option:selected").each(function () {
             selection += $(this).attr('value');
         });
-        if (confirm("Are you sure to change layout? All the current snippets on page will be moved to the Limbo."))
+        if (confirm('<%= t("admin.layouts.layout_change_confirm") %>'))
             $.ajax({
                 type: "put",
                 url: '<%= apply_layout_admin_page_path(@page) %>',
