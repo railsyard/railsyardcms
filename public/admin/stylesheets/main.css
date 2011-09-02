@@ -37,7 +37,7 @@ body { background-color: #fff; padding-bottom: 39px; }
 /* END BUTTONS  */
 /* LEFTBAR IN ASIDE MAIN TEMPLATE */
 /***********************************************************************/
-#left_bar { margin-top: 10px; }
+#left_bar { margin-top: 10px; /* LOGIN PANEL */ /**********************************/ /* END LOGIN PANEL  */ }
 #left_bar .menu_triangle { background-image: url("img/uarehere.png"); position: absolute; height: 32px; width: 15px; right: -15px; top: 0; }
 #left_bar a.logo { background: transparent url("img/logo.jpg") no-repeat; display: block; height: 34px; width: 175px; z-index: 10; }
 #left_bar a { color: #bbb; font-weight: normal; }
@@ -72,22 +72,11 @@ body { background-color: #fff; padding-bottom: 39px; }
 #left_bar #accordion li ul.drawer li:first-child a { border-top: none; }
 #left_bar #accordion li:last-child ul.drawer { -webkit-border-bottom-right-radius: 2px; -webkit-border-bottom-left-radius: 2px; -moz-border-radius-bottomright: 2px; -moz-border-radius-bottomleft: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; }
 #left_bar #accordion li:last-child ul.drawer li:last-child a { border-bottom-width: 0px; }
+#left_bar .login_box h2 { font-size: 24px; color: #90b61e; }
+#left_bar .login_box label { color: #5b5f4f; }
+#left_bar .login_box a:hover { color: #5b5f4f; }
 
 /* END LEFTBAR IN ASIDE MAIN TEMPLATE */
-/* LOGIN PANEL */
-/**********************************/
-#login_box { background: #eeeeee url(../images/grey_noise.png) repeat; background-color: #e5e8ea; z-index: 10; display: block; margin: 10% auto 100px; border: 3px solid white; position: relative; width: 340px; }
-#login_box label.fields { position: relative; display: block; margin: 20px 30px 10px; }
-#login_box label.fields strong { display: block; width: 85px; float: left; color: #5b5f4f; font-size: 1.1em; font-weight: normal; line-height: 25px; text-shadow: 0 1px 0 #FFFFFF; }
-#login_box label.fields input.indent { width: 185px; height: 22px; padding: 0 5px; line-height: 22px; text-shadow: 0 1px 0 #FFFFFF; }
-#login_box label.fields button { float: right; margin: 10px 30px 55px; display: block; clear: both; }
-#login_box #bar { color: white; background-color: #4c5766; position: absolute; bottom: -5px; left: -4px; width: 306px; padding: 10px 20px; border-left: none; border-right: none; font-size: 12px; border-bottom: 1px solid #59676B !important; }
-#login_box #bar a { margin-left: 30px; color: #ccc; }
-#login_box #bar a:hover { color: #fff; }
-#login_box #bar #login_logo { position: absolute; bottom: -72px; right: 24px; height: 67px; width: 253px; }
-#login_box #bar #login_logo span { visibility: hidden; }
-
-/* END LOGIN PANEL  */
 #main_container { margin-top: 10px; background-color: #f1f1f1; padding: 20px 10px 15px 10px; width: auto; position: relative; display: block; -webkit-border-radius: 4px; -webkit-border-top-left-radius: 4px; -moz-border-radius: 4px; -moz-border-radius-topleft: 4px; border-radius: 4px; border-top-left-radius: 4px; }
 #main_container a { color: #555; font-weight: bold; }
 #main_container a:hover { color: #000; }
@@ -448,6 +437,7 @@ ul#calendar_drag_list li a { padding: 10px; display: block; cursor: move; }
 --------------------------------*/
 /*  iPad Portrait and Landscape */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) { #template_options { position: relative !important; } }
+
 /*  iPhone Landscape */
 @media screen and (min-width: 321px) and (max-width: 480px) { body div.main_container { margin: 10px 0 10px 1% !important; padding: 20px 2% 5px !important; width: 94% !important; }
   body div.fullsize { padding: none !important; }
@@ -462,6 +452,7 @@ ul#calendar_drag_list li a { padding: 10px; display: block; cursor: move; }
   div.fullsize { padding: 0 !important; }
   div.fullsize .wrap { margin: -20px -2% -5px !important; padding: 0% !important; width: 104% !important; }
   body { padding-bottom: 0 !important; } }
+
 /*  iPhone Portrait */
 @media screen and (max-width: 320px) { a.logo { width: 50px; }
   #top_bar { display: block; }
@@ -482,6 +473,7 @@ ul#calendar_drag_list li a { padding: 10px; display: block; cursor: move; }
   div.fullsize { padding: 0 !important; }
   div.fullsize .wrap { margin: -20px -2% -5px !important; padding: 0% !important; width: 104% !important; }
   body { padding-bottom: 0 !important; } }
+
 /*----- End of iPhone -------*/
 /*-------------------------------- Flot Graph
 --------------------------------*/
