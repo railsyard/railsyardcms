@@ -4,10 +4,9 @@
             <h1><a href="/"><img src="<%= current_theme_image_path('logo.jpg') %>" /><span><%= @cfg.site_name %></span></a></h1>
             <h2><%= @cfg.site_desc %></h2>
             <ul class="langs_menu">
-                <li><%= link_to "english", "/en" %></li>
-                <li><%= link_to "german", "/de" %></li>
-                <li><%= link_to "italian", "/it" %></li>
-                <li><%= link_to "中国", "/cn" %></li>
+                <% Language.all.map do |l| %>
+                <li><%= link_to l.name, "/#{l.short}" %></li>
+                <% end %>
             </ul>
         </hgroup>
         <%= yield_snippets(@page, "header") if @page %>
