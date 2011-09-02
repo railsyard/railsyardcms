@@ -30,8 +30,8 @@ Page.all.map do|p|
 end
 
 
-["it", "en"].each do |lang|
-  root = Page.find_by_title(lang)
+Language.all.each do |lang|
+  root = Page.find_by_title(lang.short)
   first = generate_page(root, "First Group", "first", single_column)
   generate_page(first, "1st page", "sub-first", single_column)
   generate_page(first, "2nd page", "sub-second", two_columns)
