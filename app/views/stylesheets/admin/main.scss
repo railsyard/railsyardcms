@@ -657,16 +657,15 @@ body{
     }
     >header{
         h2 {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: normal;
             line-height: 26px;
             color: white;
             margin: -2px auto -1px;
             text-indent: 10px;
-            //text-shadow: 0px 1px 0px #0f3360;
-            background-color: $cGreen;
             -webkit-user-select: none;
             @include rounded(3px);
+            letter-spacing: 0.3px;
             small{
                 font-size: 11px;
                 color: #ddd;
@@ -690,7 +689,6 @@ body{
         cursor: move;
     }
     a.edit{
-        // background: url(img/icon_edit.png) no-repeat;
         right: 29px;
         cursor: pointer;
     }
@@ -698,10 +696,40 @@ body{
         display: none;
     }
 }
+.available_widget{
+    >header{
+        h2{
+            background-color: #DBCFBF;
+            color: #686157;
+        }
+    }
+}
+.active_widget{
+    background-color: $cGreen;
+}
 /* END WIDGET DRAGGABLE ITEM  */
 
+.available_widgets{
+    .area_box{
+        width: 50%;
+        &:nth-child(odd){
+            float: left;
+        }
+        &:nth-child(even){
+            float: right;
+        }
+        
+    }
+}
 
-
+.wrap{
+    >header{
+        >h2{
+            font-size: 13px;
+            font-weight: 600;
+        }
+    }
+}
 
 
 .wrap a.grabber{

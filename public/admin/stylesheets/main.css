@@ -139,14 +139,24 @@ body { background-color: #fff; padding-bottom: 39px; }
 /**********************************/
 .available_widget, .active_widget { position: relative; background-color: white; border: 1px solid #ccc; border-width: 1px 0; margin-bottom: 15px; padding: 0; z-index: 400; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
 .available_widget .no_padding, .active_widget .no_padding { padding: 0; overflow: visible; }
-.available_widget > header h2, .active_widget > header h2 { font-size: 13px; font-weight: normal; line-height: 26px; color: white; margin: -2px auto -1px; text-indent: 10px; background-color: #90b61e; -webkit-user-select: none; -moz-border-radius: 3px 3px 3px 3px; /* FF1+ */ -webkit-border-radius: 3px 3px 3px 3px; /* Saf3+, Chrome */ border-radius: 3px 3px 3px 3px; /* Opera 10.5, IE 9 */ behavior: url("/css/PIE.htc"); }
+.available_widget > header h2, .active_widget > header h2 { font-size: 12px; font-weight: normal; line-height: 26px; color: white; margin: -2px auto -1px; text-indent: 10px; -webkit-user-select: none; -moz-border-radius: 3px 3px 3px 3px; /* FF1+ */ -webkit-border-radius: 3px 3px 3px 3px; /* Saf3+, Chrome */ border-radius: 3px 3px 3px 3px; /* Opera 10.5, IE 9 */ behavior: url("/css/PIE.htc"); letter-spacing: 0.3px; }
 .available_widget > header h2 small, .active_widget > header h2 small { font-size: 11px; color: #ddd; line-height: 0em; }
 .available_widget a.icon, .active_widget a.icon { display: block; height: 24px; width: 24px; position: absolute; top: 3px; color: #fff !important; font-size: 10px; }
 .available_widget a.grabber, .active_widget a.grabber { background: url(img/dragger.png) no-repeat; right: 3px; cursor: move; }
 .available_widget a.edit, .active_widget a.edit { right: 29px; cursor: pointer; }
 .available_widget a.toggle, .active_widget a.toggle { display: none; }
 
+.available_widget > header h2 { background-color: #DBCFBF; color: #686157; }
+
+.active_widget { background-color: #90b61e; }
+
 /* END WIDGET DRAGGABLE ITEM  */
+.available_widgets .area_box { width: 50%; }
+.available_widgets .area_box:nth-child(odd) { float: left; }
+.available_widgets .area_box:nth-child(even) { float: right; }
+
+.wrap > header > h2 { font-size: 13px; font-weight: 600; }
+
 .wrap .block { padding: 16px 20px 5px 20px; margin-top: 1px; position: relative; overflow: auto; }
 
 .wrap .block label { display: block; font-size: 1.0em; font-weight: bold; color: #5b5f4f; margin-bottom: 5px; clear: both; }
