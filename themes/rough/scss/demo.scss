@@ -1,4 +1,7 @@
+@import "colors";
 @import "commons";
+/* GENERIC ELEMENTS DEFINITIONS */
+/**********************************/
 body{
     font-family: "lucida grande", Tahoma, Verdana;
     font-size: 0.7em;
@@ -69,7 +72,131 @@ header, nav, section, article, aside{
 p{
     line-height: 1.94em;
 }
+/* END GENERIC ELEMENTS DEFINITIONS  */
 
+/* MENU SNIPPETS */
+/**********************************/
+.twolevels-menu {
+    >ul{
+        text-align: left;
+        position: relative;
+        >li{
+            text-align: left;
+            display: inline-block;
+            padding: 25px 14px;
+            position: relative;
+            &:hover{
+                background-color: $cGrayLight;
+                ul{
+                    display: block;
+                }
+            };
+            >a{
+                color: $cGray;
+                text-transform: uppercase;
+                @include specialFont(13px);
+                font-weight: 500;
+                &:hover{
+                    text-decoration: none;
+                };
+            }
+            ul{
+                @include shadow(0,5px, $cGray);
+                display: none;
+                background-color: $cGrayLight;
+                padding: 20px;
+                position: absolute;
+                top: 54px;
+                left: 0;
+                z-index: 100;
+                width: 125px;
+                li{
+                    display: block;
+                    border-bottom: 1px solid $cGray;
+                    border-top: 1px solid #fff;
+                    a{
+                        display: block;
+                        line-height: 25px;
+                        color: $cGray;
+                        @include specialFont(13px);
+                        font-weight: 500;
+                        
+                        &:hover{
+                            color: $cGrayDark;
+                        };
+                    }
+                    &:first-child{
+                        border-top: none;
+                    }
+                    &:last-child{
+                        border-bottom: none;
+                    }
+                    
+                }
+            }
+            &:last-child{
+                ul{
+                    left: auto;
+                    right: 0;
+                }
+            }
+            
+        }
+    }
+}
+
+.footer_menu{
+    background-color: $cGrayLight;
+    background-position: top left;
+    background-repeat: repeat-x;
+    padding: 20px 10px 20px 10px;
+    &:after {
+        clear: both;
+        content: ' ';
+        display: block;
+        font-size: 0;
+        line-height: 0;
+        visibility: hidden;
+        width: 0;
+        height: 0;
+        height: 1%;
+        display: block
+    }
+    >div{
+        width: 20%;
+        float: left;
+    }
+    h2{
+        color: $cGrayDark;
+        text-transform: uppercase;
+        @include specialFont(11px);
+        line-height: 25px;
+        border-bottom: 1px dotted $cGray;
+        margin-bottom: 5px;
+    }
+    ul{
+        li{
+            line-height: 16px;
+            a{
+                @include specialFont(10px);
+                color: $cGray;
+                &:hover{
+                    color: $cGrayDark;
+                };
+            }
+        }
+    }
+}
+/* END MENU SNIPPETS  */
+
+.credits{
+    font-size: 9px;
+    opacity: 0.7;
+}
+
+
+/* SMARTPHONES MODIFICATIONS */
+/**********************************/
 @media screen and (max-width : 620px){
     nav{
         ul{
@@ -81,6 +208,9 @@ p{
             }
         }
     }
-
 }
+/* END IPAD AND TABLETS  */
+
+
+
 
