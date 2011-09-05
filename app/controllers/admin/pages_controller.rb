@@ -33,13 +33,19 @@ class Admin::PagesController < Admin::AdminController
   
   def create
     @admin_editing_language = admin_editing_language
+    @layouts = Layout.all(cfg.theme_name)
+    @current_layout = @layouts.first
     @page = Page.new(params[:page])
     @page.pretty_url = @page.pretty_url.urlify.blank? ? @page.title.urlify : @page.pretty_url.urlify
     @page.lang = @admin_editing_language
     @page.meta_description = @page.title if @page.meta_description.blank?
     @page.meta_title = @page.title if @page.meta_title.blank?
     @page.publish_at = Time.now if @page.published    
-    @page.position = Page.where(:lang => @admin_editing_language, :ancestry => nil).first.children.order("position ASC").last.try(:position).to_i+1
+    if Page.where(:lang => @admin_editing_language, :ancestry => nil).first
+      @page.position = Page.where(:lang => @admin_editing_language, :ancestry => nil).first.children.order("position ASC").last.try(:position).to_i+1
+    else
+      @page.position = 1
+    end
     # TO-DO selettore posizione pagina nell'albero
     if @page.parent.blank?
       lang_root_page = Page.find_by_title(@admin_editing_language)
