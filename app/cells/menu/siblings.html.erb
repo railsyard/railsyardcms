@@ -1,9 +1,12 @@
-<div class='siblings-menu'>
-	<ul>
-		<% @current_level_pages.map do |p| %>	
-		    <% if p.visible_in_menu && p.published && (!p.reserved || (p.reserved && current_user && current_user.is_privileged?)) %>
-			    <li<%= " class =\"current\"".hs if p.id == @page.id %>><%= link_to "<span>#{p.title}</span>".hs, get_yard_url(p) %></li>
-			<% end %>
-		<% end %>
-	</ul>
-</div>
+<nav class="siblings_menu <%= @options["class"] if not @options["class"].blank? %>" <% if not @options["id"].blank? %>id="<%= @options["id"] %>"<% end %>>
+    <% if not @options["show_root"].blank? %>
+    <h1><%= @page.parent.title %></h1>
+    <% end %>
+    <ul>
+        <% @current_level_pages.map do |p| %>    
+            <% if p.visible_in_menu && p.published && (!p.reserved || (p.reserved && current_user && current_user.is_privileged?)) %>
+                <li<%= " class =\"active\"".hs if p.id == @page.id %>><%= link_to p.title.hs, get_yard_url(p) %></li>
+            <% end %>
+        <% end %>
+    </ul>
+</nav>

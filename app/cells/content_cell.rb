@@ -3,19 +3,19 @@ class ContentCell < Cell::Rails
   helper_method :yard_home, :get_lang, :get_yard_url, :get_article_url # coming from lib/yard
   
   def text_widget(args)
-    @options = args[:options]
+    @options = args[:options] ||= {}
     @snip_id = args[:snip_id]
     render
   end
   
   def rich_text_widget(args)
-    @options = args[:options]
+    @options = args[:options] ||= {}
     @snip_id = args[:snip_id]
     render
   end
   
   def twitter_stream(args)
-    @options = args[:options]
+    @options = args[:options] ||= {}
     @snip_id = args[:snip_id]
     render
   end

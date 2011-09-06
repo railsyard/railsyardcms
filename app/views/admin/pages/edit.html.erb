@@ -1,14 +1,14 @@
-<%= content_for :title do %>Modifica pagina<% end %>
+<%= content_for :title do %><%= t('admin.pages.edit_page', :title => @page.title) %><% end %>
 
 <header class="page_description">
-  <h2>Modifica pagina: <%= @page.title %></h2>
+  <h2><%= t('admin.pages.edit_page', :title => @page.title) %></h2>
 </header>
 
 <div class="wrap cell_16">
     <% unless @page.errors.blank? %>
     <div class="alert alert_red">
         <img height="24" width="24" src="/admin/images/icons/small/white/Alarm%20Bell.png">
-        Errors: <%= errors_for @page %>
+        <%= t('admin.general.errors') %>: <%= errors_for @page %>
     </div>
     <% end %>
     

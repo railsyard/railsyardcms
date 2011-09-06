@@ -1,20 +1,23 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.9'
-gem 'mysql2', '0.2.7'
+gem 'rails', '3.0.10'
+# mysql2 gem >= 0.2.13 but < 0.3.0
+gem 'mysql2', '~> 0.2.13'
 gem 'jquery-rails', '>= 1.0.12'
 gem 'string-utils', '>= 0.2.0'
-gem 'omniauth', '>= 0.2.0'
+gem 'omniauth', '>= 0.2.6'
 gem 'devise', '>= 1.4.2'
-gem 'ancestry', '>= 1.2.3'
+gem 'ancestry', '>= 1.2.4'
 gem 'acts_as_list-rails3', '>= 0.0.4'
 gem 'cancan', '>= 1.6.5'
 gem 'gravatar_image_tag', '>= 1.0.0'
 gem 'themes_for_rails', '>= 0.4.2'
-gem 'cells', '>= 3.6.4'
+gem 'cells', '>= 3.6.5'
 gem 'rake', '0.9.2'
-gem 'paperclip', '>= 2.3.15'
-gem "ckeditor", '3.6.0.pre'
+gem 'paperclip', '>= 2.3.16'
+gem 'ckeditor', '3.6.1'
+# Example of snippet got via external gem
+gem 'railsyard-markdown-content', :path => 'vendor/gems/railsyard-markdown-content'
 
 #gem 's3', '>= 0.3.7'
 #gem 'heroku', '>= 1.17.14'
@@ -37,6 +40,7 @@ group :development, :test do
   gem 'growl_notify'
   gem 'database_cleaner'
   gem 'factory_girl'
+  gem 'railroady'
 end
 
 

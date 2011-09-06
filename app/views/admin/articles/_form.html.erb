@@ -24,8 +24,6 @@
             <div id='categories_list'>   
             <% Category.all.map do |category| %> 
               <%= render :partial => "/admin/categories/checkbox", :object => category, :as => :category, :locals =>{:article => @article} %>
-              <%#= check_box_tag "article[category_ids][]", category.id, @article.categories.include?(category) %>  
-              <%#= category.name.humanize %>
             <% end %>
             </div> 
             </br>

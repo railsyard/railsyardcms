@@ -1,10 +1,18 @@
-<div class='footer-menu'>
-	<% @first_level_pages.map do |p| %>
-		<% if p.visible_in_menu && p.published && (!p.reserved || (p.reserved && current_user && current_user.is_privileged?)) %>
-			<ul>
-				<li class='footer-roots'><%= link_to "<span>#{p.title}</span>".hs, get_yard_url(p) %></li>
-				<%= render :partial => 'footer_item', :collection => p.children unless p.children.empty? %>
-			</ul>
-		<% end %>
-	<% end %>
-</div>
+<section class="footer_menu  <%= @options["class"] unless @options["class"].blank? %>" <%= "id=\"#{@options["id"]}\"" unless @options["id"].blank? %>>
+        <% @first_level_pages.map do |p| %>
+        <% if p.visible_in_menu && p.published && (!p.reserved || (p.reserved && current_user && current_user.is_privileged?)) %>
+        <div>
+            <h2><%= link_to p.title.hs, get_yard_url(p) %></h2>
+            <% unless p.children.blank? %>
+            <ul>
+                <% p.children.map do |c| %>
+                <% if c.visible_in_menu && c.published && (!c.reserved || (c.reserved && current_user && current_user.is_privileged?)) %>
+                    <li<%= " class =\"current-children\"" if c.id == @page.id %>><%= link_to c.title.hs, get_yard_url(c) %></li>
+                <% end %>
+                <% end %>
+            </ul>
+            <% end %>
+        </div>
+        <% end %>
+        <% end %>
+</section>

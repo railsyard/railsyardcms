@@ -57,12 +57,25 @@ en:
       contents: Contents
       toggle: Toggle
       featured_image: Featured image
+      railsyard_admin_panel: "Railsyard Admin Panel"
+      administrator: "Administrator"
+      admin_dashboard: "Admin dashboard"
+      new: "New"
+      list: "List"
+      design: "Design"
+      documentation: "Documentation"
+      updates_on_railsyard: "Updates on Railsyard"
+      sourcecode_on_github: "Sourcecode on Github"
+      cantiere_creativo: "Cantiere Creativo"
+      errors: "Errors"
+      actions: "Actions"
+      field_cant_be_blank: "This field can't be left blank"
     pages:
       pages: Pages
       latest_pages: Recent pages
       new_page: New page
       create_a_new_page: Create a new page
-      edit_page: Edit page
+      edit_page: "Edit page \"%{title}\""
       snippets_on_page: Snippets on page
       snippets_for_header: Snippets for header
       snippets_for_left_column: Snippets for left column
@@ -76,9 +89,25 @@ en:
       page: Page
       are_you_sure_to_delete: "Are you sure to delete the page \"%{name}\"?"
       layout_name: "Layout"
+      manage_contents: "Manage contents"
+      changing_layout: "When you change layout all the snippets on the page will be moved to the Limbo, but not deleted."
+      pages_management: "Pages management"
+      pages_list: "Pages list"
+      drag_pages_to_sort_them: "Drag pages to sort them"
+      page_options: "Page options"
+      advanced_options: "Advanced options"
+      hint_pretty_url: "The last part of the url address for this page. If left blank it will be automatically generated with the page title"
+      hint_meta_title: "The title visible in the top bar of the browser and used by search engines in many ways"
+      hint_meta_keywords: "Some keywords describing the page contens, useful for search engines"
+      hint_meta_description: "A more extensive description of the page contents, useful for search engines"
+      hint_div_id: "Id of the most external page div"
+      hint_div_class: "Class of the most external page div"
+      hint_div_style: "Style of the most external page div"
+      hint_javascript: "Javascript to be run on page load"
+      available_areas_in_this_layout: "Available areas in this layout"
     snippets:
       add_a_new_snippet: Add a new snippet
-      edit_snippet: Edit snippet
+      edit_snippet: "Edit snippet \"%{title}\""
       name: Name
       type: Type
       location: Location
@@ -93,12 +122,13 @@ en:
       snippets: Snippets
       snippet: Snippet
       are_you_sure_to_delete: "Are you sure to delete the snippet \"%{name}\"?"
+      snippets_available_to_drag_in_areas: "Available snippets to be dragged in areas"
     articles:
       articles: Articles
       latest_articles: Recent articles
       new_article: New article
       write_a_new_article: Write a new article
-      edit_article: Edit article
+      edit_article: "Edit article \"%{title}\""
       abstract: Abstract
       body: Body
       articles_category_to_show: Articles category to show
@@ -108,6 +138,8 @@ en:
       comments_enabled: Comments enabled
       are_you_sure_to_delete: "Are you sure to delete the article \"%{title}\"?"
       hot: "Highlight"
+      articles_management: "Articles management"
+      articles_list: "Articles list"
     users:
       users: Users
       new_user: New user
@@ -126,6 +158,12 @@ en:
       delete: Delete
       admin_panel_language: Admin panel language
       are_you_sure_to_delete: "Are you sure to delete the user \"%{name}\"?"
+      hint_type_a_long_password: "Type a strong password, 8 characters minimum"
+      hint_retype_password: "Retype the same password"
+      hint_enable_user: "Immediately enable user without requiring user confirmation"
+      edit_user: "Edit user \"%{email}\""
+      users_management: "Users management"
+      users_list: "Users list"
     settings:
       settings: Settings
       general_settings: General settings
@@ -166,6 +204,11 @@ en:
       layouts: Layouts
       layout_saved: Layout saved
       error_saving_layout: Error saving layout
+      layout_change_confirm: "Are you sure to change layout? All the current snippets on page will be moved to the Limbo."
+    article_layouts:
+      select_snippets: "Select snippets on article page"
+      changing_layout: "When you change layout all the snippets on the page will be moved to the Limbo, but not deleted."
+    
 
   public:
     general:

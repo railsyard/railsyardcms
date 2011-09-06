@@ -1,6 +1,6 @@
 class Snippet < ActiveRecord::Base
   extend ActiveSupport::Memoizable
-  attr_accessible :title, :description, :published, :publish_at, :div_id, :div_class, :div_style, :rea, :cell_controller, :cell_action, :handler, :options
+  attr_accessible :title, :description, :published, :publish_at, :div_id, :div_class, :div_style, :area, :cell_controller, :cell_action, :handler, :options
   has_one :association, :dependent => :destroy
   has_one :page, :through => :association
   has_one :article_layout, :through => :association
@@ -40,8 +40,9 @@ class Snippet < ActiveRecord::Base
   end
   
   def self.search_cells
-    cells_path = "#{Rails.root.to_s}/app/cells"
-    Dir.glob("#{cells_path}/*.yml").select do |file|
+    #cells_path = "#{Rails.root.to_s}/app/cells"
+    files = RAILSYARD_WIDGET_PATHS.map { |p| p + '/*.yml' }
+    Dir.glob(files).select do |file|
       File.readable?("#{file}")
     end.compact.uniq
   end

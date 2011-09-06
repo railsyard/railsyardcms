@@ -10,7 +10,7 @@
     <!-- will render the page using Google Chrome rather than Internet Explorer -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <title>Railsyard Admin Panel - <%= yield :title %></title>        
+    <title><%= t "admin.general.railsyard_admin_panel" %> - <%= yield :title %></title>        
     
     <%= stylesheet_link_tag "/admin/stylesheets/all.css" %>
 
@@ -52,11 +52,11 @@
                     <%= gravatar_image_tag(current_user.email, :alt => current_user, :width=>"55px") %>
                     <div class="user_details">
                         <% if current_user.is_admin? %>
-                            <h2>Administrator</h2>
+                            <h2><%= t "admin.general.administrator" %></h2>
                         <% end %>
                         <ul>
                             <li><%= link_to t('admin.general.profile'), edit_admin_user_path(current_user) %> <span class="divider">|</span></li>
-                            <li><%= link_to "logout", logout_path() %></li>
+                            <li><%= link_to t('admin.general.logout'), logout_path() %></li>
                         </ul>
                     </div>
                 </section><!-- #user_wrap -->
@@ -66,36 +66,36 @@
                 <ul id="accordion">
                     <li><a class="top_level"><img src="/admin/images/icons/small/grey/Home.png"/>Home</a>
                         <ul class="drawer">
-                            <li><a href="/admin">Admin dashboard</a></li>
-                            <li><a href="/" target="_blank">Public site</a></li>
+                            <li><a href="/admin"><%= t('admin.general.admin_dashboard') %></a></li>
+                            <li><a href="/" target="_blank"><%= t('admin.general.public_site') %></a></li>
                         </ul>
                     </li>
-                    <li><a <%= set_class(:class => "top_level", :controller => "pages") %>><img src="/admin/images/icons/small/grey/Documents.png"/>Pagine</a>
+                    <li><a <%= set_class(:class => "top_level", :controller => "pages") %>><img src="/admin/images/icons/small/grey/Documents.png"/><%= t('admin.pages.pages') %></a>
                         <ul class="drawer">
-                            <li <%= set_class(:controller => "pages", :action => "index") %>><%= link_to "List", admin_pages_path() %></li>
-                            <li <%= set_class(:controller => "pages", :action => "new") %>><%= link_to "New", new_admin_page_path() %></li>
+                            <li <%= set_class(:controller => "pages", :action => "index") %>><%= link_to t('admin.general.list'), admin_pages_path() %></li>
+                            <li <%= set_class(:controller => "pages", :action => "new") %>><%= link_to t('admin.general.new'), new_admin_page_path() %></li>
                             <!-- <li <%#= set_class("pages", "preset") %>><a href="#">Preset</a></li> -->
                         </ul>
                     </li>
-                    <li><a <%= set_class(:class => "top_level", :controller => ["articles","article_layouts"]) %>><img src="/admin/images/icons/small/grey/Write.png"/>Articoli</a>
+                    <li><a <%= set_class(:class => "top_level", :controller => ["articles","article_layouts"]) %>><img src="/admin/images/icons/small/grey/Write.png"/><%= t('admin.articles.articles') %></a>
                         <ul class="drawer">
-                            <li <%= set_class(:controller => "articles", :action => "index") %>><%= link_to "List", admin_articles_path() %></li>
-                            <li <%= set_class(:controller => "articles", :action => "new") %>><%= link_to "New", new_admin_article_path() %></li>
-                            <li <%= set_class(:controller => "article_layouts", :action => "edit") %>><%= link_to "Design", edit_admin_article_layout_path(@admin_editing_language) %></li>
+                            <li <%= set_class(:controller => "articles", :action => "index") %>><%= link_to t('admin.general.list'), admin_articles_path() %></li>
+                            <li <%= set_class(:controller => "articles", :action => "new") %>><%= link_to t('admin.general.new'), new_admin_article_path() %></li>
+                            <li <%= set_class(:controller => "article_layouts", :action => "edit") %>><%= link_to t('admin.general.design'), edit_admin_article_layout_path(@admin_editing_language) %></li>
                             <!-- <li><a href="#">Categories</a></li> -->
                             <!-- <li><a href="#">Comments</a></li> -->
                         </ul>
                     </li>
-                    <li><a <%= set_class(:class => "top_level", :controller => ["users"]) %>><img src="/admin/images/icons/small/grey/Users.png"/>Users</a>
+                    <li><a <%= set_class(:class => "top_level", :controller => ["users"]) %>><img src="/admin/images/icons/small/grey/Users.png"/><%= t('admin.users.users') %></a>
                         <ul class="drawer">
-                            <li <%= set_class(:controller => "users", :action => "index") %>><%= link_to "List", admin_users_path %></li>
-                            <li <%= set_class(:controller => "users", :action => "new") %>><%= link_to "New", new_admin_user_path %></li>
+                            <li <%= set_class(:controller => "users", :action => "index") %>><%= link_to t('admin.general.list'), admin_users_path %></li>
+                            <li <%= set_class(:controller => "users", :action => "new") %>><%= link_to t('admin.general.new'), new_admin_user_path %></li>
                             <!-- <li><a href="#">Esporta</a></li> -->
                         </ul>
                     </li>
-                    <li><a <%= set_class(:class => "top_level", :controller => ["settings"]) %>><img src="/admin/images/icons/small/grey/Cog%202.png"/>Impostazioni</a>
+                    <li><a <%= set_class(:class => "top_level", :controller => ["settings"]) %>><img src="/admin/images/icons/small/grey/Cog%202.png"/><%= t('admin.settings.settings') %></a>
                         <ul class="drawer">
-                            <li <%= set_class(:controller => "settings", :action => "edit") %>><%= link_to "General", edit_admin_settings_path(1) %></li>
+                            <li <%= set_class(:controller => "settings", :action => "edit") %>><%= link_to t('admin.general.general'), edit_admin_settings_path(1) %></li>
                             <!-- <li <%#= set_class(:controller => "users", :action => "index") %>><%#= link_to "Il tuo profilo", edit_admin_user_path(current_user) %></li> -->
                         </ul>
                     </li>
@@ -136,10 +136,10 @@
                 </script>
                 
                 <ul id="side_links" class="text_shadow" >
-                    <li><%= link_to "Documentazione", "https://github.com/cantierecreativo/railsyardcms/wiki", :target=>"_blank" %></li>
-                    <li><%= link_to "Updates su Twitter", "http://twitter.com/railsyard", :target=>"_blank" %></li>
-                    <li><%= link_to "Railsyard su Github", "https://github.com/cantierecreativo/railsyardcms", :target=>"_blank" %></li>
-                    <li><%= link_to "Cantiere Creativo", "http://www.cantierecreativo.net", :target=>"_blank" %></li>
+                    <li><%= link_to t('admin.general.documentation'), "https://github.com/cantierecreativo/railsyardcms/wiki", :target=>"_blank" %></li>
+                    <li><%= link_to t('admin.general.updates_on_railsyard'), "http://twitter.com/teamcantiere", :target=>"_blank" %></li>
+                    <li><%= link_to t('admin.general.sourcecode_on_github'), "https://github.com/cantierecreativo/railsyardcms", :target=>"_blank" %></li>
+                    <li><%= link_to t('admin.general.cantiere_creativo'), "http://www.cantierecreativo.net", :target=>"_blank" %></li>
                 </ul>
                 <div class="menu_triangle"></div>
             </aside><!-- #sidebar -->

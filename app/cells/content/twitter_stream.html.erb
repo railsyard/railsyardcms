@@ -5,33 +5,33 @@
 
 <script type="text/javascript">
 $("document").ready(function() {
-	load_tweets_<%= @snip_id %>();
-	setInterval(load_tweets_<%= @snip_id %>, 90000);
+    load_tweets_<%= @snip_id %>();
+    setInterval(load_tweets_<%= @snip_id %>, 90000);
 });
 
 function load_tweets_<%= @snip_id %>() {
-	var last_ID = $(".tweet_result:first").attr("ID");
-	var username = "<%= @options[:username] %>";
-	var limit = <%= @options[:limit] %>;
-	
-	if (last_ID) {
-		last_ID = last_ID.replace("tweet", "");
-		var url = "http://api.twitter.com/1/statuses/user_timeline.json?screen_name="+username+"&count="+limit+"&include_rts=1&callback=?";
-	} else {
-		var url = "http://api.twitter.com/1/statuses/user_timeline.json?screen_name="+username+"&count="+limit+"&include_rts=1&callback=?";
-	}
-	
-	$.getJSON(url, function(json) { 
-		var results = '';
+    var last_ID = $(".tweet_result:first").attr("ID");
+    var username = "<%= @options[:username] %>";
+    var limit = <%= @options[:limit] %>;
+    
+    if (last_ID) {
+        last_ID = last_ID.replace("tweet", "");
+        var url = "http://api.twitter.com/1/statuses/user_timeline.json?screen_name="+username+"&count="+limit+"&include_rts=1&callback=?";
+    } else {
+        var url = "http://api.twitter.com/1/statuses/user_timeline.json?screen_name="+username+"&count="+limit+"&include_rts=1&callback=?";
+    }
+    
+    $.getJSON(url, function(json) { 
+        var results = '';
     // debugger;
-		$(json).each(function() {
-			if (this.id == undefined) return;
-			results += "<p class=\'tweet_result\' id=\'tweet" + this.id + "\'><a href=\'http://twitter.com/" + username + "\' class=\'tweet_user\'><img width=\'16\' height=\'16\' alt=\'" + username + " on Twitter\' src=\'" + this.profile_image_url + "\' /></a> " + linkify_<%= @snip_id %>(this.text) + "</p>";
-		});
-		$("#twitter_results-<%= @snip_id %>").prepend(results);
-	});
+        $(json).each(function() {
+            if (this.id == undefined) return;
+            results += "<p class=\'tweet_result\' id=\'tweet" + this.id + "\'><a href=\'http://twitter.com/" + username + "\' class=\'tweet_user\'><img width=\'16\' height=\'16\' alt=\'" + username + " on Twitter\' src=\'" + this.profile_image_url + "\' /></a> " + linkify_<%= @snip_id %>(this.text) + "</p>";
+        });
+        $("#twitter_results-<%= @snip_id %>").prepend(results);
+    });
 
-	$(".tweet_result:gt(20)").remove();
+    $(".tweet_result:gt(20)").remove();
 }
 
 function linkify_<%= @snip_id %>(text) {

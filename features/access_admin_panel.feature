@@ -18,7 +18,7 @@ Feature: Accessing the admin panel
     Given the page is setup in basic mode
     And I am logged in as "admin@example.com" with password "changeme"
     And I go to the admin page
-    When I follow "cancella" within "table.datatable"
+    When I follow "Delete" within "table.datatable"
     And I go to the new admin page page
     And I fill in "title" with "My new page"
     And I check "page_visible_in_menu"
@@ -41,3 +41,22 @@ Feature: Accessing the admin panel
     Then I should be on the admin pages page
     And I should see "Home en" within "#pages-tree"
     And I should see "My new page" within "#pages-tree"
+    
+  Scenario: Create a new page with double pretty url
+    Given the page is setup in basic mode
+    And I am logged in as "admin@example.com" with password "changeme"
+    And I go to the new admin page page
+    When I fill in "title" with "Home en"
+    And I check "page_visible_in_menu"
+    And I check "page_published"
+    And I uncheck "page_reserved"
+    And I press "Save"
+    Then I should be on the admin pages page
+    And I should see "There was a problem creating the page" within ".alert"
+    
+  Scenario: Show the content area of a page
+    Given the page is setup in basic mode
+    And I am logged in as "admin@example.com" with password "changeme"
+    And I go to the admin page
+    When I follow "Contents" within "#pages-tree"
+    Then I should see "Home en" within "header"

@@ -1,46 +1,46 @@
 <header class="page_description">
-    <h2><%= @page.title %> - gestione contenuto</h2>
-    <p>Ultima modifica effettuata il <%= l(@page.updated_at, :format=>:date_with_parenthesized_time) %> ed è stata pubblicata il <%= l(@page.publish_at, :format=>:date_with_parenthesized_time) %> </p>
+    <h2>[<%= @page.lang %>] <%= @page.title %> <%# t('admin.pages.manage_contents') %></h2>
 </header>
 
 <%= render :partial => "available_areas", :locals => {:current_layout => @current_layout, :snippets => @snippets} %>
 
-<div class="wrap cell_8">
+<div class="wrap cell_11">
     <header>
-        <h2>Layout</h2>
+        <h2><%= t('admin.pages.layout') %></h2>
     </header>
-    <p class="cell_9 omega">Cambiando layout alla pagina gli snippet correnti verranno spostati nel cestino, ma non cancellati.</p>
+    <p class="cell_9 omega"><%= t('admin.pages.changing_layout') %></p>
     <form id='layout_form' class="cell_7 alpha">
         <%= select_tag "layout", options_from_collection_for_select(@layouts.map, 'filename', 'title', @current_layout.filename) %>
     </form>
+    <p>This page's language: <%= @page.lang %></p>
 </div>
 
-<div class="wrap cell_8">
+<div class="wrap cell_11 available_widgets">
     <header>
         <h2>
-           Snippet disponibili da draggare nelle aree
+            <%= t('admin.snippets.snippets_available_to_drag_in_areas') %>
         </h2>           
     </header>
     <% @snippets_available.map do |snip| %>
-        <div class="area_box">
-            <h2><%= snip["name"] %></h2>
-            <section id="<%= snip["class"] %>" class='drag_source'>
-                <% snip["actions"].map do |act| %>    
-                    <div class="available_widget sortable_item drag_item" id="<%= snip["class"] %>%<%= act["method"] %>" >
-                        <header>
-                            <h2><%= act["name"] %></h2>
-                        </header>
-                        <a href="#" class="icon grabber">&nbsp;</a>
-                        <a href="#" class="toggle toggle_closed">&nbsp;</a>
-                        <div class="toggle_container" style="display:none;">                  
-                            <div class="block">
-                                <p><%= act["desc"] %></p>
-                            </div>
+    <div class="area_box">
+        <h2><%= snip["name"] %></h2>
+        <section id="<%= snip["class"] %>" class='drag_source'>
+            <% snip["actions"].map do |act| %>    
+                <div class="available_widget sortable_item drag_item" id="<%= snip["class"] %>%<%= act["method"] %>" >
+                    <header>
+                        <h2><%= act["name"] %></h2>
+                    </header>
+                    <a href="#" class="icon grabber">&nbsp;</a>
+                    <a href="#" class="toggle toggle_closed">&nbsp;</a>
+                    <div class="toggle_container" style="display:none;">                  
+                        <div class="block">
+                            <p><%= act["desc"] %></p>
                         </div>
                     </div>
-                <% end %>
-            </section>
-        </div>
+                </div>
+            <% end %>
+        </section>
+    </div>
     <% end %>
 </div>
 
@@ -64,11 +64,13 @@ $(document).ready(function() {
          $(this).droppable("destroy");
          $(this).droppable({
               drop: function(event, ui) {
-                  if (ui.draggable.hasClass('drag_item')){ // ui.draggable is the dragged item just dropped
+                  var dropped = ui.draggable;
+                  if (dropped.hasClass('drag_item')){ // ui.draggable is the dragged item just dropped
                     time = new Date().getTime();
-                    newid = ui.draggable.attr('id') + '%' + time;
-                    ui.draggable.removeClass("drag_item");
-                    ui.draggable.attr('id', newid);
+                    newid = dropped.attr('id') + '%' + time;
+                    dropped.removeClass("drag_item");
+                    dropped.attr('id', newid);
+                    dropped.removeClass("available_widget");
                   };
               }
          });
@@ -104,7 +106,7 @@ $(document).ready(function() {
         $("#layout_form option:selected").each(function () {
             selection += $(this).attr('value');
         });
-        if (confirm("Are you sure to change layout? All the current snippets on page will be moved to the Limbo."))
+        if (confirm('<%= t("admin.layouts.layout_change_confirm") %>'))
             $.ajax({
                 type: "put",
                 url: '<%= apply_layout_admin_page_path(@page) %>',

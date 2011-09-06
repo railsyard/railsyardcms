@@ -7,7 +7,7 @@ Feature: Editing the page at the frontend
   Scenario: Change snippet settings
     Given the page is setup in basic mode
     And I am logged in as "admin@example.com" with password "changeme"
-    And I add the Text widget snippet from the content cell to the body area at the page "/en/home_en"
+    And I add the Text widget snippet from the content cell to the body area at the page "/en/home-en"
     And frontend controls are enabled
     And I go to the homepage
     When I click the javascript link ".drag_item a.edit"
@@ -21,7 +21,7 @@ Feature: Editing the page at the frontend
   Scenario: Change snippet settings to invalid value
     Given the page is setup in basic mode
     And I am logged in as "admin@example.com" with password "changeme"
-    And I add the Text widget snippet from the content cell to the body area at the page "/en/home_en"
+    And I add the Text widget snippet from the content cell to the body area at the page "/en/home-en"
     And frontend controls are enabled
     And I go to the homepage
     When I click the javascript link ".drag_item a.edit"
@@ -36,7 +36,7 @@ Feature: Editing the page at the frontend
   Scenario: Delete the snippet
     Given the page is setup in basic mode
     And I am logged in as "admin@example.com" with password "changeme"
-    And I add the Text widget snippet from the content cell to the body area at the page "/en/home_en"
+    And I add the Text widget snippet from the content cell to the body area at the page "/en/home-en"
     And the snippet option "body" is set to "Hello World!"
     And frontend controls are enabled
     And I go to the homepage
@@ -44,3 +44,15 @@ Feature: Editing the page at the frontend
     When I click the javascript link ".drag_item a.delete"
     And I confirm popup
     Then I should not see "Hello World!" within "#body"
+    
+  @javascript
+  Scenario: Move snippet from body to head
+    Given the page is setup in basic mode
+    And I am logged in as "admin@example.com" with password "changeme"
+    And I add the Text widget snippet from the content cell to the body area at the page "/en/home-en"
+    And the snippet option "body" is set to "Hello World!"
+    And frontend controls are enabled
+    And I go to the homepage
+    When I drag "#body .snippet .title" to "#header"
+    And I go to the homepage
+    Then I should see "Text widget" within "#header .snippet .title"    

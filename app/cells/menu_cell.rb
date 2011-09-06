@@ -7,6 +7,7 @@ class MenuCell < Cell::Rails
     @page = yard_home if @page.blank?
     @first_level_pages = yard_home.siblings
     @snip_id = args[:snip_id]
+    @options = args[:options] ||= {}
     fill_menu_variables(@page)
     render
   end
@@ -16,6 +17,7 @@ class MenuCell < Cell::Rails
     @page = yard_home if @page.blank?
     @first_level_pages = yard_home.siblings
     @snip_id = args[:snip_id]
+    @options = args[:options] ||= {}
     fill_menu_variables(@page)
     render
   end
@@ -25,6 +27,7 @@ class MenuCell < Cell::Rails
     @page = yard_home if @page.blank?
     fill_menu_variables(@page)
     @snip_id = args[:snip_id]
+    @options = args[:options] ||= {}
     render
   end
 
@@ -32,12 +35,14 @@ class MenuCell < Cell::Rails
     @page = args[:page]
     @page = yard_home if @page.blank?
     fill_menu_variables(@page)
+    @options = args[:options] ||= {}
     @snip_id = args[:snip_id]
     render
   end
 
   def siblings_and_children(args)
     @page = args[:page]
+    @options = args[:options] ||= {}
     @page = yard_home if @page.blank?
     fill_menu_variables(@page)
     @snip_id = args[:snip_id]
@@ -48,6 +53,7 @@ class MenuCell < Cell::Rails
     @page = args[:page]
     @page = yard_home if @page.blank?
     @first_level_pages = yard_home.siblings
+    @options = args[:options] ||= {}
     fill_menu_variables(@page)
     @snip_id = args[:snip_id]
     render
@@ -57,6 +63,7 @@ class MenuCell < Cell::Rails
     @page = args[:page]
     @page = yard_home if @page.blank?
     @ancestors = @page.ancestors
+    @options = args[:options] ||= {}
     @ancestors << @page
     @snip_id = args[:snip_id]
     render

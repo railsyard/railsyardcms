@@ -2,26 +2,26 @@
      <div class="">
          <div class="block">                
             <%= f.label :title, t('admin.general.title') %>
-            <%= f.text_field :title, {:id=>"notempty", :title=>"il campo non può rimanere vuoto", :class=>"large required", :autofocus=>""} %>
+            <%= f.text_field :title, {:id=>"notempty", :title=>t("admin.general.field_cant_be_blank"), :class=>"large required", :autofocus=>""} %>
 
             <%= f.fields_for :options do |o| %>
-            <% if @snippet.serialized_attributes %>
-                <% @snippet.serialized_attributes.map do |att| %>
-                    <% default_value = @snippet.options.blank? ? "" : @snippet.options[att[0]] %>     
-                    <%= o.label att[0] %>                  
-                    <% case att[1] %>
-                        <% when "string" then %>
-                            <%= o.text_field att[0], :value => default_value, "data-validation" => "text" %>
-                        <% when "text" then %>
-                            <%= o.text_area att[0], :value => default_value, "data-validation" => "text" %>
-                        <% when "integer" then %>
-                            <%= o.text_field att[0], :value => default_value, "data-validation" => "integer" %>
-                        <% when "editor" then %>
-                            <%= o.cktext_area att[0], :input_html => { :value => default_value, "data-validation" => "none" } %>
+                <% if @snippet.serialized_attributes %>
+                    <% @snippet.serialized_attributes.map do |att| %>
+                        <% default_value = @snippet.options.blank? ? "" : @snippet.options[att[0]] %>     
+                        <%= o.label att[0] %>                  
+                        <% case att[1] %>
+                            <% when "string" then %>
+                                <%= o.text_field att[0], :value => default_value, "data-validation" => "text" %>
+                            <% when "text" then %>
+                                <%= o.text_area att[0], :value => default_value, "data-validation" => "text" %>
+                            <% when "integer" then %>
+                                <%= o.text_field att[0], :value => default_value, "data-validation" => "integer" %>
+                            <% when "editor" then %>
+                                <%= o.cktext_area att[0], :input_html => { :value => default_value, "data-validation" => "none" } %>
+                        <% end %>
                     <% end %>
                 <% end %>
-             <% end %><% end %>
-             
+            <% end %>
         </div>
     </div>    
 </div>

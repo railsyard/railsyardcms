@@ -1,0 +1,70 @@
+@import "colors"; // the main color palette
+
+.cms{
+    font-size: 1em;
+    line-height: 1.3em;
+    h1, h2, h3, h4, h5{
+        span{
+            display: none;
+        }
+    }
+    h1{
+
+    }
+    h2{
+        
+    }
+    h3{
+        
+    }
+    p{
+        img{
+            margin: 5px 5px 5px 0;
+        }
+        img.right{
+            float: right;
+            margin: 5px 0 5px 5px;
+        }
+    }
+    dl{
+        dt{
+            
+        }
+        dd{
+            
+        }
+    }
+    ul, ol{
+        li{
+            a{
+                &:hover{
+                    
+                };
+            }
+        }
+    }
+    ul{
+        li{
+            &:before{
+                
+            };
+        }
+    }
+    a{
+        &:hover{
+            
+        };
+    }
+    em{
+        
+    }
+    strong{
+        
+    }
+    img{
+        
+    }
+    blockquote{
+        font-style: italic;
+    }
+}

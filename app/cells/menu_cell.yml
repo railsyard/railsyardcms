@@ -5,23 +5,45 @@ cell:
         -   name:   First level menu
             method: first_level
             desc:   Menu of the pages on the first level
+            serialized_attributes:
+                id: string
+                class: string
         -   name:   Two levels menu
             method: two_levels
-            desc:   Menu of the pages on the first level and their children
+            desc:   Nav Tag for first level Menu of the pages and their children
+            serialized_attributes:
+                id: string
+                class: string
         -   name:   Siblings menu
             method: siblings
-            desc:   Menu of the pages on the same level of the current page
+            desc:   Menu of the pages on the same level of the current page with optional parent title
+            serialized_attributes:
+                id: string
+                class: string
+                show_root: string
         -   name:   Children menu
             method: children
             desc:   Menu of the children pages of the current page
+            serialized_attributes:
+                id: string
+                class: string
         -   name:   Siblings and children menu
             method: siblings_and_children
             desc:   Menu of the pages on the same level of the current page and their children
+            serialized_attributes:
+                id: string
+                class: string
         -   name:   Footer menu
             method: footer
             desc:   "Menu of all the pages, divided by the first level"
+            serialized_attributes:
+                id: string
+                class: string
         -   name:   Navigation menu
             method: nav
             desc:   Horizontal navigation menu with the current page path
+            serialized_attributes:
+                id: string
+                class: string
 
         

@@ -1,0 +1,50 @@
+/* BASIC TABLE STYLE */
+/*********************/
+table{
+    width: 100%;
+    td, th{
+         padding: 5px;
+         vertical-align: top;
+     }
+    
+    thead{
+        tr{
+            th{
+                font-weight: 600;
+            }
+            th.short{
+                width: 10%;
+            }
+            th.medium{
+                width: 30%;
+            }
+            th.long{
+                width: 60%;
+            }
+        }
+    }
+    tbody{
+        tr{
+            th{
+                
+            }
+            td{
+                
+            }
+        }
+    }
+    tfooter{
+        tr{
+            td{
+                
+            }
+        }
+    }
+    .center{
+        text-align: center;
+    }
+    .right{
+        text-align: right;
+    }
+    
+}

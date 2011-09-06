@@ -1,0 +1,31 @@
+<meta charset="UTF-8">
+
+<title><%= @cfg.site_name %> - <%= @page.title %></title>
+<link rel="shortcut icon" href="/favicon.ico">
+
+<meta name="description" content="<%= @cfg.site_desc %> <%= @page.meta_description %>" />
+<meta name="keywords" content= "<%= @cfg.site_keywords %> <%= @page.meta_keywords %>" /> 
+
+<!-- some mobiles configurations -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" href="images/"> <!-- 57px icon for iphone/ipad -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<!-- JAVASCRIPTS -->
+
+<script type="text/javascript" src="<%= current_theme_javascript_path('modernizr') %>"></script>
+<script type="text/javascript" src="<%= current_theme_javascript_path('hyml5') %>"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="<%= current_theme_javascript_path('application') %>"></script>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet" href="<%= current_theme_stylesheet_path('../javascripts/uniform/css/uniform.default') %>">
+<link rel="stylesheet" href="<%= current_theme_stylesheet_path('hive') %>">
+<link rel="stylesheet" href="<%= current_theme_stylesheet_path('spleen') %>">
+<link rel="stylesheet" href="<%= current_theme_stylesheet_path('style') %>">
+<link rel="stylesheet" href="<%= current_theme_stylesheet_path('demo') %>">
+
+<%= render 'layouts/support' %>
+<%= csrf_meta_tag %>

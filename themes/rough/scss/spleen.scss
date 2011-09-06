@@ -1,0 +1,104 @@
+/* SPLEEN SCSS LIBRARY */
+/* created by spleenteo http://www.basictrading.biz */
+/********************************************/
+// ********************
+// A scss partial intended to be imported as a library
+// Author: Matteo Papadopoulos (aka spleenteo)
+// email: multimedia@basictrading.biz
+// ********************
+// 1- HOW TO USE
+// Download and copy the _spleen.scss library file into your scss folder
+// This file is a scss partial, so it will be hardly included (not linked) into the reference file.
+// To include the library paste the following line at the top of your scss file
+//  
+// @import "spleen";
+
+// IS IT WORKING?
+// After the include of the library partial, copy/paste the following line;
+// The following class is intended to verify if the library is correctly imported into your scss file.
+//
+// html{@extend .spleen_lib_verify;}
+//
+// You should see at the top of your html page, an horrible huge white alert on a black and yellow striped background
+// This should be just to check, remember to remove it after you pass it
+// your design will be gratefull!
+// ********************
+@import "commons"; // mixin and common classes even for others scss to be implemented
+
+// set the refers name of the special font you wish to use
+// put your font into /css/fonts/ directory
+@font-face {
+    font-family: 'special';
+    src: url('fonts/Georgia.eot');
+    src: local('Georgia'), url('fonts/Georgia.ttf') format('truetype');
+}
+
+/* RESET BROWSER AND HTML STYLES */
+    html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outline:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+/* HTML5 RESET TO AVOID INLINE BROWSER SETTINGS */
+/********************/
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { 
+    display:block;
+}
+
+
+/* GENERIC CLASSES */
+.special_font{
+    font-family: special;
+    font-smooth: always;
+    font-weight: 400;
+}
+.spleen_lib_verify {&:before{ border: 5px solid black; content: "SPLEEN SCSS LIBRARY IS WORKING!"; color: white; text-shadow: #000 1px 1px 5px; font-size: 3em; font-family: verdana; font-weight: bold; margin: 10px; padding: 10px; display: block; background-image: url("http://basictrading.biz/download/git/spleen_scss/spleen_stripe.png"); @include rounded(10px);text-align: center;}}
+
+
+/* DEFAULT BODY */
+body{
+    strong{ font-weight: 600; }
+    a{
+        text-decoration: none;
+        &:hover{
+            text-decoration: underline;
+        };
+    }
+}
+
+/* Usefull classes to be used to .hide .show elements with js */
+/* .opener is the trigger to be cliccked */
+/* hider is the element contiaing the content that might be dynamically shown */
+.hider{
+    display: none;
+}
+.opener{
+    cursor: pointer;
+    &:hover{
+    };
+}
+.before_opener_commons{
+    margin-right: 4px;
+    content: "";
+    margin-right: 4px;
+    background-image: url("img/opener_arrow.png");
+    line-height: 16px;
+    padding-left: 16px;
+}
+.opener_close{
+    &:before{
+        @extend .before_opener_commons;
+        background-position: 0 0;
+    };
+}
+.opener_open{
+    &:before{
+        @extend .before_opener_commons;
+        background-position: -16px -16px;
+    };
+}
+
+@import "spaces";
+@import "tables";
+@import "forms";
+@import "cms";
+
+

@@ -1,14 +1,14 @@
-<%= content_for :title do %>Edit user<% end %>
+<%= content_for :title do %><%= t('admin.users.edit_user', :email => @user.email) %><% end %>
 
 <header class="page_description">
-    <h2>Edit user <%= @user.email %></h2>
+    <h2><%= t('admin.users.edit_user', :email => @user.email) %></h2>
 </header>
 
 <section class="">
      <% unless @user.errors.blank? %>
      <div class="alert alert_red">
          <img height="24" width="24" src="/admin/images/icons/small/white/Alarm%20Bell.png">
-         Errors: <%= errors_for @user %>
+         <%= t('admin.general.errors') %>: <%= errors_for @user %>
      </div>
      <% end %>
 </section>

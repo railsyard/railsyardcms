@@ -1,0 +1,10 @@
+cell:
+    name:   Markdown Content
+    class:  markdown
+    actions:
+        -   name:   Markdown widget
+            method: markdown_widget
+            desc:   A markdown text widget
+            serialized_attributes:
+                body: text
+                div_class: string

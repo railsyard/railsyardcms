@@ -1,4 +1,4 @@
 <div id="category_ckeckbox_<%= category.id %>">
-    <%= check_box_tag "article[category_ids][]", category.id, article.categories.include?(category) %>  
+    <%= check_box_tag "article[category_ids][]", category.id, article.categories.include?(category), :id => "article_category_id-#{category.id}" %>  
     <%= category.name.humanize %>
 </div>

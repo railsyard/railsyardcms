@@ -4,14 +4,14 @@
              <%= f.label :title, t('admin.general.title') %>
              <%= f.text_field :title, {:id=>"title", :title=>"Page title, can\'t be blank", :class=>"large required"} %>
 
-             <label>Opzioni pagina</label>
-             <%= f.select :layout_name, options_from_collection_for_select(@layouts.map, 'filename', 'title', @current_layout.filename) %> Layout
+             <label><%= t('admin.pages.page_options') %></label>
+             <%= f.select :layout_name, options_from_collection_for_select(@layouts.map, 'filename', 'title', @current_layout.filename) %> <%= t "admin.layouts.layout" %>
              <div class="input_group">
                  <% visible_in_menu_checked = page.visible_in_menu || page.visible_in_menu.nil? %>
-                 <%= f.check_box :visible_in_menu, :checked => visible_in_menu_checked %> Visibile in menu<br>
+                 <%= f.check_box :visible_in_menu, :checked => visible_in_menu_checked %> <%= t "admin.general.visible_in_menu" %><br>
                  <% published_checked = page.published || page.published.nil? %>
-                 <%= f.check_box :published, :checked => published_checked %> Pubblicato<br>
-                 <%= f.check_box :reserved %> Riservato
+                 <%= f.check_box :published, :checked => published_checked %> <%= t "admin.general.published" %><br>
+                 <%= f.check_box :reserved %> <%= t "admin.general.reserved" %>
              </div>
         </div>
     </div>    
@@ -21,46 +21,55 @@
     <ul class="content_accordion no_header">
         <li>
             <a href="#" class="handle">&nbsp;</a>
-            <h3 class="bar">Opzioni avanzate</h3>
+            <h3 class="bar"><%= t('admin.pages.advanced_options') %></h3>
             <div class="content">
                 <%= f.label t('admin.general.pretty_url') %>
                 <%= f.text_field :pretty_url, {
-                    :title=>"se non inserito il pretty url sarà impostato automaticamente con il titolo della pagina",
-                    :class=>"large"
+                    :title => t("admin.pages.hint_pretty_url"),
+                    :class => "large"
                 } %>
 
                 <%= f.label 'Meta Title' %>
                 <%= f.text_field :meta_title, {
-                    :title=>"Il titolo della pagina (importante per il SEO)",
-                }%>
+                    :title => t("admin.pages.hint_meta_title"),
+                    :class => "large"
+                } %>
 
                 <%# TODO inserire testi help nella form pagina %>
                 <%= f.label 'Meta Keywords' %>
                 <%= f.text_field :meta_keywords, {
-                    :title=>"Inserisci le metakeyword della pagina",
-                    :class=>"large"
+                    :title => t("admin.pages.hint_meta_keywords"),
+                    :class => "large"
                 } %>
 
                 <%= f.label 'Meta Description' %>
                 <%= f.text_field :meta_description, {
-                    :title=>"Una descrizione del contenuto della pagina",
-                    :class=>"large"
+                    :title => t("admin.pages.hint_meta_description"),
+                    :class => "large"
                 } %>
                 
                 <%= f.label :lang, t('admin.general.featured_image') %>
                 <%= f.file_field :featured_image %>
 
                 <%= f.label 'Content div id' %>
-                <%= f.text_field :div_id %>
+                <%= f.text_field :div_id, {
+                    :title => t("admin.pages.hint_div_id")
+                } %>
 
                 <%= f.label 'Content div class' %>
-                <%= f.text_field :div_class %>
+                <%= f.text_field :div_class, {
+                    :title => t("admin.pages.hint_div_class")
+                } %>
 
                 <%= f.label 'Content div style' %>
-                <%= f.text_field :div_style %>
+                <%= f.text_field :div_style, {
+                    :title => t("admin.pages.hint_div_style")
+                } %>
 
                 <%= f.label 'Javascript' %>
-                <%= f.text_area :script, :size => "110x20"%>
+                <%= f.text_area :script, { :size => "110x20",
+                    :title => t("admin.pages.hint_javascript")
+                } %>
             </div>
         </li>
     </ul>

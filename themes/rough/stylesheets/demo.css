@@ -1,0 +1,53 @@
+.debug { border: 1px solid red; }
+
+.bg_reset { background-repeat: no-repeat; background-color: transparent; background-position: top left; }
+
+/* GENERIC ELEMENTS DEFINITIONS */
+/**********************************/
+body { font-family: "lucida grande", Tahoma, Verdana; font-size: 0.7em; color: #403d3d; background-image: -webkit-gradient(linear, right bottom, left top, color-stop(0.08, #f8f8f8), color-stop(0.77, #dfdfdf)); background-image: -moz-linear-gradient(right bottom, #f8f8f8 8%, #dfdfdf 77%); }
+body header h1 { font-size: 2em; padding: 5px 0; margin-bottom: 10px; }
+body header.main hgroup h1 span { display: none; }
+body header.main hgroup ul.langs_menu { position: absolute; top: 20px; right: 10px; }
+body header.main hgroup ul.langs_menu li { display: inline-block; }
+body nav ul li { display: inline-block; margin-right: 20px; }
+body article { line-height: 1.4em; }
+body article ul { margin: 10px; padding-left: 20px; }
+body article ul li { padding: 5px 5px 5px 15px; list-style: circle; }
+
+header, nav, section, article, aside { background-color: #fff; padding: 10px; border: 1px solid #ccc; margin-top: 10px; }
+
+p { line-height: 1.94em; }
+
+/* END GENERIC ELEMENTS DEFINITIONS  */
+/* MENU SNIPPETS */
+/**********************************/
+.twolevels-menu > ul { text-align: left; position: relative; }
+.twolevels-menu > ul > li { text-align: left; display: inline-block; padding: 25px 14px; position: relative; }
+.twolevels-menu > ul > li:hover { background-color: #eeeeee; }
+.twolevels-menu > ul > li:hover ul { display: block; }
+.twolevels-menu > ul > li > a { color: #cccccc; text-transform: uppercase; font-size: 13px; font-weight: 500; }
+.twolevels-menu > ul > li > a:hover { text-decoration: none; }
+.twolevels-menu > ul > li ul { box-shadow: 0 0 5px #cccccc; -webkit-box-shadow: 0 0 5px #cccccc; -moz-box-shadow: 0 0 5px #cccccc; behavior: url("/css/PIE.htc"); display: none; background-color: #eeeeee; padding: 20px; position: absolute; top: 54px; left: 0; z-index: 100; width: 125px; }
+.twolevels-menu > ul > li ul li { display: block; border-bottom: 1px solid #cccccc; border-top: 1px solid #fff; }
+.twolevels-menu > ul > li ul li a { display: block; line-height: 25px; color: #cccccc; font-size: 13px; font-weight: 500; }
+.twolevels-menu > ul > li ul li a:hover { color: #3d3d3d; }
+.twolevels-menu > ul > li ul li:first-child { border-top: none; }
+.twolevels-menu > ul > li ul li:last-child { border-bottom: none; }
+.twolevels-menu > ul > li:last-child ul { left: auto; right: 0; }
+
+.footer_menu { background-color: #eeeeee; background-position: top left; background-repeat: repeat-x; padding: 20px 10px 20px 10px; }
+.footer_menu:after { clear: both; content: ' '; display: block; font-size: 0; line-height: 0; visibility: hidden; width: 0; height: 0; height: 1%; display: block; }
+.footer_menu > div { width: 20%; float: left; }
+.footer_menu h2 { color: #3d3d3d; text-transform: uppercase; font-size: 11px; line-height: 25px; border-bottom: 1px dotted #cccccc; margin-bottom: 5px; }
+.footer_menu ul li { line-height: 16px; }
+.footer_menu ul li a { font-size: 10px; color: #cccccc; }
+.footer_menu ul li a:hover { color: #3d3d3d; }
+
+/* END MENU SNIPPETS  */
+.credits { font-size: 9px; opacity: 0.7; }
+
+/* SMARTPHONES MODIFICATIONS */
+/**********************************/
+@media screen and (max-width : 620px) { nav ul li { display: block; width: 100%; padding: 5px 0; border-bottom: 1px dotted gray; } }
+
+/* END IPAD AND TABLETS  */

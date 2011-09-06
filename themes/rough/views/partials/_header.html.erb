@@ -1,0 +1,14 @@
+<div class="cell_12">
+    <header class="main">
+        <hgroup>
+            <h1><a href="/"><img src="<%= current_theme_image_path('logo.jpg') %>" /><span><%= @cfg.site_name %></span></a></h1>
+            <h2><%= @cfg.site_desc %></h2>
+            <ul class="langs_menu">
+                <% Language.all.map do |l| %>
+                <li><%= link_to l.name, "/#{l.short}" %></li>
+                <% end %>
+            </ul>
+        </hgroup>
+        <%= yield_snippets(@page, "header") if @page %>
+    </header>
+</div>
