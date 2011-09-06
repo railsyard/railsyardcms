@@ -1,5 +1,13 @@
 module Admin::AdminHelper
   
+  def admin_menus
+    result = ""
+    Ry::Plugin::Manager.instance.plugins.each do |plugin|
+      result += render plugin.admin_menu if plugin.admin_menu
+    end
+    result.html_safe
+  end
+  
   def page_tree(root)
     out = ""
     if root && !root.children.blank?
