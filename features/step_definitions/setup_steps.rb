@@ -1,11 +1,13 @@
 Given /^the page is setup in basic mode$/ do
+  DatabaseCleaner.clean
+  
   @category_general     = Factory(:category, :name => 'General')
   @category_nerdy_stuff = Factory(:category, :name => 'Nerdy stuff')
   
   @page_en   = Factory :language_page
   @page_home = Factory :page, 
     :title      => 'Home en', 
-    :pretty_url => 'home_en', 
+    :pretty_url => 'home-en', 
     :parent_id  => @page_en.id
   
   @role_admin           = Factory :role, :name => 'admin'
