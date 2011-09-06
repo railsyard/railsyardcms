@@ -22,8 +22,9 @@ Features
 	
 To-do
 -----
-* decent public themes
-* [admin] some i18n backend labels
+* categories management [in progress]
+* at least one more public theme
+* refactoring some controllers
 * caching
 * queries optimization - memoization
 * blogging features to be completed
@@ -33,12 +34,12 @@ To-do
 * a lot of documentation
 * a lot of tests
 * github wiki
-* update to Rails 3.1 when all the gems we are using became compatible
+* update to Rails 3.1 when all the gems we are using became compatible [in progress]
 
 Requirements:
 -------------
 * Ruby 1.9.2 or 1.8.7
-* Rails 3.0.9
+* Rails 3.0.10
 * Some gems - check config/environment.rb
 
 Installation
@@ -50,11 +51,12 @@ We really suggest the use of Ruby RVM and Ruby 1.9.2
     run 'rvm gemset create "railsyard"'
     run 'git clone https://github.com/cantierecreativo/railsyardcms.git'
     run 'cd railsyardcms'
-    run 'gem install rails -v="3.0.9"'
+    run 'gem install rails -v="3.0.10"'
     run 'gem install bundler'
     run 'bundle install'
     edit config/database.yml according to your configuration
-    run 'rake db:migrate'
+    run 'rake ry:init'
+    run 'rake db:seed' to load some example pages
 
 Using with Ruby 1.8.7
 ---------------------
@@ -117,7 +119,10 @@ Credits
 -------
 Funded and developed by [Cantiere Creativo](http://www.cantierecreativo.net)
 
-All the credits to the respective owners/devopers of gems/plugins/scripts used.
+All the credits to the respective owners/developers of gems/plugins/scripts used.
+
+Railsyard exists mainly thanks to the community.
+ 
 
 The big boys
 ------------
@@ -128,5 +133,5 @@ Contributors
 ------------
 If you contributed to this project committing even a single bit feel free to add your name here!
 
-* [Paul Spieker](https://github.com/spieker)
+* [Paul Spieker](https://github.com/spieker) - our first and very active contributor
 	

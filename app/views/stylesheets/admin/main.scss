@@ -357,77 +357,25 @@ body{
     ul#side_links{
         @extend .ul_main_menu_general_definition;
     }
+    /* LOGIN PANEL */
+    /**********************************/
+    .login_box{
+        h2{
+            font-size: 24px;
+            color: $cGreen;
+        }
+        label{
+            color: $cGraySmoke;
+        }
+        a{
+            &:hover{
+                color: $cGraySmoke;
+            };
+        }
+    }
+    /* END LOGIN PANEL  */
 }
 /* END LEFTBAR IN ASIDE MAIN TEMPLATE */
-
-/* LOGIN PANEL */
-/**********************************/
-#login_box{
-    background: #eee url(../images/grey_noise.png) repeat;
-    background-color: #e5e8ea;
-    z-index: 10;
-    display: block;
-    margin: 10% auto 100px;
-    border: 3px solid white;
-    position: relative;
-    width: 340px;
-    label.fields{
-        position: relative;
-        display: block;
-        margin: 20px 30px 10px;
-        strong{
-            display: block;
-            width: 85px;
-            float: left;
-
-            color: $cGraySmoke;
-            font-size: 1.1em;
-            font-weight: normal;
-            line-height: 25px;
-            text-shadow: 0 1px 0 #FFFFFF;
-        }
-        input.indent{
-            width: 185px;
-            height: 22px;
-            padding: 0 5px;
-            line-height: 22px;
-            text-shadow: 0 1px 0 #FFFFFF;
-        }
-        button {
-            float: right;
-            margin: 10px 30px 55px;
-            display: block;
-            clear: both;
-        }
-    }
-    #bar{
-        color: white;
-        background-color: #4c5766;
-        position: absolute;
-        bottom: -5px;
-        left: -4px;
-        width: 306px;
-        padding: 10px 20px;
-        border-left: none;
-        border-right: none;
-        font-size: 12px;
-        border-bottom: 1px solid #59676B !important;
-        a{
-            margin-left: 30px; color: #ccc;
-            &:hover{ color: #fff;}
-        }
-        #login_logo{
-            position: absolute;
-            bottom: -72px;
-            right: 24px;
-            height: 67px;
-            width: 253px;
-            span{ visibility: hidden;}
-        }
-    }
-}
-/* END LOGIN PANEL  */
-
 
 #main_container{
     margin-top: 10px;
@@ -709,16 +657,15 @@ body{
     }
     >header{
         h2 {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: normal;
             line-height: 26px;
             color: white;
             margin: -2px auto -1px;
             text-indent: 10px;
-            //text-shadow: 0px 1px 0px #0f3360;
-            background-color: $cGreen;
             -webkit-user-select: none;
             @include rounded(3px);
+            letter-spacing: 0.3px;
             small{
                 font-size: 11px;
                 color: #ddd;
@@ -742,7 +689,6 @@ body{
         cursor: move;
     }
     a.edit{
-        // background: url(img/icon_edit.png) no-repeat;
         right: 29px;
         cursor: pointer;
     }
@@ -750,10 +696,40 @@ body{
         display: none;
     }
 }
+.available_widget{
+    >header{
+        h2{
+            background-color: #DBCFBF;
+            color: #686157;
+        }
+    }
+}
+.active_widget{
+    background-color: $cGreen;
+}
 /* END WIDGET DRAGGABLE ITEM  */
 
+.available_widgets{
+    .area_box{
+        width: 50%;
+        &:nth-child(odd){
+            float: left;
+        }
+        &:nth-child(even){
+            float: right;
+        }
+        
+    }
+}
 
-
+.wrap{
+    >header{
+        >h2{
+            font-size: 13px;
+            font-weight: 600;
+        }
+    }
+}
 
 
 .wrap a.grabber{
