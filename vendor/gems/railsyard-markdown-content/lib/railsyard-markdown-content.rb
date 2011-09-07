@@ -2,7 +2,7 @@ require "railsyard-markdown-content/version"
 require "railsyard-markdown-content/engine"
 require "app/cells/markdown_cell"
 require "lesstile"
-require "BlueCloth"
+require "bluecloth"
 require "coderay"
 
 module Railsyard
