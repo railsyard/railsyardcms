@@ -1,12 +1,9 @@
 require "railsyard-markdown-content/version"
-
-require 'app/cells/markdown_cell'
-require 'bluecloth'
-require 'lesstile'
-require 'coderay'
-
-RAILSYARD_WIDGET_PATHS ||= []
-RAILSYARD_WIDGET_PATHS << File.join(File.dirname(__FILE__), 'app/cells')
+require "railsyard-markdown-content/engine"
+require "app/cells/markdown_cell"
+require "lesstile"
+require "BlueCloth"
+require "coderay"
 
 module Railsyard
   module Markdown
