@@ -1,7 +1,10 @@
 # Bundler 1.0.10 loads Psych as a YAML engine by default. Psych does not work fine with rails 
 # http://stackoverflow.com/questions/4980877/rails-error-couldnt-parse-yaml
-require 'yaml'
-YAML::ENGINE.yamler= 'syck'
+
+unless RUBY_VERSION.match(/1\.8\./)
+  require 'yaml'
+  YAML::ENGINE.yamler= 'syck'
+end
 
 require 'rubygems'
 
