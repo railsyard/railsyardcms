@@ -91,9 +91,6 @@ GEM
     gherkin (2.4.16)
       json (>= 1.4.6)
     gravatar_image_tag (1.0.0)
-    growl (1.0.3)
-    growl_notify (0.0.1)
-      rb-appscript
     guard (0.6.2)
       thor (~> 0.14.6)
     guard-cucumber (0.6.1)
@@ -188,8 +185,6 @@ GEM
       rdoc (~> 3.4)
       thor (~> 0.14.4)
     rake (0.9.2)
-    rb-appscript (0.6.1)
-    rb-fsevent (0.4.3.1)
     rdoc (3.9.4)
     rest-client (1.6.7)
       mime-types (>= 1.16)
@@ -242,12 +237,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  BlueCloth
   acts_as_list-rails3 (>= 0.0.4)
   ancestry (>= 1.2.4)
   cancan (>= 1.6.5)
   capybara (>= 1.0.0)
   cells (>= 3.6.5)
   ckeditor (= 3.6.1)
+  coderay
   cucumber (>= 0.10.2)
   cucumber-rails (>= 0.4.1)
   database_cleaner
@@ -255,12 +252,11 @@ DEPENDENCIES
   devise (>= 1.4.2)
   factory_girl
   gravatar_image_tag (>= 1.0.0)
-  growl
-  growl_notify
   guard
   guard-cucumber
   jquery-rails (>= 1.0.12)
   launchy
+  lesstile
   mysql2 (~> 0.2.13)
   omniauth (>= 0.2.6)
   paperclip (>= 2.3.16)
@@ -268,7 +264,6 @@ DEPENDENCIES
   rails (= 3.0.10)
   railsyard-markdown-content!
   rake (= 0.9.2)
-  rb-fsevent
   rspec (>= 2.5.0)
   rspec-rails (>= 2.5.0)
   sqlite3-ruby
