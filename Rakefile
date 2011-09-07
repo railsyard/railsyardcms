@@ -5,6 +5,13 @@ require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
 task :default => ['ry:clean_init', :cucumber]
+task :travis do
+  ['ry:clean_init', "rake cucumber"].each do |cmd|
+    puts "Starting to run #{cmd}..."
+    system("export DISPLAY=:99.0 && bundle exec #{cmd}")
+    raise "#{cmd} failed!" unless $?.exitstatus == 0
+  end
+end
 
 `echo 'test:
   adapter: sqlite3
