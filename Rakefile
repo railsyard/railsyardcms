@@ -4,7 +4,7 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-task :default => ['ry:clean_init', :spec, :cucumber]
+task :default => ['ry:clean_init', :cucumber]
 
 `echo 'test:
   adapter: sqlite3
