@@ -12,3 +12,4 @@ devise/**/*
 devise/*
 Gemfile.lock
 .bundle
+db/*.sqlite3

@@ -41,6 +41,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_girl'
   gem 'railroady'
+  gem 'sqlite3-ruby', :require => 'sqlite3'
 end
 
 
