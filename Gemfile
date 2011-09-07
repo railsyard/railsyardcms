@@ -34,7 +34,7 @@ group :development, :test do
   gem 'deadweight', '>=0.2.1'
   gem 'guard'
   gem 'guard-cucumber'
-  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
+#  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
   gem 'launchy'
   gem 'growl'
   gem 'growl_notify'
