@@ -237,14 +237,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  BlueCloth
   acts_as_list-rails3 (>= 0.0.4)
   ancestry (>= 1.2.4)
   cancan (>= 1.6.5)
   capybara (>= 1.0.0)
   cells (>= 3.6.5)
   ckeditor (= 3.6.1)
-  coderay
   cucumber (>= 0.10.2)
   cucumber-rails (>= 0.4.1)
   database_cleaner
@@ -256,7 +254,6 @@ DEPENDENCIES
   guard-cucumber
   jquery-rails (>= 1.0.12)
   launchy
-  lesstile
   mysql2 (~> 0.2.13)
   omniauth (>= 0.2.6)
   paperclip (>= 2.3.16)
