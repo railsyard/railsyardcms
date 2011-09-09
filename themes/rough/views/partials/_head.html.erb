@@ -1,10 +1,10 @@
 <meta charset="UTF-8">
 
-<title><%= @cfg.site_name %> <%= @cfg.site_page_title %> <%= @page.title %> <%= @page.meta_title %></title>
+<title><%= @cfg.site_name %> <%= @cfg.site_page_title %> <%= @page.title if @page %> <%= @page.meta_title if @page %></title>
 <link rel="shortcut icon" href="/favicon.ico">
 
-<meta name="description" content="<%= @cfg.site_desc %> <%= @page.meta_description %>" />
-<meta name="keywords" content= "<%= @cfg.site_keywords %> <%= @page.meta_keywords %>" />
+<meta name="description" content="<%= @cfg.site_desc %> <%= @page.meta_description if @page %>" />
+<meta name="keywords" content= "<%= @cfg.site_keywords %> <%= @page.meta_keywords if @page %>" />
 
 <!-- some mobiles configurations -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
