@@ -16,17 +16,20 @@
         <div class="cell_9">
             <article>
                 <%= yield_snippets(@page, "center") if @page %>
+                <%= yield_article_snippets(@article_layout, "center", @article) if @article %>
             </article>
         </div>
         <div class="cell_3">
             <aside>
                 <%= yield_snippets(@page, "side") if @page %>
+                <%= yield_article_snippets(@article_layout, "side", @article) if @article %>
             </aside>
         </div>
 
         <div class="cell_12">
             <footer>
                 <%= yield_snippets(@page, "footer") if @page %>
+                <%= yield_article_snippets(@article_layout, "footer", @article) if @article %>
             </footer>
         </div>
 

@@ -15,12 +15,14 @@
         <div class="cell_12">
             <article>
                 <%= yield_snippets(@page, "body") if @page %>
+                <%= yield_article_snippets(@article_layout, "body", @article) if @article %>
             </article>
         </div>
 
         <div class="cell_12">
             <footer>
                 <%= yield_snippets(@page, "footer") if @page %>
+                <%= yield_article_snippets(@article_layout, "footer", @article) if @article %>
             </footer>
         </div>
         
