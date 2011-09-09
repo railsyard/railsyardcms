@@ -1,6 +1,8 @@
 Railsyard CMS
 =============
 
+[![Build Status](https://secure.travis-ci.org/spieker/railsyardcms.png?branch=master)](http://travis-ci.org/spieker/railsyardcms)
+
 This is a quite stable release of the complete rewrite of Railsyard CMS.
 
 The public themes are still missing, but the backend is working. A couple of public themes will come soon.
