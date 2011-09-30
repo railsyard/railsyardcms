@@ -18,7 +18,7 @@ module Yard
     end   
     if page
       yard_url = "" 
-      page.ancestors.each{|a| yard_url << "/#{a.pretty_url}"}
+      Page.sort_by_ancestry(page.ancestors).map{|a| yard_url << "/#{a.pretty_url}"}
       yard_url << "/#{page.pretty_url}"
     else
       "/"

@@ -134,7 +134,7 @@ ActiveRecord::Schema.define(:version => 20110824160233) do
     t.string   "analytics",         :default => ""
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "theme_name",        :default => "blue"
+    t.string   "theme_name",        :default => "rough",                 :null => false
     t.boolean  "frontend_controls", :default => false
   end
 
