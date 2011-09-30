@@ -1,6 +1,6 @@
 class AddThemeNameToSettings < ActiveRecord::Migration
   def self.up
-    add_column :settings, :theme_name, :string, :default => 'blue'
+    add_column :settings, :theme_name, :string, :default => 'rough', :null => false
   end
   
   def self.down

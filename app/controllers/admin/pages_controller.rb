@@ -41,8 +41,9 @@ class Admin::PagesController < Admin::AdminController
     @page.meta_description = @page.title if @page.meta_description.blank?
     @page.meta_title = @page.title if @page.meta_title.blank?
     @page.publish_at = Time.now if @page.published    
-    if Page.where(:lang => @admin_editing_language, :ancestry => nil).first
-      @page.position = Page.where(:lang => @admin_editing_language, :ancestry => nil).first.children.order("position ASC").last.try(:position).to_i+1
+    root = Page.where(:lang => @admin_editing_language, :ancestry => nil).first
+    if root
+      @page.position = root.children.order("position ASC").last.try(:position).to_i+1
     else
       @page.position = 1
     end
