@@ -16,7 +16,7 @@ gem 'themes_for_rails', '>= 0.4.2'
 gem 'cells', '>= 3.6.5'
 gem 'rake', '0.9.2'
 gem 'paperclip', '>= 2.3.16'
-gem 'ckeditor', '3.6.1'
+gem 'ckeditor', '3.6.2'
 # Example of snippet got via external gem ## broken in production due to bluecloth
 # gem 'railsyard-markdown-content', :path => 'vendor/gems/railsyard-markdown-content'
 

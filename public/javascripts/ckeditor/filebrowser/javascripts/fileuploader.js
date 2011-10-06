@@ -1142,6 +1142,16 @@ qq.extend(qq.UploadHandlerForm.prototype, {
         form.setAttribute('action', queryString);
         form.setAttribute('target', iframe.name);
         form.style.display = 'none';
+
+        // Rails CSRFProtection
+        var token = $('meta[name="csrf-token"]').attr('content');
+        var param = $('meta[name="csrf-param"]').attr('content');
+        var input = qq.toElement('<input type="hidden" />');
+        
+        input.setAttribute('name', param);
+        input.setAttribute('value', token);
+        
+        form.appendChild(input);
         document.body.appendChild(form);
 
         return form;
@@ -1241,7 +1251,10 @@ qq.extend(qq.UploadHandlerXhr.prototype, {
         xhr.setRequestHeader('X-File-Size', size);
         xhr.setRequestHeader('X-File-Type', file.type);
         xhr.setRequestHeader("Content-Type", "application/octet-stream");
-        
+
+        // Rails CSRFProtection
+        if ($.rails) $.rails.CSRFProtection(xhr);        
+
         xhr.send(file);
     },
     _onComplete: function(id, xhr){
