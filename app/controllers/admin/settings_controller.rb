@@ -36,6 +36,10 @@ class Admin::SettingsController < Admin::AdminController
       p.snippets.map{|s| s.update_attribute(:area, "limbo")}
       p.update_attribute(:layout_name, first_layout)
     end
+    ArticleLayout.all.map do |l|
+      l.snippets.map{|s| s.update_attribute(:area, "limbo")}
+      l.update_attribute(:layout_name, first_layout)
+    end
   end
 
 end
