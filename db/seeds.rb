@@ -4,13 +4,9 @@
 public
 
 def generate_page(parent, title, pretty_url, the_layout)
-  siblings_number = parent.children.size
-  pg = parent.children.create :title => title, :pretty_url => "#{pretty_url}#{"-"+parent.lang if parent.lang!='en'}", :lang => parent.lang, :visible_in_menu => true, :reserved => false, :published => true, :layout_name => the_layout, :publish_at => Time.now, :meta_title => title, :meta_description => title, :position => siblings_number+1
-  
+  pg = parent.children.create :parent => parent, :title => title, :pretty_url => "#{pretty_url}#{"-"+parent.lang if parent.lang!='en'}", :lang => parent.lang, :visible_in_menu => true, :reserved => false, :published => true, :layout_name => the_layout, :publish_at => Time.now, :meta_title => title, :meta_description => title
   pg.snippets.create :title => "Two levels menu", :area => "header", :cell_controller => "menu", :cell_action => "two_levels", :handler => "menu%two_levels%#{rand(99999).to_s.center(5, rand(9).to_s)}"
-  
   pg.snippets.create :title => "Footer menu", :area => "footer", :cell_controller => "menu", :cell_action => "footer", :handler => "menu%footer%#{rand(99999).to_s.center(5, rand(9).to_s)}"
-  
   if the_layout == "two_columns.html.erb" or the_layout == "three_columns.html.erb"
       pg.snippets.create :title => "Siblings menu", :area => "left", :cell_controller => "menu", :cell_action => "siblings", :handler => "menu%siblings%#{rand(99999).to_s.center(5, rand(9).to_s)}"      
   end  
@@ -37,6 +33,7 @@ Language.all.each do |lang|
   home = root.children.first
   home.snippets.create :title => "Two levels menu", :area => "header", :cell_controller => "menu", :cell_action => "two_levels", :handler => "menu%two_levels%#{rand(99999).to_s.center(5, rand(9).to_s)}"
   home.snippets.create :title => "Footer menu", :area => "footer", :cell_controller => "menu", :cell_action => "footer", :handler => "menu%footer%#{rand(99999).to_s.center(5, rand(9).to_s)}"
+  
   # Generating new pages
   first = generate_page(root, "First Group", "first", single_column)
   generate_page(first, "1st page", "sub-first", single_column)

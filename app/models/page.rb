@@ -21,6 +21,8 @@ class Page < ActiveRecord::Base
   validates_uniqueness_of :pretty_url
   validates_presence_of   :lang
   
+  before_create :set_order
+  
   # paperclip
   has_attached_file :featured_image,
                     :styles => {:large => "500x500>", :medium => "300x300>", :thumb => "100x100>", :banner => "960x303>" },
@@ -51,5 +53,12 @@ class Page < ActiveRecord::Base
   def is_reserved?
     self.reserved == true
   end
+  
+  private
+  
+  def set_order
+    self.position ||= self.siblings.order("position ASC").last.try(:position).to_i+1
+  end
+  
   
 end

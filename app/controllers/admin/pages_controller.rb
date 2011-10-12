@@ -40,18 +40,14 @@ class Admin::PagesController < Admin::AdminController
     @page.lang = @admin_editing_language
     @page.meta_description = @page.title if @page.meta_description.blank?
     @page.meta_title = @page.title if @page.meta_title.blank?
-    @page.publish_at = Time.now if @page.published    
-    root = Page.where(:lang => @admin_editing_language, :ancestry => nil).first
-    if root
-      @page.position = root.children.order("position ASC").last.try(:position).to_i+1
-    else
-      @page.position = 1
-    end
-    # TO-DO selettore posizione pagina nell'albero
+    @page.publish_at = Time.now if @page.published
+    
+    # TO-DO position selector inside pages tree
     if @page.parent.blank?
       lang_root_page = Page.find_by_title(@admin_editing_language)
       @page.parent = lang_root_page unless lang_root_page.blank?
     end
+    
     if @page && @page.save && @page.errors.empty?
       redirect_to admin_pages_path()
     else
