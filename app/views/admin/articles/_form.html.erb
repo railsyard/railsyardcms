@@ -22,7 +22,7 @@
             
             <%= f.label "Categories" %>
             <div id='categories_list'>   
-            <% Category.all.map do |category| %> 
+            <% @categories.map do |category| %> 
               <%= render :partial => "/admin/categories/checkbox", :object => category, :as => :category, :locals =>{:article => @article} %>
             <% end %>
             </div> 
