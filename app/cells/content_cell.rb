@@ -20,8 +20,10 @@ class ContentCell < Cell::Rails
   end
   
   def articles_list(args)
-    fill_generic_variables(args[:page], args[:options], args[:snip_id])
-    @articles = Article.published.not_reserved.all
+    fill_generic_variables(args[:page], args[:options], args[:snip_id])    
+    @articles = Article.published.includes(:categorizations)
+    @articles = @articles.not_reserved unless (args[:current_user] && args[:current_user].is_privileged?)
+    @articles = @articles.where("categorizations.category_id IN (?)", args[:options][:categories]) if args[:options][:categories]
     render
   end
   

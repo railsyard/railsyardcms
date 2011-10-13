@@ -10,6 +10,11 @@ class Admin::SnippetsController < Admin::AdminController
   
   def edit
     @snippet = Snippet.find(params[:id])  
+    
+    if @snippet.serialized_attributes.any? {|att| att[1].eql? "article_categories"}
+      @categories = Category.all
+    end
+    
     respond_to do |format|
       format.html { render }
       format.dialog { render :layout => false }

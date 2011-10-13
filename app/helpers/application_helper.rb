@@ -17,7 +17,7 @@ module ApplicationHelper
         out << "<span class=\"title\">#{snip.title}</span>"
         out << "</div>"
       end
-      out << render_cell(snip.cell_controller, snip.cell_action, :page => page, :options => snip.options, :snip_id => snip.id)
+      out << render_cell(snip.cell_controller, snip.cell_action, :page => page, :options => snip.options, :snip_id => snip.id, :current_user => current_user)
       out << "</div>"
       out << "<div class=\"cleanup\"></div>" if has_frontend_controls?
       out << "</div>" if has_frontend_controls?
@@ -40,7 +40,7 @@ module ApplicationHelper
         out << "<span class=\"title\">#{snip.title}</span>"
         out << "</div>"
       end
-      out << render_cell(snip.cell_controller, snip.cell_action, :article_layout => article_layout, :article => article, :options => snip.options, :snip_id => snip.id)
+      out << render_cell(snip.cell_controller, snip.cell_action, :article_layout => article_layout, :article => article, :options => snip.options, :snip_id => snip.id, :current_user => current_user)
       out << "</div>"
       out << "<div class=\"cleanup\"></div>" if has_frontend_controls?
       out << "</div>" if has_frontend_controls?
