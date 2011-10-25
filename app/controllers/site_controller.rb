@@ -6,10 +6,10 @@ class SiteController < ApplicationController
     @cfg = cfg # get global configuration, see application controller
     @hp = yard_home
     if params[:page_url].blank? && params[:lang].blank?
-      redirect_to yard_home_link
+      redirect_to yard_home_link, :status => 301
     elsif params[:page_url].blank? && !params[:lang].blank? && params[:lang] =~ $AVAILABLE_LANGUAGES
       lang_home = yard_home(params[:lang])
-      redirect_to get_yard_url(lang_home.id)
+      redirect_to get_yard_url(lang_home.id), :status => 301
     elsif !params[:page_url].blank?
       splitted_page_url = params[:page_url].split('/')
       @page = Page.where(:pretty_url => splitted_page_url.last).first unless splitted_page_url.last.nil?

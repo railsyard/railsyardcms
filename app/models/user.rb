@@ -14,13 +14,17 @@ class User < ActiveRecord::Base
   # before_create :assign_user_role
   before_save :set_default_values
   
+  validates :email, :presence => true, :uniqueness => true 
+  validates :firstname, :presence => true
+  validates :lastname, :presence => true
+  validates :password, :presence => true 
+  validates :password_confirmation, :presence => true 
+  
+  
   def set_default_values
     self.lang = 'en' unless self.lang
+    self.roles << Role.find_by_name('registered_user')
   end
-  
-  # def assign_user_role
-  #   self.roles << Role.find_by_name('registered_user')
-  # end
   
   def is_admin?
     self.role?('admin')

@@ -19,6 +19,7 @@ class Admin::UsersController < Admin::AdminController
   end
   
   def create
+    @admin_editing_language = admin_editing_language
     @user = User.new(params[:user])
     @user.set_roles(params[:user][:role_ids])
     if @user && @user.save && @user.errors.empty?
@@ -35,6 +36,7 @@ class Admin::UsersController < Admin::AdminController
   end
   
   def update
+    @admin_editing_language = admin_editing_language
     @user = User.find(params[:id])
     # Deletes password parameters if empty field so you can edit user details without changing password
     if params[:user][:password].empty? && params[:user][:password_confirmation].empty?
