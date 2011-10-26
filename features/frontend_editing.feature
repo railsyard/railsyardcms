@@ -54,6 +54,7 @@ Feature: Editing the page at the frontend
     And frontend controls are enabled
     And I go to the homepage
     When I drag "#body .snippet .title" to "#header"
+    And I sleep 2 seconds
     And I go to the homepage
     Then I should see "Text widget" within "#header .snippet .title" 
    

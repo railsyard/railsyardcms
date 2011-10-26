@@ -1,7 +1,8 @@
 source 'http://rubygems.org'
 
-gem 'mysql2', '0.2.6' if ENV['DB'].nil? || ENV['DB'] == "mysql"
-gem 'sqlite3'         if ENV['DB'].nil? || ENV['DB'] == "sqlite"
+gem 'mysql2',   '0.2.6'     if ENV['DB'].nil? || ENV['DB'] == "mysql"
+gem 'sqlite3'               if ENV['DB'].nil? || ENV['DB'] == "sqlite"
+gem 'pg',       '0.11.0'    if ENV['DB'].nil? || ENV['DB'] == "sqlite"
 
 gem 'rails', '3.0.10'
 gem 'jquery-rails', '>= 1.0.12'
