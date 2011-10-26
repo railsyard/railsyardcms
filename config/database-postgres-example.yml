@@ -1,0 +1,32 @@
+development:
+  adapter: postgresql
+  host: "localhost"
+  port: 3306
+  username: "root"
+  password: ""
+#  socket: /tmp/mysql.sock
+  charset: utf8
+  collation: utf8_bin
+  database: railsyard2_development
+
+production:
+  adapter: postgresql
+  host: "localhost"
+  port: 3306
+  username: "root"
+  password: ""
+#  socket: /tmp/mysql.sock
+  charset: utf8
+  collation: utf8_bin
+  database: railsyard2_production
+
+test:
+  adapter: postgresql
+  host: "localhost"
+  port: 3306
+  username: "root"
+  password: ""
+#  socket: /tmp/mysql.sock
+  charset: utf8
+  collation: utf8_bin
+  database: railsyard2_test
