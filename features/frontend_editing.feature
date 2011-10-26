@@ -55,4 +55,5 @@ Feature: Editing the page at the frontend
     And I go to the homepage
     When I drag "#body .snippet .title" to "#header"
     And I go to the homepage
-    Then I should see "Text widget" within "#header .snippet .title"    
+    Then I should see "Text widget" within "#header .snippet .title" 
+   
