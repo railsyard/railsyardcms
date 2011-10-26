@@ -19,20 +19,6 @@ class ContentCell < Cell::Rails
     render
   end
   
-  def articles_list(args)
-    fill_generic_variables(args[:page], args[:options], args[:snip_id])    
-    @articles = Article.published.where("lang = ?", get_lang).includes(:categorizations)
-    @articles = @articles.not_reserved unless (args[:current_user] && args[:current_user].is_privileged?)
-    @articles = @articles.where("categorizations.category_id IN (?)", args[:options][:categories]) if args[:options][:categories]
-    render
-  end
-  
-  def article_show(args)
-    fill_generic_variables(args[:page], args[:options], args[:snip_id])
-    @article = args[:article]
-    render
-  end
-  
   # def download_widget(args)
   #   @options = args[:options]
   #   @snip_id = args[:snip_id]

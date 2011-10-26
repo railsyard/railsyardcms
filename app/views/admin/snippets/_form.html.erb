@@ -23,7 +23,7 @@
                                 <div><input type="hidden" type="checkbox" value="0" name="snippet[options][categories][]"></div>
                                 <% @categories.map do |category| %> 
                                 <div>
-                                    <%= check_box_tag "snippet[options][#{att[0]}][]", category.id, @snippet.options[att[0]].include?(category.id.to_s) %>  
+                                    <%= check_box_tag "snippet[options][#{att[0]}][]", category.id, default_value.include?(category.id.to_s) %>  
                                     <%= category.name.humanize %>
                                 </div>
                                 <% end %>

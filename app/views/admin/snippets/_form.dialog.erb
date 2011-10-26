@@ -18,6 +18,15 @@
                                 <%= o.text_field att[0], :value => default_value, "data-validation" => "integer" %>
                             <% when "editor" then %>
                                 <%= o.cktext_area att[0], :input_html => { :value => default_value, "data-validation" => "none" } %>
+                            <% when "article_categories" then %>
+                                <%# Needed to submit the serialized form when no category is choosen %>
+                                <div><input type="hidden" type="checkbox" value="0" name="snippet[options][categories][]"></div>
+                                <% @categories.map do |category| %> 
+                                <div>
+                                    <%= check_box_tag "snippet[options][#{att[0]}][]", category.id, default_value.include?(category.id.to_s) %>  
+                                    <%= category.name.humanize %>
+                                </div>
+                                <% end %>
                         <% end %>
                     <% end %>
                 <% end %>

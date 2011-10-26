@@ -1,0 +1,13 @@
+cell:
+    name:   Article
+    class:  article
+    actions:
+        -   name:   Articles list
+            method: articles_list
+            desc:   A list of articles with category filter
+            serialized_attributes:
+                categories: article_categories
+        -   name:   Article show
+            method: article_show
+            desc:   Shows the article if available
+        
