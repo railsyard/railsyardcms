@@ -1,7 +1,6 @@
 branches:
   only:
     - 'master'
-    - 'rails-3.1'
 
 rvm:
   - 1.8.7
@@ -11,6 +10,7 @@ rvm:
 env:
   - DB=sqlite
   - DB=mysql
+  - DB=postgres
 
 bundler_args: "--without development production"
 before_script: "./config/ci/before-travis.sh"

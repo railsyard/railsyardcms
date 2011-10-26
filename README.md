@@ -1,7 +1,7 @@
 Railsyard CMS
 =============
 
-[![Build Status](https://secure.travis-ci.org/spieker/railsyardcms.png?branch=master)](http://travis-ci.org/spieker/railsyardcms)
+[![Build Status](https://secure.travis-ci.org/cantierecreativo/railsyardcms.png?branch=master)](http://travis-ci.org/cantierecreativo/railsyardcms)
 
 This is a quite stable release of the complete rewrite of Railsyard CMS.
 
