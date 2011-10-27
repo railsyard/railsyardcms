@@ -15,35 +15,7 @@
     <p>This page's language: <%= @page.lang %></p>
 </div>
 
-<div class="wrap cell_11 available_widgets">
-    <header>
-        <h2>
-            <%= t('admin.snippets.snippets_available_to_drag_in_areas') %>
-        </h2>           
-    </header>
-    <% @snippets_available.map do |snip| %>
-    <div class="area_box">
-        <h2><%= snip["name"] %></h2>
-        <section id="<%= snip["class"] %>" class='drag_source'>
-            <% snip["actions"].map do |act| %> 
-                <div class="available_widget sortable_item drag_item" id="<%= snip["class"] %>%<%= act["method"] %>" >
-                    <header>
-                        <h2><%= act["name"] %></h2>
-                    </header>
-                    <a href="#" class="icon grabber">&nbsp;</a>
-                    <a href="#" class="toggle toggle_closed">&nbsp;</a>
-                    <div class="toggle_container" style="display:none;">                  
-                        <div class="block">
-                            <p><%= act["desc"] %></p>
-                        </div>
-                    </div>
-                </div>
-            <% end %>
-        </section>
-    </div>
-    <% end %>
-</div>
-
+<%= render :partial => "available_snippets", :locals => {:snippets_available => @snippets_available} %>
 
 <script type="text/javascript">
 $(document).ready(function() {
