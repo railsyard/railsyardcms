@@ -3,7 +3,11 @@
         <h2><%= snip.title %></h2>        
     </header>
     <a href="#" class="icon grabber">&nbsp;</a>
-    <%= link_to "edit", edit_admin_page_snippet_path(snip.page.id, snip.id), :class=>"icon edit" %>
+    <% if controller.controller_name == "article_layouts" %>
+        <%= link_to "edit", edit_admin_article_layout_snippet_path(snip.article_layout.id, snip.id), :class=>"icon edit" %>
+    <% else %>
+        <%= link_to "edit", edit_admin_page_snippet_path(snip.page.id, snip.id), :class=>"icon edit" %>
+    <% end %>
     <a href="#" class="toggle toggle_closed">&nbsp;</a>
     <div class="toggle_container" style="display:none;">                  
         <div class="block">

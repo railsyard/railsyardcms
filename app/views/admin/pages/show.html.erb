@@ -33,9 +33,11 @@ $(document).ready(function() {
                   if (dropped.hasClass('drag_item')){ // ui.draggable is the dragged item just dropped
                     time = new Date().getTime();
                     newid = dropped.attr('id') + '%' + time;
-                    dropped.removeClass("drag_item");
                     dropped.attr('id', newid);
+                    dropped.removeClass("drag_item");
                     dropped.removeClass("available_widget");
+                    dropped.removeClass("ui-draggable");
+                    dropped.addClass("wrap");
                   };
               }
          });

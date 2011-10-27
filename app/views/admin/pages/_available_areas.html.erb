@@ -8,7 +8,7 @@
         <% current_layout.areas.map do |area| %>
             <h2><%= area["title"] %></h2>
             <section id="<%= area["short"] %>" class='drop_target'>
-                <%= render :partial => "snippet_in_area", :collection => snippets.where('area' => area["short"]), :as => :snip %>
+                <%= render :partial => "admin/pages/snippet_in_area", :collection => snippets.where('area' => area["short"]), :as => :snip %>
             </section>
         <% end %>
     </div>
@@ -16,7 +16,7 @@
     <div class="area_box">
         <h2>Limbo</h2>
         <section id="limbo" class='area_box drop_target'>
-            <%= render :partial => "snippet_in_area", :collection => snippets.where('area' => 'limbo'), :as => :snip %>
+            <%= render :partial => "admin/pages/snippet_in_area", :collection => snippets.where('area' => 'limbo'), :as => :snip %>
         </section>
     </div>
     

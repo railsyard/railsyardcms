@@ -1,5 +1,5 @@
 <header class="page_description">
-    <h2><%= t "admin.article_layouts.select_snippets" %> - <%= @article_layout.lang %></h2>
+    <h2><%= t "admin.article_layouts.select_snippets" %> [<%= @article_layout.lang %>]</h2>
 </header>
 
 <div class="lang_selector">
@@ -32,11 +32,15 @@ $(document).ready(function() {
          $(this).droppable("destroy");
          $(this).droppable({
               drop: function(event, ui) {
-                  if (ui.draggable.hasClass('drag_item')){ // ui.draggable is the dragged item just dropped
+                  var dropped = ui.draggable;
+                  if (dropped.hasClass('drag_item')){ // ui.draggable is the dragged item just dropped
                     time = new Date().getTime();
-                    newid = ui.draggable.attr('id') + '%' + time;
-                    ui.draggable.removeClass("drag_item");
-                    ui.draggable.attr('id', newid);
+                    newid = dropped.attr('id') + '%' + time;
+                    dropped.attr('id', newid);
+                    dropped.removeClass("drag_item");
+                    dropped.removeClass("available_widget");
+                    dropped.removeClass("ui-draggable");
+                    dropped.addClass("wrap");
                   };
               }
          });
