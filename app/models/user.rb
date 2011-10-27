@@ -17,8 +17,8 @@ class User < ActiveRecord::Base
   validates :email, :presence => true, :uniqueness => true 
   validates :firstname, :presence => true
   validates :lastname, :presence => true
-  validates :password, :presence => true 
-  validates :password_confirmation, :presence => true 
+  validates :password, :presence => true, :length => { :minimum => 8 }
+  validates :password_confirmation, :presence => true, :length => { :minimum => 8 }
   
   
   def set_default_values
