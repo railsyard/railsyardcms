@@ -1,19 +1,12 @@
+<%= content_for :title do %><%= t('admin.pages.manage_contents', :title => @page.title) %><% end %>
+
 <header class="page_description">
-    <h2>[<%= @page.lang %>] <%= @page.title %> <%# t('admin.pages.manage_contents') %></h2>
+    <h2><%= t('admin.pages.manage_contents', :title => @page.title) %> [<%= @page.lang %>]</h2>
 </header>
 
 <%= render :partial => "available_areas", :locals => {:current_layout => @current_layout, :snippets => @snippets} %>
 
-<div class="wrap cell_11">
-    <header>
-        <h2><%= t('admin.pages.layout') %></h2>
-    </header>
-    <p class="cell_9 omega"><%= t('admin.pages.changing_layout') %></p>
-    <form id='layout_form' class="cell_7 alpha">
-        <%= select_tag "layout", options_from_collection_for_select(@layouts.map, 'filename', 'title', @current_layout.filename) %>
-    </form>
-    <p>This page's language: <%= @page.lang %></p>
-</div>
+<%= render :partial => "layout_selector", :locals => {:current_layout => @current_layout, :layouts => @layouts} %>
 
 <%= render :partial => "available_snippets", :locals => {:snippets_available => @snippets_available} %>
 

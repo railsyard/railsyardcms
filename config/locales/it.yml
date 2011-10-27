@@ -82,7 +82,7 @@ it:
       page: Pagina
       are_you_sure_to_delete: "Sei sicuro di voler cancellare la pagina \"%{name}\"?"
       layout_name: "Layout"
-      manage_contents: "Manage contents"
+      manage_contents: "Gestisci contenuti per la pagina \"%{title}\""
       changing_layout: "Cambiando layout tutti gli snippet sulla pagina verranno spostati nel Limbo, ma non cancellati."
       pages_management: "Gestione pagine"
       pages_list: "Lista delle pagine"

@@ -1,0 +1,9 @@
+<div class="wrap cell_11">
+    <header>
+        <h2><%= t "admin.layouts.layout" %></h2>
+    </header>
+    <p class="cell_9 omega"><%= t "admin.layouts.changing_layout" %></p>
+    <form id='layout_form' class="cell_7 alpha">
+        <%= select_tag "layout", options_from_collection_for_select(layouts.map, 'filename', 'title', current_layout.filename) %>
+    </form>
+</div>

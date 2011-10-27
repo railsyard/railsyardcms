@@ -86,7 +86,7 @@ de:
       page: Seite
       are_you_sure_to_delete: "Möchten Sie die Seite \"%{name}\" wirklich löschen?"
       layout_name: "Layout"
-      manage_contents: "Manage contents"
+      manage_contents: "Manage contents for the page \"%{title}\""
       changing_layout: "When you change layout all the snippets on the page will be moved to the Limbo, but not deleted."
       pages_management: "Pages management"
       pages_list: "Pages list"
