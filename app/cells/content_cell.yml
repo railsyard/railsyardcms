@@ -7,18 +7,30 @@ cell:
             desc:   A plain text widget
             serialized_attributes:
                 body: text
+                div_id: string
                 div_class: string
         -   name:   Rich text editor widget
             method: rich_text_widget
             desc:   A text widget editable with a rich text editor
             serialized_attributes:
                 body: editor
+                div_id: string
+                div_class: string
+        -   name:   Articles list
+            method: articles_list
+            desc:   A list of articles with category filter
+            serialized_attributes:
+                categories: article_categories
+                div_id: string
+                div_class: string
         -   name:   Twitter stream
             method: twitter_stream
             desc:   Stream of tweets from a twitter account
             serialized_attributes:
                 username: string
                 limit:  integer
+                div_id: string
+                div_class: string
         
         # -   name:   Downloads widget
         #     method: downloads_widget

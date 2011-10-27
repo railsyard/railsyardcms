@@ -31,12 +31,21 @@ class Snippet < ActiveRecord::Base
     end
   end
   
+  def self.available_for_pages
+    cells = []
+    search_cells.map do |cell_conf_file|
+      cells << YAML.load_file(cell_conf_file)
+    end
+    cells_for_pages = cells.map{|c| c["cell"]} 
+    cells_for_pages.delete_if{|d| d["class"] == "article"}
+  end
+  
   def self.available
     cells = []
     search_cells.map do |cell_conf_file|
       cells << YAML.load_file(cell_conf_file)
     end
-    cells.map{|c| c["cell"]}
+    cells.map{|c| c["cell"]} 
   end
   
   def self.search_cells

@@ -17,7 +17,7 @@ class Admin::PagesController < Admin::AdminController
   def show
     @admin_editing_language = admin_editing_language
     @page = Page.find(params[:id])
-    @snippets_available = Snippet.available
+    @snippets_available = Snippet.available_for_pages
     @layouts = Layout.all(cfg.theme_name)
     @current_layout = Layout.find(cfg.theme_name, @page.layout_name)
     @snippets = @page.snippets.includes(:association).order("associations.position")
