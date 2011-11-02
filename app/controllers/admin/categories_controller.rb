@@ -8,7 +8,7 @@ class Admin::CategoriesController < Admin::AdminController
   ## CanCan authorization - see Ability model
   authorize_resource
   
-  def create
+  def quick_create
     @category = Category.new(params[:category])
     if @category && @category.save && @category.errors.empty?
       respond_to do |format|

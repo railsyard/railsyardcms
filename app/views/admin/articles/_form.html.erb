@@ -53,7 +53,7 @@
     typed_cat_name = $('#category_name').val();
     $.ajax({
       type: 'POST',
-      url: "<%= admin_categories_path %>",
+      url: "<%= quick_create_admin_categories_path %>",
       data: "category[name]="+typed_cat_name,
       dataType: "script"
     });

@@ -43,7 +43,9 @@ Railsyard2::Application.routes.draw do
         post 'toggle', :on => :member
       end
     end
-    resources :categories
+    resources :categories do
+      post 'quick_create', :on => :collection
+    end
     resource :settings
   end
   
