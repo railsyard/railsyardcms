@@ -42,8 +42,8 @@ class Admin::PagesController < Admin::AdminController
     @page.lang = @admin_editing_language
     @page.publish_at = Time.now if @page.published   
     @page.meta_title = @page.title if @page.meta_title.blank?
-    @page.meta_keywords = @cfg.default_page_keywords if @page.meta_keywords.blank?
-    @page.meta_description = @cfg.default_page_desc if @page.meta_description.blank?
+    #@page.meta_keywords = @cfg.default_page_keywords if @page.meta_keywords.blank?
+    #@page.meta_description = @cfg.default_page_desc if @page.meta_description.blank?
     @layouts = Layout.all(@cfg.theme_name)
     @current_layout = Layout.find(@cfg.theme_name, @page.layout_name)
     # TO-DO position selector inside pages tree
@@ -78,8 +78,8 @@ class Admin::PagesController < Admin::AdminController
       @page.lang = @admin_editing_language
       @page.publish_at = Time.now if @page.published
       @page.meta_title = @page.title if @page.meta_title.blank?
-      @page.meta_keywords = @cfg.default_page_keywords if @page.meta_keywords.blank?
-      @page.meta_description = @cfg.default_page_desc if @page.meta_description.blank?
+      #@page.meta_keywords = @cfg.default_page_keywords if @page.meta_keywords.blank?
+      #@page.meta_description = @cfg.default_page_desc if @page.meta_description.blank?
       # TO-DO position selector inside pages tree
       if @page.parent.blank?
         lang_root_page = Page.find_by_title(@admin_editing_language)

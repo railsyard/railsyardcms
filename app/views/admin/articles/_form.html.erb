@@ -4,13 +4,10 @@
             <%= f.label :title, t('admin.general.title') %>
             <%= f.text_field :title, {:id=>"title", :title=>"The main title of the article", :class=>"large"} %>
             
-            <%= f.label :pretty_url, t('admin.general.pretty_url') %>
-            <%= f.text_field :pretty_url, {:id=>"pretty_url", :title=>"You can leave this blank and the system will generate the pretty url", :class=>"large"} %>
-            
             <%= f.label :lang, t('admin.articles.language') %>
             <%= f.select :lang, options_from_collection_for_select(Language.all, 'short', 'name', @admin_editing_language) %>
             
-            <%= f.label :lang, t('admin.general.featured_image') %>
+            <%= f.label :featured_image, t('admin.general.featured_image') %>
             <%= f.file_field :featured_image %>
             
             <%= f.label "Options" %>
@@ -45,6 +42,40 @@
     </div>    
 </div>
 
+<div class="wrap block">
+    <ul class="content_accordion no_header">
+        <li>
+            <a href="#" class="handle">&nbsp;</a>
+            <h3 class="bar"><%= t('admin.pages.advanced_options') %></h3>
+            <div class="content">
+                <%= f.label t('admin.general.pretty_url') %>
+                <%= f.text_field :pretty_url, {
+                    :title => t("admin.pages.hint_pretty_url"),
+                    :class => "large"
+                } %>
+
+                <%= f.label 'Meta Title' %>
+                <%= f.text_field :meta_title, {
+                    :title => t("admin.pages.hint_meta_title"),
+                    :class => "large"
+                } %>
+
+                <%= f.label 'Meta Keywords' %>
+                <%= f.text_area :meta_keywords, {
+                    :title => t("admin.pages.hint_meta_keywords"),
+                    :class => "large"
+                } %>
+
+                <%= f.label 'Meta Description' %>
+                <%= f.text_area :meta_description, {
+                    :title => t("admin.pages.hint_meta_description"),
+                    :class => "large"
+                } %>
+            </div>
+        </li>
+    </ul>
+</div>
+
 <script type="text/javascript"> 
   $('#new_category_link').click(function() {
     $('#new_category_form').show();
@@ -60,4 +91,12 @@
   });
 </script>
 
+<script type="text/javascript"> 
+    var title = new LiveValidation('title');
+    title.add( Validate.Presence );
     
+    // var realemail = new LiveValidation('realemail');
+    // realemail.add( Validate.Email );
+    // var atleast = new LiveValidation('atleast');
+    // atleast.add( Validate.Length, { minimum: 30 } );
+</script>

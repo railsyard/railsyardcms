@@ -12,18 +12,24 @@ class Admin::ArticlesController < Admin::AdminController
     @admin_editing_language = admin_editing_language
     @categories = Category.all
     @articles = Article.where("lang = ?", @admin_editing_language)
-    
   end
   
   def new
+    @cfg = cfg
     @categories = Category.all
     @article = current_user.articles.new
     @admin_editing_language = admin_editing_language
+    @article.meta_keywords = @cfg.default_page_keywords
+    @article.meta_description = @cfg.default_page_desc
   end
   
   def create
+    @cfg = cfg
     @article = current_user.articles.new(params[:article])
     @article.pretty_url = @article.pretty_url.urlify.blank? ? @article.title.urlify : @article.pretty_url.urlify
+    @article.meta_title = @article.title if @article.meta_title.blank?
+    #@article.meta_keywords = @cfg.default_page_keywords if @article.meta_keywords.blank?
+    #@article.meta_description = @cfg.default_page_desc if @article.meta_keywords.blank?
     @article.publish_at = Time.now if @article.published
     if @article && @article.save && @article.errors.empty?
       redirect_to admin_articles_path
@@ -42,6 +48,9 @@ class Admin::ArticlesController < Admin::AdminController
     @article = Article.find(params[:id])
     @article.attributes = params[:article] unless @article.blank?
     @article.pretty_url = @article.pretty_url.urlify.blank? ? @article.title.urlify : @article.pretty_url.urlify
+    @article.meta_title = @article.title if @article.meta_title.blank?
+    #@article.meta_keywords = @cfg.default_page_keywords if @article.meta_keywords.blank?
+    #@article.meta_description = @cfg.default_page_desc if @article.meta_keywords.blank?
     @article.publish_at = Time.now if @article.published
     if @article && @article.save && @article.errors.empty?
       redirect_to admin_articles_path
