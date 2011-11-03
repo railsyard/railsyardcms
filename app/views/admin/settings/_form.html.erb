@@ -1,9 +1,7 @@
 <div class="wrap block">
-    <%= f.label t('admin.settings.site_name') %><%= f.text_field :site_name %>
-    <%= f.label "#{t('admin.settings.site_base_url')} - (www.yourdomain.tld)".hs %><%= f.text_field :site_base_url %>
     <%= f.label t('admin.settings.site_wide_title_metatag') %><%= f.text_field :site_page_title %>
-    <%= f.label t('admin.settings.site_wide_keywords_metatag') %><%= f.text_field :site_keywords %>
-    <%= f.label t('admin.settings.site_wide_description_metatag') %><%= f.text_field :site_desc %>
+    <%= f.label t('admin.settings.default_page_keywords') %><%= f.text_area :default_page_keywords %>
+    <%= f.label t('admin.settings.default_page_desc') %><%= f.text_area :default_page_desc %>
     <%= f.label t('admin.settings.frontend_controls') %><%= f.check_box :frontend_controls %>
     <%#= f.label t('admin.settings.comments_enabled_default') %><%#= f.check_box :comments_enabled_default %>
     <%= f.label  t('admin.settings.default_language') %><%= f.select :default_lang, options_from_collection_for_select(Language.all, 'short', 'name', setting.default_lang) %>

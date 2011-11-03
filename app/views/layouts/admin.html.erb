@@ -95,7 +95,7 @@
                     </li>
                     <li><a <%= set_class(:class => "top_level", :controller => ["settings"]) %>><img src="/admin/images/icons/small/grey/Cog%202.png"/><%= t('admin.settings.settings') %></a>
                         <ul class="drawer">
-                            <li <%= set_class(:controller => "settings", :action => "edit") %>><%= link_to t('admin.general.general'), edit_admin_settings_path(1) %></li>
+                            <li <%= set_class(:controller => "settings", :action => "edit") %>><%= link_to t('admin.general.general'), edit_admin_settings_path %></li>
                             <!-- <li <%#= set_class(:controller => "users", :action => "index") %>><%#= link_to "Il tuo profilo", edit_admin_user_path(current_user) %></li> -->
                         </ul>
                     </li>

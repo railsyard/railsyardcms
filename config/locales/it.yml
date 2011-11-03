@@ -157,17 +157,15 @@ it:
       users_management: "Gestione utenti"
       users_list: "Lista utenti"
     settings:
-      settings: Impostazioni
-      general_settings: Impostazioni generali
-      site_name: Nome sito
-      site_base_url: Indirizzo base sito
-      site_wide_title_metatag: Site wide metatag titolo
-      site_wide_keywords_metatag: Site wide metatag keywords
-      site_wide_description_metatag: Site wide metatag descrizione
-      default_language: Lingua predefinaita
-      google_analitics_script: Script Google Analytics
-      comments_enabled_default: Commenti su articoli abilitati di default
-      configuration_saved: Configurazione salvata
+      settings: "Impostazioni"
+      general_settings: "Impostazioni generali"
+      site_wide_title_metatag: "Metatag generale titolo pagine"
+      default_page_keywords: "Keyword metatag di default"
+      default_page_desc: "Description metatag di default"
+      default_language: "Lingua predefinaita"
+      google_analitics_script: "Script Google Analytics"
+      comments_enabled_default: "Commenti su articoli abilitati di default"
+      configuration_saved: "Configurazione salvata"
       theme_name: "Tema"
       theme_change_warning: "Attenzione: cambiando tema verrà applicato il primo layout a tutte le pagine e tutti gli snippet saranno spostati nel limbo!"
       frontend_controls: "Controlli sul frontend"

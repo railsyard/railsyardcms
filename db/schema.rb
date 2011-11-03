@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110824160233) do
+ActiveRecord::Schema.define(:version => 20111103102458) do
 
   create_table "article_layouts", :force => true do |t|
     t.string   "layout_name"
@@ -124,18 +124,15 @@ ActiveRecord::Schema.define(:version => 20110824160233) do
   end
 
   create_table "settings", :force => true do |t|
-    t.string   "site_name",         :default => "My new RailsYard site"
-    t.string   "site_page_title",   :default => ""
-    t.string   "site_keywords",     :default => ""
-    t.string   "site_desc",         :default => ""
-    t.string   "default_lang",      :default => "en"
-    t.integer  "homepage_id",       :default => 1
-    t.string   "site_base_url",     :default => "localhost:3000"
-    t.string   "analytics",         :default => ""
+    t.string   "site_page_title",       :default => "My new RailsYard site"
+    t.string   "default_page_keywords", :default => ""
+    t.string   "default_page_desc",     :default => ""
+    t.string   "default_lang",          :default => "en"
+    t.string   "analytics",             :default => ""
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "theme_name",        :default => "rough",                 :null => false
-    t.boolean  "frontend_controls", :default => false
+    t.string   "theme_name",            :default => "rough",                 :null => false
+    t.boolean  "frontend_controls",     :default => false
   end
 
   create_table "snippets", :force => true do |t|

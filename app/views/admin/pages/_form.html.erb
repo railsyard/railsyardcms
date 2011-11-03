@@ -1,5 +1,5 @@
 <div class="wrap block">
-     <div class="">
+     <div class="">  
          <div class="block">                
              <%= f.label :title, t('admin.general.title') %>
              <%= f.text_field :title, {:id=>"title", :title=>"Page title, can\'t be blank", :class=>"large required"} %>
@@ -37,13 +37,13 @@
 
                 <%# TODO inserire testi help nella form pagina %>
                 <%= f.label 'Meta Keywords' %>
-                <%= f.text_field :meta_keywords, {
+                <%= f.text_area :meta_keywords, {
                     :title => t("admin.pages.hint_meta_keywords"),
                     :class => "large"
                 } %>
 
                 <%= f.label 'Meta Description' %>
-                <%= f.text_field :meta_description, {
+                <%= f.text_area :meta_description, {
                     :title => t("admin.pages.hint_meta_description"),
                     :class => "large"
                 } %>

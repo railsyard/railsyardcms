@@ -15,7 +15,7 @@ Given /^the page is setup in basic mode$/ do
   @role_premium_user    = Factory :role, :name => 'premium_user'
   @role_registered_user = Factory :role, :name => 'registered_user'
   
-  @settings = Factory :settings, :homepage_id => @page_en.id
+  @settings = Factory :settings
   
   @user_admin = Factory :user, :roles => [@role_admin]
 end

@@ -161,17 +161,15 @@ de:
       users_management: "Users management"
       users_list: "Users list"
     settings:
-      settings: Einstellungen
-      general_settings: Allgemeine Einstellungen
-      site_name: Seitenname
-      site_base_url: Seiten URL
-      site_wide_title_metatag: Seitenweiter Titel-Metatag
-      site_wide_keywords_metatag: Seitenweiter Stichwörter-Metatag
-      site_wide_description_metatag: Seitenweiter Beschreibungs-Metatag
-      default_language: Standardsprache
-      google_analitics_script: Google Analytics Script
-      comments_enabled_default: Artikelkommentare standardmäßig aktivieren
-      configuration_saved: Einstellungen speichern
+      settings: "Einstellungen"
+      general_settings: "Allgemeine Einstellungen"
+      site_wide_title_metatag: "Seitenweiter Titel-Metatag"
+      default_page_keywords: "Default Stichwörter-Metatag"
+      default_page_desc: "Default Beschreibungs-Metatag"
+      default_language: "Standardsprache"
+      google_analitics_script: "Google Analytics Script"
+      comments_enabled_default: "Artikelkommentare standardmäßig aktivieren"
+      configuration_saved: "Einstellungen speichern"
       theme_name: "Theme"
       theme_change_warning: "Achtung: Wenn Sie das Theme ändern, wird allen Seiten das erste Layout zugewiesen und alle Snippets werden in den Limbo-Bereich verschoben!"
       frontend_controls: "Snippet-Controls im Frontend anzeigen"

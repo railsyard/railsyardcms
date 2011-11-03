@@ -12,18 +12,13 @@ class SiteController < ApplicationController
       redirect_to get_yard_url(lang_home.id), :status => 301
     elsif !params[:page_url].blank?
       splitted_page_url = params[:page_url].split('/')
-      @page = Page.where(:pretty_url => splitted_page_url.last).first unless splitted_page_url.last.nil?
-      acestors_and_self = (@page.ancestors.map{|a| a.title.urlify} - [params[:lang]]) << @page.title.urlify unless @page.blank?
-      url_and_page_ancestors_matching = splitted_page_url == acestors_and_self
+      @page = Page.where(:pretty_url => splitted_page_url.last).first
       if @page && @page.is_reserved? && (current_user.nil? || !current_user.is_privileged?)
         render_error('401')
-      elsif @page && @page.published && (@page.lang == params[:lang]) # && url_and_page_ancestors_matching
-        @meta_title = @page.meta_title.blank? ? "#{@cfg.site_name} #{@cfg.site_page_title}" : "#{@page.meta_title} - #{@cfg.site_name} #{@cfg.site_page_title}"
-        @meta_description = @page.meta_description.blank? ? "#{@cfg.site_desc}" : "#{@page.meta_description} #{@cfg.site_desc}"
-        @meta_keywords = @page.meta_keywords.blank? ? "#{@cfg.site_keywords}" : "#{@page.meta_keywords}, #{@cfg.site_keywords}"
-        
-        # @layout_name = Layout.find(@cfg.theme_name, @page.layout_name).path
-        # render :layout => @layout_name unless @layout_name.blank?    
+      elsif @page && @page.published && (@page.lang == params[:lang]) && check_path(@page, splitted_page_url)
+        @meta_title = "#{@page.meta_title} - #{@cfg.site_page_title}".truncate(70, :omission => '')
+        @meta_description = "#{@page.meta_description}".truncate(140, :omission => '')
+        @meta_keywords = "#{@page.meta_keywords}"
         render :layout => Layout.find(@cfg.theme_name, @page.layout_name).path      
       else
         render_error('404')
@@ -33,6 +28,11 @@ class SiteController < ApplicationController
     end
   end
   
+  private
   
+  def check_path(page, splitted_url)
+    acestors_and_self = (page.ancestors.map{|a| a.pretty_url} - [params[:lang]]) << page.pretty_url
+    url_and_page_ancestors_matching = splitted_url == acestors_and_self
+  end
   
 end

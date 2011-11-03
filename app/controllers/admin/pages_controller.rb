@@ -24,24 +24,28 @@ class Admin::PagesController < Admin::AdminController
   end
   
   def new
+    @cfg = cfg
     @admin_editing_language = admin_editing_language
     @page = Page.new
+    @page.meta_keywords = @cfg.default_page_keywords
+    @page.meta_description = @cfg.default_page_desc
     @root_page = Page.where(:title => @admin_editing_language, :ancestry => nil).first 
     @layouts = Layout.all(cfg.theme_name)
     @current_layout = @layouts.first
   end
   
   def create
+    @cfg = cfg
     @admin_editing_language = admin_editing_language
-    @layouts = Layout.all(cfg.theme_name)
-    @current_layout = @layouts.first
     @page = Page.new(params[:page])
     @page.pretty_url = @page.pretty_url.urlify.blank? ? @page.title.urlify : @page.pretty_url.urlify
     @page.lang = @admin_editing_language
-    @page.meta_description = @page.title if @page.meta_description.blank?
+    @page.publish_at = Time.now if @page.published   
     @page.meta_title = @page.title if @page.meta_title.blank?
-    @page.publish_at = Time.now if @page.published
-    
+    @page.meta_keywords = @cfg.default_page_keywords if @page.meta_keywords.blank?
+    @page.meta_description = @cfg.default_page_desc if @page.meta_description.blank?
+    @layouts = Layout.all(@cfg.theme_name)
+    @current_layout = Layout.find(@cfg.theme_name, @page.layout_name)
     # TO-DO position selector inside pages tree
     if @page.parent.blank?
       lang_root_page = Page.find_by_title(@admin_editing_language)
@@ -56,24 +60,27 @@ class Admin::PagesController < Admin::AdminController
   end
   
   def edit
+    @cfg = cfg
     @admin_editing_language = admin_editing_language
     @page = Page.find(params[:id])
     @root_page = Page.where(:title => @admin_editing_language, :ancestry => nil).first
-    @layouts = Layout.all(cfg.theme_name)
-    @current_layout = Layout.find(cfg.theme_name, @page.layout_name)
+    @layouts = Layout.all(@cfg.theme_name)
+    @current_layout = Layout.find(@cfg.theme_name, @page.layout_name)
   end
   
   def update
+    @cfg = cfg
     @admin_editing_language = admin_editing_language
     @page = Page.find(params[:id])
     if @page
       @page.attributes = params[:page]
       @page.pretty_url = @page.pretty_url.urlify.blank? ? @page.title.urlify : @page.pretty_url.urlify
       @page.lang = @admin_editing_language
-      @page.meta_description = @page.title if @page.meta_description.blank?
-      @page.meta_title = @page.title if @page.meta_title.blank?
       @page.publish_at = Time.now if @page.published
-      # TO-DO selettore posizione pagina nell'albero
+      @page.meta_title = @page.title if @page.meta_title.blank?
+      @page.meta_keywords = @cfg.default_page_keywords if @page.meta_keywords.blank?
+      @page.meta_description = @cfg.default_page_desc if @page.meta_description.blank?
+      # TO-DO position selector inside pages tree
       if @page.parent.blank?
         lang_root_page = Page.find_by_title(@admin_editing_language)
         @page.parent = lang_root_page unless lang_root_page.blank?

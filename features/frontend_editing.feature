@@ -10,6 +10,7 @@ Feature: Editing the page at the frontend
     And I add the Text widget snippet from the content cell to the body area at the page "/en/home-en"
     And frontend controls are enabled
     And I go to the homepage
+    #And I sleep 90 seconds
     When I click the javascript link ".drag_item a.edit"
     And I should see "Configuration: Text widget"
     And I fill in "snippet_options_body" with "Hello World!"
