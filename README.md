@@ -3,32 +3,31 @@ Railsyard CMS
 
 [![Build Status](https://secure.travis-ci.org/cantierecreativo/railsyardcms.png?branch=master)](http://travis-ci.org/cantierecreativo/railsyardcms)
 
-This is a quite stable release of the complete rewrite of Railsyard CMS.
-
-The public themes are still missing, but the backend is working. A couple of public themes will come soon.
-
-There are also a lot of feature missing and tests coverage is near zero (shame on me).
+This is a complete rewrite of Railsyard, a content management system SEO oriented and heavily based on components.
 
 
 Features
 --------
-* hierarchy organized pages - indipendently for every language
-* multilanguage frontend and backend
+* hierarchy organized pages
+* multilanguage frontend and backend (actually English, Italian and German)
+* different and independent pages for each language
+* editing both from backend and directly from frontend
 * reserved pages and articles
 * pretty urls and other seo-friendly features
 * drop-in themes
-* drop-in snippets plugins
+* drop-in snippets plugins (using Rails Cells)
+* Rails engines support for heavy modification plugins 
 * different user roles
 * backend heavily based on drag & drop
 * built with Ruby on Rails
+* runs on Heroku
 	
 To-do
 -----
-* categories management [in progress]
 * at least one more public theme
 * refactoring some controllers
 * caching
-* queries optimization - memoization
+* better queries optimization - memoization
 * blogging features to be completed
 * comments on articles
 * comments moderation and akismet/captcha integration
@@ -42,6 +41,7 @@ Requirements:
 -------------
 * Ruby 1.9.2 or 1.8.7
 * Rails 3.0.10
+* MySQL, PostgreSQL or SQLite
 * Some gems - check config/environment.rb
 
 Installation
@@ -59,15 +59,6 @@ We really suggest the use of Ruby RVM and Ruby 1.9.2
     edit config/database.yml according to your configuration
     run 'rake ry:init'
     run 'rake db:seed' to load some example pages
-
-Using with Ruby 1.8.7
----------------------
-Comment out line 3 and 4 inside /config/boot.rb
-
-    require 'yaml'
-    YAML::ENGINE.yamler= 'syck'
-  
-Update .rvmrc according to your Ruby version
 
 Usage
 -----
