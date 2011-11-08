@@ -1,0 +1,13 @@
+<div class="wrap block">
+  <div class="">  
+    <div class="block">
+      <%= f.label 'Name' %>
+      <%= f.text_field :name, {:id=>"name", :title=>"Category name, can\'t be blank", :class=>"large required"} %>
+      
+      <script type="text/javascript"> 
+          var name = new LiveValidation('name');
+          name.add( Validate.Presence );
+      </script>
+    </div>
+  </div>
+</div>

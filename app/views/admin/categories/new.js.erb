@@ -1,0 +1,6 @@
+$("#form_box").hide();
+$("#form_box").html('<%= escape_javascript(render(:partial => "/admin/categories/new", :object => @category, :as => :category)) %>');
+$("#form_box").uniform();
+$("#form_box").show();
+var name = new LiveValidation('name');
+name.add( Validate.Presence );

@@ -63,6 +63,7 @@ it:
       errors: "Errori"
       actions: "Azioni"
       field_cant_be_blank: "Questo campo non può essere lasciato vuoto"
+      are_you_sure_to_delete_with_name: "Sei sicuro di voler eliminare \"%{name}\"?"
     pages:
       pages: Pagine
       latest_pages: Pagine recenti

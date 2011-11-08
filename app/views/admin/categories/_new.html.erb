@@ -1,0 +1,13 @@
+<header>
+    <h2>New category</h2>
+</header>
+<div class="area_box">
+    <%= form_for category, :url => admin_categories_path do |f| %>
+    <%= errors_for(category) %>
+    <%= render :partial => "form", :object => category, :locals => {:f => f} %>
+    
+    <div class="buttons">
+        <%= submit_tag t('admin.general.save'), :class => "submit" %>    
+    </div>
+    <% end %>
+</div>

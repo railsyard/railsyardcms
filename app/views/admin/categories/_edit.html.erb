@@ -1,0 +1,14 @@
+<header>
+    <h2>Edit category</h2>
+</header>
+<div class="area_box">
+    <%= form_for category, :url => admin_category_path(category) do |f| %>
+    <%= errors_for(category) %>
+    <%= render :partial => "form", :object => category, :locals => {:f => f} %>
+    
+    <div class="buttons">
+        <%= link_to t('admin.general.delete'), admin_category_path(category), :method => :delete, :confirm => t('admin.general.are_you_sure_to_delete_with_name', :name => category.name), :class => "submit delete" %>
+        <%= submit_tag t('admin.general.save'), :class => "submit" %>
+    </div>
+    <% end %>
+</div>

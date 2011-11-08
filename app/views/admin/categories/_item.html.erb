@@ -1,0 +1,12 @@
+<tr id='category_item_<%= item.id %>'>
+    <td>
+        <%= item.name %>
+    </td>
+    <td>
+        <%= item.articles.count %>
+    </td>
+    <td class="center">
+        <%= link_to t("admin.general.edit"), edit_admin_category_path(item), :remote => true %>
+        <%= link_to t("admin.general.delete"), admin_category_path(item), :class => 'icon-delete', :method => :delete, :confirm => t('admin.general.are_you_sure_to_delete_with_name', :name => item.name) %>
+    </td>
+</tr>

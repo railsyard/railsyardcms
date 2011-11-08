@@ -1,0 +1,38 @@
+<%= content_for :title do %>Categories management<% end %>
+    
+<div class="cell_10">
+    <header class="page_description">
+        <h2>Categories management</h2>        
+</header>
+</div>
+<div class="cell_6">
+    <div class="buttons", id="new_cat_button">
+        <%= link_to t('admin.general.new'), new_admin_category_path, :class => "submit", :remote => true %>         
+    </div>        
+</div>
+
+
+<div class="wrap cell_8 round_all">
+    <table class="fancy_rows datatable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Articles</th> 
+                <th><%= t('admin.general.actions') %></th> 
+            </tr>
+        </thead>
+        <tbody>
+            <%= render :partial => "item", :collection => @categories %>
+        </tbody>
+    </table>
+    
+</div>
+
+</br>
+
+<div class="wrap cell_8" id="form_box" style="display:none">
+
+</div>
+
+
+
