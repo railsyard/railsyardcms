@@ -7,14 +7,14 @@ class MenuCell < Cell::Rails
   def first_level(args)
     fill_generic_variables(args[:page], args[:options], args[:snip_id])
     fill_menu_variables(@page)
-    @first_level_pages = yard_home.siblings 
+    @first_level_pages = yard_home(@page.lang).siblings 
     render
   end
 
   def two_levels(args)
     fill_generic_variables(args[:page], args[:options], args[:snip_id])
     fill_menu_variables(@page)
-    @first_level_pages = yard_home.siblings
+    @first_level_pages = yard_home(@page.lang).siblings
     render
   end
 
@@ -39,7 +39,7 @@ class MenuCell < Cell::Rails
   def footer(args)
     fill_generic_variables(args[:page], args[:options], args[:snip_id])
     fill_menu_variables(@page)
-    @first_level_pages = yard_home.siblings 
+    @first_level_pages = yard_home(@page.lang).siblings 
     render
   end
   
