@@ -44,6 +44,5 @@ module Railsyard2
     
     $AVAILABLE_LANGUAGES = /en|it|de/
     
-    
   end
 end

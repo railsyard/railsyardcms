@@ -22,7 +22,7 @@ class Language
                                                                      file_read[short]["conf"]["language_extended_name"] && 
                                                                      file_read[short]["conf"]["version"])
     end
-    languages.compact.uniq
+    languages.compact.uniq.keep_if {|l| l.short =~ $AVAILABLE_LANGUAGES}
   end
   
   def self.all_short
@@ -30,7 +30,7 @@ class Language
   end
   
   def self.find(short)
-    all.select{|l| l.short.eql? short.to_s}.first
+    all.select{|l| l.short.eql? short.to_s}.first unless short =~ $AVAILABLE_LANGUAGES
   end
   
   def self.search_languages
