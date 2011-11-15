@@ -22,7 +22,7 @@ class Language
                                                                      file_read[short]["conf"]["language_extended_name"] && 
                                                                      file_read[short]["conf"]["version"])
     end
-    languages.compact.uniq.keep_if {|l| l.short =~ $AVAILABLE_LANGUAGES}
+    languages.compact.uniq.delete_if {|l| l.short !=~ $AVAILABLE_LANGUAGES}
   end
   
   def self.all_short
