@@ -1,0 +1,7 @@
+<% form_for(Comment.new) do|f| %> 
+  <%= f.hidden_field :commentable_id, :value => commentable.id %>
+  <%= f.hidden_field :commentable_type, :value => commentable.class %> 
+  <%= f.label :comment %><br /> 
+  <%= f.text_area :comment %> 
+  <%= f.submit "Post Comment" %> 
+<% end %>

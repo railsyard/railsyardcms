@@ -10,6 +10,13 @@ class ArticleCell < Cell::Rails
     render
   end
   
+  def comments(args)
+    fill_generic_variables(args[:page], args[:options], args[:snip_id])
+    @article = args[:article]
+    #@comments = @article.comments
+    render
+  end
+  
   private
   
   def fill_generic_variables(page, options, snip_id)
