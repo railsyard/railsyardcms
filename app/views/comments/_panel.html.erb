@@ -1,7 +1,0 @@
-<p>Comments for <%= commentable.class %></p>
-</br>
-<p>New comment</p>
-<%= render :partial => "form", :object => commentable, :as => :commentable %>
-</br>
-<p>Comments list</p>
-<%= render :partial => "item", :collection => commentable.comments, :as => :comment %>

@@ -52,6 +52,7 @@ Railsyard2::Application.routes.draw do
   # Public routes
   # resources :users, :only => [:index, :show]
   resources :users
+  resources :comments
   match ':lang/article/:year/:month/:day/:pretty_url' => 'articles#show', :as => 'show_article', :constraints => {:lang => $AVAILABLE_LANGUAGES, :year => /\d+/, :month => /\d+/, :day => /\d+/}
     
   # Main public pages globbing route
