@@ -1,0 +1,35 @@
+<!doctype html>
+<!--[if IE 7 ]>    <html class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+
+<head>
+    <%= render :partial => "partials/head" %>
+    <link rel="stylesheet" href="<%= current_theme_stylesheet_path('home') %>">
+</head>
+
+<body>
+    <div class="hive_12">
+        <div class="cell_12">
+            <%= render :partial => "partials/header" %><%# it contains the header snippet %>
+        </div>
+        <div class="cell_12">
+            <article>
+                <%= yield_snippets(@page, "body") if @page %>
+                <%= yield_article_snippets(@article_layout, "body", @article) if @article %>
+            </article>
+        </div>
+
+        <div class="cell_12">
+            <footer>
+                <%= yield_snippets(@page, "footer") if @page %>
+                <%= yield_article_snippets(@article_layout, "footer", @article) if @article %>
+            </footer>
+        </div>
+        
+        <div class="cell_12">
+            <p class="credits"><a href="http://www.railsyardcms.org">Railsyard</a> v.2.0 - © Cantiere Creativo - <a target="_blank" href="http://www.cantierecreativo.net">http://www.cantierecreativo.net</a> - <a href="https://github.com/cantierecreativo/railsyardcms" target="_blank">Documentation on GitHub</a></p>
+        </div>
+    </div>
+</body>
