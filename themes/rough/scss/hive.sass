@@ -1,0 +1,200 @@
+// HIVE SCSS YET ANOTHER RESPONSIVE GRID SYSTEM
+// thx to @makevoid for sass translation
+// Written by Matteo Papadopoulos aka @spleenteo on twitter
+// http://www.basictrading.biz 
+
+
+// YOU CAN CHANGE SOME SETTINGS IF YOU WISH
+$width: 100%       /* set the desired fixed width in pixels or %  */
+
+
+//
+// WARNING: Internal variables, don't change them!
+// these are assumed to modify the margin in fixed layout
+//
+$unit_12: 100% / 12
+$unit_16: 100% / 16
+
+.hive_12, .hive_16 
+  @extend .clearfix
+  width: $width
+  margin-left: (100% - $width)/2
+  margin-right: (100% - $width)/2
+  .cell_1, .cell_2, .cell_3, .cell_4, .cell_5, .cell_6, .cell_7, .cell_8, .cell_9, .cell_10, .cell_11, .cell_12, .cell_13, .cell_14, .cell_15, .cell_16 
+    display: inline
+    float: left
+  
+
+.hive_12
+  @for $i from 1 through 12 
+    .cell_#{$i}  
+      width: $unit_12 * $i 
+  
+  @for $i from 1 through 12 
+    .pre_#{$i}  
+      padding-left: $unit_12 * $i 
+  
+  @for $i from 1 through 12 
+    .post_#{$i}  
+      padding-right: $unit_12 * $i 
+  
+
+.hive_16
+  @for $i from 1 through 16 
+    .cell_#{$i}  
+      width: $unit_16 * $i 
+  
+  @for $i from 1 through 16 
+    .pre_#{$i}  
+      padding-left: $unit_16 * $i 
+  
+  @for $i from 1 through 16 
+    .post_#{$i}  
+      padding-right: $unit_16 * $i 
+  
+
+
+.alpha 
+  margin-left: 0
+
+.omega 
+  margin-right: 0
+
+.clear 
+  clear: both
+  display: block
+  overflow: hidden
+  visibility: hidden
+  width: 0
+  height: 0
+
+.clearfix:after 
+  clear: both
+  content: ' '
+  display: block
+  font-size: 0
+  line-height: 0
+  visibility: hidden
+  width: 0
+  height: 0
+
+.clearfix 
+  display: inline-block
+* html.clearfix 
+  height: 1%
+
+.clearfix 
+  display: block
+
+
+
+
+/* SETTING FOR SMARTPHONES PORTRAIT AND LANDSCAPE until the browser is at a maximum of 480 */
+@media only screen and (max-width: 480px)
+  .hive_12, .hive_16
+    padding: 0
+    width: 100%
+    margin: 0
+    .cell_16, .cell_15, .cell_14, .cell_13, .cell_12, .cell_10, .cell_11, .cell_9, .cell_8, .cell_7, .cell_6, .cell_5, .cell_4, .cell_3, .cell_2, .cell_1
+      width: 100%
+      margin: 0
+    
+    @for $i from 1 through 16 
+      .pre_#{$i}  
+        padding-left: 0 
+    
+    @for $i from 1 through 16 
+      .post_#{$i}  
+        padding-right: 0 
+    
+    
+  
+
+
+/* SETTING FOR PORTRAIT TABLET until the browser is at a maximum of 1000 */
+@media only screen and (min-width: 481px) and (max-width: 1000px)
+  .hive_12
+    .cell_12, .cell_11, .cell_10, .cell_9, .cell_8, .cell_7, .cell_6, .cell_5, .cell_4, .cell_3, .cell_2, .cell_1
+      width: 100%
+    
+    .cell_10
+      width: $unit_12 * 10
+    
+    .cell_10.pre_2, .cell_10.post_2
+      width: 100%
+    
+    .cell_2
+      width: $unit_12 * 2
+    
+    .cell_2.pre_8, .cell_2.post_8
+      width: 100%
+    
+    .cell_9, .cell_13
+      width: $unit_12 * 9
+    
+    .cell_6
+      width: $unit_12 * 6
+    
+    .cell_3
+      width: $unit_12 * 3
+    
+    .cell_10.pre_2, .cell_10.post_2, .cell_9.pre_3, .cell_9.post_3, .cell_2.pre_8, .cell_2.post_8, .cell_3.pre_9, .cell_3.post_9
+      width: 100%
+    
+  
+  .hive_16
+    .cell_16, .cell_15, .cell_14, .cell_13, .cell_12, .cell_11,  .cell_10, .cell_9, .cell_8, .cell_7, .cell_6, .cell_5, .cell_4, .cell_3, .cell_2, .cell_1
+      width: 100%
+    
+    .cell_12
+      width: $unit_16 * 12
+    
+    .cell_10
+      width: $unit_16 * 10
+    
+    .cell_6
+      width: $unit_16 * 6
+    
+    .cell_8, .cell_9, .cell_7
+      width: $unit_16 * 8
+     
+    .cell_4
+      width: $unit_16 * 4
+     
+    .cell_12.pre_4, .cell_12.post_4, .cell_10.pre_6, .cell_10.post_6, .cell_6.pre_10, .cell_6.post_10, .cell_8.pre_8, .cell_8.post_8,  .cell_9.pre_7, .cell_9.post_7, .cell_7.pre_9, .cell_7.post_9
+      width: 100%
+     
+     
+  
+  .hive_12, .hive_16
+    @for $i from 1 through 12 
+      .pre_#{$i}  
+        padding-left: 0 
+    
+    @for $i from 1 through 12 
+      .post_#{$i}  
+        padding-right: 0 
+          
+  
+
+
+/* SETTING FOR PORTRAIT TABLET until the browser is at a maximum of 1000 */
+@media only screen and (min-width: 1000px) and (max-width: 1499px)
+  .hive_12, .hive_16
+    max-width: 960px
+    margin: auto
+    
+
+
+/* WIDE DESKTOP OR TV */
+@media screen and (min-width: 1500px) 
+  .hive_12, .hive_16
+    max-width: 80%
+    margin: auto
+  
+
+
+
+
+
+

@@ -195,10 +195,13 @@ p{
 }
 
 
-/* SMARTPHONES MODIFICATIONS */
-/**********************************/
-@media screen and (max-width : 620px){
-    nav{
+// this an empty template 11 queries breaks for different devices and views
+
+/* SMALLER THAN */
+/****************************************************************************/
+/* smaller then 639 (SMARTPHONE PORTRAIT ONLY, UNDER SMARTPHONES LANDSCAPE) */
+@media only screen and (max-width: 639px){
+	nav{
         ul{
             li{
                 display: block;
@@ -209,8 +212,51 @@ p{
         }
     }
 }
-/* END IPAD AND TABLETS  */
+/* smaller then 719 (SMALLER THAN TABLET PORTRAIT) */
+@media only screen and (max-width: 719px){
+	
+}
+/* smaller then 1023 (SMALLER THAN DESKTOP OR TABLET PORTRAIT) */
+@media only screen and (max-width: 1023px){
+	
+}
+/* smaller then 1499 (SMALLER THAN CINEMA DISPLAY) */
+@media only screen and (max-width: 1499px){
+	
+}
 
+/* BIGGER THAN */
+/****************************************************************************/
+/* bigger then 640 (SMARTPHONES LANDSCAPE OR BIGGER) */
+@media only screen and (min-width: 640px){
+	
+}
+/* bigger then 720 (TABLET PORTRAIT OR BIGGER) */
+@media only screen and (min-width: 640px){
+	
+}
+/* bigger then 1024 (TABLET LANDSCAPE OR BIGGER) */
+@media only screen and (min-width: 1024px){
+	
+}
+/* bigger then 1500 (HD - CINEMA DISPLAY OR BIGGER) */
+@media only screen and (min-width: 1500px){
+	
+}
 
+/* BETWEEN SIZES */
+/****************************************************************************/
+/* between 640 and 1023 (FOR SMARTPHONE LANDSCAPE AND TABLET PORTRAIT ONLY ) */
+@media only screen and (min-width: 640px) and (max-width: 1023px){
+
+}
+/* between 1024 and 1499 (FOR TABLET PORTRAIT AND DESKTOP ONLY ) */
+@media only screen and (min-width: 1024px) and (max-width: 1499px){
+
+}
+/* between 640 and 1499 (FOR SMARTPHONE LANDSCAPE, TABLET PORTRAIT AND DESKTOP ONLY ) */
+@media only screen and (min-width: 640px) and (max-width: 1499px){
+
+}
 
 
