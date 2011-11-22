@@ -43,7 +43,7 @@ group :development, :test do
   unless ENV['TRAVIS']
     gem 'guard'
     gem 'guard-cucumber'
-    gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
+#    gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
     gem 'growl_notify'
   end
 end
