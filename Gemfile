@@ -1,21 +1,21 @@
 source 'http://rubygems.org'
 
 gem 'mysql2',   '0.2.6'     if ENV['DB'].nil? || ENV['DB'] == "mysql"
-gem 'sqlite3'               if ENV['DB'].nil? || ENV['DB'] == "sqlite"
+gem 'sqlite3',  '1.3.4'     if ENV['DB'].nil? || ENV['DB'] == "sqlite"
 gem 'pg',       '0.11.0'    if ENV['DB'].nil? || ENV['DB'] == "postgres"
 
-gem 'rails', '3.0.11'
-gem 'jquery-rails', '1.0.18'
-gem 'string-utils', '0.2.0'
-gem 'omniauth', '1.0.0'
-gem 'devise', '1.5.0'
-gem 'ancestry', '1.2.4'
-gem 'acts_as_list-rails3', '0.0.4'
-gem 'cancan', '1.6.7'
-gem 'gravatar_image_tag', '1.0.0'
-gem 'themes_for_rails', '>= 0.4.2'
-gem 'cells', '>= 3.6.5'
-gem 'rake', '0.9.2'
+gem 'rails',                '3.0.11'
+gem 'jquery-rails',         '1.0.18'
+gem 'string-utils',         '0.2.0'
+gem 'omniauth',             '1.0.0'
+gem 'devise',               '1.5.0'
+gem 'ancestry',             '1.2.4'
+gem 'acts_as_list-rails3',  '0.0.4'
+gem 'cancan',               '1.6.7'
+gem 'gravatar_image_tag',   '1.0.0'
+gem 'themes_for_rails',     '0.4.2'
+gem 'cells',                '3.7.0'
+gem 'rake',                 '0.9.2'
 gem 'paperclip', '>= 2.3.16'
 gem 'ckeditor', '3.6.2'
 gem 'acts_as_commentable', "~> 3.0.1"
