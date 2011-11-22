@@ -1,30 +1,37 @@
-<meta charset="UTF-8">
+<title><%= @cfg.site_page_title %> | <%= @page.title %></title>
+<meta charset="utf-8" />
+<link rel="shortcut icon" href="/favicon.ico" />
 
-<title><%= @meta_title %></title>
-<link rel="shortcut icon" href="/favicon.ico">
-<meta name="description" content="<%= @meta_description %>" />
-<meta name="keywords" content= "<%= @meta_keywords %>" />
+<meta name="description" content="<%= @cfg.default_page_desc %>" />
+<meta name="keywords" content="<%= @cfg.default_page_keywords %>" />
+<meta name="author" content="Matteo Papadopoulos, Silvio Relli" />
+<meta name="generator" content="Railsyard CMS" />
 
 <!-- some mobiles configurations -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="apple-touch-icon" href="images/"> <!-- 57px icon for iphone/ipad -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <meta name="format-detection" content="telephone=no" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 <!-- JAVASCRIPTS -->
-<script type="text/javascript" src="<%= current_theme_javascript_path('modernizr') %>"></script>
-<script type="text/javascript" src="<%= current_theme_javascript_path('hyml5') %>"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="http://cdn.jquerytools.org/1.2.6/all/jquery.tools.min.js"></script>
 <%= javascript_include_tag 'jquery_ujs' %>
-<script type="text/javascript" src="<%= current_theme_javascript_path('application') %>"></script>
+<%= javascript_include_tag current_theme_javascript_path('modernizr') %>
+<%= javascript_include_tag current_theme_javascript_path('application') %>
+<!-- let IE form verison 8 understands mediaqueries and html5 stuff -->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
 
 <!-- STYLESHEETS -->
-<link rel="stylesheet" href="<%= current_theme_stylesheet_path('../javascripts/uniform/css/uniform.default') %>">
-<link rel="stylesheet" href="<%= current_theme_stylesheet_path('hive') %>">
-<link rel="stylesheet" href="<%= current_theme_stylesheet_path('spleen') %>">
-<link rel="stylesheet" href="<%= current_theme_stylesheet_path('style') %>">
-<link rel="stylesheet" href="<%= current_theme_stylesheet_path('demo') %>">
+<%= stylesheet_link_tag current_theme_stylesheet_path('hive') %>
+<%= stylesheet_link_tag current_theme_stylesheet_path('spleen') %>
+<%= stylesheet_link_tag current_theme_stylesheet_path('style') %>
+<%= stylesheet_link_tag current_theme_stylesheet_path('demo') %>
+<!--[if lte IE 7]>
+<style type="text/css" media="screen">@import "<%= current_theme_stylesheet_path('style-ie7') %>";</style>>
+<![endif]-->
 
-<%= render 'layouts/support' %>
+<%= yield :extra_head %>
 <%= csrf_meta_tag %>

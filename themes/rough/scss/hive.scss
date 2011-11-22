@@ -1,553 +1,55 @@
-/* PERSONALIZED GRID SYSTEM */
-/* FORKED BY THE ORIGINAL 960 GRID */
-/**********************************/
+/** HIVE SCSS YET ANOTHER RESPONSIVE GRID SYSTEM
+ ** THX TO 960 GRID
+ ** Written by Matteo Papadopoulos aka @spleenteo on twitter
+ ** http://www.basictrading.biz 
+ **/
 
-// TODO there is a bug on fluid grid 3 col on margins
+// YOU CAN CHANGE SOME SETTINGS IF YOU WISH
+$width: 100%;     /* set the desired fixed width in pixels or %  */
 
-$type:  fixed;         /* can be fixed or fluid */
-// $type: fluid;
-$width: 960px;            /* set the desired fixed width in pixel or %  */
-                        /* if you use percentage, take care to avoid to go upper then 92% to left some margin */
-$margin_fx: 10px;       /* set the margin between columns, in px for fixed layout %*/
-//$margin_fl: 0.99%;      /* set the margin between columns in % for fluid */
+// WARNING: Internal variables, don't change them!
+// these are assumed to modify the margin in fixed layout
+$unit_12: 100% / 12;
+$unit_16: 100% / 16;
 
-
-
-/*
- * WARNING: Internal variables, don't change it!
- * these are assumed to modify margin in fixed layout
- */
-$unit_12: $width / 12;
-$unit_16: $width / 16;
-
-.hive_12,
-.hive_16 {
+.hive_12, .hive_16 {
+    @extend .clearfix;
     width: $width;
-    @if $type == fixed {
-        margin-left: auto;
-        margin-right: auto;
-    } @else if $type == fluid {
-        margin-left: (100% - $width)/2;
-        margin-right: (100% - $width)/2;
+    margin-left: (100% - $width)/2;
+    margin-right: (100% - $width)/2;
+    .cell_1, .cell_2, .cell_3, .cell_4, .cell_5, .cell_6, .cell_7, .cell_8, .cell_9, .cell_10, .cell_11, .cell_12, .cell_13, .cell_14, .cell_15, .cell_16 {
+        display: inline;
+        float: left;
     }
 }
-.cell_1, .cell_2, .cell_3, .cell_4, .cell_5, .cell_6, .cell_7, .cell_8, .cell_9, .cell_10, .cell_11, .cell_12, .cell_13, .cell_14, .cell_15, .cell_16 {
-    display: inline;
-    float: left;
-    @if $type == fixed {
-        margin-left: $margin_fx;
-        margin-right: $margin_fx;
-        position: relative;
-    } @else if $type == fluid {
-        margin-left: 0.99%;
-        margin-right: 0.99%;
+.hive_12{
+    @for $i from 1 through 12 {
+      .cell_#{$i} { width: $unit_12 * $i; }
+    }
+    @for $i from 1 through 12 {
+      .pre_#{$i} { padding-left: $unit_12 * $i; }
+    }
+    @for $i from 1 through 12 {
+      .post_#{$i} { padding-right: $unit_12 * $i; }
     }
 }
-.hive_12 .cell_3,
-.hive_16 .cell_4 {
-    @if $type == fixed {
-        width: ($unit_16 * 4) - ($margin_fx * 2);
-    } @else if $type == fluid {
-        width: 23%;
+.hive_16{
+    @for $i from 1 through 16 {
+      .cell_#{$i} { width: $unit_16 * $i; }
     }
-}
-.hive_12 .cell_6,
-.hive_16 .cell_8 {
-    @if $type == fixed {
-        width: ($unit_16 * 8) - ($margin_fx * 2);
-    } @else if $type == fluid {
-        width: 48%;
+    @for $i from 1 through 16 {
+      .pre_#{$i} { padding-left: $unit_16 * $i; }
     }
-}
-.hive_12 .cell_9,
-.hive_16 .cell_12 {
-    @if $type == fixed {
-        width: ($unit_16 * 12) - ($margin_fx * 2);
-    } @else if $type == fluid {
-        width: 73%;
+    @for $i from 1 through 16 {
+      .post_#{$i} { padding-right: $unit_16 * $i; }
     }
-}
-.hive_12 .cell_12,
-.hive_16 .cell_16 {
-    @if $type == fixed {
-        width: ($unit_16 * 16) - ($margin_fx * 2);
-    } @else if $type == fluid {
-        width: 98%;
-    }
+
 }
 .alpha {
     margin-left: 0;
 }
 .omega {
     margin-right: 0;
-}
-.hive_12 .cell_1 {
-    @if $type == fixed {
-        width: ($unit_12 * 1) - ($margin_fx * 2);
-    } @else if $type == fluid {
-        width: 6.333%;
-    }
-}
-.hive_12 .cell_2 {
-    @if $type == fixed {
-        width: ($unit_12 * 2) - ($margin_fx * 2);
-    } @else if $type == fluid {
-        width: 14.666%;
-    }
-}
-.hive_12 .cell_4 {
-    @if $type == fixed {
-        width: ($unit_12 * 4) - ($margin_fx * 2);
-    } @else if $type == fluid {
-        width: 31.333%;
-    }
-}
-.hive_12 .cell_5 {
-    @if $type == fixed {
-        width: ($unit_12 * 5) - ($margin_fx * 2);
-    } @else if $type == fluid {
-        width: 39.666%;
-    }
-}
-.hive_12 .cell_7 {
-    @if $type == fixed {
-        width: ($unit_12 * 7) - ($margin_fx * 2);
-    } @else if $type == fluid {
-        width: 56.333%;
-    }
-}
-.hive_12 .cell_8 {
-    @if $type == fixed {
-        width: ($unit_12 * 8) - ($margin_fx * 2);
-    } @else if $type == fluid {
-        width: 64.666%;
-    }
-}
-.hive_12 .cell_10 {
-    @if $type == fixed {
-        width: ($unit_12 * 10) - ($margin_fx * 2);
-    } @else if $type == fluid {
-        width: 81.333%;
-    }
-}
-.hive_12 .cell_11 {
-    @if $type == fixed {
-        width: ($unit_12 * 11) - ($margin_fx * 2);
-    } @else if $type == fluid {
-        width: 89.666%;
-    }
-}
-.hive_16 .cell_1 {
-    @if $type == fixed {
-        width: ($unit_16 * 1) - ($margin_fx * 2);
-    } @else if $type == fluid {
-        width: 4.25%;
-    }
-}
-.hive_16 .cell_2 {
-    @if $type == fixed {
-        width: ($unit_16 * 2) - ($margin_fx * 2);
-    } @else if $type == fluid {
-        width: 10.5%;
-    }
-}
-.hive_16 .cell_3 {
-    @if $type == fixed {
-        width: ($unit_16 * 3) - ($margin_fx * 2);
-    } @else if $type == fluid {
-        width: 16.75%;
-    }
-}
-.hive_16 .cell_5 {
-    @if $type == fixed {
-        width: ($unit_16 * 5) - ($margin_fx * 2);
-    } @else if $type == fluid {
-        width: 29.25%;
-    }
-}
-.hive_16 .cell_6 {
-    @if $type == fixed {
-        width: ($unit_16 * 6) - ($margin_fx * 2);
-    } @else if $type == fluid {
-        width: 35.5%;
-    }
-}
-.hive_16 .cell_7 {
-    @if $type == fixed {
-        width: ($unit_16 * 7) - ($margin_fx * 2);
-    } @else if $type == fluid {
-        width: 41.75%;
-    }
-}
-.hive_16 .cell_9 {
-    @if $type == fixed {
-        width: ($unit_16 * 9) - ($margin_fx * 2);
-    } @else if $type == fluid {
-        width: 54.25%;
-    }
-}
-.hive_16 .cell_10 {
-    @if $type == fixed {
-        width: ($unit_16 * 10) - ($margin_fx * 2);
-    } @else if $type == fluid {
-        width: 60.5%;
-    }
-}
-.hive_16 .cell_11 {
-    @if $type == fixed {
-        width: ($unit_16 * 11) - ($margin_fx * 2);
-    } @else if $type == fluid {
-        width: 66.75%;
-    }
-}
-.hive_16 .cell_13 {
-    @if $type == fixed {
-        width: ($unit_16 * 13) - ($margin_fx * 2);
-    } @else if $type == fluid {
-        width: 79.25%;
-    }
-}
-.hive_16 .cell_14 {
-    @if $type == fixed {
-        width: ($unit_16 * 14) - ($margin_fx * 2);
-    } @else if $type == fluid {
-        width: 85.5%;
-    }
-}
-.hive_16 .cell_15 {
-    @if $type == fixed {
-        width: ($unit_16 * 15) - ($margin_fx * 2);
-    } @else if $type == fluid {
-        width: 91.75%;
-    }
-}
-.hive_12 .pre_3,
-.hive_16 .pre_4 {
-    @if $type == fixed {
-        padding-left: ($unit_16 * 4);
-    } @else if $type == fluid {
-        padding-left: 25%;
-    }
-}
-.hive_12 .pre_6,
-.hive_16 .pre_8 {
-    @if $type == fixed {
-        padding-left: ($unit_16 * 8);
-    } @else if $type == fluid {
-        padding-left: 50%;
-    }
-}
-.hive_12 .pre_9,
-.hive_16 .pre_12 {
-    @if $type == fixed {
-        padding-left: ($unit_16 * 12);
-    } @else if $type == fluid {
-        padding-left: 75%;
-    }
-}
-.hive_12 .pre_1 {
-    @if $type == fixed {
-        padding-left: ($unit_12 * 1);
-    } @else if $type == fluid {
-        padding-left: 8.333%;
-    }
-}
-.hive_12 .pre_2 {
-    @if $type == fixed {
-        padding-left: ($unit_12 * 2);
-    } @else if $type == fluid {
-        padding-left: 16.666%;
-    }
-}
-.hive_12 .pre_4 {
-    @if $type == fixed {
-        padding-left: ($unit_12 * 4);
-    } @else if $type == fluid {
-        padding-left: 33.333%;
-    }
-}
-.hive_12 .pre_5 {
-    @if $type == fixed {
-        padding-left: ($unit_12 * 5);
-    } @else if $type == fluid {
-        padding-left: 41.666%;
-    }
-}
-.hive_12 .pre_7 {
-    @if $type == fixed {
-        padding-left: ($unit_12 * 7);
-    } @else if $type == fluid {
-        padding-left: 58.333%;
-    }
-}
-.hive_12 .pre_8 {
-    @if $type == fixed {
-        padding-left: ($unit_12 * 8);
-    } @else if $type == fluid {
-        padding-left: 66.666%;
-    }
-}
-.hive_12 .pre_10 {
-    @if $type == fixed {
-        padding-left: ($unit_12 * 10);
-    } @else if $type == fluid {
-        padding-left: 83.333%;
-    }
-}
-.hive_12 .pre_11 {
-    @if $type == fixed {
-        padding-left: ($unit_12 * 11);
-    } @else if $type == fluid {
-        padding-left: 91.666%;
-    }
-}
-.hive_16 .pre_1 {
-    @if $type == fixed {
-        padding-left: ($unit_16 * 1);
-    } @else if $type == fluid {
-        padding-left: 8.333%;
-    }
-}
-.hive_16 .pre_2 {
-    @if $type == fixed {
-        padding-left: ($unit_16 * 2);
-    } @else if $type == fluid {
-        padding-left: 12.5%;
-    }
-}
-.hive_16 .pre_3 {
-    @if $type == fixed {
-        padding-left: ($unit_16 * 3);
-    } @else if $type == fluid {
-        padding-left: 18.75%;
-    }
-}
-.hive_16 .pre_5 {
-    @if $type == fixed {
-        padding-left: ($unit_16 * 5);
-    } @else if $type == fluid {
-        padding-left: 31.25%;
-    }
-}
-.hive_16 .pre_6 {
-    @if $type == fixed {
-        padding-left: ($unit_16 * 6);
-    } @else if $type == fluid {
-        padding-left: 37.5%;
-    }
-}
-.hive_16 .pre_7 {
-    @if $type == fixed {
-        padding-left: ($unit_16 * 7);
-    } @else if $type == fluid {
-        padding-left: 43.75%;
-    }
-}
-.hive_16 .pre_9 {
-    @if $type == fixed {
-        padding-left: ($unit_16 * 9);
-    } @else if $type == fluid {
-        padding-left: 56.25%;
-    }
-}
-.hive_16 .pre_10 {
-    @if $type == fixed {
-        padding-left: ($unit_16 * 10);
-    } @else if $type == fluid {
-        padding-left: 62.5%;
-    }
-}
-.hive_16 .pre_11 {
-    @if $type == fixed {
-        padding-left: ($unit_16 * 11);
-    } @else if $type == fluid {
-        padding-left: 68.75%;
-    }
-}
-.hive_16 .pre_13 {
-    @if $type == fixed {
-        padding-left: ($unit_16 * 13);
-    } @else if $type == fluid {
-        padding-left: 81.25%;
-    }
-}
-.hive_16 .pre_14 {
-    @if $type == fixed {
-        padding-left: ($unit_16 * 14);
-    } @else if $type == fluid {
-        padding-left: 87.5%;
-    }
-}
-.hive_16 .pre_15 {
-    @if $type == fixed {
-        padding-left: ($unit_16 * 15);
-    } @else if $type == fluid {
-        padding-left: 93.75%;
-    }
-}
-.hive_12 .post_3,
-.hive_16 .post_4 {
-    @if $type == fixed {
-        padding-right: ($unit_16 * 4);
-    } @else if $type == fluid {
-        padding-right: 25%;
-    }
-}
-.hive_12 .post_6,
-.hive_16 .post_8 {
-    @if $type == fixed {
-        padding-right: ($unit_16 * 8);
-    } @else if $type == fluid {
-        padding-right: 50%;
-    }
-}
-.hive_12 .post_9,
-.hive_16 .post_12 {
-    @if $type == fixed {
-        padding-right: ($unit_16 * 12);
-    } @else if $type == fluid {
-        padding-right: 75%;
-    }
-}
-.hive_12 .post_1 {
-    @if $type == fixed {
-        padding-right: ($unit_12 * 1);
-    } @else if $type == fluid {
-        padding-right: 8.333%;
-    }
-}
-.hive_12 .post_2 {
-    @if $type == fixed {
-        padding-right: ($unit_12 * 2);
-    } @else if $type == fluid {
-        padding-right: 16.666%;
-    }
-}
-.hive_12 .post_4 {
-    @if $type == fixed {
-        padding-right: ($unit_12 * 4);
-    } @else if $type == fluid {
-        padding-right: 33.333%;
-    }
-}
-.hive_12 .post_5 {
-    @if $type == fixed {
-        padding-right: ($unit_12 * 5);
-    } @else if $type == fluid {
-        padding-right: 41.666%;
-    }
-}
-.hive_12 .post_7 {
-    @if $type == fixed {
-        padding-right: ($unit_12 * 7);
-    } @else if $type == fluid {
-        padding-right: 58.333%;
-    }
-}
-.hive_12 .post_8 {
-    @if $type == fixed {
-        padding-right: ($unit_12 * 8);
-    } @else if $type == fluid {
-        padding-right: 66.666%;
-    }
-}
-.hive_12 .post_10 {
-    @if $type == fixed {
-        padding-right: ($unit_12 * 10);
-    } @else if $type == fluid {
-        padding-right: 83.333%;
-    }
-}
-.hive_12 .post_11 {
-    @if $type == fixed {
-        padding-right: ($unit_12 * 11);
-    } @else if $type == fluid {
-        padding-right: 91.666%;
-    }
-}
-.hive_16 .post_1 {
-    @if $type == fixed {
-        padding-right: ($unit_16 * 1);
-    } @else if $type == fluid {
-        padding-right: 6.25%;
-    }
-}
-.hive_16 .post_2 {
-    @if $type == fixed {
-        padding-right: ($unit_16 * 2);
-    } @else if $type == fluid {
-        padding-right: 16.5%;
-    }
-}
-.hive_16 .post_3 {
-    @if $type == fixed {
-        padding-right: ($unit_16 * 3);
-    } @else if $type == fluid {
-        padding-right: 18.75%;
-    }
-}
-.hive_16 .post_5 {
-    @if $type == fixed {
-        padding-right: ($unit_16 * 5);
-    } @else if $type == fluid {
-        padding-right: 31.25%;
-    }
-}
-.hive_16 .post_6 {
-    @if $type == fixed {
-        padding-right: ($unit_16 * 6);
-    } @else if $type == fluid {
-        padding-right: 37.5%;
-    }
-}
-.hive_16 .post_7 {
-    @if $type == fixed {
-        padding-right: ($unit_16 * 7);
-    } @else if $type == fluid {
-        padding-right: 43.75%;
-    }
-}
-.hive_16 .post_9 {
-    @if $type == fixed {
-        padding-right: ($unit_16 * 9);
-    } @else if $type == fluid {
-        padding-right: 56.25%;
-    }
-}
-.hive_16 .post_10 {
-    @if $type == fixed {
-        padding-right: ($unit_16 * 10);
-    } @else if $type == fluid {
-        padding-right: 62.5%;
-    }
-}
-.hive_16 .post_11 {
-    @if $type == fixed {
-        padding-right: ($unit_16 * 11);
-    } @else if $type == fluid {
-        padding-right: 68.75%;
-    }
-}
-.hive_16 .post_13 {
-    @if $type == fixed {
-        padding-right: ($unit_16 * 13);
-    } @else if $type == fluid {
-        padding-right: 81.25%;
-    }
-}
-.hive_16 .post_14 {
-    @if $type == fixed {
-        padding-right: ($unit_16 * 14);
-    } @else if $type == fluid {
-        padding-right: 87.5%;
-    }
-}
-.hive_16 .post_15 {
-    @if $type == fixed {
-        padding-right: ($unit_16 * 15);
-    } @else if $type == fluid {
-        padding-right: 93.75%;
-    }
 }
 .clear {
     clear: both;
@@ -577,47 +79,141 @@ $unit_16: $width / 16;
 }
 
 
-/* TABLETS LIKE IPAD PORTRAIT */
-@media screen and (max-width: 880px){
-   .hive_12, .hive_16{
-       padding: 10px 0;
-       width: 100% !important;
-       margin: 0;
-   }
-   .cell_12, .cell_11, .cell_10, .cell_9{
-       width: 100% !important;
-       margin: 0;
-   }
-   .cell_8, .cell_7, .cell_6, .cell_5{
-          width: 70% !important;
-          margin: 0;
-          margin-right: 2%;
-    }
-    .cell_4, .cell_3, .cell_2, .cell_1{
-        width: 28% !important;
+
+/* SETTING FOR SMARTPHONES PORTRAIT AND LANDSCAPE until the browser is at a maximum of 480 */
+@media only screen and (max-width: 480px){
+    .hive_12, .hive_16{
+        padding: 0;
+        width: 100%;
         margin: 0;
-        //margin-left: 0.10%;
-    }
-    .cell_12, .cell_16{
-        @for $i from 1 through 16 {
-          .cell_#{$i} { width: 100% !important; }
+        .cell_16, .cell_15, .cell_14, .cell_13, .cell_12, .cell_10, .cell_11, .cell_9, .cell_8, .cell_7, .cell_6, .cell_5, .cell_4, .cell_3, .cell_2, .cell_1{
+            width: 100%;
+            margin: 0;
         }
+        @for $i from 1 through 16 {
+          .pre_#{$i} { padding-left: 0; }
+        }
+        @for $i from 1 through 16 {
+          .post_#{$i} { padding-right: 0; }
+        }
+        
     }
 }
 
-/* SETTING FOR SMARTPHONES */
-/* portrait and landscape */
-@media screen and (max-width : 620px){
+/* SETTING FOR PORTRAIT TABLET until the browser is at a maximum of 1000 */
+@media only screen and (min-width: 481px) and (max-width: 1000px){
+    .hive_12{
+        .cell_12, .cell_11, .cell_10, .cell_9, .cell_8, .cell_7, .cell_6, .cell_5, .cell_4, .cell_3, .cell_2, .cell_1{
+            width: 100%;
+        }
+        .cell_10{
+            width: $unit_12 * 10;
+        }
+        .cell_10.pre_2, .cell_10.post_2{
+            width: 100%;
+        }
+        .cell_2{
+            width: $unit_12 * 2;
+        }
+        .cell_2.pre_8, .cell_2.post_8{
+            width: 100%;
+        }
+        .cell_9, .cell_13{
+            width: $unit_12 * 9;
+        }
+        .cell_6{
+            width: $unit_12 * 6;
+        }
+        .cell_3{
+            width: $unit_12 * 3;
+        }
+        .cell_10.pre_2, .cell_10.post_2, .cell_9.pre_3, .cell_9.post_3, .cell_2.pre_8, .cell_2.post_8, .cell_3.pre_9, .cell_3.post_9{
+            width: 100%;
+        }
+    }
+    .hive_16{
+        .cell_16, .cell_15, .cell_14, .cell_13, .cell_12, .cell_11,  .cell_10, .cell_9, .cell_8, .cell_7, .cell_6, .cell_5, .cell_4, .cell_3, .cell_2, .cell_1{
+            width: 100%;
+        }
+        .cell_12{
+            width: $unit_16 * 12;
+        }
+        .cell_10{
+            width: $unit_16 * 10;
+        }
+        .cell_6{
+            width: $unit_16 * 6;
+        }
+        .cell_8, .cell_9, .cell_7{
+            width: $unit_16 * 8;
+         }
+        .cell_4{
+            width: $unit_16 * 4;
+         }
+         .cell_12.pre_4, .cell_12.post_4, .cell_10.pre_6, .cell_10.post_6, .cell_6.pre_10, .cell_6.post_10, .cell_8.pre_8, .cell_8.post_8,  .cell_9.pre_7, .cell_9.post_7, .cell_7.pre_9, .cell_7.post_9{
+             width: 100%;
+         }
+         
+    }
     .hive_12, .hive_16{
-        padding: 10px 0;
-        width: 100% !important;
-        margin: 0;
-    }
-    .cell_12, .cell_11, .cell_10, .cell_9, .cell_8, .cell_7, .cell_6, .cell_5, .cell_4, .cell_3, .cell_2, .cell_1{
-        width: 100% !important;
-        margin: 0;
-    }
-    .alpha, .omega{
-        margin: 0;
+        @for $i from 1 through 12 {
+          .pre_#{$i} { padding-left: 0; }
+        }
+        @for $i from 1 through 12 {
+          .post_#{$i} { padding-right: 0; }
+        }            
     }
 }
+
+/* SETTING FOR PORTRAIT TABLET until the browser is at a maximum of 1000 */
+@media only screen and (min-width: 1000px) and (max-width: 1499px){
+    .hive_12, .hive_16{
+        max-width: 960px;
+        margin: auto;
+    }    
+}
+
+/* WIDE DESKTOP OR TV */
+@media screen and (min-width: 1500px) {
+    .hive_12, .hive_16{
+        max-width: 80%;
+        margin: auto;
+    }
+}
+
+
+// this is just a template for 4 breaks for different devices and views
+
+/* smaller then 480 (SMARTPHONES PORTRAIT) */
+@media only screen and (max-width: 480px){
+	
+}
+
+/* between 480 and 1000 (SMARTPHONES LANDSCAPE) */
+@media only screen and (min-width: 481px) and (max-width: 1000px){
+	
+}
+
+/* smaller then 720 */
+@media only screen and (max-width: 1000px){
+	
+}
+
+
+/* over 1000px (DESKTOP OR TABLETS LANDSCAPE AND CINEMA DISPLAY) */
+@media only screen and (min-width: 1000px){
+}
+
+
+/* between 1000 and 1500 (DESKTOP OR TABLETS LANDSCAPE) */
+@media only screen and (min-width: 1000px) and (max-width: 1499px){
+
+}
+
+/* over 1500 (WEB TV CINEMA DISPLAY) */
+@media screen and (min-width: 1500px) {
+
+}
+
+
+

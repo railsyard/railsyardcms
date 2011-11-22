@@ -46,8 +46,21 @@ p { line-height: 1.94em; }
 /* END MENU SNIPPETS  */
 .credits { font-size: 9px; opacity: 0.7; }
 
-/* SMARTPHONES MODIFICATIONS */
-/**********************************/
-@media screen and (max-width : 620px) { nav ul li { display: block; width: 100%; padding: 5px 0; border-bottom: 1px dotted gray; } }
-
-/* END IPAD AND TABLETS  */
+/* SMALLER THAN */
+/****************************************************************************/
+/* smaller then 639 (SMARTPHONE PORTRAIT ONLY, UNDER SMARTPHONES LANDSCAPE) */
+@media only screen and (max-width: 639px) { nav ul li { display: block; width: 100%; padding: 5px 0; border-bottom: 1px dotted gray; } }
+/* smaller then 719 (SMALLER THAN TABLET PORTRAIT) */
+/* smaller then 1023 (SMALLER THAN DESKTOP OR TABLET PORTRAIT) */
+/* smaller then 1499 (SMALLER THAN CINEMA DISPLAY) */
+/* BIGGER THAN */
+/****************************************************************************/
+/* bigger then 640 (SMARTPHONES LANDSCAPE OR BIGGER) */
+/* bigger then 720 (TABLET PORTRAIT OR BIGGER) */
+/* bigger then 1024 (TABLET LANDSCAPE OR BIGGER) */
+/* bigger then 1500 (HD - CINEMA DISPLAY OR BIGGER) */
+/* BETWEEN SIZES */
+/****************************************************************************/
+/* between 640 and 1023 (FOR SMARTPHONE LANDSCAPE AND TABLET PORTRAIT ONLY ) */
+/* between 1024 and 1499 (FOR TABLET PORTRAIT AND DESKTOP ONLY ) */
+/* between 640 and 1499 (FOR SMARTPHONE LANDSCAPE, TABLET PORTRAIT AND DESKTOP ONLY ) */

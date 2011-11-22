@@ -1,12 +1,21 @@
 ---
 
 base_conf:
-    title: "Railsyard Rough Theme"
+    title: "Railsyard Default Rough Theme"
     short: "rough" # use the same name as the theme main directory
     description: "the default responsive rough railsyard theme"
     author: "Silvio Relli, Matteo Papadopoulos - Cantiere Creativo"
 
 layouts:
+    -   title:   "Home Page"
+        filename: "home.html.erb"
+        areas:
+            -   title: "Header"
+                short: "header"
+            -   title: "Body"
+                short: "body"
+            -   title: "Footer"
+                short: "footer"
     -   title:   "Single columns"
         filename: "single_column.html.erb"
         areas:

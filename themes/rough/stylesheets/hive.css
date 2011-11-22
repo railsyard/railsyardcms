@@ -1,193 +1,191 @@
-/* PERSONALIZED GRID SYSTEM */
-/* FORKED BY THE ORIGINAL 960 GRID */
-/**********************************/
-/* can be fixed or fluid */
-/* set the desired fixed width in pixel or %  */
-/* if you use percentage, take care to avoid to go upper then 92% to left some margin */
-/* set the margin between columns, in px for fixed layout %*/
-/* WARNING: Internal variables, don't change it! these are assumed to modify margin in fixed layout */
-.hive_12, .hive_16 { width: 960px; margin-left: auto; margin-right: auto; }
+/** HIVE SCSS YET ANOTHER RESPONSIVE GRID SYSTEM * THX TO 960 GRID * Written by Matteo Papadopoulos aka @spleenteo on twitter * http://www.basictrading.biz  */
+/* set the desired fixed width in pixels or %  */
+.hive_12, .hive_16 { width: 100%; margin-left: 0%; margin-right: 0%; }
+.hive_12 .cell_1, .hive_12 .cell_2, .hive_12 .cell_3, .hive_12 .cell_4, .hive_12 .cell_5, .hive_12 .cell_6, .hive_12 .cell_7, .hive_12 .cell_8, .hive_12 .cell_9, .hive_12 .cell_10, .hive_12 .cell_11, .hive_12 .cell_12, .hive_12 .cell_13, .hive_12 .cell_14, .hive_12 .cell_15, .hive_12 .cell_16, .hive_16 .cell_1, .hive_16 .cell_2, .hive_16 .cell_3, .hive_16 .cell_4, .hive_16 .cell_5, .hive_16 .cell_6, .hive_16 .cell_7, .hive_16 .cell_8, .hive_16 .cell_9, .hive_16 .cell_10, .hive_16 .cell_11, .hive_16 .cell_12, .hive_16 .cell_13, .hive_16 .cell_14, .hive_16 .cell_15, .hive_16 .cell_16 { display: inline; float: left; }
 
-.cell_1, .cell_2, .cell_3, .cell_4, .cell_5, .cell_6, .cell_7, .cell_8, .cell_9, .cell_10, .cell_11, .cell_12, .cell_13, .cell_14, .cell_15, .cell_16 { display: inline; float: left; margin-left: 10px; margin-right: 10px; position: relative; }
+.hive_12 .cell_1 { width: 8.333%; }
+.hive_12 .cell_2 { width: 16.667%; }
+.hive_12 .cell_3 { width: 25%; }
+.hive_12 .cell_4 { width: 33.333%; }
+.hive_12 .cell_5 { width: 41.667%; }
+.hive_12 .cell_6 { width: 50%; }
+.hive_12 .cell_7 { width: 58.333%; }
+.hive_12 .cell_8 { width: 66.667%; }
+.hive_12 .cell_9 { width: 75%; }
+.hive_12 .cell_10 { width: 83.333%; }
+.hive_12 .cell_11 { width: 91.667%; }
+.hive_12 .cell_12 { width: 100%; }
+.hive_12 .pre_1 { padding-left: 8.333%; }
+.hive_12 .pre_2 { padding-left: 16.667%; }
+.hive_12 .pre_3 { padding-left: 25%; }
+.hive_12 .pre_4 { padding-left: 33.333%; }
+.hive_12 .pre_5 { padding-left: 41.667%; }
+.hive_12 .pre_6 { padding-left: 50%; }
+.hive_12 .pre_7 { padding-left: 58.333%; }
+.hive_12 .pre_8 { padding-left: 66.667%; }
+.hive_12 .pre_9 { padding-left: 75%; }
+.hive_12 .pre_10 { padding-left: 83.333%; }
+.hive_12 .pre_11 { padding-left: 91.667%; }
+.hive_12 .pre_12 { padding-left: 100%; }
+.hive_12 .post_1 { padding-right: 8.333%; }
+.hive_12 .post_2 { padding-right: 16.667%; }
+.hive_12 .post_3 { padding-right: 25%; }
+.hive_12 .post_4 { padding-right: 33.333%; }
+.hive_12 .post_5 { padding-right: 41.667%; }
+.hive_12 .post_6 { padding-right: 50%; }
+.hive_12 .post_7 { padding-right: 58.333%; }
+.hive_12 .post_8 { padding-right: 66.667%; }
+.hive_12 .post_9 { padding-right: 75%; }
+.hive_12 .post_10 { padding-right: 83.333%; }
+.hive_12 .post_11 { padding-right: 91.667%; }
+.hive_12 .post_12 { padding-right: 100%; }
 
-.hive_12 .cell_3, .hive_16 .cell_4 { width: 220px; }
-
-.hive_12 .cell_6, .hive_16 .cell_8 { width: 460px; }
-
-.hive_12 .cell_9, .hive_16 .cell_12 { width: 700px; }
-
-.hive_12 .cell_12, .hive_16 .cell_16 { width: 940px; }
+.hive_16 .cell_1 { width: 6.25%; }
+.hive_16 .cell_2 { width: 12.5%; }
+.hive_16 .cell_3 { width: 18.75%; }
+.hive_16 .cell_4 { width: 25%; }
+.hive_16 .cell_5 { width: 31.25%; }
+.hive_16 .cell_6 { width: 37.5%; }
+.hive_16 .cell_7 { width: 43.75%; }
+.hive_16 .cell_8 { width: 50%; }
+.hive_16 .cell_9 { width: 56.25%; }
+.hive_16 .cell_10 { width: 62.5%; }
+.hive_16 .cell_11 { width: 68.75%; }
+.hive_16 .cell_12 { width: 75%; }
+.hive_16 .cell_13 { width: 81.25%; }
+.hive_16 .cell_14 { width: 87.5%; }
+.hive_16 .cell_15 { width: 93.75%; }
+.hive_16 .cell_16 { width: 100%; }
+.hive_16 .pre_1 { padding-left: 6.25%; }
+.hive_16 .pre_2 { padding-left: 12.5%; }
+.hive_16 .pre_3 { padding-left: 18.75%; }
+.hive_16 .pre_4 { padding-left: 25%; }
+.hive_16 .pre_5 { padding-left: 31.25%; }
+.hive_16 .pre_6 { padding-left: 37.5%; }
+.hive_16 .pre_7 { padding-left: 43.75%; }
+.hive_16 .pre_8 { padding-left: 50%; }
+.hive_16 .pre_9 { padding-left: 56.25%; }
+.hive_16 .pre_10 { padding-left: 62.5%; }
+.hive_16 .pre_11 { padding-left: 68.75%; }
+.hive_16 .pre_12 { padding-left: 75%; }
+.hive_16 .pre_13 { padding-left: 81.25%; }
+.hive_16 .pre_14 { padding-left: 87.5%; }
+.hive_16 .pre_15 { padding-left: 93.75%; }
+.hive_16 .pre_16 { padding-left: 100%; }
+.hive_16 .post_1 { padding-right: 6.25%; }
+.hive_16 .post_2 { padding-right: 12.5%; }
+.hive_16 .post_3 { padding-right: 18.75%; }
+.hive_16 .post_4 { padding-right: 25%; }
+.hive_16 .post_5 { padding-right: 31.25%; }
+.hive_16 .post_6 { padding-right: 37.5%; }
+.hive_16 .post_7 { padding-right: 43.75%; }
+.hive_16 .post_8 { padding-right: 50%; }
+.hive_16 .post_9 { padding-right: 56.25%; }
+.hive_16 .post_10 { padding-right: 62.5%; }
+.hive_16 .post_11 { padding-right: 68.75%; }
+.hive_16 .post_12 { padding-right: 75%; }
+.hive_16 .post_13 { padding-right: 81.25%; }
+.hive_16 .post_14 { padding-right: 87.5%; }
+.hive_16 .post_15 { padding-right: 93.75%; }
+.hive_16 .post_16 { padding-right: 100%; }
 
 .alpha { margin-left: 0; }
 
 .omega { margin-right: 0; }
 
-.hive_12 .cell_1 { width: 60px; }
-
-.hive_12 .cell_2 { width: 140px; }
-
-.hive_12 .cell_4 { width: 300px; }
-
-.hive_12 .cell_5 { width: 380px; }
-
-.hive_12 .cell_7 { width: 540px; }
-
-.hive_12 .cell_8 { width: 620px; }
-
-.hive_12 .cell_10 { width: 780px; }
-
-.hive_12 .cell_11 { width: 860px; }
-
-.hive_16 .cell_1 { width: 40px; }
-
-.hive_16 .cell_2 { width: 100px; }
-
-.hive_16 .cell_3 { width: 160px; }
-
-.hive_16 .cell_5 { width: 280px; }
-
-.hive_16 .cell_6 { width: 340px; }
-
-.hive_16 .cell_7 { width: 400px; }
-
-.hive_16 .cell_9 { width: 520px; }
-
-.hive_16 .cell_10 { width: 580px; }
-
-.hive_16 .cell_11 { width: 640px; }
-
-.hive_16 .cell_13 { width: 760px; }
-
-.hive_16 .cell_14 { width: 820px; }
-
-.hive_16 .cell_15 { width: 880px; }
-
-.hive_12 .pre_3, .hive_16 .pre_4 { padding-left: 240px; }
-
-.hive_12 .pre_6, .hive_16 .pre_8 { padding-left: 480px; }
-
-.hive_12 .pre_9, .hive_16 .pre_12 { padding-left: 720px; }
-
-.hive_12 .pre_1 { padding-left: 80px; }
-
-.hive_12 .pre_2 { padding-left: 160px; }
-
-.hive_12 .pre_4 { padding-left: 320px; }
-
-.hive_12 .pre_5 { padding-left: 400px; }
-
-.hive_12 .pre_7 { padding-left: 560px; }
-
-.hive_12 .pre_8 { padding-left: 640px; }
-
-.hive_12 .pre_10 { padding-left: 800px; }
-
-.hive_12 .pre_11 { padding-left: 880px; }
-
-.hive_16 .pre_1 { padding-left: 60px; }
-
-.hive_16 .pre_2 { padding-left: 120px; }
-
-.hive_16 .pre_3 { padding-left: 180px; }
-
-.hive_16 .pre_5 { padding-left: 300px; }
-
-.hive_16 .pre_6 { padding-left: 360px; }
-
-.hive_16 .pre_7 { padding-left: 420px; }
-
-.hive_16 .pre_9 { padding-left: 540px; }
-
-.hive_16 .pre_10 { padding-left: 600px; }
-
-.hive_16 .pre_11 { padding-left: 660px; }
-
-.hive_16 .pre_13 { padding-left: 780px; }
-
-.hive_16 .pre_14 { padding-left: 840px; }
-
-.hive_16 .pre_15 { padding-left: 900px; }
-
-.hive_12 .post_3, .hive_16 .post_4 { padding-right: 240px; }
-
-.hive_12 .post_6, .hive_16 .post_8 { padding-right: 480px; }
-
-.hive_12 .post_9, .hive_16 .post_12 { padding-right: 720px; }
-
-.hive_12 .post_1 { padding-right: 80px; }
-
-.hive_12 .post_2 { padding-right: 160px; }
-
-.hive_12 .post_4 { padding-right: 320px; }
-
-.hive_12 .post_5 { padding-right: 400px; }
-
-.hive_12 .post_7 { padding-right: 560px; }
-
-.hive_12 .post_8 { padding-right: 640px; }
-
-.hive_12 .post_10 { padding-right: 800px; }
-
-.hive_12 .post_11 { padding-right: 880px; }
-
-.hive_16 .post_1 { padding-right: 60px; }
-
-.hive_16 .post_2 { padding-right: 120px; }
-
-.hive_16 .post_3 { padding-right: 180px; }
-
-.hive_16 .post_5 { padding-right: 300px; }
-
-.hive_16 .post_6 { padding-right: 360px; }
-
-.hive_16 .post_7 { padding-right: 420px; }
-
-.hive_16 .post_9 { padding-right: 540px; }
-
-.hive_16 .post_10 { padding-right: 600px; }
-
-.hive_16 .post_11 { padding-right: 660px; }
-
-.hive_16 .post_13 { padding-right: 780px; }
-
-.hive_16 .post_14 { padding-right: 840px; }
-
-.hive_16 .post_15 { padding-right: 900px; }
-
 .clear { clear: both; display: block; overflow: hidden; visibility: hidden; width: 0; height: 0; }
 
-.clearfix:after { clear: both; content: ' '; display: block; font-size: 0; line-height: 0; visibility: hidden; width: 0; height: 0; }
+.clearfix:after, .hive_12:after, .hive_16:after { clear: both; content: ' '; display: block; font-size: 0; line-height: 0; visibility: hidden; width: 0; height: 0; }
 
-.clearfix { display: inline-block; }
+.clearfix, .hive_12, .hive_16 { display: inline-block; }
 
-* html.clearfix { height: 1%; }
+* html.clearfix, * html.hive_12, * html.hive_16 { height: 1%; }
 
-.clearfix { display: block; }
+.clearfix, .hive_12, .hive_16 { display: block; }
 
-/* TABLETS LIKE IPAD PORTRAIT */
-@media screen and (max-width: 880px) { .hive_12, .hive_16 { padding: 10px 0; width: 100% !important; margin: 0; }
-  .cell_12, .cell_11, .cell_10, .cell_9 { width: 100% !important; margin: 0; }
-  .cell_8, .cell_7, .cell_6, .cell_5 { width: 70% !important; margin: 0; margin-right: 2%; }
-  .cell_4, .cell_3, .cell_2, .cell_1 { width: 28% !important; margin: 0; }
-  .cell_12 .cell_1, .cell_16 .cell_1 { width: 100% !important; }
-  .cell_12 .cell_2, .cell_16 .cell_2 { width: 100% !important; }
-  .cell_12 .cell_3, .cell_16 .cell_3 { width: 100% !important; }
-  .cell_12 .cell_4, .cell_16 .cell_4 { width: 100% !important; }
-  .cell_12 .cell_5, .cell_16 .cell_5 { width: 100% !important; }
-  .cell_12 .cell_6, .cell_16 .cell_6 { width: 100% !important; }
-  .cell_12 .cell_7, .cell_16 .cell_7 { width: 100% !important; }
-  .cell_12 .cell_8, .cell_16 .cell_8 { width: 100% !important; }
-  .cell_12 .cell_9, .cell_16 .cell_9 { width: 100% !important; }
-  .cell_12 .cell_10, .cell_16 .cell_10 { width: 100% !important; }
-  .cell_12 .cell_11, .cell_16 .cell_11 { width: 100% !important; }
-  .cell_12 .cell_12, .cell_16 .cell_12 { width: 100% !important; }
-  .cell_12 .cell_13, .cell_16 .cell_13 { width: 100% !important; }
-  .cell_12 .cell_14, .cell_16 .cell_14 { width: 100% !important; }
-  .cell_12 .cell_15, .cell_16 .cell_15 { width: 100% !important; }
-  .cell_12 .cell_16, .cell_16 .cell_16 { width: 100% !important; } }
-
-/* SETTING FOR SMARTPHONES */
-/* portrait and landscape */
-@media screen and (max-width : 620px) { .hive_12, .hive_16 { padding: 10px 0; width: 100% !important; margin: 0; }
-  .cell_12, .cell_11, .cell_10, .cell_9, .cell_8, .cell_7, .cell_6, .cell_5, .cell_4, .cell_3, .cell_2, .cell_1 { width: 100% !important; margin: 0; }
-  .alpha, .omega { margin: 0; } }
+/* SETTING FOR SMARTPHONES PORTRAIT AND LANDSCAPE until the browser is at a maximum of 480 */
+@media only screen and (max-width: 480px) { .hive_12, .hive_16 { padding: 0; width: 100%; margin: 0; }
+  .hive_12 .cell_16, .hive_12 .cell_15, .hive_12 .cell_14, .hive_12 .cell_13, .hive_12 .cell_12, .hive_12 .cell_10, .hive_12 .cell_11, .hive_12 .cell_9, .hive_12 .cell_8, .hive_12 .cell_7, .hive_12 .cell_6, .hive_12 .cell_5, .hive_12 .cell_4, .hive_12 .cell_3, .hive_12 .cell_2, .hive_12 .cell_1, .hive_16 .cell_16, .hive_16 .cell_15, .hive_16 .cell_14, .hive_16 .cell_13, .hive_16 .cell_12, .hive_16 .cell_10, .hive_16 .cell_11, .hive_16 .cell_9, .hive_16 .cell_8, .hive_16 .cell_7, .hive_16 .cell_6, .hive_16 .cell_5, .hive_16 .cell_4, .hive_16 .cell_3, .hive_16 .cell_2, .hive_16 .cell_1 { width: 100%; margin: 0; }
+  .hive_12 .pre_1, .hive_16 .pre_1 { padding-left: 0; }
+  .hive_12 .pre_2, .hive_16 .pre_2 { padding-left: 0; }
+  .hive_12 .pre_3, .hive_16 .pre_3 { padding-left: 0; }
+  .hive_12 .pre_4, .hive_16 .pre_4 { padding-left: 0; }
+  .hive_12 .pre_5, .hive_16 .pre_5 { padding-left: 0; }
+  .hive_12 .pre_6, .hive_16 .pre_6 { padding-left: 0; }
+  .hive_12 .pre_7, .hive_16 .pre_7 { padding-left: 0; }
+  .hive_12 .pre_8, .hive_16 .pre_8 { padding-left: 0; }
+  .hive_12 .pre_9, .hive_16 .pre_9 { padding-left: 0; }
+  .hive_12 .pre_10, .hive_16 .pre_10 { padding-left: 0; }
+  .hive_12 .pre_11, .hive_16 .pre_11 { padding-left: 0; }
+  .hive_12 .pre_12, .hive_16 .pre_12 { padding-left: 0; }
+  .hive_12 .pre_13, .hive_16 .pre_13 { padding-left: 0; }
+  .hive_12 .pre_14, .hive_16 .pre_14 { padding-left: 0; }
+  .hive_12 .pre_15, .hive_16 .pre_15 { padding-left: 0; }
+  .hive_12 .pre_16, .hive_16 .pre_16 { padding-left: 0; }
+  .hive_12 .post_1, .hive_16 .post_1 { padding-right: 0; }
+  .hive_12 .post_2, .hive_16 .post_2 { padding-right: 0; }
+  .hive_12 .post_3, .hive_16 .post_3 { padding-right: 0; }
+  .hive_12 .post_4, .hive_16 .post_4 { padding-right: 0; }
+  .hive_12 .post_5, .hive_16 .post_5 { padding-right: 0; }
+  .hive_12 .post_6, .hive_16 .post_6 { padding-right: 0; }
+  .hive_12 .post_7, .hive_16 .post_7 { padding-right: 0; }
+  .hive_12 .post_8, .hive_16 .post_8 { padding-right: 0; }
+  .hive_12 .post_9, .hive_16 .post_9 { padding-right: 0; }
+  .hive_12 .post_10, .hive_16 .post_10 { padding-right: 0; }
+  .hive_12 .post_11, .hive_16 .post_11 { padding-right: 0; }
+  .hive_12 .post_12, .hive_16 .post_12 { padding-right: 0; }
+  .hive_12 .post_13, .hive_16 .post_13 { padding-right: 0; }
+  .hive_12 .post_14, .hive_16 .post_14 { padding-right: 0; }
+  .hive_12 .post_15, .hive_16 .post_15 { padding-right: 0; }
+  .hive_12 .post_16, .hive_16 .post_16 { padding-right: 0; } }
+/* SETTING FOR PORTRAIT TABLET until the browser is at a maximum of 1000 */
+@media only screen and (min-width: 481px) and (max-width: 1000px) { .hive_12 .cell_12, .hive_12 .cell_11, .hive_12 .cell_10, .hive_12 .cell_9, .hive_12 .cell_8, .hive_12 .cell_7, .hive_12 .cell_6, .hive_12 .cell_5, .hive_12 .cell_4, .hive_12 .cell_3, .hive_12 .cell_2, .hive_12 .cell_1 { width: 100%; }
+  .hive_12 .cell_10 { width: 83.333%; }
+  .hive_12 .cell_10.pre_2, .hive_12 .cell_10.post_2 { width: 100%; }
+  .hive_12 .cell_2 { width: 16.667%; }
+  .hive_12 .cell_2.pre_8, .hive_12 .cell_2.post_8 { width: 100%; }
+  .hive_12 .cell_9, .hive_12 .cell_13 { width: 75%; }
+  .hive_12 .cell_6 { width: 50%; }
+  .hive_12 .cell_3 { width: 25%; }
+  .hive_12 .cell_10.pre_2, .hive_12 .cell_10.post_2, .hive_12 .cell_9.pre_3, .hive_12 .cell_9.post_3, .hive_12 .cell_2.pre_8, .hive_12 .cell_2.post_8, .hive_12 .cell_3.pre_9, .hive_12 .cell_3.post_9 { width: 100%; }
+  .hive_16 .cell_16, .hive_16 .cell_15, .hive_16 .cell_14, .hive_16 .cell_13, .hive_16 .cell_12, .hive_16 .cell_11, .hive_16 .cell_10, .hive_16 .cell_9, .hive_16 .cell_8, .hive_16 .cell_7, .hive_16 .cell_6, .hive_16 .cell_5, .hive_16 .cell_4, .hive_16 .cell_3, .hive_16 .cell_2, .hive_16 .cell_1 { width: 100%; }
+  .hive_16 .cell_12 { width: 75%; }
+  .hive_16 .cell_10 { width: 62.5%; }
+  .hive_16 .cell_6 { width: 37.5%; }
+  .hive_16 .cell_8, .hive_16 .cell_9, .hive_16 .cell_7 { width: 50%; }
+  .hive_16 .cell_4 { width: 25%; }
+  .hive_16 .cell_12.pre_4, .hive_16 .cell_12.post_4, .hive_16 .cell_10.pre_6, .hive_16 .cell_10.post_6, .hive_16 .cell_6.pre_10, .hive_16 .cell_6.post_10, .hive_16 .cell_8.pre_8, .hive_16 .cell_8.post_8, .hive_16 .cell_9.pre_7, .hive_16 .cell_9.post_7, .hive_16 .cell_7.pre_9, .hive_16 .cell_7.post_9 { width: 100%; }
+  .hive_12 .pre_1, .hive_16 .pre_1 { padding-left: 0; }
+  .hive_12 .pre_2, .hive_16 .pre_2 { padding-left: 0; }
+  .hive_12 .pre_3, .hive_16 .pre_3 { padding-left: 0; }
+  .hive_12 .pre_4, .hive_16 .pre_4 { padding-left: 0; }
+  .hive_12 .pre_5, .hive_16 .pre_5 { padding-left: 0; }
+  .hive_12 .pre_6, .hive_16 .pre_6 { padding-left: 0; }
+  .hive_12 .pre_7, .hive_16 .pre_7 { padding-left: 0; }
+  .hive_12 .pre_8, .hive_16 .pre_8 { padding-left: 0; }
+  .hive_12 .pre_9, .hive_16 .pre_9 { padding-left: 0; }
+  .hive_12 .pre_10, .hive_16 .pre_10 { padding-left: 0; }
+  .hive_12 .pre_11, .hive_16 .pre_11 { padding-left: 0; }
+  .hive_12 .pre_12, .hive_16 .pre_12 { padding-left: 0; }
+  .hive_12 .post_1, .hive_16 .post_1 { padding-right: 0; }
+  .hive_12 .post_2, .hive_16 .post_2 { padding-right: 0; }
+  .hive_12 .post_3, .hive_16 .post_3 { padding-right: 0; }
+  .hive_12 .post_4, .hive_16 .post_4 { padding-right: 0; }
+  .hive_12 .post_5, .hive_16 .post_5 { padding-right: 0; }
+  .hive_12 .post_6, .hive_16 .post_6 { padding-right: 0; }
+  .hive_12 .post_7, .hive_16 .post_7 { padding-right: 0; }
+  .hive_12 .post_8, .hive_16 .post_8 { padding-right: 0; }
+  .hive_12 .post_9, .hive_16 .post_9 { padding-right: 0; }
+  .hive_12 .post_10, .hive_16 .post_10 { padding-right: 0; }
+  .hive_12 .post_11, .hive_16 .post_11 { padding-right: 0; }
+  .hive_12 .post_12, .hive_16 .post_12 { padding-right: 0; } }
+/* SETTING FOR PORTRAIT TABLET until the browser is at a maximum of 1000 */
+@media only screen and (min-width: 1000px) and (max-width: 1499px) { .hive_12, .hive_16 { max-width: 960px; margin: auto; } }
+/* WIDE DESKTOP OR TV */
+@media screen and (min-width: 1500px) { .hive_12, .hive_16 { max-width: 80%; margin: auto; } }
+/* smaller then 480 (SMARTPHONES PORTRAIT) */
+/* between 480 and 1000 (SMARTPHONES LANDSCAPE) */
+/* smaller then 720 */
+/* over 1000px (DESKTOP OR TABLETS LANDSCAPE AND CINEMA DISPLAY) */
+/* between 1000 and 1500 (DESKTOP OR TABLETS LANDSCAPE) */
+/* over 1500 (WEB TV CINEMA DISPLAY) */

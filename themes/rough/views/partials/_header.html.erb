@@ -5,7 +5,7 @@
             <h2><%= @cfg.default_page_desc %></h2>
             <ul class="langs_menu">
                 <% Language.all.map do |l| %>
-                <li><%= link_to l.name, "/#{l.short}" %></li>
+                <li><%= link_to l.short, "/#{l.short}" %></li>
                 <% end %>
             </ul>
         </hgroup>

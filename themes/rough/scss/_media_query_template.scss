@@ -1,17 +1,3 @@
-@import "spleen"; 	// the spleenscss library
-@import "commons"; 	// common mixin and classes
-@import "colors"; 	// the main color palette
-
-
-// let's start your new clean stylesheet!
-/* GENERIC STYLED FOR OUTLINE AND VERY OLD BROWSERS */
-/**********************************/
-
-/* END GENERIC STYLED FOR OUTLINE AND VERY OLD BROWSERS  */
-
-
-/* MEDIA QUERIES STATEMENTS */
-/**********************************/
 // this an empty template 11 queries breaks for different devices and views
 
 /* SMALLER THAN */
@@ -66,9 +52,3 @@
 @media only screen and (min-width: 640px) and (max-width: 1499px){
 
 }
-
-/* END MEDIA QUERIES STATEMENTS  */
-
-
-
-

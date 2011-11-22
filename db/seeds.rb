@@ -15,6 +15,7 @@ end
 
 private
 # Creating pages
+home = "home.html.erb"
 single_column = "single_column.html.erb"
 two_columns =   "two_columns.html.erb"
 three_columns = "three_columns.html.erb"
@@ -23,7 +24,7 @@ Setting.first.update_attribute(:theme_name, "rough") # does not work if called f
 
 Page.all.map do |p|
   p.snippets.map{|s| s.update_attribute(:area, "limbo")}
-  p.update_attribute(:layout_name, single_column)
+  p.update_attribute(:layout_name, home)
 end
 
 
