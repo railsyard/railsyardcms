@@ -43,6 +43,7 @@ module Railsyard2
     config.filter_parameters += [:password]
     
     $AVAILABLE_LANGUAGES = /en|it|de/
+    #$AVAILABLE_LANGUAGES = /it/
     
   end
 end

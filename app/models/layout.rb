@@ -1,6 +1,11 @@
 class Layout
   attr_reader :title, :filename, :path, :areas
   
+  ## Exception Handling
+  class ThemeNotFound < StandardError
+  end
+  
+  
   # title = descriptive title
   # filename = filename with extension
   # path = absolute path on filesystem
@@ -24,8 +29,13 @@ class Layout
     end
     memoize :all
     
-    def find(theme, filename)
-      all(theme.to_s).select{|t| t.filename.eql? filename.to_s}.first
+    def find(theme, filename) 
+      begin
+        all(theme.to_s).select{|t| t.filename.eql? filename.to_s}.first
+      rescue Exception => exc
+         Rails.logger.error("***************** Error locating theme *****************")
+         raise ThemeNotFound
+      end
     end
     memoize :find
     

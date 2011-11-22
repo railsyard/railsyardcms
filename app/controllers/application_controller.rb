@@ -11,8 +11,7 @@ class ApplicationController < ActionController::Base
   # check_authorization
   
   helper :all # include all helpers, all the time
-  helper_method :yard_home_link, :cfg # listed methods became helpers
-  helper_method :yard_home, :get_lang, :get_yard_url, :get_article_url # coming from lib/yard - listed methods became helpers
+  helper_method :cfg, :yard_home, :get_lang, :get_yard_url, :get_article_url # coming from lib/yard - listed methods became helpers
   before_filter :set_locale
   
   rescue_from CanCan::AccessDenied do |exception|
@@ -21,19 +20,10 @@ class ApplicationController < ActionController::Base
       
   private
   
-  def cfg
-    Setting.first
-  end
-  memoize :cfg
-  
   def get_configuration
     @cfg = cfg
   end
   memoize :get_configuration
-  
-  def yard_home_link
-    get_yard_url(yard_home.id)
-  end
   
   def admin_area?
     req = request.fullpath

@@ -1,11 +1,16 @@
 module Yard
-  
+  extend ActiveSupport::Memoizable
+    
   private
   
-  def yard_home(lang = 'en')
+  def cfg
+    Setting.first
+  end
+  memoize :cfg
+  
+  def yard_home(lang = cfg.default_lang)
     language = lang.nil? ? get_lang : lang
     Page.where(:lang => language, :ancestry => nil).first.children.order("position ASC").first 
-    # TO-DO manage page not found and default lang, actually 'en'
   end
   
   def get_yard_url(dest) #generates cms urls
