@@ -16,9 +16,9 @@ gem 'gravatar_image_tag',   '1.0.0'
 gem 'themes_for_rails',     '0.4.2'
 gem 'cells',                '3.7.0'
 gem 'rake',                 '0.9.2'
-gem 'paperclip', '>= 2.3.16'
-gem 'ckeditor', '3.6.2'
-gem 'acts_as_commentable', "~> 3.0.1"
+gem 'paperclip',            '2.4.5'
+gem 'ckeditor',             '3.6.3'
+gem 'acts_as_commentable',  '3.0.1'
 
 # For deploying on Heroku
 gem 'heroku', '2.14.0'
