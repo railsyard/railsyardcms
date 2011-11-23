@@ -18,7 +18,7 @@ class ContentCell < Cell::Rails
     fill_generic_variables(args[:page], args[:options], args[:snip_id])    
     @articles = Article.published.where("lang = ?", get_lang).includes(:categorizations)
     @articles = @articles.not_reserved unless (args[:current_user] && args[:current_user].is_privileged?)
-    @articles = @articles.where("categorizations.category_id IN (?)", args[:options][:categories]) if args[:options][:categories]
+    @articles = @articles.where("categorizations.category_id IN (?)", args[:options][:categories]) if (args[:options] && args[:options][:categories])
     render
   end
   
