@@ -8,7 +8,12 @@ class CommentsController < ApplicationController
         format.js {
           render :js => "window.location.reload();"
         }
-        # To-do insert the comment via ajax instead of reloading
+        format.html {
+          if @comment.commentable_type == "Article"
+            @article = Article.find(@comment.commentable_id)
+            redirect_to get_article_url(@article)
+          end
+        }
       end
     else
       respond_to do |format|
