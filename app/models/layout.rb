@@ -5,14 +5,12 @@ class Layout
   class ThemeNotFound < StandardError
   end
   
-  
   # title = descriptive title
   # filename = filename with extension
   # path = absolute path on filesystem
   def initialize(title, filename, path, areas)
     @title, @filename, @path, @areas = title, filename, path, areas
   end
-  
   
   # Thats the only way to memoize class methods (self methods)
   class << self
