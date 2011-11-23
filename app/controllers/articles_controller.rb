@@ -1,7 +1,6 @@
 class ArticlesController < ApplicationController
   
   def show
-    @cfg = cfg
     @article = Article.find(:first, :conditions => ["pretty_url = ?", params[:pretty_url]])
     @article_layout = ArticleLayout.find_by_lang(@article.lang)
     @meta_title = "#{@article.meta_title} - #{@cfg.site_page_title}".truncate(70, :omission => '')

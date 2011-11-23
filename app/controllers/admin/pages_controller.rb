@@ -24,7 +24,6 @@ class Admin::PagesController < Admin::AdminController
   end
   
   def new
-    @cfg = cfg
     @admin_editing_language = admin_editing_language
     @page = Page.new
     @page.meta_keywords = @cfg.default_page_keywords
@@ -35,7 +34,6 @@ class Admin::PagesController < Admin::AdminController
   end
   
   def create
-    @cfg = cfg
     @admin_editing_language = admin_editing_language
     @page = Page.new(params[:page])
     @page.pretty_url = @page.pretty_url.urlify.blank? ? @page.title.urlify : @page.pretty_url.urlify
@@ -60,7 +58,6 @@ class Admin::PagesController < Admin::AdminController
   end
   
   def edit
-    @cfg = cfg
     @admin_editing_language = admin_editing_language
     @page = Page.find(params[:id])
     @root_page = Page.where(:title => @admin_editing_language, :ancestry => nil).first
@@ -69,7 +66,6 @@ class Admin::PagesController < Admin::AdminController
   end
   
   def update
-    @cfg = cfg
     @admin_editing_language = admin_editing_language
     @page = Page.find(params[:id])
     if @page

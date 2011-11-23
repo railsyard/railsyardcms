@@ -15,7 +15,6 @@ class Admin::ArticlesController < Admin::AdminController
   end
   
   def new
-    @cfg = cfg
     @categories = Category.all
     @article = current_user.articles.new
     @admin_editing_language = admin_editing_language
@@ -24,7 +23,6 @@ class Admin::ArticlesController < Admin::AdminController
   end
   
   def create
-    @cfg = cfg
     @article = current_user.articles.new(params[:article])
     @article.pretty_url = @article.pretty_url.urlify.blank? ? @article.title.urlify : @article.pretty_url.urlify
     @article.meta_title = @article.title if @article.meta_title.blank?

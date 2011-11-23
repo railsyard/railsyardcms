@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   include Yard
   extend ActiveSupport::Memoizable
-  before_filter :get_configuration
+  before_filter :get_configuration, :set_locale
   
   protect_from_forgery
   
@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
   
   helper :all # include all helpers, all the time
   helper_method :cfg, :yard_home, :get_lang, :get_yard_url, :get_article_url # coming from lib/yard - listed methods became helpers
-  before_filter :set_locale
   
   rescue_from CanCan::AccessDenied do |exception|
     render_error('401')
