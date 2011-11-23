@@ -13,6 +13,7 @@
   <%= javascript_include_tag 'application' %>
   <%= javascript_include_tag '/admin/javascripts/jquery.form.js' %>
   <%= javascript_include_tag :ckeditor %>
+  <%= render 'layouts/frontend_controls' %>
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -39,6 +40,5 @@
         <%= yield_article_snippets(@article_layout, "footer", @article) if @article %>
     </footer>
     
-    <%= render 'layouts/support' %>
 </body>
 </html>
