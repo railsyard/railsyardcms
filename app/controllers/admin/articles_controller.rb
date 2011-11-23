@@ -59,4 +59,11 @@ class Admin::ArticlesController < Admin::AdminController
     end
   end
   
+  def destroy
+    @article = Article.find(params[:id])
+    if @article && @article.destroy && @article.errors.empty?
+      redirect_to admin_articles_path
+    end
+  end
+  
 end
