@@ -3,6 +3,8 @@ class MenuCell < Cell::Rails
   extend ActiveSupport::Memoizable
   include Yard
   helper_method :yard_home, :get_lang, :get_yard_url, :get_article_url # coming from lib/yard
+  include Devise::Controllers::Helpers
+  helper_method :current_user
   
   def first_level(args)
     fill_generic_variables(args[:page], args[:options], args[:snip_id])
@@ -58,6 +60,7 @@ class MenuCell < Cell::Rails
     @options = options ||= {}
     @snip_id = snip_id
     @cfg = cfg
+    @current_user = current_user
   end
   
   def fill_menu_variables(page)
