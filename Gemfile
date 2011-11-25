@@ -1,3 +1,8 @@
+if RUBY_VERSION =~ /1.9/
+   Encoding.default_external = Encoding::UTF_8
+   Encoding.default_internal = Encoding::UTF_8
+end
+
 source 'http://rubygems.org'
 
 gem 'mysql2',   '0.2.6'     if ENV['DB'].nil? || ENV['DB'] == "mysql"
@@ -21,8 +26,8 @@ gem 'ckeditor',             '3.6.3'
 gem 'acts_as_commentable',  '3.0.1'
 
 # For deploying on Heroku
-gem 'heroku', '2.14.0'
-gem 'aws-s3', '0.6.2'
+# gem 'heroku', '2.14.0'
+# gem 'aws-s3', '0.6.2'
 
 # Example of snippet got via external gem ## broken in production due to bluecloth
 # gem 'railsyard-markdown-content', :path => 'vendor/gems/railsyard-markdown-content'
