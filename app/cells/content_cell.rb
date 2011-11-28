@@ -6,6 +6,9 @@ class ContentCell < Cell::Rails
   include Devise::Controllers::Helpers
   helper_method :current_user
   
+  ## Before filter not working as 'args' is unavailable in the filter
+  # before_filter {|controller| controller.fill_generic_variables(args[:page], args[:options], args[:snip_id]) }
+  
   def text_widget(args)
     fill_generic_variables(args[:page], args[:options], args[:snip_id])
     render
