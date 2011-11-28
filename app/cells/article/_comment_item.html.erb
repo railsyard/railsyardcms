@@ -4,5 +4,6 @@
     <% else %>
         <p><%= comment.username %></p>
     <% end %>
+    <span><%= l comment.created_at, :format => :short %></span>
     <p>Comment: <%= comment.body %></p>
 </div>

@@ -14,8 +14,8 @@ class ArticleCell < Cell::Rails
   
   def comments(args)
     fill_generic_variables(args[:page], args[:options], args[:snip_id])
-    @article = args[:article]
-    #@comments = @article.comments
+    @article = args[:article]    
+    @comments = @article.comments.paginate(:page => params[:pagination])   
     render
   end
   

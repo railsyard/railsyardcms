@@ -1,1 +1,11 @@
-<%= render :partial => "comment_panel", :object => @article, :as => :commentable %>
+<div id="comment-form">
+    <%= render :partial => "comment_form", :object => @article, :as => :commentable, :locals => {:current_user => @current_user} %>
+</div>
+</br>
+<p>Comments</p>
+<%= render :partial => "comment_item", :collection => @comments, :as => :comment %>
+
+<div clas="page_info">
+    <%= page_entries_info @comments %>
+</div>
+<%= will_paginate @comments, :param_name => :pagination %>

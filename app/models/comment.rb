@@ -4,7 +4,7 @@ class Comment < ActiveRecord::Base
 
   belongs_to :commentable, :polymorphic => true
 
-  default_scope :order => 'created_at ASC'
+  default_scope :order => 'created_at DESC'
 
   # NOTE: install the acts_as_votable plugin if you
   # want user to vote on the quality of comments.
@@ -16,5 +16,7 @@ class Comment < ActiveRecord::Base
   validates :email, :presence => true, :format => {:with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i}
   validates :username, :presence => true
   validates :body, :presence => true
+  
+  self.per_page = 10
   
 end
