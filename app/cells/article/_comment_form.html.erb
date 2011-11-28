@@ -1,7 +1,19 @@
 <%= form_for Comment.new, :remote => true do|f| %> 
   <%= f.hidden_field :commentable_id, :value => commentable.id %>
   <%= f.hidden_field :commentable_type, :value => commentable.class %> 
+  <%= f.label :username, "Name (required)" %><br /> 
+  <%= f.text_field :username, :value => current_user.try(:firstname) %><br />
+  
+  <%= f.label :email, "Email (required, not shown publicly)" %><br /> 
+  <%= f.text_field :email, :value => current_user.try(:email) %><br />
+  
+  <%= f.label :website, "Website (optional)" %><br /> 
+  http://
+  <%= f.text_field :website %><br />
+  
   <%= f.label :body, "Comment" %><br /> 
-  <%= f.text_area :body %> 
+  <%= f.text_area :body %><br />
+  
+  <%= recaptcha_tags :ajax => true %>
   <%= f.submit "Post Comment" %> 
 <% end %>

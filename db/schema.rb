@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111115150829) do
+ActiveRecord::Schema.define(:version => 20111128094329) do
 
   create_table "article_layouts", :force => true do |t|
     t.string   "layout_name"
@@ -88,6 +88,9 @@ ActiveRecord::Schema.define(:version => 20111115150829) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "username"
+    t.string   "email"
+    t.string   "website"
   end
 
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"

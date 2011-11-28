@@ -1,4 +1,6 @@
-<%= render :partial => "comment_form", :object => commentable, :as => :commentable unless @current_user.blank? %>
+<div id="comment-form">
+    <%= render :partial => "comment_form", :object => commentable, :as => :commentable, :locals => {:current_user => @current_user} unless @current_user.blank? %>
+</div>
 </br>
 <p>Comments</p>
 <%= render :partial => "comment_item", :collection => commentable.comments, :as => :comment %>

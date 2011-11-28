@@ -10,9 +10,11 @@ class Comment < ActiveRecord::Base
   # want user to vote on the quality of comments.
   #acts_as_voteable
 
-  # NOTE: Comments belong to a user
+  # Comments belong to a user, but not required
   belongs_to :user
   
-  validates :user_id, :presence => true
+  validates :email, :presence => true, :format => {:with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i}
+  validates :username, :presence => true
+  validates :body, :presence => true
   
 end

@@ -9,28 +9,26 @@ This is a complete rewrite of Railsyard, a content management system SEO oriente
 Features
 --------
 * hierarchy organized pages
+* runs on Heroku
 * multilanguage frontend and backend (actually English, Italian and German)
 * different and independent pages for each language
 * editing both from backend and directly from frontend
+* blogging features with articles and comments
+* user roles
 * reserved pages and articles
 * pretty urls and other seo-friendly features
 * drop-in themes
 * drop-in snippets plugins (using Rails Cells)
-* Rails engines support for heavy modification plugins 
-* different user roles
+* Rails mountable engines support for heavy modification plugins 
 * backend heavily based on drag & drop
 * built with Ruby on Rails
-* runs on Heroku
+
 	
 To-do
 -----
 * at least one more public theme
-* refactoring some controllers
 * caching
-* better queries optimization - memoization
-* blogging features to be completed
-* comments on articles
-* comments moderation and akismet/captcha integration
+* comments moderation in backend
 * previews
 * a lot of documentation
 * a lot of tests
@@ -40,9 +38,9 @@ To-do
 Requirements:
 -------------
 * Ruby 1.9.2 or 1.8.7
-* Rails 3.0.10
+* Rails 3.0.11
 * MySQL, PostgreSQL or SQLite
-* Some gems - check config/environment.rb
+* Some gems - check Gemfile
 
 Installation
 ------------
@@ -53,7 +51,7 @@ We really suggest the use of Ruby RVM and Ruby 1.9.2
     run 'rvm gemset create "railsyard"'
     run 'git clone https://github.com/cantierecreativo/railsyardcms.git'
     run 'cd railsyardcms'
-    run 'gem install rails -v="3.0.10"'
+    run 'gem install rails -v="3.0.11"'
     run 'gem install bundler'
     run 'bundle install'
     edit config/database.yml according to your configuration

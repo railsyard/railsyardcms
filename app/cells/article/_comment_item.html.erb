@@ -1,4 +1,8 @@
 <div id="comment-<%= comment.id %>" style="border: red 1px dotted; margin: 5px">
-    <p>Author: <%= comment.user.email %></p>
+    <% unless comment.website.blank? %>
+        <p><%= link_to comment.username, "http://#{comment.website}" %></p>
+    <% else %>
+        <p><%= comment.username %></p>
+    <% end %>
     <p>Comment: <%= comment.body %></p>
 </div>
