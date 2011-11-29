@@ -20,6 +20,9 @@ class User < ActiveRecord::Base
   validates :password, :presence => true, :length => { :minimum => 8 }
   validates :password_confirmation, :presence => true, :length => { :minimum => 8 }
   
+  scope :admins, includes(:grades, :roles).where("roles.name = ?", "admin")
+  scope :writers, includes(:grades, :roles).where("roles.name = ?", "article_writer")
+  scope :premiums, includes(:grades, :roles).where("roles.name = ?", "premium_user")
   
   def set_default_values
     self.lang = 'en' unless self.lang
