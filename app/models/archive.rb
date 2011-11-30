@@ -1,0 +1,3 @@
+class Archive < Upload
+  
+end

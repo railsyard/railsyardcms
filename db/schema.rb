@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111128094329) do
+ActiveRecord::Schema.define(:version => 20111129162557) do
 
   create_table "article_layouts", :force => true do |t|
     t.string   "layout_name"
@@ -168,6 +168,18 @@ ActiveRecord::Schema.define(:version => 20111128094329) do
     t.string   "cell_action"
     t.text     "options"
     t.string   "handler"
+  end
+
+  create_table "uploads", :force => true do |t|
+    t.string   "data_content_type"
+    t.string   "data_file_name"
+    t.integer  "data_file_size"
+    t.datetime "data_updated_at"
+    t.string   "type"
+    t.integer  "attachable_id"
+    t.string   "attachable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|

@@ -47,6 +47,7 @@ Railsyard2::Application.routes.draw do
       post 'quick_create', :on => :collection
     end
     resource :settings
+    resources :uploads, :only => [:index, :create, :destroy]
   end
   
   # Public routes

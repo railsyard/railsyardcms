@@ -71,7 +71,7 @@ ui-slider .ui-state-default, .ui-slider .ui-state-default, .ui-widget-header .ui
 .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #888888; text-decoration: none; }
 .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { /*border: 1px solid #aaaaaa; background: #eeeeee url(../images/jqueryui/ui-bg_flat_0_eeeeee_40x100.png) 50% 50% repeat-x; font-weight: normal; color: #888888; */ cursor:pointer;}
 .ui-state-hover a, .ui-state-hover a:hover { color: #888888; text-decoration: none; }
-.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 1px solid #4c5766; background: #4c5766 url(../images/jqueryui/ui-bg_highlight-soft_30_4c5766_1x100.png) 50% 50% repeat-x; font-weight: normal; color: #fff; }
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 1px solid #4c5766; background: #4c5766 url(../images/jqueryui/ui-bg_highlight-soft_30_064792_1x100.png) 50% 50% repeat-x; font-weight: normal; color: #fff; }
 .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #fff; text-decoration: none; }
 .ui-widget :active { outline: none; }
 

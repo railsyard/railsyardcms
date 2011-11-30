@@ -1,0 +1,3 @@
+class Document < Upload
+  
+end
