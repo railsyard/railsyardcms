@@ -30,11 +30,18 @@ cell:
                 username: string
                 limit:  integer
                 div_id: string
+                div_class: string      
+        -   name:   "Downloads widget [WORK IN PROGRESS]"
+            method: downloads_widget
+            desc:   A downloads widget 
+            serialized_attributes:
+                div_id: string
                 div_class: string
-        
-        # -   name:   Downloads widget
-        #     method: downloads_widget
-        #     desc:   A downloads widget
+                uploads: uploads
+        # -   name:   Image gallery
+        #     method: image_gallery_widget
+        #     desc:   An image gallery widget
         #     serialized_attributes:
-        #         name: string
+        #         div_id: string
+        #         div_class: string
         

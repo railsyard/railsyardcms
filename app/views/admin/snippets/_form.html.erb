@@ -27,6 +27,8 @@
                                     <%= category.name.humanize %>
                                 </div>
                                 <% end %>
+                            <% when "uploads" then %>
+                                <%= render :partial => "upload_panel" %>
                         <% end %>
                     <% end %>
                 <% end %>

@@ -32,11 +32,15 @@ class ContentCell < Cell::Rails
     render
   end
   
-  # def download_widget(args)
-  #   @options = args[:options]
-  #   @snip_id = args[:snip_id]
-  #   render
-  # end
+  def downloads_widget(args)
+    fill_generic_variables(args[:page], args[:options], args[:snip_id])
+    render
+  end
+  
+  def image_gallery_widget(args)
+    fill_generic_variables(args[:page], args[:options], args[:snip_id])
+    render
+  end
   
   private
   
