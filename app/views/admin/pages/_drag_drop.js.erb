@@ -1,7 +1,5 @@
 $(document).ready(function() {
-       
-    // This sets the unique id to the cloned snippet
-    // WARNING this function runs two times.. still wondering why. TO-DO fix it running just one time
+    
     // Drag and drop of snippets to areas
     // drag_item(s) are the 'source' snippets on the right, items available to be dropped inside areas. drag_source is the container.
     $('.drag_item','.drag_source').draggable({ // This means every drag_item inside drag_source
@@ -12,15 +10,20 @@ $(document).ready(function() {
     });
     
     // This sets the unique id to the cloned snippet
+	// WARNING this function runs two times.. still wondering why. TO-DO fix it running just one time
     $('.drop_target').livequery(function(){
+	
          $(this).droppable("destroy");
          $(this).droppable({
               drop: function(event, ui) {
                   var dropped = ui.draggable;
                   if (dropped.hasClass('drag_item')){ // ui.draggable is the dragged item just dropped
                     time = new Date().getTime();
-                    newid = dropped.attr('id') + '%' + time;
-                    dropped.attr('id', newid);
+                    newid = dropped.data('snipid') + '%' + time;
+					dropped.attr('id', newid); // ok works
+					//dropped.data('snipid', newid); // not working - why?
+					//jQuery.data(dropped, 'snipid', newid); // still not working
+					dropped.attr('data-snipid', newid); // ok works
                     dropped.removeClass("drag_item");
                     dropped.removeClass("available_widget");
                     dropped.removeClass("ui-draggable");
