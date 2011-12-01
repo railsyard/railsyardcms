@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111129162557) do
+ActiveRecord::Schema.define(:version => 20111201173823) do
 
   create_table "article_layouts", :force => true do |t|
     t.string   "layout_name"
@@ -145,7 +145,7 @@ ActiveRecord::Schema.define(:version => 20111129162557) do
     t.string   "default_page_keywords", :default => ""
     t.string   "default_page_desc",     :default => ""
     t.string   "default_lang",          :default => "en"
-    t.string   "analytics",             :default => ""
+    t.text     "analytics"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "theme_name",            :default => "rough",                 :null => false
@@ -180,6 +180,8 @@ ActiveRecord::Schema.define(:version => 20111129162557) do
     t.string   "attachable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "title"
+    t.text     "description"
   end
 
   create_table "users", :force => true do |t|

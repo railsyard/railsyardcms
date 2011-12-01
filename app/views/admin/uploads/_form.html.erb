@@ -1,0 +1,10 @@
+<div>
+    <%= form_for upload, :url => admin_upload_path(upload) do |f| %>
+         <%= f.label :title, t('admin.general.title') %>
+         <%= f.text_field :title %>
+         <%= f.label :description, t('admin.general.description') %>
+         <%= f.text_field :description %>
+         <%= f.submit %>
+    <% end %>   
+</div>
+

@@ -64,6 +64,9 @@
                 <td class="delete">
                     <button data-type="${delete_type}" data-url="${delete_url}">Delete</button>
                 </td>
+                <td class="edit">
+                    <%= button_to "Edit", "${edit_url}", :id => "upl-edit-link-${upload_id}", :method => :get, :remote => true %>
+                </td>
             </tr>
         </script>
 
@@ -96,5 +99,5 @@
             });
         </script>
         
-    </div><!-- end upload-panel -->         
+    </div><!-- end upload-panel --> 
 </div><!-- end cell_13 -->

@@ -1,0 +1,16 @@
+$(document).ready(function() {
+	var $dialog = $('<%= escape_javascript(render(:partial => "form", :object => @upload, :as => :upload)) %>')
+		.dialog({
+			autoOpen: true,
+			title: 'Edit upload \"<%= @upload.data_file_name %>\"'
+		});
+});
+
+
+
+// var $dialog = $('<div></div>')
+// 	.html('This dialog will show every time!')
+// 	.dialog({
+// 		autoOpen: true,
+// 		title: 'Basic Dialog'
+// 	});

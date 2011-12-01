@@ -20,10 +20,23 @@ class Admin::UploadsController < ApplicationController
     render :json => true
   end
     
-  # used only for loading the form via ajax
+  # used only for loading the upload panel via ajax
   def new
     @attachable = params["attachable_type"].classify.constantize.find(params["attachable_id"])
     render :layout => false
   end
+  
+  # used for editing the alt/description in a lightbox form
+  def edit
+    @upload = Upload.find(params[:id])
+  end
+  
+  def update
+    @upload = Upload.find(params[:id])
+    @upload.attributes = params[:upload]
+    @upload.save
+    # to-do error management
+  end
+  
   
 end

@@ -24,7 +24,9 @@ class Upload < ActiveRecord::Base
       "url" => data.url,
       "thumbnail_url" => data.url(:thumb),
       "delete_url" => "/admin/uploads/#{id}",
-      "delete_type" => "DELETE" 
+      "delete_type" => "DELETE" ,
+      "edit_url" => "/admin/uploads/#{id}/edit",
+      "upload_id" => "#{id}"
      }
   end
 end
