@@ -1,9 +1,9 @@
 class Admin::UploadsController < ApplicationController
   
   def index
-      @uploads = Upload.all
-      render :json => @uploads.collect { |p| p.to_jq_upload }.to_json
-    end
+    @uploads = Upload.where(:attachable_type => params["attachable_type"], :attachable_id => params["attachable_id"])
+    render :json => @uploads.collect { |p| p.to_jq_upload }.to_json
+  end
   
   def create
     @upload = Upload.new(params[:upload])
@@ -20,4 +20,10 @@ class Admin::UploadsController < ApplicationController
     render :json => true
   end
     
+  # used only for loading the form via ajax
+  def new
+    @attachable = params["attachable_type"].classify.constantize.find(params["attachable_id"])
+    render :layout => false
+  end
+  
 end

@@ -5,11 +5,13 @@ class Snippet < ActiveRecord::Base
   has_one :page, :through => :association
   has_one :article_layout, :through => :association
   has_many :snippet_components
+  has_many :uploads, :as => :attachable, :dependent => :destroy
   accepts_nested_attributes_for :snippet_components
   
   validates_presence_of :title, :presence => true, :length => {:minimum => 3}
   
   serialize :options, Hash
+  
   
   scope :published, :conditions => ["published = ?", true]
   scope :drafts, :conditions => ["published = ?", false]

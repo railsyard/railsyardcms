@@ -1,12 +1,13 @@
-<!-- TEST AREA - NOT FOR PRODUCTION -->
 <div class="cell_13">
-    <div id="upload-test">
+    <div id="upload-panel">
         <div id="fileupload">
-            <%= form_for Upload.new, :url => admin_uploads_path, :html => { :multipart => true } do |f| %>
+            <%= form_for Upload.new, :url => admin_uploads_path(:attachable_id => attachable.id, :attachable_type => attachable.class), :html => { :multipart => true } do |f| %>
                 <div class="fileupload-buttonbar">
                     <label class="fileinput-button">
-                        <span>Add files...</span>
-                                <%= f.file_field :data %>
+                        <span>Add files, you can also drag & drop items here</span>
+                        <%= f.hidden_field :attachable_id, :value => attachable.id %>
+                        <%= f.hidden_field :attachable_type, :value => attachable.class %>
+                        <%= f.file_field :data %>
                     </label>
                     <!-- <button type="submit" class="start">Start upload</button> -->
                     <button type="reset" class="cancel">Cancel upload</button>
@@ -95,5 +96,5 @@
             });
         </script>
         
-    </div><!-- end upload test -->         
+    </div><!-- end upload-panel -->         
 </div><!-- end cell_13 -->

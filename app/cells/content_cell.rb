@@ -34,6 +34,8 @@ class ContentCell < Cell::Rails
   
   def downloads_widget(args)
     fill_generic_variables(args[:page], args[:options], args[:snip_id])
+    @snippet = Snippet.find(args[:snip_id])
+    @downloads = @snippet.uploads
     render
   end
   

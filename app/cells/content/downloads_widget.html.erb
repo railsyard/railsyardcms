@@ -1,7 +1,5 @@
-<h1>
-  Content#downloads
-</h1>
-
-<p>
-  Find me in app/cells/content/downloads.html.erb
-</p>
+<ul>
+    <% @downloads.map do |d| %>
+        <li><%= link_to d.data_file_name, d.data.url %></li>
+    <% end %>
+</ul>

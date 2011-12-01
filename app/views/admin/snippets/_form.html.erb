@@ -28,7 +28,16 @@
                                 </div>
                                 <% end %>
                             <% when "uploads" then %>
-                                <%= render :partial => "upload_panel" %>
+                                <%# Hack to avoid form inside form. Calls uploads/new via ajax %>
+                                <script type='text/javascript'>
+                                    $(document).ready(function() {                              
+                                        $.ajax({
+                                            type: 'get',
+                                            url: '<%= new_admin_upload_path(:attachable_id => @snippet.id, :attachable_type => @snippet.class) %>',
+                                            dataType: 'script'
+                                        });
+                                    });
+                                </script>
                         <% end %>
                     <% end %>
                 <% end %>
