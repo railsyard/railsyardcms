@@ -1,0 +1,91 @@
+/* SPACES HELPS YOU TO SET MARGIN ON THE FLY */
+@mixin spaces($type, $size: 10px) {
+    // $type must be:
+    // t as top
+    // b as bottom
+    // tb as top and bottom together
+    // l as left    
+    // r as right    
+    // lr as left and right together
+        
+    @if $type == tb{
+        margin-top: $size;
+        margin-bottom: $size;
+    }@else if $type == t{
+        margin-top: $size;
+    }@else if $type == b{
+        margin-bottom: $size;
+    }@else if $type == lr{
+        margin-lef: $size;
+        margin-right: $size;
+    }@else if $type == l{
+        margin-lef: $size;
+    }@else if $type == r{
+        margin-right: $size;
+    }
+}
+.t_10{ @include spaces(t, 10px); }
+.t_20{ @include spaces(t, 20px); }
+.t_30{ @include spaces(t, 30px); }
+.t_40{ @include spaces(t, 40px); }
+.t_50{ @include spaces(t, 50px); }
+.t_60{ @include spaces(t, 60px); }
+.t_70{ @include spaces(t, 70px); }
+.t_80{ @include spaces(t, 80px); }
+.t_90{ @include spaces(t, 90px); }
+.t_100{ @include spaces(t, 100px); }
+
+.b_10{ @include spaces(b, 10px); }
+.b_20{ @include spaces(b, 20px); }
+.b_30{ @include spaces(b, 30px); }
+.b_40{ @include spaces(b, 40px); }
+.b_50{ @include spaces(b, 50px); }
+.b_60{ @include spaces(b, 60px); }
+.b_70{ @include spaces(b, 70px); }
+.b_80{ @include spaces(b, 80px); }
+.b_90{ @include spaces(b, 90px); }
+.b_100{ @include spaces(b, 100px); }
+
+.tb_10{ @include spaces(tb, 10px); }
+.tb_20{ @include spaces(tb, 20px); }
+.tb_30{ @include spaces(tb, 30px); }
+.tb_40{ @include spaces(tb, 40px); }
+.tb_50{ @include spaces(tb, 50px); }
+.tb_60{ @include spaces(tb, 60px); }
+.tb_70{ @include spaces(tb, 70px); }
+.tb_80{ @include spaces(tb, 80px); }
+.tb_90{ @include spaces(tb, 90px); }
+.tb_100{ @include spaces(tb, 100px); }
+
+.l_10{ @include spaces(l, 10px); }
+.l_20{ @include spaces(l, 20px); }
+.l_30{ @include spaces(l, 30px); }
+.l_40{ @include spaces(l, 40px); }
+.l_50{ @include spaces(l, 50px); }
+.l_60{ @include spaces(l, 60px); }
+.l_70{ @include spaces(l, 70px); }
+.l_80{ @include spaces(l, 80px); }
+.l_90{ @include spaces(l, 90px); }
+.l_100{ @include spaces(l, 100px); }
+
+.r_10{ @include spaces(r, 10px); }
+.r_20{ @include spaces(r, 20px); }
+.r_30{ @include spaces(r, 30px); }
+.r_40{ @include spaces(r, 40px); }
+.r_50{ @include spaces(r, 50px); }
+.r_60{ @include spaces(r, 60px); }
+.r_70{ @include spaces(r, 70px); }
+.r_80{ @include spaces(r, 80px); }
+.r_90{ @include spaces(r, 90px); }
+.r_100{ @include spaces(r, 100px); }
+
+.lr_10{ @include spaces(lr, 10px); }
+.lr_20{ @include spaces(lr, 20px); }
+.lr_30{ @include spaces(lr, 30px); }
+.lr_40{ @include spaces(lr, 40px); }
+.lr_50{ @include spaces(lr, 50px); }
+.lr_60{ @include spaces(lr, 60px); }
+.lr_70{ @include spaces(lr, 70px); }
+.lr_80{ @include spaces(lr, 80px); }
+.lr_90{ @include spaces(lr, 90px); }
+.lr_100{ @include spaces(lr, 100px); }
