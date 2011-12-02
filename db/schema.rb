@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111201173823) do
+ActiveRecord::Schema.define(:version => 20111202095320) do
 
   create_table "article_layouts", :force => true do |t|
     t.string   "layout_name"
@@ -182,6 +182,7 @@ ActiveRecord::Schema.define(:version => 20111201173823) do
     t.datetime "updated_at"
     t.string   "title"
     t.text     "description"
+    t.string   "extra_link"
   end
 
   create_table "users", :force => true do |t|

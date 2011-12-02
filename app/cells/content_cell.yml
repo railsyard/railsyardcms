@@ -31,7 +31,7 @@ cell:
                 limit:  integer
                 div_id: string
                 div_class: string      
-        -   name:   "Downloads widget [BETA]"
+        -   name:   "Downloads widget"
             method: downloads_widget
             desc:   A downloads widget 
             serialized_attributes:
