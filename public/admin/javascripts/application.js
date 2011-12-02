@@ -30,7 +30,7 @@ $(function() {
   $( ".datepicker" ).datepicker({ dateFormat: 'd M yy' }); // http://docs.jquery.com/UI/Datepicker/formatDate
   
   // Uniform config http://pixelmatrixdesign.com/uniform
-  $( "select, input:checkbox, input:radio, input:file").uniform();
+  //$( "select, input:checkbox, input:radio, input:file").uniform();
   
   // Tipsy config http://onehackoranother.com/projects/jquery/tipsy
   $('[title]').tipsy({
