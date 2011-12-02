@@ -41,6 +41,8 @@ class ContentCell < Cell::Rails
   
   def image_gallery_widget(args)
     fill_generic_variables(args[:page], args[:options], args[:snip_id])
+    @snippet = Snippet.find(args[:snip_id])
+    @images = Image.where(:attachable_type => "Snippet", :attachable_id => @snippet.id)
     render
   end
   

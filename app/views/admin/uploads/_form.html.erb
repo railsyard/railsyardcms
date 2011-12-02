@@ -1,9 +1,9 @@
 <div id="upload-form-<%= upload.id %>">
-    <%= form_for upload, :url => admin_upload_path(upload), :remote => true do |f| %>
-         <%= f.label :title, t('admin.general.title') %></br>
+    <%= form_for upload, :as => :upload, :url => admin_upload_path(upload), :remote => true do |f| %>
+         <%= f.label :title, "Title/alt" %></br>
          <%= f.text_field :title %></br>
          <%= f.label :extra_link, "Extra link" %></br>
-          <%= f.text_field :extra_link %></br>
+         <%= f.text_field :extra_link %></br>
          <%= f.label :description, t('admin.general.description') %></br>
          <%= f.text_area :description, :rows => 12 %></br>
          <%= f.submit %>

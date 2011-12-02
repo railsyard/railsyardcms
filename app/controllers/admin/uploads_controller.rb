@@ -8,7 +8,7 @@ class Admin::UploadsController < ApplicationController
   def create
     ct = params[:upload][:data].content_type
     @upload = content_type_lookup(ct).classify.constantize.new(params[:upload])
-    if @upload.save
+    if @upload.save && @upload.errors.empty?
       render :json => [@upload.to_jq_upload].to_json
     else 
       render :json => [{:error => "custom_failure"}], :status => 304

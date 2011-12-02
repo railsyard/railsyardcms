@@ -38,10 +38,11 @@ cell:
                 div_id: string
                 div_class: string
                 uploads: uploads
-        # -   name:   Image gallery
-        #     method: image_gallery_widget
-        #     desc:   An image gallery widget
-        #     serialized_attributes:
-        #         div_id: string
-        #         div_class: string
+        -   name:   "Image gallery [Beta]"
+            method: image_gallery_widget
+            desc:   An image gallery widget
+            serialized_attributes:
+                div_id: string
+                div_class: string
+                uploads: uploads
         

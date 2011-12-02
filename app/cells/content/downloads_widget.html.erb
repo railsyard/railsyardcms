@@ -1,5 +1,9 @@
 <ul>
     <% @downloads.map do |d| %>
-        <li><%= link_to d.data_file_name, d.data.url %></li>
+        <% if d.title.blank? %>
+            <li><%= link_to d.data_file_name, d.data.url %> - <%= number_to_human_size(d.data_file_size) %></li>
+        <% else %>
+            <li><%= link_to d.title, d.data.url %> - <%= number_to_human_size(d.data_file_size) %></li>
+        <% end %>
     <% end %>
 </ul>

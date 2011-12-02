@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="/stylesheets/flexslider.css" type="text/css">
+<script src="/javascripts/jquery.flexslider-min.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+  $(window).load(function() {
+      $('.flexslider').flexslider({
+          animation: "fade",
+          controlsContainer: ".flex-container"
+      });
+  });
+</script>
+
+<div class="flex-container">
+    <div class="flexslider">
+        <ul class="slides">
+            <% @images.map do |i| %>
+                <li>
+                    <% if i.extra_link.blank? %>
+                        <%= image_tag i.data.url(:large), :alt => i.try(:title) %>
+                    <% else %>
+                        <%= link_to image_tag(i.data.url(:large), :alt => i.try(:title)), i.extra_link %>
+                    <% end %>       
+                    <% unless i.description.blank? %>
+                        <p class="flex-caption"><%= i.description %></p>
+                    <% end %>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+</div>
