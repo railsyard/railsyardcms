@@ -6,7 +6,8 @@ class Admin::UploadsController < ApplicationController
   end
   
   def create
-    @upload = Upload.new(params[:upload])
+    ct = params[:upload][:data].content_type
+    @upload = content_type_lookup(ct).classify.constantize.new(params[:upload])
     if @upload.save
       render :json => [@upload.to_jq_upload].to_json
     else 
@@ -43,5 +44,21 @@ class Admin::UploadsController < ApplicationController
     end
   end
   
+  private
+  
+  def content_type_lookup(ct)
+    case
+    when ct =~ /^image\/\w*\z/
+      "Image"
+    when ct =~ /^audio\/\w*\z/
+      "Audio"
+    when ct =~ /^video\/\w*\z/
+      "Video"
+    when ct =~ /^application\/(zip|rar|x-rar-compressed|gzip|x-gzip|bzip2|x-bzip2)\z/
+      "Archive"
+    else
+      "Document"
+    end
+  end
   
 end
