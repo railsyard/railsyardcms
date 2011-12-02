@@ -7,6 +7,154 @@ $cBlueNavy: #253a55;
 $cBlueLight: #064792;
 $cBlueLighter: #52a9ff;
 */
+/*
+$cBlueNavy: #253a55;
+$cBlueLight: #064792;
+$cBlueLighter: #52a9ff;
+*/
+/* BASIC FORMS STYLE */
+/*********************/
+form fieldset label span { display: none; }
+form fieldset input, form fieldset textarea, form fieldset select { margin-bottom: 4px; }
+form fieldset div.field { padding: 5px 0; }
+form fieldset div.field .help-text { font-style: italic; }
+form fieldset div.required label { border-left: 2px solid red; }
+form fieldset div.required label:before { content: "* "; }
+form fieldset div.error label { color: red; }
+form fieldset div.error input[type="text"], form fieldset div.error input[type="password"] { border-left: 2px solid red; }
+form fieldset div.error ul.errorlist { color: red; }
+form fieldset div.error ul.errorlist li { font-style: italic; padding-left: 15px; font-size: 90%; }
+form fieldset div.error ul.errorlist li:before { display: inline; }
+form fieldset .inline { display: inline; }
+form fieldset .short { width: 30%; }
+form fieldset .medium { width: 45%; }
+
+/* SPECIFIC RAILSYARD FORMS BASICS */
+/**********************************/
+form .input_group input[type="checkbox"], form .input_group input[type="radio"] { display: inline; }
+
+/* END SPECIFIC RAILSYARD FORMS BASICS  */
+/* SPACES HELPS YOU TO SET MARGIN ON THE FLY */
+.t_10 { margin-top: 10px; }
+
+.t_20 { margin-top: 20px; }
+
+.t_30 { margin-top: 30px; }
+
+.t_40 { margin-top: 40px; }
+
+.t_50 { margin-top: 50px; }
+
+.t_60 { margin-top: 60px; }
+
+.t_70 { margin-top: 70px; }
+
+.t_80 { margin-top: 80px; }
+
+.t_90 { margin-top: 90px; }
+
+.t_100 { margin-top: 100px; }
+
+.b_10 { margin-bottom: 10px; }
+
+.b_20 { margin-bottom: 20px; }
+
+.b_30 { margin-bottom: 30px; }
+
+.b_40 { margin-bottom: 40px; }
+
+.b_50 { margin-bottom: 50px; }
+
+.b_60 { margin-bottom: 60px; }
+
+.b_70 { margin-bottom: 70px; }
+
+.b_80 { margin-bottom: 80px; }
+
+.b_90 { margin-bottom: 90px; }
+
+.b_100 { margin-bottom: 100px; }
+
+.tb_10 { margin-top: 10px; margin-bottom: 10px; }
+
+.tb_20 { margin-top: 20px; margin-bottom: 20px; }
+
+.tb_30 { margin-top: 30px; margin-bottom: 30px; }
+
+.tb_40 { margin-top: 40px; margin-bottom: 40px; }
+
+.tb_50 { margin-top: 50px; margin-bottom: 50px; }
+
+.tb_60 { margin-top: 60px; margin-bottom: 60px; }
+
+.tb_70 { margin-top: 70px; margin-bottom: 70px; }
+
+.tb_80 { margin-top: 80px; margin-bottom: 80px; }
+
+.tb_90 { margin-top: 90px; margin-bottom: 90px; }
+
+.tb_100 { margin-top: 100px; margin-bottom: 100px; }
+
+.l_10 { margin-lef: 10px; }
+
+.l_20 { margin-lef: 20px; }
+
+.l_30 { margin-lef: 30px; }
+
+.l_40 { margin-lef: 40px; }
+
+.l_50 { margin-lef: 50px; }
+
+.l_60 { margin-lef: 60px; }
+
+.l_70 { margin-lef: 70px; }
+
+.l_80 { margin-lef: 80px; }
+
+.l_90 { margin-lef: 90px; }
+
+.l_100 { margin-lef: 100px; }
+
+.r_10 { margin-right: 10px; }
+
+.r_20 { margin-right: 20px; }
+
+.r_30 { margin-right: 30px; }
+
+.r_40 { margin-right: 40px; }
+
+.r_50 { margin-right: 50px; }
+
+.r_60 { margin-right: 60px; }
+
+.r_70 { margin-right: 70px; }
+
+.r_80 { margin-right: 80px; }
+
+.r_90 { margin-right: 90px; }
+
+.r_100 { margin-right: 100px; }
+
+.lr_10 { margin-lef: 10px; margin-right: 10px; }
+
+.lr_20 { margin-lef: 20px; margin-right: 20px; }
+
+.lr_30 { margin-lef: 30px; margin-right: 30px; }
+
+.lr_40 { margin-lef: 40px; margin-right: 40px; }
+
+.lr_50 { margin-lef: 50px; margin-right: 50px; }
+
+.lr_60 { margin-lef: 60px; margin-right: 60px; }
+
+.lr_70 { margin-lef: 70px; margin-right: 70px; }
+
+.lr_80 { margin-lef: 80px; margin-right: 80px; }
+
+.lr_90 { margin-lef: 90px; margin-right: 90px; }
+
+.lr_100 { margin-lef: 100px; margin-right: 100px; }
+
 body { background-color: #fff; padding-bottom: 39px; }
 
 /* GENERIC CLASSES */
@@ -137,7 +285,7 @@ body { background-color: #fff; padding-bottom: 39px; }
 /* END WRAPPER SPECIFICATIONS  */
 /* WIDGET DRAGGABLE ITEM */
 /**********************************/
-.available_widget, .active_widget { position: relative; background-color: white; border: 1px solid #ccc; border-width: 1px 0; margin-bottom: 15px; padding: 0; z-index: 400; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
+.available_widget, .active_widget { position: relative; background-color: white; border: 1px solid #ccc; border-width: 1px 0; margin-bottom: 15px; padding: 0; z-index: 400; -moz-border-radius: 3px 3px 3px 3px; /* FF1+ */ -webkit-border-radius: 3px 3px 3px 3px; /* Saf3+, Chrome */ border-radius: 3px 3px 3px 3px; /* Opera 10.5, IE 9 */ behavior: url("/css/PIE.htc"); }
 .available_widget .no_padding, .active_widget .no_padding { padding: 0; overflow: visible; }
 .available_widget > header h2, .active_widget > header h2 { font-size: 12px; font-weight: normal; line-height: 26px; color: white; margin: -2px auto -1px; text-indent: 10px; -webkit-user-select: none; -moz-border-radius: 3px 3px 3px 3px; /* FF1+ */ -webkit-border-radius: 3px 3px 3px 3px; /* Saf3+, Chrome */ border-radius: 3px 3px 3px 3px; /* Opera 10.5, IE 9 */ behavior: url("/css/PIE.htc"); letter-spacing: 0.3px; }
 .available_widget > header h2 small, .active_widget > header h2 small { font-size: 11px; color: #ddd; line-height: 0em; }
@@ -159,11 +307,13 @@ body { background-color: #fff; padding-bottom: 39px; }
 
 .wrap .block { padding: 16px 20px 5px 20px; margin-top: 1px; position: relative; overflow: auto; }
 
-.wrap .block label { display: block; font-size: 1.0em; font-weight: bold; color: #5b5f4f; margin-bottom: 5px; clear: both; }
+.wrap .block label { display: block; font-size: 1.0em; font-weight: bold; color: #5b5f4f; margin-bottom: 3px; clear: both; margin-top: 10px; }
 
 .wrap .block label small { font-size: 0.9em; color: #666; }
 
-.wrap .block input { display: block; border: 1px solid #b5b8bb; background-color: #e7edef; height: 1.8em; margin-bottom: 15px; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; text-indent: 5px; }
+.wrap .block input[type="text"], .wrap .block input[type="password"] { display: block; border: 1px solid #b5b8bb; background-color: #e7edef; height: 1.8em; margin-bottom: 15px; -moz-border-radius: 2px 2px 2px 2px; /* FF1+ */ -webkit-border-radius: 2px 2px 2px 2px; /* Saf3+, Chrome */ border-radius: 2px 2px 2px 2px; /* Opera 10.5, IE 9 */ behavior: url("/css/PIE.htc"); text-indent: 5px; }
+.wrap .block .input_group { margin: 10px 0; }
+.wrap .block .input_group input[type="checkbox"], .wrap .block .input_group input[type="radio"] { display: inline-block; }
 
 .wrap .block input:hover, .wrap .block textarea:hover { border-color: #777; }
 
@@ -175,9 +325,11 @@ body { background-color: #fff; padding-bottom: 39px; }
 
 .wrap .block input.large { width: 70%; }
 
+.wrap .block input.full { width: 100%; }
+
 .wrap .block .input_group { margin-bottom: 15px; }
 
-.wrap .block textarea { display: block; border: 1px solid #b5b8bb; background-color: #e7edef; margin-bottom: 15px; height: 100px; padding: 5px 0; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; text-indent: 5px; }
+.wrap .block textarea { display: block; border: 1px solid #b5b8bb; background-color: #e7edef; margin-bottom: 15px; height: 100px; padding: 5px 0; -moz-border-radius: 2px 2px 2px 2px; /* FF1+ */ -webkit-border-radius: 2px 2px 2px 2px; /* Saf3+, Chrome */ border-radius: 2px 2px 2px 2px; /* Opera 10.5, IE 9 */ behavior: url("/css/PIE.htc"); text-indent: 5px; }
 
 .wrap .block ul.full_width { border: none; margin-top: 0px; margin-bottom: 0px; }
 
@@ -447,7 +599,6 @@ ul#calendar_drag_list li a { padding: 10px; display: block; cursor: move; }
 --------------------------------*/
 /*  iPad Portrait and Landscape */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) { #template_options { position: relative !important; } }
-
 /*  iPhone Landscape */
 @media screen and (min-width: 321px) and (max-width: 480px) { body div.main_container { margin: 10px 0 10px 1% !important; padding: 20px 2% 5px !important; width: 94% !important; }
   body div.fullsize { padding: none !important; }
@@ -462,7 +613,6 @@ ul#calendar_drag_list li a { padding: 10px; display: block; cursor: move; }
   div.fullsize { padding: 0 !important; }
   div.fullsize .wrap { margin: -20px -2% -5px !important; padding: 0% !important; width: 104% !important; }
   body { padding-bottom: 0 !important; } }
-
 /*  iPhone Portrait */
 @media screen and (max-width: 320px) { a.logo { width: 50px; }
   #top_bar { display: block; }
@@ -483,7 +633,6 @@ ul#calendar_drag_list li a { padding: 10px; display: block; cursor: move; }
   div.fullsize { padding: 0 !important; }
   div.fullsize .wrap { margin: -20px -2% -5px !important; padding: 0% !important; width: 104% !important; }
   body { padding-bottom: 0 !important; } }
-
 /*----- End of iPhone -------*/
 /*-------------------------------- Flot Graph
 --------------------------------*/
@@ -536,3 +685,7 @@ body .round_left { -webkit-border-radius: 0px; -moz-border-radius: 0px; border-r
 body .round_right { -webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px; -webkit-border-top-right-radius: 3px; -webkit-border-bottom-right-radius: 3px; -moz-border-radius-topright: 3px; -moz-border-radius-bottomright: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; }
 
 /* END CORNER AND VARIOUS COMMONS CLASSES  */
+.ui-dialog { border: 30px solid #90b61e; }
+
+form fieldset.group { border: 1px solid #e3e3e3; padding: 5px; }
+form fieldset.group legend { background-color: #90b61e; padding: 5px; color: #fff; }

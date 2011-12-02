@@ -1,5 +1,7 @@
-@import "commons"; // mixin and common classes even for others scss to be implemented
-@import "colors"; // mixin and common classes even for others scss to be implemented
+@import "commons";    // mixin and common classes even for others scss to be implemented
+@import "colors";     // general colors scheme
+@import "forms";      // the basic styles for forms
+@import "spaces";     // a little css classes library to add spaces to objects
 
 body{
     background-color: #fff;
@@ -647,10 +649,7 @@ body{
     margin-bottom: 15px;
     padding: 0;
     z-index: 400;
-
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
+    @include rounded(3px);
     .no_padding{
         padding: 0;
         overflow: visible;
@@ -746,8 +745,9 @@ body{
     font-size: 1.0em;
     font-weight: bold;
     color: $cGraySmoke;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
     clear: both;
+    margin-top: 10px;
 }    
 
 .wrap .block label small{
@@ -755,19 +755,25 @@ body{
     color: #666;
 }
 
-.wrap .block input{
-    display: block;
-    border: 1px solid #b5b8bb;
-    background-color: #e7edef;
-    height: 1.8em;
-    margin-bottom: 15px;
-    
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
-    text-indent: 5px;
+.wrap{
+    .block{
+         input[type="text"],input[type="password"]{
+            display: block;
+            border: 1px solid #b5b8bb;
+            background-color: #e7edef;
+            height: 1.8em;
+            margin-bottom: 15px;
+            @include rounded(2px);
+            text-indent: 5px;
+        }
+        .input_group{
+            margin: 10px 0;
+            input[type="checkbox"], input[type="radio"] {
+                display: inline-block;
+            }
+        }
+    }
 }
-
 
 .wrap .block input:hover,
 .wrap .block textarea:hover{
@@ -788,10 +794,13 @@ body{
     width: 70%;
 }
 
+.wrap .block input.full{
+    width: 100%;
+}
+
 .wrap .block .input_group{
     margin-bottom: 15px;
 }
-
 
 .wrap .block textarea{
     display: block;
@@ -799,11 +808,8 @@ body{
     background-color: #e7edef;
     margin-bottom: 15px;
     height: 100px;
-    padding: 5px 0;
-    
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
+    padding: 5px 0;    
+    @include rounded(2px);
     text-indent: 5px;
 }
 
@@ -2163,4 +2169,18 @@ body{
 }
 /* END CORNER AND VARIOUS COMMONS CLASSES  */
 
+.ui-dialog{
+    border: 30px solid $cGreen;
+}
 
+form{
+    fieldset.group{
+        border: 1px solid $cGrayLight;
+        padding: 5px;
+        legend{
+            background-color: $cGreen;
+            padding: 5px;
+            color: #fff;
+        }
+    }
+}

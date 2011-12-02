@@ -2,17 +2,23 @@
      <div class="">  
          <div class="block">                
              <%= f.label :title, t('admin.general.title') %>
-             <%= f.text_field :title, {:id=>"title", :title=>"Page title, can\'t be blank", :class=>"large required"} %>
+             <%= f.text_field :title, {:id=>"title", :title=>"Page title, can\'t be blank", :class=>"full required"} %>
 
-             <label><%= t('admin.pages.page_options') %></label>
-             <%= f.select :layout_name, options_from_collection_for_select(@layouts.map, 'filename', 'title', @current_layout.filename) %> <%= t "admin.layouts.layout" %>
-             <div class="input_group">
-                 <% visible_in_menu_checked = page.visible_in_menu || page.visible_in_menu.nil? %>
-                 <%= f.check_box :visible_in_menu, :checked => visible_in_menu_checked %> <%= t "admin.general.visible_in_menu" %><br>
-                 <% published_checked = page.published || page.published.nil? %>
-                 <%= f.check_box :published, :checked => published_checked %> <%= t "admin.general.published" %><br>
-                 <%= f.check_box :reserved %> <%= t "admin.general.reserved" %>
-             </div>
+             <fieldset class="group">
+                <legend><%= t('admin.pages.page_options') %></legend>
+                <div class="cell_8">
+                    <div class="input_group">
+                        <% visible_in_menu_checked = page.visible_in_menu || page.visible_in_menu.nil? %>
+                        <%= f.check_box :visible_in_menu, :checked => visible_in_menu_checked %> <%= t "admin.general.visible_in_menu" %><br/>
+                        <% published_checked = page.published || page.published.nil? %>
+                        <%= f.check_box :published, :checked => published_checked %> <%= t "admin.general.published" %><br/>
+                        <%= f.check_box :reserved %> <%= t "admin.general.reserved" %>
+                    </div>
+                </div>
+                <div class="cell_8">
+                    <label><%= t "admin.layouts.layout" %></label><%= f.select :layout_name, options_from_collection_for_select(@layouts.map, 'filename', 'title', @current_layout.filename) %>
+                </div>
+             </fieldset>
         </div>
     </div>    
 </div>
@@ -26,13 +32,13 @@
                 <%= f.label t('admin.general.pretty_url') %>
                 <%= f.text_field :pretty_url, {
                     :title => t("admin.pages.hint_pretty_url"),
-                    :class => "large"
+                    :class => "medium"
                 } %>
 
                 <%= f.label 'Meta Title' %>
                 <%= f.text_field :meta_title, {
                     :title => t("admin.pages.hint_meta_title"),
-                    :class => "large"
+                    :class => "full"
                 } %>
 
                 <%# TODO inserire testi help nella form pagina %>

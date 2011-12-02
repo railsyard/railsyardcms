@@ -1,43 +1,55 @@
 <div class="wrap block">
-    <div class="">
+    <div>
         <div class="block">
-            <%= f.label :title, t('admin.general.title') %>
-            <%= f.text_field :title, {:id=>"title", :title=>"The main title of the article", :class=>"large"} %>
-            
-            <%= f.label :lang, t('admin.articles.language') %>
-            <%= f.select :lang, options_from_collection_for_select(Language.all, 'short', 'name', @admin_editing_language) %>
-            
-            <%= f.label :featured_image, t('admin.general.featured_image') %>
-            <%= f.file_field :featured_image %>
-            
-            <%= f.label "Options" %>
-            <div id='options_list'>
-              <div><%= f.check_box :published, {:id=>"published", :title=>"Immediately publish the article", :class=>"large", :checked => article.published} %><%= t('admin.general.published') %></div>
-              <div><%= f.check_box :reserved, {:id=>"reserved", :title=>"Makes the article be visible only to premium users", :class=>"large", :checked => article.reserved} %><%= t('admin.general.reserved') %></div>
-              <div><%= f.check_box :hot, {:id=>"hot", :title=>"Highlight/sticky news", :class=>"large", :checked => article.hot} %><%= t('admin.general.hot') %></div>
+            <div class="cell_16">
+                <%= f.label :title, t('admin.general.title') %>
+                <%= f.text_field :title, {:id=>"title", :title=>"The main title of the article", :class=>"full" } %>
             </div>
+            <fieldset class="group">
+                <legend>Article options</legend>
+                <div class="cell_8">
+                    <%= f.label "Options" %>
+                    <div id="options_list" class="input_group">
+                        <%= f.check_box :published, {:id=>"published", :title=>"Immediately publish the article", :checked => article.published} %><%= t('admin.general.published') %><br/>
+                        <%= f.check_box :reserved, {:id=>"reserved", :title=>"Makes the article be visible only to premium users", :checked => article.reserved} %><%= t('admin.general.reserved') %><br/>
+                        <%= f.check_box :hot, {:id=>"hot", :title=>"Highlight/sticky news", :checked => article.hot} %><%= t('admin.general.hot') %>
+                    </div>
+                </div>
             
-            <%= f.label "Categories" %>
-            <div id='categories_list'>   
-            <% @categories.map do |category| %> 
-              <%= render :partial => "/admin/categories/checkbox", :object => category, :as => :category, :locals =>{:article => @article} %>
-            <% end %>
-            </div> 
-            </br>
-            <%= link_to "Add a new category","#", :id => "new_category_link" %></br>
-            <div id='new_category_form' style="display:none">
-              <span>  
-              <%= text_field(:category, :name) %>
-              <%= link_to "Save","#", :id => "save_category_link" %>
+                <div class="cell_8">
+                    <%= f.label :lang, t('admin.articles.language') %>
+                    <%= f.select :lang, options_from_collection_for_select(Language.all, 'short', 'name', @admin_editing_language) %>
+
+                    <%= f.label :featured_image, t('admin.general.featured_image') %>
+                    <%= f.file_field :featured_image %>                                
+                </div>
+            </fieldset>
+            
+            
+            <div class="cell_16">
+                <fieldset class="group">
+                    <legend>Categories</legend>
+                    <div id='categories_list' class="input_group">   
+                    <% @categories.map do |category| %> 
+                      <%= render :partial => "/admin/categories/checkbox", :object => category, :as => :category, :locals =>{:article => @article} %>
+                    <% end %>
+                    </div>
+                    <div class="cell_12 b_40">
+                        <%= link_to "Add a new category","#", :id => "new_category_link", :class=>"" %></br>
+                        <div id='new_category_form' style="display:none">
+                          <span>  
+                          <%= text_field(:category, :name) %>
+                          <%= link_to "Save","#", :id => "save_category_link" %>
+                        </div>                    
+                    </div>
+                </fieldset>
             </div>
-            </br>
-            </br>
+
             <%= f.label :short, t('admin.articles.abstract') %>
             <%= f.cktext_area :short %>
-            
+        
             <%= f.label :body, t('admin.articles.body') %>
             <%= f.cktext_area :body %>
-            
         </div>
     </div>    
 </div>
@@ -51,26 +63,29 @@
                 <%= f.label t('admin.general.pretty_url') %>
                 <%= f.text_field :pretty_url, {
                     :title => t("admin.pages.hint_pretty_url"),
-                    :class => "large"
+                    :class => "full"
                 } %>
 
                 <%= f.label 'Meta Title' %>
                 <%= f.text_field :meta_title, {
                     :title => t("admin.pages.hint_meta_title"),
-                    :class => "large"
+                    :class => "full"
                 } %>
 
-                <%= f.label 'Meta Keywords' %>
-                <%= f.text_area :meta_keywords, {
-                    :title => t("admin.pages.hint_meta_keywords"),
-                    :class => "large"
-                } %>
-
-                <%= f.label 'Meta Description' %>
-                <%= f.text_area :meta_description, {
-                    :title => t("admin.pages.hint_meta_description"),
-                    :class => "large"
-                } %>
+                <div class="cell_8">
+                    <%= f.label 'Meta Keywords' %>
+                    <%= f.text_area :meta_keywords, {
+                        :title => t("admin.pages.hint_meta_keywords"),
+                        :class => "large"
+                    } %>                    
+                </div>
+                <div class="cell_8">
+                    <%= f.label 'Meta Description' %>
+                    <%= f.text_area :meta_description, {
+                        :title => t("admin.pages.hint_meta_description"),
+                        :class => "large"
+                    } %>
+                </div>
             </div>
         </li>
     </ul>

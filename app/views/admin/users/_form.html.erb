@@ -18,9 +18,11 @@
             
             <%= f.label :lang, t('admin.users.admin_panel_language') %>
             <%= f.select :lang, options_from_collection_for_select(Language.all, 'short', 'name', user.lang) %>
-        		
-            <%= f.label :enabled, t('admin.users.enabled') %>
-            <%= f.check_box :enabled, {:id=>"enabled", :title => t("admin.users.hint_enable_user"), :class=>"large", :checked => user.enabled} %>
+
+            <div class="input_group">
+                <%= f.check_box :enabled, {:id=>"enabled", :title => t("admin.users.hint_enable_user"), :checked => user.enabled} %> <%= t('admin.users.enabled') %>
+                <p class="help">Enable the user without email confirmation</p>
+            </div>
             
             <%= f.label "Roles" %>
             <% Role.all.map do |role| %>  
