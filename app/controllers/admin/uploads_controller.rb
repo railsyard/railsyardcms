@@ -33,9 +33,14 @@ class Admin::UploadsController < ApplicationController
   
   def update
     @upload = Upload.find(params[:id])
-    @upload.attributes = params[:upload]
-    @upload.save
-    # to-do error management
+    unless @upload.blank?
+      @upload.attributes = params[:upload]
+      if @upload.save && @upload.errors.empty?
+        render :js => "$('div[role=\"dialog\"]').hide();"
+      else
+        render :js => "alert('Something went wrong!');"
+      end
+    end
   end
   
   
