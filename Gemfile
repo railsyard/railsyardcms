@@ -24,7 +24,7 @@ gem 'rake',                 '0.9.2'
 gem 'paperclip',            '2.4.5'
 gem 'ckeditor',             '3.6.3'
 gem 'acts_as_commentable',  '3.0.1'
-gem 'recaptcha', :require => "recaptcha/rails", :git => 'http://github.com/ambethia/recaptcha.git', :ref => 'a9efec169a86299629cce7a414590d5055257086'
+gem 'recaptcha-rails3',		'0.3.4', :require => "recaptcha/rails"
 gem 'will_paginate',        '3.0.2'
 
 # For deploying on Heroku
