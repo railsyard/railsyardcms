@@ -1,4 +1,5 @@
-<div class='nav-menu'>
+<nav class='nav-menu'>
+    <h5>Breadcrumb:</h5>
     <ol>
         <% @ancestors.map do |p| %>
             <% if p.visible_in_menu && p.published && (!p.reserved || (p.reserved && current_user && current_user.is_privileged?)) %>       
@@ -6,4 +7,4 @@
             <% end %>
         <% end %>
     </ol>
-</div>
+</nav>

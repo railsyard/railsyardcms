@@ -1,4 +1,5 @@
 <nav class="twolevels-menu <%= @options["class"] unless @options["class"].blank? %>" <%= "id=\"#{@options["id"]}\"" unless @options["id"].blank? %>>
+    <h5>Pages and sub pages</h5>
     <ul>
         <% @first_level_pages.map do |p| %>
         <% if p.visible_in_menu && p.published && (!p.reserved || (p.reserved && current_user && current_user.is_privileged?)) %>
