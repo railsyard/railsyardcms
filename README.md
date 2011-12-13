@@ -1,5 +1,6 @@
 Railsyard CMS
 =============
+![Railsyard CMS](http://railsyardcms.org/images/logo_big.jpg "Railsyard CMS")
 
 [![Build Status](https://secure.travis-ci.org/cantierecreativo/railsyardcms.png?branch=master)](http://travis-ci.org/cantierecreativo/railsyardcms)
 
@@ -10,6 +11,7 @@ Features
 --------
 * hierarchy organized pages
 * runs on Heroku
+* extremely easy theming
 * multilanguage frontend and backend (actually English, Italian and German)
 * different and independent pages for each language
 * editing both from backend and directly from frontend
@@ -29,7 +31,7 @@ To-do
 * at least one more public theme
 * caching
 * comments moderation in backend
-* previews
+* previews of pages and articles
 * a lot of documentation
 * a lot of tests
 * github wiki
@@ -105,7 +107,36 @@ We are using the [cells](https://github.com/apotonick/cells) gem for making the 
 
 *To-do full documentation in the wiki*
 
-	
+
+Testing
+-------
+Tests are written using [Cucumber](http://cukes.info/)
+
+To launch all the tests symply run
+    cucumber
+inside the Railsyard directory.
+
+To launch a single feature run
+    cucumber --name "Manage pages admin panel and check effects on public side"
+giving the name of the feature.
+
+Changelog
+---------
+2011.12.05 - version HEAD   
+* changed the html structure of menu cell
+ 
+2011.12.03 - version 0.2.1   
+* Revisited admin forms
+ 
+2011.12.02 - version 0.2.0   
+* Comments on Articles
+* Attachment snippet with drag&drop of files (Gmail style)
+* Gallery snippet
+  
+2011.11.08 - version 0.1.0   
+* First quite fully featured release
+
+
 Credits
 -------
 Funded and developed by [Cantiere Creativo](http://www.cantierecreativo.net)
