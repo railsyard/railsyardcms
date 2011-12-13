@@ -112,12 +112,12 @@ Testing
 -------
 Tests are written using [Cucumber](http://cukes.info/)
 
-To launch all the tests symply run
-    cucumber
+To launch all the tests symply run   
+    cucumber   
 inside the Railsyard directory.
 
-To launch a single feature run
-    cucumber --name "Manage pages admin panel and check effects on public side"
+To launch a single feature run   
+    cucumber --name "Manage pages admin panel and check effects on public side"   
 giving the name of the feature.
 
 Changelog
