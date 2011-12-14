@@ -112,13 +112,15 @@ Testing
 -------
 Tests are written using [Cucumber](http://cukes.info/)
 
-To launch all the tests symply run   
-    cucumber   
-inside the Railsyard directory.
+To launch all the tests symply run 'cucumber' inside the Railsyard directory.
 
-To launch a single feature run   
+    cucumber   
+
+
+To launch a single feature you must specify the name:
+
     cucumber --name "Manage pages admin panel and check effects on public side"   
-giving the name of the feature.
+
 
 Changelog
 ---------
@@ -129,8 +131,8 @@ Changelog
 * Revisited admin forms
  
 2011.12.02 - version 0.2.0   
-* Comments on Articles
-* Attachment snippet with drag&drop of files (Gmail style)
+* Comments on Articles   
+* Attachment snippet with drag&drop of files (Gmail style)   
 * Gallery snippet
   
 2011.11.08 - version 0.1.0   

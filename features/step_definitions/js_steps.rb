@@ -22,3 +22,14 @@ When /^I drag "([^"]*)" to "([^"]*)"$/ do |snip, target|
   json = { target_id => [snip_handler].join(',') }.to_json
   page.evaluate_script("adminSendSnippetOrder(#{json});")
 end
+
+When /^I newDrag "([^"]*)" to "([^"]*)"$/ do |dragged, target|
+  dragged_item = find(dragged)
+  target_item = find(target)
+  dragged_item.drag_to target_item
+  
+  ### Example using xpath instead
+  # target_xpath = "/html/body/div/div[2]/div/div[3]/div/ol"  
+  # target_item_by_xpath = find(:xpath,target_xpath)
+  # dragged_item.drag_to target_item_by_xpath
+end

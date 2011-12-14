@@ -51,3 +51,70 @@ Given /^the snippet option "([^"]*)" is set to "([^"]*)"$/ do |key, value|
   @snip.options[key] = value
   @snip.save!
 end
+
+Given /^there are some example pages$/ do
+  DatabaseCleaner.clean
+  
+  @category_general     = Factory(:category, :name => 'General')
+  @category_nerdy_stuff = Factory(:category, :name => 'Nerdy stuff')
+  
+  @root_en   = Factory :language_page
+  @page_home = Factory :page, 
+    :title      => 'Home en', 
+    :pretty_url => 'home-en', 
+    :parent_id  => @root_en.id
+  
+  @page_second = Factory :page, 
+    :title      => 'Second', 
+    :pretty_url => 'second', 
+    :parent_id  => @root_en.id
+  
+  @page_child = Factory :page, 
+    :title      => 'Child', 
+    :pretty_url => 'child', 
+    :parent_id  => @page_second.id  
+  
+  @page_third = Factory :page, 
+    :title      => 'Third', 
+    :pretty_url => 'third', 
+    :parent_id  => @root_en.id
+    
+  @root_it   = Factory :page,
+    :title      => 'it', 
+    :pretty_url => 'it',
+    :lang => 'it', 
+    :parent_id  => nil
+    
+  @page_home = Factory :page, 
+    :title      => 'Benvenuto', 
+    :pretty_url => 'benvenuto', 
+    :parent_id  => @root_it.id,
+    :lang => 'it'
+  
+  @page_seconda = Factory :page, 
+    :title      => 'Seconda', 
+    :pretty_url => 'seconda', 
+    :parent_id  => @root_it.id,
+    :lang => 'it'
+  
+  @page_figlia = Factory :page, 
+    :title      => 'Figlia', 
+    :pretty_url => 'figlia', 
+    :parent_id  => @page_seconda.id,
+    :lang => 'it'  
+  
+  @page_third = Factory :page, 
+    :title      => 'Terza', 
+    :pretty_url => 'terza', 
+    :parent_id  => @root_it.id,
+    :lang => 'it'
+  
+  @role_admin           = Factory :role, :name => 'admin'
+  @role_article_writer  = Factory :role, :name => 'article_writer'
+  @role_premium_user    = Factory :role, :name => 'premium_user'
+  @role_registered_user = Factory :role, :name => 'registered_user'
+  
+  @settings = Factory :settings
+  
+  @user_admin = Factory :user, :roles => [@role_admin]
+end
