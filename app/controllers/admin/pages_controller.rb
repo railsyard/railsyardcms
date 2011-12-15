@@ -69,6 +69,7 @@ class Admin::PagesController < Admin::AdminController
     @admin_editing_language = admin_editing_language
     @page = Page.find(params[:id])
     if @page
+      @page.snippets.map{|s| s.update_attribute(:area, "limbo")} unless @page.layout_name == params[:page][:layout_name]
       @page.attributes = params[:page]
       @page.pretty_url = @page.pretty_url.urlify.blank? ? @page.title.urlify : @page.pretty_url.urlify
       @page.lang = @admin_editing_language

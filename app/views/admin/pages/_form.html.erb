@@ -17,6 +17,7 @@
                 </div>
                 <div class="cell_8">
                     <label><%= t "admin.layouts.layout" %></label><%= f.select :layout_name, options_from_collection_for_select(@layouts.map, 'filename', 'title', @current_layout.filename) %>
+                    <p>Changing layout makes all the current snippets on page to be moved to the Limbo.</p>
                 </div>
              </fieldset>
         </div>
