@@ -41,6 +41,9 @@ group :development, :test do
   gem 'cucumber-rails', '>= 0.4.1'
   gem 'webrat', '>= 0.7.3'
   gem 'capybara', '>= 1.0.0'
+  gem 'ruby-debug', '~> 0.10.4' if RUBY_VERSION =~ /1.8/
+  gem 'ruby-debug19', '~> 0.11.6' if RUBY_VERSION =~ /1.9/
+  gem 'capybara-firebug', '~> 0.0.10'
   gem 'deadweight', '>=0.2.1'
   gem 'launchy'
   gem 'database_cleaner'

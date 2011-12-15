@@ -28,25 +28,32 @@ Feature: Manage pages admin panel and check effects on public side
     Given there are some example pages
     And I am logged in as "admin@example.com" with password "changeme"
     When I go to the admin pages page
-    # page "child" with id 4, nested under page "second"
-    And I newDrag "li#page-4 div" to "ol.sortable.ui-sortable"
+    #And I newDrag "li#page-4 div" to "ol.sortable.ui-sortable"
+    And I newDrag via XPath "/html/body/div/div[2]/div/div[3]/div/ol/li[2]/ol/li/div" to "/html/body/div/div[2]/div/div[3]/div/ol"
     And I press "Save"
     And I confirm popup
     Then I should be on the admin pages page
     And I manually visit "/en/child"
     And the page should be js valid
+  
+  Scenario: Check if a reserved page is hidden to normal users
+    Given the page is setup in basic mode
+    And I am logged in as "admin@example.com" with password "changeme"
+    And I go to the admin pages page
+    When I follow "Properties" within "table.datatable"
+    And I check "page_reserved"
+    And I press "Save"
+    And I should be on the admin pages page
+    And I go to the homepage
+    And the page should be valid
+    Then I manually visit "/logout"
+    And I go to the homepage
+    And I should see "You can't access this resource, sorry."
     
-  # @javascript
-  # Scenario: Add the first level menu snippet to a page
-  #   Given the page is setup in basic mode
-  #   And I am logged in as "admin@example.com" with password "changeme"
-  #   When I go to the admin pages page
-  #   And I follow "Contents" within "li#page-2"
-  #   
-  #   # And I newDrag "#menu%first_level" to "#available_areas #header"
-  #   # And I drag "div[data-snipid='menu%first_level']" to "#available_areas #header"
-  #   
-  #   # And I sleep 30 seconds
-  #   
-  #   
+  #Scenario: Change layout to a page and check if snippets are moved to limbo
+    
+    
+    
+    
+  
     
