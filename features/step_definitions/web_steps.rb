@@ -221,3 +221,4 @@ end
 When /^I dismiss popup$/ do
   page.driver.browser.switch_to.alert.dismiss
 end
+
