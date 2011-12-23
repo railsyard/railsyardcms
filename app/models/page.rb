@@ -26,7 +26,8 @@ class Page < ActiveRecord::Base
   # paperclip
   has_attached_file :featured_image,
                     :styles => {:large => "500x500>", :medium => "300x300>", :thumb => "100x100>", :banner => "960x303>" },
-                    :path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension"
+                    :path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension",
+                    :url => "/system/:class/:attachment/:id/:style/:basename.:extension"
   
   scope :published, :conditions => ["published = ?", true]
   scope :drafts, :conditions => ["published = ?", false]
