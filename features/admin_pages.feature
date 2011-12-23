@@ -31,6 +31,7 @@ Feature: Manage pages admin panel and check effects on public side
     #And I newDrag "li#page-4 div" to "ol.sortable.ui-sortable"
     And I newDrag via XPath "/html/body/div/div[2]/div/div[3]/div/ol/li[2]/ol/li/div" to "/html/body/div/div[2]/div/div[3]/div/ol"
     And I press "Save"
+    And I sleep 2 seconds
     And I confirm popup
     Then I should be on the admin pages page
     And I manually visit "/en/child"

@@ -26,6 +26,7 @@ gem 'ckeditor',             '3.6.3'
 gem 'acts_as_commentable',  '3.0.1'
 gem 'recaptcha-rails3',		'0.3.4', :require => "recaptcha/rails"
 gem 'will_paginate',        '3.0.2'
+gem 'rack',                 '1.2.4'
 
 # For deploying on Heroku
 # gem 'heroku', '2.14.0'
@@ -35,18 +36,18 @@ gem 'will_paginate',        '3.0.2'
 # gem 'railsyard-markdown-content', :path => 'vendor/gems/railsyard-markdown-content'
 
 group :development, :test do	
-  gem 'rspec', '>= 2.5.0'
-  gem 'rspec-rails', '>= 2.5.0'
-  gem 'cucumber', '>= 0.10.2'
-  gem 'cucumber-rails', '>= 0.4.1'
-  gem 'webrat', '>= 0.7.3'
-  gem 'capybara', '>= 1.0.0'
-  gem 'ruby-debug', '~> 0.10.4' if RUBY_VERSION =~ /1.8/
-  gem 'ruby-debug19', '~> 0.11.6' if RUBY_VERSION =~ /1.9/
-  gem 'capybara-firebug', '~> 0.0.10'
-  gem 'deadweight', '>=0.2.1'
+  gem 'rspec',              '2.7.0'
+  gem 'rspec-rails',        '2.7.0'
+  gem 'cucumber',           '1.1.4'
+  gem 'cucumber-rails',     '1.2.1'
+  gem 'webrat',             '0.7.3'
+  gem 'capybara',           '1.1.2'
+  gem 'ruby-debug',         '~> 0.10.4' if RUBY_VERSION =~ /1.8/
+  gem 'ruby-debug19',       '~> 0.11.6' if RUBY_VERSION =~ /1.9/
+  gem 'capybara-firebug',   '0.0.10'
+  gem 'deadweight',         '>=0.2.1'
   gem 'launchy'
-  gem 'database_cleaner'
+  gem 'database_cleaner',   '0.7.0'
   gem 'factory_girl'
   gem 'railroady'
   # you don't need guard to test on travis
