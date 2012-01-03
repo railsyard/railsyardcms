@@ -108,9 +108,13 @@ We are using the [cells](https://github.com/apotonick/cells) gem for making the 
 
 Testing
 -------
+[![Build Status](https://secure.travis-ci.org/cantierecreativo/railsyardcms.png?branch=master)](http://travis-ci.org/cantierecreativo/railsyardcms)
+
+If tests are failing often this is due to sync problems in js tests, or because Database Cleaner can't drop Postgres db cleaning ids.
+
 Tests are written using [Cucumber](http://cukes.info/)
 
-To launch all the tests symply run 'rake cucumber' inside the Railsyard directory.
+To launch all the tests simply run 'rake cucumber' inside the Railsyard directory.
 
 
 To launch a single feature you must specify the name:
@@ -122,10 +126,6 @@ To launch a single feature you must specify the name:
 Or a single scenario
 
     bundle exec cucumber ./features/admin_pages.feature --line 54
-
-
-If testing fails often is due to sync problems in js tests 
-[![Build Status](https://secure.travis-ci.org/cantierecreativo/railsyardcms.png?branch=master)](http://travis-ci.org/cantierecreativo/railsyardcms)
 
 
 Changelog

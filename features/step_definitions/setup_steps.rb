@@ -82,7 +82,8 @@ Given /^there are some example pages$/ do
   @page_home = Factory :page, 
     :title      => 'Home en', 
     :pretty_url => 'home-en', 
-    :parent_id  => @root_en.id
+    :parent_id  => @root_en.id,
+    :position   => 1
   
   @page_second = Factory :page, 
     :title      => 'Second', 
@@ -109,7 +110,8 @@ Given /^there are some example pages$/ do
     :title      => 'Benvenuto', 
     :pretty_url => 'benvenuto', 
     :parent_id  => @root_it.id,
-    :lang => 'it'
+    :lang       => 'it',
+    :position   => 1
   
   @page_seconda = Factory :page, 
     :title      => 'Seconda', 
