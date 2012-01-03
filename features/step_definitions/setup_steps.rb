@@ -140,3 +140,11 @@ Given /^there are some example pages$/ do
   
   @user_admin = Factory :user, :roles => [@role_admin]
 end
+
+Given /^there are some example articles$/ do
+  pending
+  
+  @category_general     = Factory(:category, :name => 'General')
+  @category_nerdy_stuff = Factory(:category, :name => 'Nerdy stuff')
+  
+end
