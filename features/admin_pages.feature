@@ -58,7 +58,8 @@ Feature: Manage pages admin panel and check effects on public side
     And I go to the admin pages page
     When I add the Text widget snippet from the content cell to the body area at the page "home-en"
     #And I follow "Contents" within "table.datatable" #does not work, dunno why..
-    And I manually visit "/admin/pages/2"
+    #And I manually visit "/admin/pages/2"
+    And I follow "Contents" within "#pages-tree" 
     And I should see "Text widget" within "#body" 
     And I select "Two columns" from "layout"
     And I confirm popup

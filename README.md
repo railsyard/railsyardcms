@@ -2,8 +2,6 @@ Railsyard CMS
 =============
 ![Railsyard CMS](http://railsyardcms.org/images/logo_big.jpg "Railsyard CMS")
 
-[![Build Status](https://secure.travis-ci.org/cantierecreativo/railsyardcms.png?branch=master)](http://travis-ci.org/cantierecreativo/railsyardcms)
-
 This is a complete rewrite of Railsyard, a content management system SEO oriented and heavily based on components.
 
 
@@ -112,14 +110,22 @@ Testing
 -------
 Tests are written using [Cucumber](http://cukes.info/)
 
-To launch all the tests symply run 'cucumber' inside the Railsyard directory.
-
-    cucumber   
+To launch all the tests symply run 'rake cucumber' inside the Railsyard directory.
 
 
 To launch a single feature you must specify the name:
 
-    cucumber --name "Manage pages admin panel and check effects on public side"   
+    bundle exec cucumber --name "Manage pages admin panel and check effects on public side"
+    bundle exec cucumber ./features/filename.feature
+
+
+Or a single scenario
+
+    bundle exec cucumber ./features/admin_pages.feature --line 54
+
+
+If testing fails often is due to sync problems in js tests 
+[![Build Status](https://secure.travis-ci.org/cantierecreativo/railsyardcms.png?branch=master)](http://travis-ci.org/cantierecreativo/railsyardcms)
 
 
 Changelog
@@ -146,7 +152,7 @@ Funded and developed by [Cantiere Creativo](http://www.cantierecreativo.net)
 All the credits to the respective owners/developers of gems/plugins/scripts used.
 
 Railsyard exists mainly thanks to the community.
- 
+
 
 The big boys
 ------------
@@ -158,4 +164,3 @@ Contributors
 If you contributed to this project committing even a single bit feel free to add your name here!
 
 * [Paul Spieker](https://github.com/spieker) - our first and very active contributor
-	
