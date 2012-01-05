@@ -1,4 +1,5 @@
 <div class="article_show" id="article-<%= @article.id %>">
+  <h2><%= @article.title %></h2>
   <div class="article_abstract"><%= render :inline => @article.short %></div>
   <div class="article_body"><%= render :inline => @article.body %></div>
 </div>

@@ -43,7 +43,18 @@ Feature: Add content snippet cells and check the result
     And the page should be valid
     And I should see "Search jQuery"
   
-  
-  
-  
+  Scenario: Check the articles list
+    Given the page is setup in basic mode
+    And there are some example articles
+    And I am logged in as "admin@example.com" with password "changeme"
+    And I go to the admin pages page
+    When I add the Articles list snippet from the content cell to the body area at the page "home-en"
+    And I follow "Contents" within "#pages-tree"
+    And I follow "edit" within "#body"
+    And I check "category_main"
+    And I press "Save"
+    Then I go to the homepage
+    And the page should be valid
+    And I should see "First article"
+    And I should not see "Third article"
   

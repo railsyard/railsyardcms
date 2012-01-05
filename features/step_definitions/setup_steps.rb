@@ -18,6 +18,8 @@ Given /^the page is setup in basic mode$/ do
   @settings = Factory :settings
   
   @user_admin = Factory :user, :roles => [@role_admin]
+  
+  @article_layout = Factory :article_layout
 end
 
 When /^I add the (.+?) snippet from the (.+?) cell to the (.+?) area at the page with url "([^"]*)"$/ do |snip_name, snip_controller, page_area, page_url|
@@ -57,6 +59,25 @@ When /^I add the (.+?) snippet from the (.+?) cell to the (.+?) area at the page
     
   Factory :association,
     :page_id => page.id,
+    :snippet_id => @snip.id
+end
+
+When /^I add the (.+?) snippet from the (.+?) cell to the (.+?) area at the articles design$/ do |snip_name, snip_controller, area|
+  article_layout = ArticleLayout.where(:lang => "en").first
+
+  cell_action = snip_name.underscore.gsub(/[^a-zA-Z0-9]/, '_')
+  cell_controller = snip_controller.underscore.gsub(/[^a-zA-Z0-9]/, '_')
+  
+  @cellnum = @cellnum.to_i+1
+  @snip = Factory :snippet,
+    :title => snip_name,
+    :area => area,
+    :cell_controller => cell_controller,
+    :cell_action => cell_action,
+    :handler => "#{cell_controller}%#{cell_action}%#{Time.new.to_i}#{@cellnum}"
+    
+  Factory :association,
+    :article_layout_id => article_layout.id,
     :snippet_id => @snip.id
 end
 
@@ -142,9 +163,21 @@ Given /^there are some example pages$/ do
 end
 
 Given /^there are some example articles$/ do
-  pending
+  @category_general     = Factory :category, :name => 'Main'
+  @category_nerdy_stuff = Factory :category, :name => 'Etcetera'
+
+  abstract = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  body = "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
+  @first_article = Factory :article, :title => "First article", :short => abstract, :body => body
+  Factory :categorization, :article_id => @first_article.id, :category_id => @category_general.id
   
-  @category_general     = Factory(:category, :name => 'General')
-  @category_nerdy_stuff = Factory(:category, :name => 'Nerdy stuff')
+  @second_article = Factory :article, :title => "Second article", :short => abstract, :body => body
+  Factory :categorization, :article_id => @second_article.id, :category_id => @category_general.id
+  
+  @third_article = Factory :article, :title => "Third article", :short => abstract, :body => body
+  Factory :categorization, :article_id => @third_article.id, :category_id => @category_nerdy_stuff.id
   
 end
