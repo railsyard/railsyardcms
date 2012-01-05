@@ -18,17 +18,19 @@ class Article < ActiveRecord::Base
                     :path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension",
                     :url => "/system/:class/:attachment/:id/:style/:basename.:extension"
   
-  scope :published, :conditions => ["published = ?", true]
   scope :drafts, :conditions => ["published = ?", false]
   scope :not_reserved, :conditions => ["reserved = ?", false]
-  scope :for_public_feed, :conditions => ["reserved = ? AND published = ?", false, true], :order => "publish_at DESC"
+  scope :for_public_feed, :conditions => ["reserved = ? AND published = ?", false, true], :order => "publish_at DESC" 
+  scope :published, lambda { 
+      where("articles.published = ? AND articles.publish_at IS NOT NULL AND articles.publish_at <= ?", true, Time.zone.now)
+  }
   
   def publish
-    update_attributes!(:published => true, :publish_at => Time.now)
+    update_attributes!(:published => true)
   end
   
   def unpublish
-    update_attributes!(:published => false, :publish_at => nil)
+    update_attributes!(:published => false)
   end
   
   def toggle

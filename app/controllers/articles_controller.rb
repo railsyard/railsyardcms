@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
     @meta_title = "#{@article.meta_title} - #{@cfg.site_page_title}".truncate(70, :omission => '')
     @meta_description = "#{@article.meta_description}".truncate(140, :omission => '')
     @meta_keywords = "#{@article.meta_keywords}"
-    if check_path(@article) && check_permission(@article, current_user)
+    if check_path(@article) && check_permission(@article, current_user) && check_publish_status(@article)
       render :layout => Layout.find(@cfg.theme_name, @article_layout.layout_name).path 
     else
       render_error('404')
@@ -21,6 +21,10 @@ class ArticlesController < ApplicationController
   
   def check_permission(article, user)
     true unless article.reserved && (user.nil? or (!user.nil? && !user.is_privileged?))
+  end
+  
+  def check_publish_status(article)
+    true if article.published && (article.publish_at < Time.zone.now)
   end
   
 end

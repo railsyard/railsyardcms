@@ -28,7 +28,6 @@ class Admin::ArticlesController < Admin::AdminController
     @article.meta_title = @article.title if @article.meta_title.blank?
     #@article.meta_keywords = @cfg.default_page_keywords if @article.meta_keywords.blank?
     #@article.meta_description = @cfg.default_page_desc if @article.meta_keywords.blank?
-    @article.publish_at = Time.now if @article.published
     if @article && @article.save && @article.errors.empty?
       redirect_to admin_articles_path
     else
@@ -49,7 +48,6 @@ class Admin::ArticlesController < Admin::AdminController
     @article.meta_title = @article.title if @article.meta_title.blank?
     #@article.meta_keywords = @cfg.default_page_keywords if @article.meta_keywords.blank?
     #@article.meta_description = @cfg.default_page_desc if @article.meta_keywords.blank?
-    @article.publish_at = Time.now if @article.published
     if @article && @article.save && @article.errors.empty?
       redirect_to admin_articles_path
     else

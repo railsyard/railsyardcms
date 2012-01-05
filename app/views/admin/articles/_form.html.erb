@@ -14,6 +14,10 @@
                         <%= f.check_box :reserved, {:id=>"reserved", :title=>"Makes the article be visible only to premium users", :checked => article.reserved} %><%= t('admin.general.reserved') %><br/>
                         <%= f.check_box :hot, {:id=>"hot", :title=>"Highlight/sticky news", :checked => article.hot} %><%= t('admin.general.hot') %>
                     </div>
+                    <div class="cell_12">
+                        <p>Publication date:</p>
+                        <%= f.datetime_select :publish_at, :start_year => 2010, :class=>"full" %>
+                    </div>
                 </div>
             
                 <div class="cell_8">
