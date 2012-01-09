@@ -24,6 +24,7 @@ Railsyard2::Application.routes.draw do
       post 'toggle', :on => :member
       post 'apply_template', :on => :member
       put 'apply_layout', :on => :member
+      get 'purge_limbo', :on => :member
       resources :snippets do
         put 'sort', :on => :collection
         post 'toggle', :on => :member

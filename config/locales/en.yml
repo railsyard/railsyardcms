@@ -71,6 +71,7 @@ en:
       actions: "Actions"
       field_cant_be_blank: "This field can't be left blank"
       are_you_sure_to_delete_with_name: "Are you sure to delete \"%{name}\"?"
+      purge: "Purge"
     pages:
       pages: Pages
       latest_pages: Recent pages

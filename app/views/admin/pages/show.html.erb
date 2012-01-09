@@ -4,7 +4,7 @@
     <h2><%= t('admin.pages.manage_contents', :title => @page.title) %> [<%= @page.lang %>]</h2>
 </header>
 
-<%= render :partial => "available_areas", :locals => {:current_layout => @current_layout, :snippets => @snippets} %>
+<%= render :partial => "available_areas", :locals => {:current_layout => @current_layout, :snippets => @snippets, :page => @page} %>
 
 <%= render :partial => "layout_selector", :locals => {:current_layout => @current_layout, :layouts => @layouts} %>
 

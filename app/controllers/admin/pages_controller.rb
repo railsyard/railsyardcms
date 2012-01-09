@@ -144,4 +144,10 @@ class Admin::PagesController < Admin::AdminController
     # Renders apply_layout.js.erb
   end
   
+  def purge_limbo
+    @page = Page.find(params[:id])
+    @page.snippets.where(:area => "limbo").map{|s| s.destroy}
+    redirect_to admin_page_path(@page)
+  end
+  
 end
