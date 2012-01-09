@@ -1,5 +1,5 @@
 <header class="page_description">
-    <h2><%= t('admin.snippets.edit_snippet', :title => @snippet.title) %></h2>
+    <h2><%= t('admin.snippets.edit_snippet', :title => @snippet.title, :page => @snippet.page.title) %></h2>
     <% unless @snippet.errors.blank? %>
     <div class="alert alert_red">
         <img height="24" width="24" src="/admin/images/icons/small/white/Alarm%20Bell.png">

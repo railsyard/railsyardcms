@@ -109,7 +109,7 @@ en:
       available_areas_in_this_layout: "Available areas in this layout"
     snippets:
       add_a_new_snippet: Add a new snippet
-      edit_snippet: "Edit snippet \"%{title}\""
+      edit_snippet: "Edit snippet \"%{title}\" on page \"%{page}\""
       name: Name
       type: Type
       location: Location
