@@ -1,12 +1,14 @@
 <div class="wrap active_widget sortable_item" id="<%= snip.handler %>" data-snipid="<%= snip.handler %>" >
     <header>
-        <h2><%= snip.title %></h2>        
+        <h2><%= truncate(snip.title, :length => 23, :omission => '...') %></h2>        
     </header>
     <a href="#" class="icon grabber">&nbsp;</a>
     <% if controller.controller_name == "article_layouts" %>
         <%= link_to "edit", edit_admin_article_layout_snippet_path(snip.article_layout.id, snip.id), :class=>"icon edit" %>
+        <%= link_to 'x', admin_article_layout_snippet_path(snip.article_layout.id, snip.id), :method => :delete, :confirm => t('admin.pages.are_you_sure_to_delete', :name => snip.title), :class => 'icon delete' %>
     <% else %>
         <%= link_to "edit", edit_admin_page_snippet_path(snip.page.id, snip.id), :class=>"icon edit" %>
+        <%= link_to 'x', admin_page_snippet_path(snip.page.id, snip.id), :method => :delete, :confirm => t('admin.pages.are_you_sure_to_delete', :name => snip.title), :class => 'icon delete' %>
     <% end %>
     <a href="#" class="toggle toggle_closed">&nbsp;</a>
     <div class="toggle_container" style="display:none;">                  

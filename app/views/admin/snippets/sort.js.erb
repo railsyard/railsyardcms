@@ -1,6 +1,13 @@
 <% if @new_snippet %>
 	<% destination = @new_snippet.article_layout ? edit_admin_article_layout_snippet_path(@new_snippet.article_layout.id, @new_snippet.id) : edit_admin_page_snippet_path(@new_snippet.page.id, @new_snippet.id) %>
-	jQuery(document.getElementById('<%= @new_snippet.handler %>')).append("<%= escape_javascript(link_to 'edit', destination, :class => 'icon edit') %>").addClass("active_widget");
+	<% delete_destination = @new_snippet.article_layout ? admin_article_layout_snippet_path(@new_snippet.article_layout.id, @new_snippet.id) : admin_page_snippet_path(@new_snippet.page.id, @new_snippet.id) %>
+	
+	snip = jQuery(document.getElementById('<%= @new_snippet.handler %>'))
+	snip.append("<%= escape_javascript(link_to 'edit', destination, :class => 'icon edit') %>")
+	snip.append("<%= escape_javascript(link_to 'x', delete_destination, :method => :delete, :confirm => t('admin.pages.are_you_sure_to_delete', :name => @new_snippet.title), :class => 'icon delete') %>")
+	snip.addClass("active_widget");
+	snip.find('h2').html("<%= truncate(@new_snippet.title, :length => 23, :omission => '...') %>");
+	
 <% end %>
 
 
