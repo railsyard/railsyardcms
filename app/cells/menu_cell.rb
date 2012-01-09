@@ -5,49 +5,38 @@ class MenuCell < Cell::Rails
   helper_method :yard_home, :get_lang, :get_yard_url, :get_article_url # coming from lib/yard
   include Devise::Controllers::Helpers
   helper_method :current_user
+  include Cell::Filters
+  before_filter :fill_generic_variables
+  before_filter :fill_menu_variables
   
   def first_level(args)
-    fill_generic_variables(args[:page], args[:options], args[:snip_id])
-    fill_menu_variables(@page)
     @first_level_pages = yard_home(@page.lang).siblings 
     render
   end
 
   def two_levels(args)
-    fill_generic_variables(args[:page], args[:options], args[:snip_id])
-    fill_menu_variables(@page)
     @first_level_pages = yard_home(@page.lang).siblings
     render
   end
 
   def siblings(args)
-    fill_generic_variables(args[:page], args[:options], args[:snip_id])
-    fill_menu_variables(@page)
     render
   end
 
   def children(args)
-    fill_generic_variables(args[:page], args[:options], args[:snip_id])
-    fill_menu_variables(@page)
     render
   end
 
   def siblings_and_children(args)
-    fill_generic_variables(args[:page], args[:options], args[:snip_id])
-    fill_menu_variables(@page)
     render
   end
 
   def footer(args)
-    fill_generic_variables(args[:page], args[:options], args[:snip_id])
-    fill_menu_variables(@page)
     @first_level_pages = yard_home(@page.lang).siblings 
     render
   end
   
   def nav(args)
-    fill_generic_variables(args[:page], args[:options], args[:snip_id])
-    fill_menu_variables(@page)
     @ancestors = @page.ancestors
     @ancestors << @page
     render
@@ -55,15 +44,16 @@ class MenuCell < Cell::Rails
   
   private
   
-  def fill_generic_variables(page, options, snip_id)
-    @page = page ||= yard_home
-    @options = options ||= {}
-    @snip_id = snip_id
+  def fill_generic_variables(state, opts)
+    @page = opts[:page] ||= yard_home
+    @options = opts[:options] ||= {}
+    @snip_id = opts[:snip_id]
     @cfg = cfg
-    @current_user = current_user
+    @current_user = opts[:current_user]
   end
   
-  def fill_menu_variables(page)
+  def fill_menu_variables(state, opts)
+    @page = opts[:page] ||= yard_home
     @current_level_pages = @page.siblings
     @family_pages_ids = [@page.id] #parents and sons, no siblings
     @family_pages_ids << @page.ancestors.map{|a| a.id}

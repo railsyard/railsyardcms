@@ -5,15 +5,15 @@ class ArticleCell < Cell::Rails
   helper_method :yard_home, :get_lang, :get_yard_url, :get_article_url # coming from lib/yard
   include Devise::Controllers::Helpers
   helper_method :current_user
+  include Cell::Filters
+  before_filter :fill_generic_variables
   
   def article_show(args)
-    fill_generic_variables(args[:page], args[:options], args[:snip_id])
     @article = args[:article]
     render
   end
   
   def comments(args)
-    fill_generic_variables(args[:page], args[:options], args[:snip_id])
     @article = args[:article]    
     @comments = @article.comments.paginate(:page => params[:pagination])   
     render
@@ -21,12 +21,12 @@ class ArticleCell < Cell::Rails
   
   private
   
-  def fill_generic_variables(page, options, snip_id)
-    @page = page ||= yard_home
-    @options = options ||= {}
-    @snip_id = snip_id
+  def fill_generic_variables(state, opts)
+    @page = opts[:page] ||= yard_home
+    @options = opts[:options] ||= {}
+    @snip_id = opts[:snip_id]
     @cfg = cfg
-    @current_user = current_user
+    @current_user = opts[:current_user]
   end
 
   def cfg
