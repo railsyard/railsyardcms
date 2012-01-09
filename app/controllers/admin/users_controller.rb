@@ -55,19 +55,13 @@ class Admin::UsersController < Admin::AdminController
   
   def destroy 
     @user = User.find(params[:id])
-    
-    # Monkey patch - To-do modal window to choose the user to reassign articles
-    if @user
-      first_admin = User.admins.first
+    if @user && (User.admins.count > 1)
+      first_admin = User.admins.where("users.id != ?", @user.id).first
       @user.articles.map do |a|
         a.user = first_admin
         a.save
       end
-    end
-    
-    # To-do - Prevent deleting last admin user
-    
-    if @user && @user.destroy && @user.errors.empty?
+      @user.destroy
       redirect_to admin_users_path
     end
   end
