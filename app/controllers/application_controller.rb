@@ -16,7 +16,27 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|
     render_error('401')
   end
-      
+  
+  
+  # Devise overrides to manage redirect after login
+  before_filter :store_location
+
+  def store_location
+    session[:user_return_to] = request.url unless params[:controller] == "devise/sessions"
+  end
+
+  def after_sign_in_path_for(resource)
+    if resource.is_admin?
+      admin_pages_path
+    elsif resource.is_article_writer?
+      admin_articles_path
+    else
+      stored_location_for(resource) || root_path
+    end
+  end
+  # end Devise overrides
+  
+  
   private
   
   def get_configuration
