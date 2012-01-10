@@ -2,7 +2,7 @@ class Admin::ArticleLayoutsController < Admin::AdminController
   
   ## manual authorization
   before_filter do |controller|
-    controller.check_role("admin")
+    controller.check_roles(["admin", "article_writer"])
   end
   
   ## CanCan authorization - see Ability model

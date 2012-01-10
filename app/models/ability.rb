@@ -6,8 +6,8 @@ class Ability
     if user.role? :admin
       can :manage, :all
     elsif user.role? :article_writer
-      can :manage, [Article]
-      can :read, [Page, User, Setting, ArticleLayout]
+      can :manage, [Article, Category, ArticleLayout]
+      can :read, [Page, User, Setting]
     elsif user.role? :premium_user
       can :read, [Article, Page, User, Setting, ArticleLayout]
     else

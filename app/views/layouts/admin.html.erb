@@ -66,12 +66,15 @@
                 <form id="aside_search"><input class="round_all" type="text" value="Search" onclick="value=''"></form>
 
                 <ul id="accordion">
+                    <!--
                     <li><a class="top_level"><img src="/admin/images/icons/small/grey/Home.png"/>Home</a>
                         <ul class="drawer">
-                            <li><a href="/admin"><%= t('admin.general.admin_dashboard') %></a></li>
-                            <li><a href="/" target="_blank"><%= t('admin.general.public_site') %></a></li>
+                            <li><a href="/admin"><%#= t('admin.general.admin_dashboard') %></a></li>
+                            <li><a href="/" target="_blank"><%#= t('admin.general.public_site') %></a></li>
                         </ul>
                     </li>
+                    -->
+                    <% if can? :manage, Page %>
                     <li><a <%= set_class(:class => "top_level", :controller => "pages") %>><img src="/admin/images/icons/small/grey/Documents.png"/><%= t('admin.pages.pages') %></a>
                         <ul class="drawer">
                             <li <%= set_class(:controller => "pages", :action => "index") %>><%= link_to t('admin.general.list'), admin_pages_path() %></li>
@@ -79,6 +82,8 @@
                             <!-- <li <%#= set_class("pages", "preset") %>><a href="#">Preset</a></li> -->
                         </ul>
                     </li>
+                    <% end %>
+                    <% if can? :manage, Article %>
                     <li><a <%= set_class(:class => "top_level", :controller => ["articles","article_layouts"]) %>><img src="/admin/images/icons/small/grey/Write.png"/><%= t('admin.articles.articles') %></a>
                         <ul class="drawer">
                             <li <%= set_class(:controller => "articles", :action => "index") %>><%= link_to t('admin.general.list'), admin_articles_path() %></li>
@@ -88,6 +93,8 @@
                             <!-- <li><a href="#">Comments</a></li> -->
                         </ul>
                     </li>
+                    <% end %>
+                    <% if can? :manage, User %>
                     <li><a <%= set_class(:class => "top_level", :controller => ["users"]) %>><img src="/admin/images/icons/small/grey/Users.png"/><%= t('admin.users.users') %></a>
                         <ul class="drawer">
                             <li <%= set_class(:controller => "users", :action => "index") %>><%= link_to t('admin.general.list'), admin_users_path %></li>
@@ -95,12 +102,15 @@
                             <!-- <li><a href="#">Esporta</a></li> -->
                         </ul>
                     </li>
+                    <% end %>
+                    <% if can? :manage, Setting %>
                     <li><a <%= set_class(:class => "top_level", :controller => ["settings"]) %>><img src="/admin/images/icons/small/grey/Cog%202.png"/><%= t('admin.settings.settings') %></a>
                         <ul class="drawer">
                             <li <%= set_class(:controller => "settings", :action => "edit") %>><%= link_to t('admin.general.general'), edit_admin_settings_path %></li>
                             <!-- <li <%#= set_class(:controller => "users", :action => "index") %>><%#= link_to "Il tuo profilo", edit_admin_user_path(current_user) %></li> -->
                         </ul>
                     </li>
+                    <% end %>
                     <% if false %>
                     <li><a class="top_level"><img src="/admin/images/icons/small/grey/Paperclip.png"/>Media</a>
                         <ul class="drawer">
