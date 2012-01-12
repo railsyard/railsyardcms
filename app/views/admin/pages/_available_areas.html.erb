@@ -18,8 +18,8 @@
         <section id="limbo" class='area_box drop_target'>
             <%= render :partial => "admin/pages/snippet_in_area", :collection => snippets.where('area' => 'limbo'), :as => :snip %>
         </section>
-        <p>Widget in limbo are not deleted, just removed from the page and you can turn'em up as they are</p>
-        <p>If you want you can <%= link_to t("admin.general.purge"), purge_limbo_admin_page_path(page) if defined?(page) %> to remove widgets permanently.</p>
+        <p>The snippets inside the limb are inactive, not deleted. Restores can be done at any time by dragging them in one of the active areas.</p>
+        <p>Btw, You can <%= link_to t("admin.general.purge"), purge_limbo_admin_page_path(page) if defined?(page) %> the limbo permanently delete snippets that are hosted in limbo.</p>
     </div>
     
 </div>
