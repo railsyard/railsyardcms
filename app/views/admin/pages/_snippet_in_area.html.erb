@@ -1,16 +1,18 @@
 <div class="wrap active_widget sortable_item" id="<%= snip.handler %>" data-snipid="<%= snip.handler %>" >
     <header>
-        <h2><%= truncate(snip.title, :length => 23, :omission => '...') %></h2>        
+        <h2><%= truncate(snip.title, :length => 20, :omission => '...') %></h2>        
     </header>
-    <a href="#" class="icon grabber">&nbsp;</a>
     <% if controller.controller_name == "article_layouts" %>
+        <a href="#" class="icon grabber">&nbsp;</a>
         <%= link_to "edit", edit_admin_article_layout_snippet_path(snip.article_layout.id, snip.id), :class=>"icon edit" %>
-        <%= link_to 'x', admin_article_layout_snippet_path(snip.article_layout.id, snip.id), :method => :delete, :confirm => t('admin.pages.are_you_sure_to_delete', :name => snip.title), :class => 'icon delete' %>
+        <%= link_to '<span>remove</span>'.hs, admin_article_layout_snippet_path(snip.article_layout.id, snip.id), :method => :delete, :confirm => t('admin.pages.are_you_sure_to_delete', :name => snip.title), :class => 'icon delete' %>
+    </ul>
     <% else %>
-        <%= link_to "edit", edit_admin_page_snippet_path(snip.page.id, snip.id), :class=>"icon edit" %>
-        <%= link_to 'x', admin_page_snippet_path(snip.page.id, snip.id), :method => :delete, :confirm => t('admin.pages.are_you_sure_to_delete', :name => snip.title), :class => 'icon delete' %>
+        <a href="#" class="icon grabber">&nbsp;</a>
+        <%= link_to "<span>edit</span>".hs, edit_admin_page_snippet_path(snip.page.id, snip.id), :class=>"icon edit" %>
+        <%= link_to '<span>delete</span>'.hs, admin_page_snippet_path(snip.page.id, snip.id), :method => :delete, :confirm => t('admin.pages.are_you_sure_to_delete', :name => snip.title), :class => 'icon delete' %>
     <% end %>
-    <a href="#" class="toggle toggle_closed">&nbsp;</a>
+    <a href="#" class="toggle toggle_closed icon info">&nbsp;</a>
     <div class="toggle_container" style="display:none;">                  
         <div class="block">
             <p><%= snip.description %></p>

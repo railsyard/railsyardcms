@@ -641,13 +641,13 @@ body{
 /* WIDGET DRAGGABLE ITEM */
 /**********************************/
 
+
 .available_widget, .active_widget{
     position: relative;
     background-color: white;
     border: 1px solid #ccc;
     border-width: 1px 0;
     margin-bottom: 15px;
-    padding: 0;
     z-index: 400;
     @include rounded(3px);
     .no_padding{
@@ -675,23 +675,37 @@ body{
     }
     a.icon{
         display: block;
-        height: 24px;
-        width: 24px;
-        position: absolute;
-        top: 3px;
+        height: 16px;
+        width: 16px;
+        float: right;
+        position: relative;
+        top: -20px;
         color: #fff !important;
         font-size: 10px;
+        margin: 2px;
+        opacity: 0.5;
+        &:hover{
+            opacity: 0.8;
+            
+        };
+        span{
+            display: none;
+        }
     }
     a.grabber{
-        background: url(img/dragger.png) no-repeat;
-        right: 3px;
+        background: url(img/snippet_drag.png) no-repeat;
         cursor: move;
     }
     a.edit{
-        right: 29px;
+        background: url(img/snippet_edit.png) no-repeat;
         cursor: pointer;
     }
+    a.delete{
+        background: url(img/snippet_delete.png) no-repeat;
+        cursor: pointer;
+    }    
     a.toggle{
+        background: url(img/snippet_info.png) no-repeat;
         display: none;
     }
 }
@@ -705,6 +719,7 @@ body{
 }
 .active_widget{
     background-color: $cGreen;
+    padding: 10px 10px 10px 0;
 }
 /* END WIDGET DRAGGABLE ITEM  */
 
@@ -718,6 +733,19 @@ body{
             float: right;
         }
         
+    }
+}
+.limbo{
+    margin-top: 20px;
+    border-top: 3px solid $cGreen;
+    p{
+        padding: 5px;
+        a{
+            background-color: $cGreen;
+            color: #fff;
+            padding: 3px;
+            @include rounded(2px);
+        }
     }
 }
 

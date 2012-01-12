@@ -13,12 +13,13 @@
         <% end %>
     </div>
     
-    <div class="area_box">
+    <div class="area_box limbo">
         <h2>Limbo</h2>
-        <p><%= link_to t("admin.general.purge"), purge_limbo_admin_page_path(page) if defined?(page) %></p>
         <section id="limbo" class='area_box drop_target'>
             <%= render :partial => "admin/pages/snippet_in_area", :collection => snippets.where('area' => 'limbo'), :as => :snip %>
         </section>
+        <p>Widget in limbo are not deleted, just removed from the page and you can turn'em up as they are</p>
+        <p>If you want you can <%= link_to t("admin.general.purge"), purge_limbo_admin_page_path(page) if defined?(page) %> to remove widgets permanently.</p>
     </div>
     
 </div>
