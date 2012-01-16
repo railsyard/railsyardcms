@@ -36,34 +36,36 @@ Installation
 ------------
 We really suggest the use of Ruby RVM and Ruby 1.9.2
 
-    run `rvm install ruby-1.9.2-p290`
-    run `rvm use ruby-1.9.2-p290`
-    run `rvm gemset create "railsyard"`
-    run `git clone https://github.com/cantierecreativo/railsyardcms.git`
-    run `cd railsyardcms`
-    run `gem install rails -v="3.0.11"`
-    run `gem install bundler`
-    run `bundle install`
-    edit config/database.yml according to your configuration
-    run `rake ry:init`
-    run `rake db:seed` to load some example pages
+run `rvm install ruby-1.9.2-p290`  
+run `rvm use ruby-1.9.2-p290`  
+run `rvm gemset create "railsyard"`  
+run `git clone https://github.com/cantierecreativo/railsyardcms.git`  
+run `cd railsyardcms`  
+run `gem install rails -v="3.0.11"`  
+run `gem install bundler`  
+run `bundle install`  
+edit config/database.yml according to your configuration  
+run `rake ry:init`  
+run `rake db:seed` to load some example pages  
 
 Usage
 -----
-Admin interface is on yoursite.tld/admin
+Admin interface is on `yoursite.tld/admin`  
+Username: `admin@example.com`  
+Password: `changeme`  
 
-username: admin@example.com
-
-password: changeme
+Documentation wiki
+------------------
+Take a look at the [Wiki](https://github.com/cantierecreativo/railsyardcms/wiki) for the full documentation.
 
 Changelog
 ---------
 2011.01.16 - version 0.3
-* major changes and improvements in Cells controllers 
-* changed the html structure of menu Cell
-* decent tests coverage
-* mailer
-* many bugs fixed
+* major changes and improvements in Cells controllers  
+* changed the html structure of menu Cell  
+* decent tests coverage  
+* mailer  
+* many bugs fixed  
  
 2011.12.03 - version 0.2.1   
 * Revisited admin forms
