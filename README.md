@@ -2,7 +2,9 @@ Railsyard CMS
 =============
 ![Railsyard CMS](http://railsyardcms.org/images/logo_big.jpg "Railsyard CMS")
 
-This is a complete rewrite of Railsyard, a content management system SEO oriented and heavily based on components.
+This is a complete rewrite of Railsyard, a content management system heavily based on components and focused on easy theming and customization.
+
+[![Build Status](https://secure.travis-ci.org/cantierecreativo/railsyardcms.png?branch=master)](http://travis-ci.org/cantierecreativo/railsyardcms)
 
 
 Features
@@ -23,18 +25,6 @@ Features
 * backend heavily based on drag & drop
 * built with Ruby on Rails
 
-	
-To-do
------
-* at least one more public theme
-* caching
-* comments moderation in backend
-* previews of pages and articles
-* a lot of documentation
-* a lot of tests
-* github wiki
-* update to Rails 3.1 when all the gems we are using became compatible [in progress]
-
 Requirements:
 -------------
 * Ruby 1.9.2 or 1.8.7
@@ -46,17 +36,17 @@ Installation
 ------------
 We really suggest the use of Ruby RVM and Ruby 1.9.2
 
-    run 'rvm install ruby-1.9.2-p290'
-    run 'rvm use ruby-1.9.2-p290'
-    run 'rvm gemset create "railsyard"'
-    run 'git clone https://github.com/cantierecreativo/railsyardcms.git'
-    run 'cd railsyardcms'
-    run 'gem install rails -v="3.0.11"'
-    run 'gem install bundler'
-    run 'bundle install'
+    run `rvm install ruby-1.9.2-p290`
+    run `rvm use ruby-1.9.2-p290`
+    run `rvm gemset create "railsyard"`
+    run `git clone https://github.com/cantierecreativo/railsyardcms.git`
+    run `cd railsyardcms`
+    run `gem install rails -v="3.0.11"`
+    run `gem install bundler`
+    run `bundle install`
     edit config/database.yml according to your configuration
-    run 'rake ry:init'
-    run 'rake db:seed' to load some example pages
+    run `rake ry:init`
+    run `rake db:seed` to load some example pages
 
 Usage
 -----
@@ -66,72 +56,14 @@ username: admin@example.com
 
 password: changeme
 
-Adding a new language
----------------------
-Add a language to the $AVAILABLE_LANGUAGES variable inside /config/application.rb, for example 'de'.
-
-Add a translated I18n yaml file inside /config/locales/, look at en.yml for reference.
-
-Run the rails console and execute:
-
-    lang = 'de'
-    first_theme = Theme.all.first.short
-    first_layout = Layout.all(first_theme).first.filename
-    root = Page.create :title => lang, :pretty_url => lang, :lang => lang
-    root.children.create :title => "Home #{lang}", :pretty_url => "home_#{lang}", :lang => lang, :visible_in_menu => true, :reserved => false, :published => true, :position => 1, :layout_name => first_layout, :publish_at => Time.now, :meta_title => "Home #{lang}", :meta_description => "Home #{lang}"
-
-
-Themes
-------
-
-Take a look to the current themes to understand how they work. They are placed in /themes/.
-
-There is a yaml config file for configuring some settings in every theme.
-
-We are using the [themes_for_rails](https://github.com/lucasefe/themes_for_rails) gem for managing themes, so take a look to the gem's documentation too.
-
-*To-do full documentation in the wiki*
-    
-Snippets plugins
-----------------
-Snippets are implemented using Rails Cells
-
-
-Take a look to the current snippets to understand how they work. They are placed in /app/cells/.
-
-There is a yaml config file for configuring some settings in every snippet.
-
-We are using the [cells](https://github.com/apotonick/cells) gem for making the snippets, so take a look to the gem's documentation too.
-
-*To-do full documentation in the wiki*
-
-
-Testing
--------
-[![Build Status](https://secure.travis-ci.org/cantierecreativo/railsyardcms.png?branch=master)](http://travis-ci.org/cantierecreativo/railsyardcms)
-
-If tests are failing often this is due to sync problems in js tests, or because Database Cleaner can't drop Postgres db cleaning ids.
-
-Tests are written using [Cucumber](http://cukes.info/)
-
-To launch all the tests simply run 'rake cucumber' inside the Railsyard directory.
-
-
-To launch a single feature you must specify the name:
-
-    bundle exec cucumber --name "Manage pages admin panel and check effects on public side"
-    bundle exec cucumber ./features/filename.feature
-
-
-Or a single scenario
-
-    bundle exec cucumber ./features/admin_pages.feature --line 54
-
-
 Changelog
 ---------
-2011.12.05 - version HEAD   
-* changed the html structure of menu cell
+2011.01.16 - version 0.3
+* major changes and improvements in Cells controllers 
+* changed the html structure of menu Cell
+* decent tests coverage
+* mailer
+* many bugs fixed
  
 2011.12.03 - version 0.2.1   
 * Revisited admin forms
@@ -144,14 +76,13 @@ Changelog
 2011.11.08 - version 0.1.0   
 * First quite fully featured release
 
-
 Credits
 -------
 Funded and developed by [Cantiere Creativo](http://www.cantierecreativo.net)
 
 All the credits to the respective owners/developers of gems/plugins/scripts used.
 
-Railsyard exists mainly thanks to the community.
+Railsyard exists mainly thanks to the Ruby/Rails community.
 
 
 The big boys
