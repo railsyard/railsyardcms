@@ -28,7 +28,7 @@ Features
 Requirements:
 -------------
 * Ruby 1.9.2 or 1.8.7
-* Rails 3.0.11
+* Rails 3.1.3
 * MySQL, PostgreSQL or SQLite
 * Some gems - check Gemfile
 
@@ -41,7 +41,7 @@ run `rvm use ruby-1.9.2-p290`
 run `rvm gemset create "railsyard"`  
 run `git clone https://github.com/cantierecreativo/railsyardcms.git`  
 run `cd railsyardcms`  
-run `gem install rails -v="3.0.11"`  
+run `gem install rails -v="3.1.3"`  
 run `gem install bundler`  
 run `bundle install`  
 edit config/database.yml according to your configuration  
@@ -57,26 +57,6 @@ Password: `changeme`
 Documentation wiki
 ------------------
 Take a look at the [Wiki](https://github.com/cantierecreativo/railsyardcms/wiki) for the full documentation.
-
-Changelog
----------
-2011.01.16 - version 0.3  
-* major changes and improvements in Cells controllers  
-* changed the html structure of menu Cell  
-* decent tests coverage  
-* mailer  
-* many bugs fixed  
- 
-2011.12.03 - version 0.2.1   
-* Revisited admin forms
- 
-2011.12.02 - version 0.2.0   
-* Comments on Articles   
-* Attachment snippet with drag&drop of files (Gmail style)   
-* Gallery snippet
-  
-2011.11.08 - version 0.1.0   
-* First quite fully featured release
 
 Credits
 -------
