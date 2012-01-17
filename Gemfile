@@ -47,7 +47,7 @@ group :development, :test do
   gem 'capybara',           '1.1.2'
   gem 'ruby-debug',         '~> 0.10.4' if RUBY_VERSION =~ /1.8/
   gem 'ruby-debug19',       '~> 0.11.6' if RUBY_VERSION =~ /1.9/
-  gem 'capybara-firebug',   '0.0.10'
+  #gem 'capybara-firebug',   '0.0.10'
   gem 'deadweight',         '>=0.2.1'
   gem 'launchy'
   gem 'database_cleaner',   '0.7.0'
