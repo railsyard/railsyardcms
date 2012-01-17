@@ -9,21 +9,21 @@ This is a complete rewrite of Railsyard, a content management system heavily bas
 
 Features
 --------
-* hierarchy organized pages
-* runs on Heroku
-* extremely easy theming
-* multilanguage frontend and backend (actually English, Italian and German)
-* different and independent pages for each language
-* editing both from backend and directly from frontend
-* blogging features with articles and comments
-* user roles
-* reserved pages and articles
-* pretty urls and other seo-friendly features
-* drop-in themes
-* drop-in snippets plugins (using Rails Cells)
+* Hierarchy organized pages
+* Runs on Heroku
+* Extremely easy theming
+* Multilanguage frontend and backend (actually English, Italian and German)
+* Different and independent pages for each language
+* Editing both from backend and directly from frontend
+* Blogging features with articles and comments
+* User roles
+* Reserved pages and articles
+* Pretty urls and other seo-friendly features
+* Drop-in themes
+* Drop-in snippets plugins (using Rails Cells)
 * Rails mountable engines support for heavy modification plugins 
-* backend heavily based on drag & drop
-* built with Ruby on Rails
+* Backend heavily based on drag & drop
+* Built with Ruby on Rails
 
 Requirements:
 -------------
@@ -60,7 +60,7 @@ Take a look at the [Wiki](https://github.com/cantierecreativo/railsyardcms/wiki)
 
 Changelog
 ---------
-2011.01.16 - version 0.3
+2011.01.16 - version 0.3  
 * major changes and improvements in Cells controllers  
 * changed the html structure of menu Cell  
 * decent tests coverage  

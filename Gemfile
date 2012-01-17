@@ -5,29 +5,30 @@ end
 
 source 'http://rubygems.org'
 
-gem 'mysql2',   '0.2.6'     if ENV['DB'].nil? || ENV['DB'] == "mysql"
+gem 'mysql2',   '0.3.11'     if ENV['DB'].nil? || ENV['DB'] == "mysql"
 gem 'sqlite3',  '1.3.4'     if ENV['DB'].nil? || ENV['DB'] == "sqlite"
 gem 'pg',       '0.11.0'    if ENV['DB'].nil? || ENV['DB'] == "postgres"
 
-gem 'rails',                '3.0.11'
+gem 'rails',                '3.1.3'
 gem 'jquery-rails',         '1.0.18'
 gem 'string-utils',         '0.2.0'
 gem 'omniauth',             '1.0.0'
 gem 'devise',               '1.5.0'
 gem 'ancestry',             '1.2.4'
-gem 'acts_as_list-rails3',  '0.0.4'
+#gem 'acts_as_list-rails3',  '0.0.4'
 gem 'cancan',               '1.6.7'
 gem 'gravatar_image_tag',   '1.0.0'
-gem 'themes_for_rails',     '0.4.2'
+#gem 'themes_for_rails',     '0.4.2'
+gem 'themes_for_rails', :git => 'https://github.com/cambiainfo/themes_for_rails.git'
 gem 'cells',                '3.8.0'
 gem 'cells-filters',        '0.0.1'
-gem 'rake',                 '0.9.2'
+gem 'rake',                 '0.9.2.2'
 gem 'paperclip',            '2.4.5'
-gem 'ckeditor',             '3.6.3'
+gem 'ckeditor',             '3.7.0.rc2'
 gem 'acts_as_commentable',  '3.0.1'
 gem 'recaptcha-rails3',		'0.3.4', :require => "recaptcha/rails"
 gem 'will_paginate',        '3.0.2'
-gem 'rack',                 '1.2.4'
+gem 'rack',                 '1.3.5'
 
 # For deploying on Heroku
 # gem 'heroku', '2.14.0'
