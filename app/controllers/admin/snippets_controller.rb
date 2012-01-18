@@ -62,7 +62,7 @@ class Admin::SnippetsController < Admin::AdminController
           end
           # Snippets sorting and area change
           current_snippet = @resource_snippets.find_by_handler(rec_snip)
-          current_snippet.association.update_attribute(:position, position+1)
+          current_snippet.paste.update_attribute(:position, position+1)
           current_snippet.update_attribute(:area, area_name)
         end
       end

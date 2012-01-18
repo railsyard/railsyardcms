@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111202095320) do
+ActiveRecord::Schema.define(:version => 20120118133001) do
 
   create_table "article_layouts", :force => true do |t|
     t.string   "layout_name"
@@ -42,15 +42,6 @@ ActiveRecord::Schema.define(:version => 20111202095320) do
     t.string   "featured_image_content_type"
     t.integer  "featured_image_file_size"
     t.datetime "featured_image_updated_at"
-  end
-
-  create_table "associations", :force => true do |t|
-    t.integer  "page_id"
-    t.integer  "snippet_id"
-    t.integer  "position"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "article_layout_id"
   end
 
   create_table "categories", :force => true do |t|
@@ -133,6 +124,15 @@ ActiveRecord::Schema.define(:version => 20111202095320) do
   add_index "pages", ["ancestry"], :name => "index_pages_on_ancestry"
   add_index "pages", ["pretty_url"], :name => "index_pages_on_pretty_url"
   add_index "pages", ["title"], :name => "index_pages_on_title"
+
+  create_table "pastes", :force => true do |t|
+    t.integer  "page_id"
+    t.integer  "snippet_id"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "article_layout_id"
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"

@@ -1,4 +1,4 @@
-class Association < ActiveRecord::Base
+class Paste < ActiveRecord::Base
   #attr_accessible #none
   #validates :page_id, :presence => true
   validates :snippet_id, :presence => true

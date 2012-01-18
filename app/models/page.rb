@@ -12,8 +12,8 @@ class Page < ActiveRecord::Base
   #   # Equals to:  "\'ancestry\' = \'#{ancestry}\' AND \'lang\' = \'#{lang}\'" 
   # end
   
-  has_many :associations, :dependent => :destroy
-  has_many :snippets, :through => :associations, :dependent => :destroy
+  has_many :pastes, :dependent => :destroy
+  has_many :snippets, :through => :pastes, :dependent => :destroy
   
   validates_presence_of   :title
   validates_length_of     :title, :minimum => 2

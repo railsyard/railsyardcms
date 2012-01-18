@@ -1,9 +1,9 @@
 class Snippet < ActiveRecord::Base
   extend ActiveSupport::Memoizable
   attr_accessible :title, :description, :published, :publish_at, :div_id, :div_class, :div_style, :area, :cell_controller, :cell_action, :handler, :options
-  has_one :association, :dependent => :destroy
-  has_one :page, :through => :association
-  has_one :article_layout, :through => :association
+  has_one :paste, :dependent => :destroy
+  has_one :page, :through => :paste
+  has_one :article_layout, :through => :paste
   has_many :snippet_components
   has_many :uploads, :as => :attachable, :dependent => :destroy
   accepts_nested_attributes_for :snippet_components
@@ -15,7 +15,7 @@ class Snippet < ActiveRecord::Base
   
   scope :published, :conditions => ["published = ?", true]
   scope :drafts, :conditions => ["published = ?", false]
-  scope :for_area, lambda {|area| where("area = ?", area).order('associations.position ASC')}
+  scope :for_area, lambda {|area| where("area = ?", area).order('pastes.position ASC')}
   
   def publish
     update_attributes!(:published => true, :publish_at => Time.now)

@@ -21,8 +21,8 @@ class Admin::PagesController < Admin::AdminController
     @page = Page.find(params[:id])
     @snippets_available = Snippet.available_for_pages
     @layouts = Layout.all(cfg.theme_name)
-    @current_layout = Layout.find(cfg.theme_name, @page.layout_name)
-    @snippets = @page.snippets.includes(:association).order("associations.position")
+    @current_layout = Layout.find(cfg.theme_name, @page.layout_name)    
+    @snippets = @page.snippets.includes(:paste).order("pastes.position")
   end
   
   def new

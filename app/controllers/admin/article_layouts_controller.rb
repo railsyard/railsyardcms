@@ -14,7 +14,7 @@ class Admin::ArticleLayoutsController < Admin::AdminController
     @snippets_available = Snippet.available
     @layouts = Layout.all(cfg.theme_name)
     @current_layout = Layout.find(cfg.theme_name, @article_layout.layout_name)
-    @snippets = @article_layout.snippets.includes(:association).order("associations.position")
+    @snippets = @article_layout.snippets.includes(:paste).order("pastes.position")
   end
   
   def apply_layout
