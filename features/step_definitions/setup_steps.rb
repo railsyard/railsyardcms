@@ -37,7 +37,7 @@ When /^I add the (.+?) snippet from the (.+?) cell to the (.+?) area at the page
     :cell_action => cell_action,
     :handler => "#{cell_controller}%#{cell_action}%#{Time.new.to_i}#{@cellnum}"
     
-  Factory :association,
+  Factory :paste,
     :page_id => page.id,
     :snippet_id => @snip.id
 end
@@ -57,7 +57,7 @@ When /^I add the (.+?) snippet from the (.+?) cell to the (.+?) area at the page
     :cell_action => cell_action,
     :handler => "#{cell_controller}%#{cell_action}%#{Time.new.to_i}#{@cellnum}"
     
-  Factory :association,
+  Factory :paste,
     :page_id => page.id,
     :snippet_id => @snip.id
 end
@@ -76,7 +76,7 @@ When /^I add the (.+?) snippet from the (.+?) cell to the (.+?) area at the arti
     :cell_action => cell_action,
     :handler => "#{cell_controller}%#{cell_action}%#{Time.new.to_i}#{@cellnum}"
     
-  Factory :association,
+  Factory :paste,
     :article_layout_id => article_layout.id,
     :snippet_id => @snip.id
 end
