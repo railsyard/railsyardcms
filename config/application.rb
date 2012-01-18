@@ -42,6 +42,10 @@ module Railsyard2
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
     
+    # Asset Pipeline has been disabled for compatibility issues with the themes gem.
+    # We are working on this..
+    config.assets.enabled = false
+    
     $AVAILABLE_LANGUAGES = /en|it|de/
     #$AVAILABLE_LANGUAGES = /it/
     

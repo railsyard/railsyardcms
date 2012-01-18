@@ -1,5 +1,7 @@
 Railsyard2::Application.routes.draw do
-  
+
+  mount Ckeditor::Engine => '/ckeditor'
+
   root :to => "site#show"
   themes_for_rails
   
