@@ -21,6 +21,7 @@ class Admin::SnippetsController < Admin::AdminController
   
   def update
     @snippet = Snippet.find(params[:id])
+    @categories = Category.all
     if @snippet
       back_url = @snippet.article_layout ? edit_admin_article_layout_path(@snippet.article_layout.lang) : admin_page_path(@snippet.page.id)
       @snippet.attributes = params[:snippet]

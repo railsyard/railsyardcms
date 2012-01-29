@@ -6,7 +6,7 @@ end
 source 'http://rubygems.org'
 
 gem 'mysql2',   '0.3.11'     if ENV['DB'].nil? || ENV['DB'] == "mysql"
-gem 'sqlite3',  '1.3.4'     if ENV['DB'].nil? || ENV['DB'] == "sqlite"
+gem 'sqlite3',  '1.3.5'     if ENV['DB'].nil? || ENV['DB'] == "sqlite"
 gem 'pg',       '0.11.0'    if ENV['DB'].nil? || ENV['DB'] == "postgres"
 
 gem 'rails',                '3.2.0'
@@ -18,12 +18,7 @@ gem 'ancestry',             '1.2.4'
 #gem 'acts_as_list-rails3',  '0.0.4'
 gem 'cancan',               '1.6.7'
 gem 'gravatar_image_tag',   '1.0.0'
-
-#gem 'themes_for_rails',     '0.4.2'
-#gem 'themes_for_rails',     '1.0.0rc1'
-#gem 'themes_for_rails', :git => 'https://github.com/lucasefe/themes_for_rails.git'
 gem 'themes_for_rails',     '0.4.3'
-
 gem 'cells',                '3.8.0'
 gem 'cells-filters',        '0.0.1'
 gem 'rake',                 '0.9.2.2'
