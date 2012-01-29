@@ -43,7 +43,7 @@ Feature: Manage pages admin panel and check effects on public side
     And I go to the admin pages page
     When I follow "Properties" within "table.datatable"
     And I check "page_reserved"
-    And I press "Save"
+    And I press "Save and close"
     And I should be on the admin pages page
     And I go to the homepage
     And the page should be valid
