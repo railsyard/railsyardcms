@@ -42,6 +42,8 @@ class Admin::ArticlesController < Admin::AdminController
   end
   
   def update
+    @categories = Category.all
+    @admin_editing_language = admin_editing_language
     @article = Article.find(params[:id])
     @article.attributes = params[:article] unless @article.blank?
     @article.pretty_url = @article.pretty_url.urlify.blank? ? @article.title.urlify : @article.pretty_url.urlify
@@ -49,7 +51,8 @@ class Admin::ArticlesController < Admin::AdminController
     #@article.meta_keywords = @cfg.default_page_keywords if @article.meta_keywords.blank?
     #@article.meta_description = @cfg.default_page_desc if @article.meta_keywords.blank?
     if @article && @article.save && @article.errors.empty?
-      redirect_to admin_articles_path
+      #redirect_to admin_articles_path
+      params[:save_and_close] ? (redirect_to admin_articles_path()) : (render :action => "edit")
     else
       render :action => "edit"
     end

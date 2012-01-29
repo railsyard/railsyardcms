@@ -15,9 +15,10 @@
     <%= form_for @page, :url => admin_page_path(@page), :html => { :multipart => true } do |f| %>
         <%= render :partial => "form", :object => @page, :as => :page, :locals => {:f => f, :lang => @admin_editing_language} %>
         <div class="buttons">
-            <%= submit_tag t('admin.general.save'), :class => "submit" %>    
-            <%= link_to t('admin.general.back'), admin_pages_url, :class => "submit" %>
             <%= link_to t('admin.general.delete'), admin_page_url(@page), :method => :delete, :confirm => t('admin.pages.are_you_sure_to_delete', :name => @page.title), :class => "submit delete"  %>
+            <%= link_to t('admin.general.back'), admin_pages_url, :class => "submit" %>
+            <%= submit_tag t('admin.general.save'), :class => "submit" %>    
+            <%= submit_tag t('admin.general.save_and_close'), :class => "submit", :name => 'save_and_close' %>  
         </div>
     <% end %>
 </div>

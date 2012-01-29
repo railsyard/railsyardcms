@@ -47,7 +47,7 @@ class Admin::UsersController < Admin::AdminController
     @user.attributes = params[:user] unless @user.blank?
     if @user && @user.save && @user.errors.empty?
       params[:user][:enabled] == '1' ? @user.enable! : @user.disable!
-      redirect_to admin_users_path
+      params[:save_and_close] ? (redirect_to admin_users_path()) : (render :action => "edit")
     else
       render :action => "edit"
     end

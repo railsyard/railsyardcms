@@ -18,9 +18,10 @@
     <%= render :partial => "form", :object => @article, :as => :article, :locals => {:f => f} %>
 
     <div class="buttons">
-        <%= link_to t('admin.general.delete'), admin_article_path(@article), :class => 'submit', :method => :delete, :confirm => t('admin.articles.are_you_sure_to_delete', :title => @article.title) %>
+        <%= link_to t('admin.general.delete'), admin_article_path(@article), :class => 'submit delete', :method => :delete, :confirm => t('admin.articles.are_you_sure_to_delete', :title => @article.title) %>
         <%= link_to t('admin.general.back'), admin_articles_url, :class => "submit" %>
-        <%= submit_tag t('admin.general.save'), :class => "submit" %>          
+        <%= submit_tag t('admin.general.save'), :class => "submit" %>
+        <%= submit_tag t('admin.general.save_and_close'), :class => "submit", :name => 'save_and_close' %>    
     </div>
     <% end %>
 </div>

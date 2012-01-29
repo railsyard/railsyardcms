@@ -105,7 +105,7 @@ de:
       hint_javascript: "Javascript to be run on page load"
     snippets:
       add_a_new_snippet: Neues Snippet hinzufügen
-      edit_snippet: "Snippet \"%{title}\" bearbeiten on page \"%{page}\""
+      edit_snippet: "Snippet \"%{title}\" bearbeiten"
       name: Name
       type: Typ
       location: Position

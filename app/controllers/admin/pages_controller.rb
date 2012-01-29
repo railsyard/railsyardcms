@@ -87,7 +87,7 @@ class Admin::PagesController < Admin::AdminController
         @page.parent = lang_root_page unless lang_root_page.blank?
       end
       if @page.save && @page.errors.empty?
-        redirect_to admin_pages_path()
+        params[:save_and_close] ? (redirect_to admin_pages_path()) : (render :action => "edit")
       else
         render :action => "edit"
       end

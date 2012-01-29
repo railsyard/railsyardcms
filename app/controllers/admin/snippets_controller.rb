@@ -26,7 +26,7 @@ class Admin::SnippetsController < Admin::AdminController
       @snippet.attributes = params[:snippet]
       respond_to do |format|
         if @snippet.save && @snippet.errors.empty?
-          format.html { redirect_to back_url }
+          format.html { params[:save_and_close] ? (redirect_to back_url) : (render :action => "edit") }
           format.dialog { render :text => "success", :status => 400 }
         else
           format.html { render :action => "edit" }

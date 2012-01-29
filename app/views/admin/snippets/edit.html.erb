@@ -1,5 +1,5 @@
 <header class="page_description">
-    <h2><%= t('admin.snippets.edit_snippet', :title => @snippet.title, :page => @snippet.page.title) %></h2>
+    <h2><%= t('admin.snippets.edit_snippet', :title => @snippet.title) %></h2>
     <% unless @snippet.errors.blank? %>
     <div class="alert alert_red">
         <img height="24" width="24" src="/admin/images/icons/small/white/Alarm%20Bell.png">
@@ -16,9 +16,10 @@
         <%= render :partial => "form", :object => @article, :locals => {:f => f} %>
         
         <div class="buttons">
-            <%= submit_tag t('admin.general.save'), :class => "submit" %>    
-            <%= link_to t('admin.general.back'), back_url, :class => "submit" %>
             <%= link_to t('admin.general.delete'), destination, :method => :delete, :confirm => t('admin.pages.are_you_sure_to_delete', :name => @snippet.title), :class => "submit delete"  %>
+            <%= link_to t('admin.general.back'), back_url, :class => "submit" %>
+            <%= submit_tag t('admin.general.save'), :class => "submit" %>   
+            <%= submit_tag t('admin.general.save_and_close'), :class => "submit", :name => 'save_and_close' %>  
         </div>
     <% end %>
     <div id='uploader-placeholder'>

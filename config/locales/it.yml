@@ -101,7 +101,7 @@ it:
       hint_javascript: "Javascript eseguito al caricamento della pagina"
     snippets:
       add_a_new_snippet: Aggiungi un nuovo snippet
-      edit_snippet: "Modifica lo snippet \"%{title}\" sulla pagina \"%{page}\""
+      edit_snippet: "Modifica lo snippet \"%{title}\""
       name: Nome
       type: Tipo
       location: Posizione
