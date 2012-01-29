@@ -2,6 +2,7 @@
 
 <header class="page_description">
   <h2><%= t('admin.pages.edit_page', :title => @page.title) %></h2>
+  <small><%= link_to t("admin.pages.go_to_page_contents"), admin_page_path(@page) %></small>
 </header>
 
 <div class="wrap cell_16">

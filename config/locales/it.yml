@@ -99,6 +99,9 @@ it:
       hint_div_class: "Classe del div più esterno della pagina"
       hint_div_style: "Style del div più esterno della pagina"
       hint_javascript: "Javascript eseguito al caricamento della pagina"
+      available_areas_in_this_layout: "Available areas in this layout"
+      go_to_page_properties: "Vai alle proprietà della pagina"
+      go_to_page_contents: "Vai ai contenuti della pagina"
     snippets:
       add_a_new_snippet: Aggiungi un nuovo snippet
       edit_snippet: "Modifica lo snippet \"%{title}\""

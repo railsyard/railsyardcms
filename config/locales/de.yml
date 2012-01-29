@@ -103,6 +103,9 @@ de:
       hint_div_class: "Class of the most external page div"
       hint_div_style: "Style of the most external page div"
       hint_javascript: "Javascript to be run on page load"
+      available_areas_in_this_layout: "Available areas in this layout"
+      go_to_page_properties: "Go to page properties"
+      go_to_page_contents: "Go to page contents"
     snippets:
       add_a_new_snippet: Neues Snippet hinzufügen
       edit_snippet: "Snippet \"%{title}\" bearbeiten"
