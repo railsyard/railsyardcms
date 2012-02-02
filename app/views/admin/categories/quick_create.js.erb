@@ -1,3 +1,2 @@
 $("#categories_list").append('<%= escape_javascript(render(:partial => "/admin/categories/checkbox", :object => @category, :as => :category, :locals =>{:article => Article.new})) %>');
 $("#new_category_form").hide();
-$("#article_category_id-<%= @category.id %>").uniform();
