@@ -21,13 +21,12 @@ gem 'gravatar_image_tag',   '1.0.0'
 gem 'themes_for_rails',     '0.4.3'
 gem 'cells',                '3.8.0'
 gem 'cells-filters',        '0.0.1'
-gem 'rake',                 '0.9.2.2'
 gem 'paperclip',            '2.4.5'
 gem 'ckeditor',             '3.7.0.rc2'
 gem 'acts_as_commentable',  '3.0.1'
 gem 'recaptcha-rails3',		'0.3.4', :require => "recaptcha/rails"
 gem 'will_paginate',        '3.0.2'
-gem 'rack',                 '1.4.0'
+
 
 # For deploying on Heroku
 # gem 'heroku', '2.14.0'

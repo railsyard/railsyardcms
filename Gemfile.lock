@@ -232,10 +232,8 @@ DEPENDENCIES
   omniauth (= 1.0.0)
   paperclip (= 2.4.5)
   pg (= 0.11.0)
-  rack (= 1.4.0)
   railroady
   rails (= 3.2.0)
-  rake (= 0.9.2.2)
   recaptcha-rails3 (= 0.3.4)
   rspec (= 2.8.0)
   rspec-rails (= 2.8.1)
