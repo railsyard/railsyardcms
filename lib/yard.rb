@@ -1,12 +1,10 @@
 module Yard
-  extend ActiveSupport::Memoizable
     
   private
   
   def cfg
     Setting.first
   end
-  memoize :cfg
   
   def yard_home(lang = cfg.default_lang)
     language = lang.nil? ? get_lang : lang

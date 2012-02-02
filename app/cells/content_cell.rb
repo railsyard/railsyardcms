@@ -1,6 +1,4 @@
 class ContentCell < Cell::Rails
-  
-  extend ActiveSupport::Memoizable
   include Yard
   helper_method :yard_home, :get_lang, :get_yard_url, :get_article_url # coming from lib/yard
   include Devise::Controllers::Helpers
@@ -55,6 +53,5 @@ class ContentCell < Cell::Rails
   def cfg
     Setting.first
   end
-  memoize :cfg
   
 end

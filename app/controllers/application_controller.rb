@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   include Yard
-  extend ActiveSupport::Memoizable
   before_filter :get_configuration, :set_locale
   
   protect_from_forgery
@@ -42,7 +41,6 @@ class ApplicationController < ActionController::Base
   def get_configuration
     @cfg = cfg
   end
-  memoize :get_configuration
   
   def admin_area?
     req = request.fullpath

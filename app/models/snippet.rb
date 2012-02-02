@@ -1,5 +1,4 @@
 class Snippet < ActiveRecord::Base
-  extend ActiveSupport::Memoizable
   attr_accessible :title, :description, :published, :publish_at, :div_id, :div_class, :div_style, :area, :cell_controller, :cell_action, :handler, :options
   has_one :paste, :dependent => :destroy
   has_one :page, :through => :paste
