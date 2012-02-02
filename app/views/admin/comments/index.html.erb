@@ -1,0 +1,27 @@
+<%= content_for :title do %><%= t('admin.comments.comments_management') %><% end %>
+
+<div class="lang_selector">
+    <%= select_tag "language", options_from_collection_for_select(Language.all, 'short', 'name', @admin_editing_language),
+        :onchange => "$.post('#{set_editing_language_admin_pages_path}', {'_method':'put', 'admin_editing_language':this.value} );" %>    
+</div>
+
+<header class="page_description">
+    <h2><%= t('admin.comments.comments_list') %></h2>
+</header>
+
+<div class="wrap cell_16 round_all">
+    <table class="fancy_rows datatable">
+        <thead>
+            <tr>
+                <th><%= t('admin.article.article') %></th>
+                <th><%= t('admin.general.author') %></th> 
+                <th><%= t('admin.general.last_update') %></th> 
+                <th><%= t('admin.general.actions') %></th> 
+            </tr>
+        </thead>
+        <tbody>
+            <%= render :partial => "item", :collection => @comments %>
+        </tbody>
+    </table>
+</div>
+

@@ -82,13 +82,14 @@
                     </li>
                     <% end %>
                     <% if can? :manage, Article %>
-                    <li><a <%= set_class(:class => "top_level", :controller => ["articles","article_layouts"]) %>><img src="/admin/images/icons/small/grey/Write.png"/><%= t('admin.articles.articles') %></a>
+                    <li><a <%= set_class(:class => "top_level", :controller => ["articles","article_layouts","comments"]) %>><img src="/admin/images/icons/small/grey/Write.png"/><%= t('admin.articles.articles') %></a>
                         <ul class="drawer">
                             <li <%= set_class(:controller => "articles", :action => "index") %>><%= link_to t('admin.general.list'), admin_articles_path() %></li>
                             <li <%= set_class(:controller => "articles", :action => "new") %>><%= link_to t('admin.general.new'), new_admin_article_path() %></li>
                             <li <%= set_class(:controller => "article_layouts", :action => "edit") %>><%= link_to t('admin.general.design'), edit_admin_article_layout_path(@admin_editing_language) %></li>
                             <li <%= set_class(:controller => "categories", :action => "index") %>><%= link_to t('admin.categories.categories'), admin_categories_path %></li>
-                            <!-- <li><a href="#">Comments</a></li> -->
+                            <li <%= set_class(:controller => "comments", :action => "index") %>><%= link_to t('admin.comments.comments'), admin_comments_path %></li>
+                            
                         </ul>
                     </li>
                     <% end %>

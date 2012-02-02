@@ -51,6 +51,7 @@ Railsyard2::Application.routes.draw do
     end
     resource :settings
     resources :uploads
+    resources :comments
   end
   
   # Public routes
