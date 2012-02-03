@@ -1,0 +1,197 @@
+= Ckeditor
+
+CKEditor is a text editor to be used inside web pages. It's a WYSIWYG editor, which means that the text being edited on it looks as similar as possible to 
+the results users have when publishing it. It brings to the web common editing features found on desktop editing applications like Microsoft Word and OpenOffice.
+
+== Features
+
+* Rails 3.1 integration
+* Files browser
+* HTML5 files uploader
+* Hooks for formtastic and simple_form forms generators
+* Extra plugins: attachment and embed.
+* Assets pagination (under construction)
+
+== Install
+
+Rails 3.1:
+
+  gem "ckeditor", "3.7.0.rc2"
+
+Rails <= 3.0:
+
+  gem "ckeditor", "3.6.3"
+
+=== Now generate models for store uploading files
+
+==== ActiveRecord + paperclip
+
+For active_record orm is used paperclip gem (it's by default).
+
+  gem "paperclip"
+  
+  rails generate ckeditor:install --orm=active_record --backend=paperclip
+  
+==== ActiveRecord + carrierwave
+
+  gem "carrierwave"
+  gem "mini_magick"
+
+  rails generate ckeditor:install --orm=active_record --backend=carrierwave
+
+==== Mongoid + paperclip
+
+  gem 'mongoid-paperclip', :require => 'mongoid_paperclip'
+  
+  rails generate ckeditor:install --orm=mongoid --backend=paperclip
+
+==== Mongoid + carrierwave
+
+  gem "carrierwave-mongoid", :require => 'carrierwave/mongoid'
+  gem "mini_magick"
+
+  rails generate ckeditor:install --orm=mongoid --backend=carrierwave
+
+Available orms:
+* active_record
+* mongoid (Thanks Dmitry Lihachev https://github.com/lda)
+* mongo_mapper (under construction)
+
+
+Autoload ckeditor models folder (application.rb):
+
+  config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
+
+== Usage
+
+Include ckeditor javascripts rails 3.1:
+
+  //= require ckeditor/ckeditor
+
+Rails <= 3.0:
+
+  <%= javascript_include_tag :ckeditor %>
+
+Form helpers:
+
+  cktext_area_tag("test_area", "Ckeditor is the best")
+
+  cktext_area_tag("content", "Ckeditor", :input_html => {:cols => 10, :rows => 20}, :toolbar => 'Easy')
+  
+* input_html - Options for text_area tag, others for ckeditor javascript configuration.
+* language - appends automatically, by default is I18n.locale
+* available ckeditor options - http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html
+
+For configure ckeditor default options check:
+
+  public/javascripts/ckeditor/config.js
+  
+This stylesheet use editor for displaying edit area:
+
+  public/javascripts/ckeditor/contents.css
+
+FormBuilder helper for more usefully:
+
+  <%= form_for @page do |form| -%>
+    ...
+    <%= form.cktext_area :notes, :toolbar => 'Full', :width => 800, :height => 400 %>
+    ...
+    <%= form.cktext_area :content, :input_html => { :value => "Default value" } %>
+    ...
+    <%= cktext_area :page, :info %>
+  <% end -%>
+
+=== AJAX
+
+Jquery sample:
+
+  <script type='text/javascript' charset='UTF-8'>
+    $(document).ready(function(){  
+      $('form[data-remote]').bind("ajax:before", function(){
+        for (instance in CKEDITOR.instances){
+          CKEDITOR.instances[instance].updateElement();
+        }
+      });
+    });
+  </script>
+
+=== Formtastic integration
+
+  <%= form.input :content, :as => :ckeditor %>
+  <%= form.input :content, :as => :ckeditor, :input_html => { :height => 400 } %>
+
+=== SimpleForm integration
+
+  <%= form.ckeditor :content, :label => false, :input_html => { :toolbar => 'Full' } %>
+
+=== Default scope
+
+For example, you need split assets collection for each user.
+
+  class ApplicationController < ActionController::Base
+  
+    protected
+      
+      def ckeditor_filebrowser_scope(options = {})
+        super({ :assetable_id => current_user.id, :assetable_type => 'User' }.merge(options))
+      end
+  end
+  
+If your wont filter only pictures or attachment_files - redefine methods "ckeditor_pictures_scope" or "ckeditor_attachment_files_scope" respectively.
+By default, both these methods call "ckeditor_filebrowser_scope" method:
+
+  class ApplicationController < ActionController::Base
+  
+    protected
+
+      def ckeditor_pictures_scope(options = {})
+        ckeditor_filebrowser_scope(options)
+      end
+          
+      def ckeditor_attachment_files_scope(options = {})
+        ckeditor_filebrowser_scope(options)
+      end
+  end
+
+=== Callbacks
+
+  class ApplicationController < ActionController::Base
+  
+    protected
+      
+      # Cancan example
+      def ckeditor_authenticate
+        authorize! action_name, @asset
+      end
+      
+      # Set current_user as assetable
+      def ckeditor_before_create_asset(asset)
+        asset.assetable = current_user
+        return true
+      end
+  end
+
+
+== I18n  
+
+  en:
+    ckeditor:
+      page_title: "CKEditor Files Manager"
+      confirm_delete: "Delete file?"
+      buttons:
+        cancel: "Cancel"
+        upload: "Upload"
+        delete: "Delete"
+
+== Tests
+
+  rake test
+  rake test CKEDITOR_ORM=mongoid
+  rake test CKEDITOR_BACKEND=carrierwave
+  
+  rake test:controllers
+  rake test:generators
+  rake test:integration
+  rake test:models
+
+This project rocks and uses MIT-LICENSE.
