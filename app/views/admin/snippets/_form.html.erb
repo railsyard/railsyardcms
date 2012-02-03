@@ -17,7 +17,19 @@
                             <% when "integer" then %>
                                 <%= o.text_field att[0], :value => default_value, "data-validation" => "integer" %>
                             <% when "editor" then %>
-                                <%= o.cktext_area att[0], :input_html => { :value => default_value, "data-validation" => "none" } %>
+                                <%### SINTAX ERROR BUG IN EDITOR JS, I need to hardcode the form %>
+                                <%### original: %>
+                                <%#= o.cktext_area att[0], :input_html => { :value => default_value, "data-validation" => "none" } %>
+                                <%### hardcoded: %>
+                                <% if true %>
+                                <textarea cols="40" id="snippet_options_body" name="snippet[options][body]" rows="20">
+                                    <%= default_value %>
+                                </textarea>
+                                <script type="text/javascript">
+                                    if (CKEDITOR.instances['snippet_options_<%= att[0] %>']) {CKEDITOR.remove(CKEDITOR.instances['snippet_options_<%= att[0] %>']);}CKEDITOR.replace('snippet_options_<%= att[0] %>', { "language": 'en' });
+                                </script>
+                                <% end %>
+                                <%### end hardcoded %>
                             <% when "article_categories" then %>
                                 <%# Needed to submit the serialized form when no category is choosen %>
                                 <div><input type="hidden" type="checkbox" value="0" name="snippet[options][categories][]"></div>

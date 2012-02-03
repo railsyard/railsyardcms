@@ -21,7 +21,6 @@
     <!--[if IE 6]><link rel="stylesheet" type="text/css" href="/admin/stylesheets/ie6.css" media="screen" /><![endif]-->
     <!--[if IE 7]><link rel="stylesheet" type="text/css" href="/admin/stylesheets/ie.css" media="screen" /><![endif]-->
     
-    <%= javascript_include_tag :ckeditor %>
     <%= javascript_include_tag "jquery.min",
                                "jquery-ui.min",
                                "jquery.tmpl.min",
@@ -38,6 +37,7 @@
                                "/admin/javascripts/modernizr.js",
                                "/admin/javascripts/application.js"
     %>
+    <%= javascript_include_tag :ckeditor %>
     
     <%= yield :extra_header %>
     <%= csrf_meta_tag %>
