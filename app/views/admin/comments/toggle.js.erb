@@ -1,0 +1,6 @@
+if ('<%= @error %>'){
+	alert("Something went wrong when you didn't expect it!");
+}
+else{
+	$("#comment_item_<%= @comment.id %>").replaceWith('<%= escape_javascript(render(:partial => "item", :object => @comment)) %>');
+}

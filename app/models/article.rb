@@ -1,6 +1,7 @@
 class Article < ActiveRecord::Base
   has_many :categorizations
   has_many :categories, :through => :categorizations
+  has_many :comments, :as => :commentable, :dependent => :destroy
   accepts_nested_attributes_for :categorizations
   
   belongs_to :user

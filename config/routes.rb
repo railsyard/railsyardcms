@@ -51,7 +51,9 @@ Railsyard2::Application.routes.draw do
     end
     resource :settings
     resources :uploads
-    resources :comments
+    resources :comments do
+      post 'toggle', :on => :member
+    end
   end
   
   # Public routes

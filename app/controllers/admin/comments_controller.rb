@@ -14,4 +14,22 @@ class Admin::CommentsController < Admin::AdminController
     @comments = Comment.all
   end
   
+  def show
+    @admin_editing_language = admin_editing_language
+    @comment = Comment.find(params[:id])
+  end
+  
+  def destroy
+    @comment = Comment.find(params[:id])
+    if @comment && @comment.destroy && @comment.errors.empty?
+      redirect_to admin_comments_path
+    end
+  end
+  
+  def toggle
+    @comment = Comment.find(params[:id])
+    @error = true unless @comment && @comment.toggle
+    # Renders toggle.js.erb
+  end
+  
 end

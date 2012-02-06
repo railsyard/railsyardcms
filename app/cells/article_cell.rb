@@ -13,7 +13,7 @@ class ArticleCell < Cell::Rails
   
   def comments(args)
     @article = args[:article]    
-    @comments = @article.comments.paginate(:page => params[:pagination])   
+    @comments = @article.comments.published.paginate(:page => params[:pagination])   
     render
   end
   

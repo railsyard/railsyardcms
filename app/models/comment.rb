@@ -17,6 +17,24 @@ class Comment < ActiveRecord::Base
   validates :username, :presence => true
   validates :body, :presence => true
   
+  scope :published, where(:published => true)
+  
   self.per_page = 10
+  
+  def publish
+    update_attributes!(:published => true)
+  end
+  
+  def unpublish
+    update_attributes!(:published => false)
+  end
+  
+  def toggle
+    if !self.published
+      self.publish
+    else
+      self.unpublish
+    end
+  end
   
 end

@@ -215,7 +215,9 @@ en:
       comments: "Comments"
       comments_management: "Comments management"
       comments_list: "Comments list"
-
+      are_you_sure_to_delete: "Are you sure to delete this comment?"
+      websire: "Website"
+      
   public:
     general:
       hi: Hi
@@ -277,5 +279,4 @@ en:
     logged_in_successfully: Logged in successfully
     user_or_password_not_valid: User or password not valid
     you_have_been_logged_out: You have been logged out
-    
     

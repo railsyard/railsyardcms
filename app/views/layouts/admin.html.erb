@@ -88,7 +88,7 @@
                             <li <%= set_class(:controller => "articles", :action => "new") %>><%= link_to t('admin.general.new'), new_admin_article_path() %></li>
                             <li <%= set_class(:controller => "article_layouts", :action => "edit") %>><%= link_to t('admin.general.design'), edit_admin_article_layout_path(@admin_editing_language) %></li>
                             <li <%= set_class(:controller => "categories", :action => "index") %>><%= link_to t('admin.categories.categories'), admin_categories_path %></li>
-                            <!-- <li <%#= set_class(:controller => "comments", :action => "index") %>><%#= link_to t('admin.comments.comments'), admin_comments_path %></li> -->
+                            <li <%= set_class(:controller => "comments", :action => "index") %>><%= link_to t('admin.comments.comments'), admin_comments_path %></li>
                             
                         </ul>
                     </li>

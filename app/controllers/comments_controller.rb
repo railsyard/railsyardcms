@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(params[:comment])
     @comment.user = current_user
+    @comment.published = true
     if @comment && verify_recaptcha(:model => @comment) && @comment.save && @comment.errors.empty?  
       if @comment.commentable_type == "Article"
         @article = Article.find(@comment.commentable_id)
