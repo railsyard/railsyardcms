@@ -203,7 +203,15 @@ it:
     article_layouts:
       select_snippets: "Sepeziona gli snippet sulla pagina degli articoli"
       changing_layout: "Quando cambi layout tutti gli snippet verranno spostati nel Limbo, ma non cancellati."
-
+    comments:
+      comment: "Commento"
+      comments: "Commenti"
+      comments_management: "Gestione commenti"
+      comments_list: "Lista commenti"
+      are_you_sure_to_delete: "Sei sicuro di voler eliminare questo commento?"
+      websire: "Sito"
+      
+      
   public:
     general:
       hi: Ciao

@@ -207,7 +207,14 @@ de:
     article_layouts:
       select_snippets: "Select snippets on article page"
       changing_layout: "When you change layout all the snippets on the page will be moved to the Limbo, but not deleted."
-
+    comments:
+      comment: "Comment"
+      comments: "Comments"
+      comments_management: "Comments management"
+      comments_list: "Comments list"
+      are_you_sure_to_delete: "Are you sure to delete this comment?"
+      websire: "Website"
+        
   public:
     general:
       hi: Hi
