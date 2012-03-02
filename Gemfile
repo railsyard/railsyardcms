@@ -5,10 +5,7 @@ end
 
 source 'http://rubygems.org'
 
-gem 'mysql2',   '0.3.11'     if ENV['DB'].nil? || ENV['DB'] == "mysql"
-gem 'sqlite3',  '1.3.5'     if ENV['DB'].nil? || ENV['DB'] == "sqlite"
-gem 'pg',       '0.11.0'    if ENV['DB'].nil? || ENV['DB'] == "postgres"
-
+gem 'sqlite3',              '1.3.5'
 gem 'rails',                '3.2.1'
 gem 'jquery-rails',         '1.0.18'
 gem 'string-utils',         '0.2.0'
@@ -23,7 +20,7 @@ gem 'cells-filters',        '0.0.1'
 gem 'paperclip',            '2.4.5'
 gem 'ckeditor',             :path => 'vendor/gems/ckeditor'
 gem 'acts_as_commentable',  '3.0.1'
-gem 'recaptcha-rails3',		'0.3.4', :require => "recaptcha/rails"
+gem 'recaptcha-rails3',	    '0.3.4', :require => "recaptcha/rails"
 gem 'will_paginate',        '3.0.2'
 
 # For deploying on Heroku
