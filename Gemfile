@@ -7,7 +7,6 @@ source 'http://rubygems.org'
 
 gem 'sqlite3',              '1.3.5'
 gem 'rails',                '3.2.1'
-gem 'sass-rails',           '3.2.4'
 gem 'jquery-rails',         '1.0.18'
 gem 'string-utils',         '0.2.0'
 gem 'omniauth',             '1.0.0'
@@ -24,6 +23,12 @@ gem 'ckeditor',             :path => 'vendor/gems/ckeditor'
 gem 'acts_as_commentable',  '3.0.1'
 gem 'recaptcha-rails3',	    '0.3.4', :require => "recaptcha/rails"
 gem 'will_paginate',        '3.0.2'
+
+group :assets do
+  gem "sass-rails"
+  gem "coffee-rails"
+  gem "uglifier"
+end
 
 # For deploying on Heroku
 # gem 'heroku', '2.14.0'
