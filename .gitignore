@@ -6,7 +6,6 @@ public/assets/**/*
 public/system/**/*
 public/ckeditor_assets/**/*
 public/uploads/**/*
-config/database.yml
 config/deploy.rb
 sublime-develop.sublime-project
 devise/**/*
