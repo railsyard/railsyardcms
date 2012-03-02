@@ -7,6 +7,7 @@ source 'http://rubygems.org'
 
 gem 'sqlite3',              '1.3.5'
 gem 'rails',                '3.2.1'
+gem 'sass-rails',           '3.2.4'
 gem 'jquery-rails',         '1.0.18'
 gem 'string-utils',         '0.2.0'
 gem 'omniauth',             '1.0.0'

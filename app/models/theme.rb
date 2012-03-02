@@ -1,12 +1,12 @@
 class Theme
   attr_reader :path, :short, :title, :description, :author
-  
+
   ## Exception Handling
   class ThemeNotFound < StandardError
   end
   class ThemesLocatorError < StandardError
   end
-  
+
   # path = absolute theme directory path on filesystem
   # short = theme directory name, must be the same as the base_conf.short entry on the theme_conf.yaml file
   # title = base_conf.title entry on the theme_conf.yaml file
@@ -15,7 +15,7 @@ class Theme
   def initialize(path, short, title, description, author)
     @path, @short, @title, @description, @author = path, short, title, description, author
   end
-  
+
   def self.all
     begin
       themes = []
@@ -29,7 +29,7 @@ class Theme
        raise ThemesLocatorError
     end
   end
-  
+
   def self.find(short)
     begin
       theme = all.select{|t| t.short.eql? short.to_s}.first
@@ -40,12 +40,12 @@ class Theme
        raise ThemeNotFound
     end
   end
-  
+
   def self.search_themes
-    themes_path = "#{Rails.root.to_s}/themes/[a-zA-Z0-9]*"
+    themes_path = "#{Rails.root.to_s}/app/assets/themes/[a-zA-Z0-9]*"
     Dir.glob(themes_path).select do |file|
       File.readable?("#{file}/theme_conf.yml")
     end.compact.uniq
   end
-  
+
 end
