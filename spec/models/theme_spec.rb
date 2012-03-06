@@ -2,10 +2,6 @@ require 'spec_helper'
 
 describe Theme do
 
-  it_behaves_like "a SimpleModel" do
-    let(:attributes) { [ :identifier, :title, :description, :author ] }
-  end
-
   describe "#all" do
     it "returns the available themes" do
       theme_path = "foo/bar/"
@@ -39,9 +35,9 @@ describe Theme do
   describe "#load" do
     it "initializes a new theme from a Yaml config file" do
       theme = stub
-      theme_config = { "foo" => "bar", "layouts" => "boo" }
-      YAML.stubs(:load_file).with("/path/config.yml").returns(theme_config)
-      Theme.stubs(:new).with(:foo => "bar", :identifier => "path").returns(theme)
+      theme_attrs = stub_everything
+      YAML.stubs(:load_file).with("/path/config.yml").returns(theme_attrs)
+      Theme.stubs(:new).with(theme_attrs).returns(theme)
       Theme.load("/path/config.yml").should == theme
     end
   end
@@ -56,13 +52,42 @@ describe Theme do
     end
   end
 
+  describe ".layouts" do
+    it "returns an array of Layouts" do
+      layout_attrs = stub
+      layout = stub
+      Layout.stubs(:new).with(layout_attrs).returns(layout)
+      Theme.new(:layouts => [layout_attrs]).layouts.first.should == layout
+    end
+  end
+
+  describe ".find_layout!" do
+    it "returns the layout with the specified identifier" do
+      layout = stub(:identifier => "foo")
+      theme = Theme.new
+      theme.stubs(:layouts).returns([ layout ])
+      theme.find_layout!(:foo).should == layout
+    end
+
+    it "raises a Theme::LayoutNotFound if it doesn't exist" do
+      theme = Theme.new
+      theme.stubs(:layouts).returns([])
+      lambda { theme.find_layout!(:foo) }.should raise_error Theme::LayoutNotFound
+    end
+  end
+
   describe "acceptance on a valid theme Yaml configuration file" do
     it "should not throw validation problems" do
       theme = Theme.load(Rails.root.join("spec/fixtures/themes/bar/theme_conf.yml"))
       theme.should be_valid
+      theme.identifier.should == "bar"
       theme.title.should == "title"
       theme.author.should == "author"
       theme.description.should == "description"
+      layout = theme.layouts.first
+      layout.identifier.should == "layout_id"
+      layout.title.should == "layout_title"
+      layout.view.should == "view"
     end
   end
 

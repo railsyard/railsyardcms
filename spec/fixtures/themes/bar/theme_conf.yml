@@ -2,8 +2,9 @@ title: "title"
 description: "description"
 author: "author"
 layouts:
-  - title: "layout_title"
-    filename: "filename"
+  - identifier: "layout_id"
+    title: "layout_title"
+    view: "view"
     areas:
       - title: "Header"
         identifier: "header"
