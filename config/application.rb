@@ -17,6 +17,7 @@ module Railsyard2
     # config.autoload_paths += %W(#{config.root}/extras)
     config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
+    config.autoload_paths += Dir["#{config.root}/app/logic/**"]
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
@@ -41,13 +42,13 @@ module Railsyard2
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
-    
+
     # Asset Pipeline has been disabled for compatibility issues with the themes gem.
     # We are working on this..
     config.assets.enabled = false
-    
+
     $AVAILABLE_LANGUAGES = /en|it|de/
     #$AVAILABLE_LANGUAGES = /it/
-    
+
   end
 end

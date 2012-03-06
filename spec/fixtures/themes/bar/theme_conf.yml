@@ -1,0 +1,13 @@
+title: "title"
+description: "description"
+author: "author"
+layouts:
+  - title: "layout_title"
+    filename: "filename"
+    areas:
+      - title: "Header"
+        identifier: "header"
+      - title: "Body"
+        identifier: "body"
+      - title: "Footer"
+        identifier: "footer"

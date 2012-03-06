@@ -1,51 +1,42 @@
 class Theme
-  attr_reader :path, :short, :title, :description, :author
-  
-  ## Exception Handling
-  class ThemeNotFound < StandardError
+
+  class Invalid < RuntimeError; end
+  class NotFound < RuntimeError; end
+
+  include SimpleModel
+  attributes :title, :description, :author
+
+  validates :title, presence: true
+
+  def self.load(path)
+    config = YAML.load_file(path)
+    config.symbolize_keys!
+    layouts = config.delete(:layouts)
+    identifier = File.basename(File.dirname(path))
+    config.reverse_merge!(:identifier => identifier)
+    Theme.new(config)
   end
-  class ThemesLocatorError < StandardError
-  end
-  
-  # path = absolute theme directory path on filesystem
-  # short = theme directory name, must be the same as the base_conf.short entry on the theme_conf.yaml file
-  # title = base_conf.title entry on the theme_conf.yaml file
-  # description = base_conf.description entry on the theme_conf.yaml file
-  # author = base_conf.author entry on the theme_conf.yaml file
-  def initialize(path, short, title, description, author)
-    @path, @short, @title, @description, @author = path, short, title, description, author
-  end
-  
+
   def self.all
-    begin
-      themes = []
-      search_themes.map do |theme_path|
-        theme_conf = YAML.load_file("#{theme_path}/theme_conf.yml")
-        themes << self.new(theme_path, theme_conf["base_conf"]["short"], theme_conf["base_conf"]["title"], theme_conf["base_conf"]["description"], theme_conf["base_conf"]["author"])
-      end
-      themes.compact.uniq
-    rescue Exception => exc
-       Rails.logger.error("***************** Error with themes locator *****************")
-       raise ThemesLocatorError
-    end
-  end
-  
-  def self.find(short)
-    begin
-      theme = all.select{|t| t.short.eql? short.to_s}.first
-      raise ThemeNotFound if theme.nil?
+    available_theme_directories.map do |theme_path|
+      theme = Theme.load(File.join(theme_path, "theme_conf.yml"))
+      raise Theme::Invalid unless theme.valid?
       theme
-    rescue Exception => exc
-       Rails.logger.error("***************** Error locating theme *****************")
-       raise ThemeNotFound
     end
   end
-  
-  def self.search_themes
-    themes_path = "#{Rails.root.to_s}/themes/[a-zA-Z0-9]*"
-    Dir.glob(themes_path).select do |file|
-      File.readable?("#{file}/theme_conf.yml")
+
+  def self.find!(identifier)
+    Theme.all.find do |theme|
+      theme.identifier.to_sym == identifier.to_sym
+    end or raise Theme::NotFound
+  end
+
+  private
+
+  def self.available_theme_directories(path = Rails.root.join("themes"))
+    Dir[File.join(path, '*/')].select do |theme_path|
+      File.readable?(File.join(theme_path, "theme_conf.yml"))
     end.compact.uniq
   end
-  
+
 end
