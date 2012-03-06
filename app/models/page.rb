@@ -20,8 +20,9 @@ class Page < ActiveRecord::Base
                     :path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension",
                     :url => "/system/:class/:attachment/:id/:style/:basename.:extension"
 
-  scope :published, :conditions => ["published = ?", true]
-  scope :drafts, :conditions => ["published = ?", false]
+  scope :published, where(:published => true)
+  scope :drafts, where(:published => false)
+
   scope :for_language, lambda {|lang| {:conditions => ["lang = ?", lang]} }
   scope :not_reserved, :conditions => ["reserved = ?", false]
   scope :without_roots, :conditions => ["ancestry != ?", 'NULL']
