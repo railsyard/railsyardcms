@@ -37,24 +37,18 @@ end
 # Example of snippet got via external gem ## broken in production due to bluecloth
 # gem 'railsyard-markdown-content', :path => 'vendor/gems/railsyard-markdown-content'
 
-group :development, :test do
-  gem 'rspec',              '2.8.0'
-  gem 'rspec-rails',        '2.8.1'
-  gem 'cucumber',           '1.1.4'
-  gem 'cucumber-rails',     '1.2.1'
-  gem 'webrat',             '0.7.3'
-  gem 'capybara',           '1.1.2'
-  gem 'ruby-debug',         '~> 0.10.4' if RUBY_VERSION =~ /1.8/
-  gem 'ruby-debug19',       '~> 0.11.6' if RUBY_VERSION =~ /1.9/
-  gem 'deadweight',         '>=0.2.1'
+group :test do
+  gem 'spork'
+  gem 'rspec-rails'
+  gem 'rspec-rails-mocha', :require => false
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'vcr'
+  gem 'capybara-webkit'
+  gem 'webmock'
   gem 'launchy'
-  gem 'database_cleaner',   '0.7.1'
-  gem 'factory_girl'
-  gem 'railroady'
-  # you don't need guard to test on travis
-  unless ENV['TRAVIS']
-    gem 'guard'
-    gem 'guard-cucumber'
-    gem 'growl_notify'
-  end
+
+  gem 'cucumber'
+  gem 'cucumber-rails'
 end

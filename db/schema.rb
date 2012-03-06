@@ -142,15 +142,15 @@ ActiveRecord::Schema.define(:version => 20120206140614) do
   end
 
   create_table "settings", :force => true do |t|
-    t.string   "site_page_title",                      :default => "My new RailsYard site"
-    t.string   "default_page_keywords",                :default => ""
-    t.string   "default_page_desc",                    :default => ""
-    t.string   "default_lang",                         :default => "en"
-    t.text     "analytics",             :limit => 255, :default => ""
-    t.datetime "created_at",                                                                :null => false
-    t.datetime "updated_at",                                                                :null => false
-    t.string   "theme_name",                           :default => "rough",                 :null => false
-    t.boolean  "frontend_controls",                    :default => false
+    t.string   "site_page_title",       :default => "My new RailsYard site"
+    t.string   "default_page_keywords", :default => ""
+    t.string   "default_page_desc",     :default => ""
+    t.string   "default_lang",          :default => "en"
+    t.text     "analytics"
+    t.datetime "created_at",                                                 :null => false
+    t.datetime "updated_at",                                                 :null => false
+    t.string   "theme_name",            :default => "rough",                 :null => false
+    t.boolean  "frontend_controls",     :default => false
   end
 
   create_table "snippets", :force => true do |t|

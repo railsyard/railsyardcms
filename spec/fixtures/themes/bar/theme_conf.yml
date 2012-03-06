@@ -1,0 +1,14 @@
+title: "title"
+description: "description"
+author: "author"
+layouts:
+  - identifier: "layout_id"
+    title: "layout_title"
+    view: "view"
+    areas:
+      - title: "Header"
+        identifier: "header"
+      - title: "Body"
+        identifier: "body"
+      - title: "Footer"
+        identifier: "footer"
