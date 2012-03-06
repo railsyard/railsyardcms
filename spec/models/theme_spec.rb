@@ -84,7 +84,8 @@ describe Theme do
       theme.title.should == "title"
       theme.author.should == "author"
       theme.description.should == "description"
-      layout = theme.layouts.first
+
+      layout = theme.find_layout!(:layout_id)
       layout.identifier.should == "layout_id"
       layout.title.should == "layout_title"
       layout.view.should == "view"
