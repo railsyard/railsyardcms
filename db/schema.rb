@@ -11,13 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120118133001) do
+ActiveRecord::Schema.define(:version => 20120206140614) do
 
   create_table "article_layouts", :force => true do |t|
     t.string   "layout_name"
     t.string   "lang"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "articles", :force => true do |t|
@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(:version => 20120118133001) do
     t.boolean  "reserved"
     t.boolean  "comments_enabled"
     t.boolean  "hot"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
     t.string   "featured_image_file_name"
     t.string   "featured_image_content_type"
     t.integer  "featured_image_file_size"
@@ -46,15 +46,15 @@ ActiveRecord::Schema.define(:version => 20120118133001) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "categorizations", :force => true do |t|
     t.integer  "article_id"
     t.integer  "category_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "ckeditor_assets", :force => true do |t|
@@ -64,8 +64,8 @@ ActiveRecord::Schema.define(:version => 20120118133001) do
     t.integer  "assetable_id"
     t.string   "assetable_type",    :limit => 30
     t.string   "type",              :limit => 30
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "idx_ckeditor_assetable"
@@ -77,11 +77,12 @@ ActiveRecord::Schema.define(:version => 20120118133001) do
     t.integer  "commentable_id"
     t.string   "commentable_type"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
     t.string   "username"
     t.string   "email"
     t.string   "website"
+    t.boolean  "published"
   end
 
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
@@ -91,8 +92,8 @@ ActiveRecord::Schema.define(:version => 20120118133001) do
   create_table "grades", :force => true do |t|
     t.integer  "role_id"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "pages", :force => true do |t|
@@ -113,8 +114,8 @@ ActiveRecord::Schema.define(:version => 20120118133001) do
     t.string   "div_style"
     t.boolean  "reserved"
     t.string   "layout_name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
     t.string   "featured_image_file_name"
     t.string   "featured_image_content_type"
     t.integer  "featured_image_file_size"
@@ -129,15 +130,15 @@ ActiveRecord::Schema.define(:version => 20120118133001) do
     t.integer  "page_id"
     t.integer  "snippet_id"
     t.integer  "position"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.integer  "article_layout_id"
   end
 
   create_table "roles", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "settings", :force => true do |t|
@@ -146,8 +147,8 @@ ActiveRecord::Schema.define(:version => 20120118133001) do
     t.string   "default_page_desc",     :default => ""
     t.string   "default_lang",          :default => "en"
     t.text     "analytics"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                                 :null => false
+    t.datetime "updated_at",                                                 :null => false
     t.string   "theme_name",            :default => "rough",                 :null => false
     t.boolean  "frontend_controls",     :default => false
   end
@@ -161,8 +162,8 @@ ActiveRecord::Schema.define(:version => 20120118133001) do
     t.string   "div_id"
     t.string   "div_class"
     t.string   "div_style"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.string   "area"
     t.string   "cell_controller"
     t.string   "cell_action"
@@ -178,8 +179,8 @@ ActiveRecord::Schema.define(:version => 20120118133001) do
     t.string   "type"
     t.integer  "attachable_id"
     t.string   "attachable_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.string   "title"
     t.text     "description"
     t.string   "extra_link"
@@ -203,8 +204,8 @@ ActiveRecord::Schema.define(:version => 20120118133001) do
     t.integer  "failed_attempts",                     :default => 0
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                          :null => false
+    t.datetime "updated_at",                                          :null => false
     t.string   "lang"
     t.boolean  "enabled"
   end

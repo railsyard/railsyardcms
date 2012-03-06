@@ -13,10 +13,9 @@ Spork.prefork do
   require 'vcr'
 
   # VCR Specs
-  VCR.config do |c|
+  VCR.configure do |c|
     c.cassette_library_dir = 'spec/cassettes'
-    c.stub_with :webmock
-    c.allow_http_connections_when_no_cassette = true
+    c.hook_into :webmock
   end
 
   RSpec.configure do |config|
