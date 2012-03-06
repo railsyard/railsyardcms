@@ -38,7 +38,9 @@ class Page < ActiveRecord::Base
   scope :drafts, where(:published => false)
   scope :for_language, lambda { |lang| where(:lang => lang) }
   scope :not_reserved, where("reserved IS NULL OR reserved = ?", false)
-  scope :without_roots, :conditions => ["ancestry != ?", 'NULL']
+  scope :without_roots, where("ancestry IS NOT NULL")
+
+  # Public methods
 
   def publish
     update_attributes!(:published => true, :publish_at => Time.now)
@@ -57,14 +59,14 @@ class Page < ActiveRecord::Base
   end
 
   def is_reserved?
-    self.reserved == true
+    reserved == true
   end
 
   private
 
   def set_order
-    self.position ||= self.siblings.order("position ASC").last.try(:position).to_i+1
+    max_sibling = siblings.order("position DESC").first
+    self.position ||= max_sibling.present? ? max_sibling.position + 1 : 1
   end
-
 
 end

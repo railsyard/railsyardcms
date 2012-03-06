@@ -78,4 +78,16 @@ describe Page do
     end
   end
 
+  describe "automatic positioning" do
+    it "sets the ordering of a new page putting it below the existing siblings" do
+      root_page = Factory.create(:page)
+      sibling_page = Factory.create(:page, :parent => root_page, :position => 10)
+      Factory.create(:page, :position => nil, :parent => root_page).position.should be > 10
+    end
+
+    it "sets the ordiering of a new page to 1 if there's no sibling" do
+      Factory.create(:page, :position => nil).position.should == 1
+    end
+  end
+
 end
