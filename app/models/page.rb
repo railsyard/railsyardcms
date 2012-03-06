@@ -1,30 +1,43 @@
 class Page < ActiveRecord::Base
-  attr_accessible :title, :pretty_url, :published, :publish_at, :visible_in_menu, :meta_title, :meta_description, :meta_keywords, :script, :div_id, :div_class, :div_style, :reserved, :layout_name, :lang, :position, :featured_image
+
+  # Concerns
   has_ancestry
-  default_scope :order => "position ASC"
-
-  has_many :pastes, :dependent => :destroy
-  has_many :snippets, :through => :pastes, :dependent => :destroy
-
-  validates_presence_of   :title
-  validates_length_of     :title, :minimum => 2
-  validates_presence_of   :pretty_url
-  validates_uniqueness_of :pretty_url
-  validates_presence_of   :lang
-
-  before_create :set_order
-
-  # paperclip
   has_attached_file :featured_image,
                     :styles => {:large => "500x500>", :medium => "300x300>", :thumb => "100x100>", :banner => "960x303>" },
                     :path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension",
                     :url => "/system/:class/:attachment/:id/:style/:basename.:extension"
 
+  # Mass-assignable attributes
+  attr_accessible :title, :pretty_url, :published, :publish_at,
+                  :visible_in_menu, :meta_title, :meta_description,
+                  :meta_keywords, :script, :div_id, :div_class, :div_style,
+                  :reserved, :layout_name, :lang, :position, :featured_image
+
+  # Relations
+  has_many :pastes, :dependent => :destroy
+  has_many :snippets, :through => :pastes, :dependent => :destroy
+
+  # Validations
+  validates :title,
+            :presence => true,
+            :length => { :minimum => 2 }
+
+  validates :pretty_url,
+            :presence => true,
+            :uniqueness => true
+
+  validates :lang,
+            :presence => true
+
+  # Hooks
+  before_create :set_order
+
+  # Scopes
+  default_scope :order => "position ASC"
   scope :published, where(:published => true)
   scope :drafts, where(:published => false)
-
-  scope :for_language, lambda {|lang| {:conditions => ["lang = ?", lang]} }
-  scope :not_reserved, :conditions => ["reserved = ?", false]
+  scope :for_language, lambda { |lang| where(:lang => lang) }
+  scope :not_reserved, where("reserved IS NULL OR reserved = ?", false)
   scope :without_roots, :conditions => ["ancestry != ?", 'NULL']
 
   def publish
