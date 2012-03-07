@@ -140,7 +140,8 @@ class Admin::PagesController < Admin::AdminController
 
   def apply_layout
     @page = Page.find(params[:id])
-    if Layout.find(cfg.theme_name, params[:selected_layout])
+    layout = Theme.find!(cfg.theme_name).find_layout!(params[:selected_layout])
+    if layout
       @page.snippets.map{|s| s.update_attribute(:area, "limbo")}
       @page.update_attribute(:layout_name, params[:selected_layout])
     end
