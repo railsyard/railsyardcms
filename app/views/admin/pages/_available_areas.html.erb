@@ -2,17 +2,17 @@
     <header>
         <h2>
            <%= t "admin.pages.available_areas_in_this_layout" %>
-        </h2>        
+        </h2>
     </header>
     <div class="area_box">
         <% current_layout.areas.map do |area| %>
             <h2><%= area["title"] %></h2>
-            <section id="<%= area["short"] %>" class='drop_target'>
-                <%= render :partial => "admin/pages/snippet_in_area", :collection => snippets.where('area' => area["short"]), :as => :snip %>
+            <section id="<%= area["identifier"] %>" class='drop_target'>
+                <%= render :partial => "admin/pages/snippet_in_area", :collection => snippets.where('area' => area["identifier"]), :as => :snip %>
             </section>
         <% end %>
     </div>
-    
+
     <div class="area_box limbo">
         <h2>Limbo</h2>
         <section id="limbo" class='area_box drop_target'>
@@ -21,5 +21,5 @@
         <p>The snippets inside the limbo are just inactive, not deleted. Restoring can be done any time by dragging them in one of the active areas.</p>
         <p>You can also <%= link_to t("admin.general.purge"), purge_limbo_admin_page_path(page) if defined?(page) %> the limbo to permanently delete the snippets hosted in limbo.</p>
     </div>
-    
+
 </div>

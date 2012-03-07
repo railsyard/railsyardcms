@@ -1,8 +1,10 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user) 
+  def initialize(user)
+    alias_action :edit, :update, :destroy, :to => :update
     user ||= User.new # guest user (not logged in)
+
     if user.role? :admin
       can :manage, :all
     elsif user.role? :article_writer
@@ -17,5 +19,5 @@ class Ability
       can :read, [Page, User, Setting, ArticleLayout]
     end
   end
-  
+
 end

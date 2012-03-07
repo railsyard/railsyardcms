@@ -1,6 +1,5 @@
 # Pages
-first_theme = Theme.all.first.short
-first_layout = Layout.all(first_theme).first.filename
+first_layout_view = Theme.all.first.layouts.first.view
 
 ["it", "en", "de"].each do |lang|
   puts "------------------------- Creating root language page \'#{lang}\' -------------------------"
@@ -11,7 +10,7 @@ first_layout = Layout.all(first_theme).first.filename
                         :visible_in_menu => true,
                         :reserved => false,
                         :published => true,
-                        :layout_name => first_layout,
+                        :layout_name => first_layout_view,
                         :publish_at => Time.now,
                         :meta_title => "Home #{lang}",
                         :meta_description => "Home #{lang}" )
@@ -38,10 +37,6 @@ Setting.create :site_page_title => "My new RailsYard site", :default_lang => "en
 Category.create :name => "General"
 Category.create :name => "Nerdy stuff"
 
-# Article Layouts
-theme = Setting.first.theme_name
-first_layout = Layout.all(theme).first.filename
-
 ["it", "en", "de", "cn"].each do |lang|
-  ArticleLayout.create(:layout_name => first_layout, :lang => lang )
+  ArticleLayout.create(:layout_name => first_layout_view, :lang => lang )
 end

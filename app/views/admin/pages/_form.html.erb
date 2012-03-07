@@ -1,6 +1,6 @@
 <div class="wrap block">
-     <div class="">  
-         <div class="block">                
+     <div class="">
+         <div class="block">
              <%= f.label :title, t('admin.general.title') %>
              <%= f.text_field :title, {:id=>"title", :title=>"Page title, can\'t be blank", :class=>"full required"} %>
 
@@ -16,12 +16,12 @@
                     </div>
                 </div>
                 <div class="cell_8">
-                    <label><%= t "admin.layouts.layout" %></label><%= f.select :layout_name, options_from_collection_for_select(@layouts.map, 'filename', 'title', @current_layout.filename) %>
+                    <label><%= t "admin.layouts.layout" %></label><%= f.select :layout_name, options_from_collection_for_select(@layouts, 'identifier', 'title', @current_layout.identifier) %>
                     <p>Changing layout makes all the current snippets on page to be moved to the Limbo.</p>
                 </div>
              </fieldset>
         </div>
-    </div>    
+    </div>
 </div>
 
 <div class="wrap block">
@@ -54,7 +54,7 @@
                     :title => t("admin.pages.hint_meta_description"),
                     :class => "large"
                 } %>
-                
+
                 <%= f.label :featured_image, t('admin.general.featured_image') %>
                 <%= f.file_field :featured_image %>
 
@@ -80,12 +80,12 @@
             </div>
         </li>
     </ul>
-</div>    
+</div>
 
-<script type="text/javascript"> 
+<script type="text/javascript">
     var title = new LiveValidation('title');
     title.add( Validate.Presence );
-    
+
     // var realemail = new LiveValidation('realemail');
     // realemail.add( Validate.Email );
     // var atleast = new LiveValidation('atleast');
