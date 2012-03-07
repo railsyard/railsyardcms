@@ -11,7 +11,6 @@ class CreateSettings < ActiveRecord::Migration
       t.column :analytics, :string, :default => ""
       t.timestamps
     end
-    Setting.create :site_name => "My new RailsYard site", :default_lang => "en", :homepage_id => 1
   end
 
   def self.down
