@@ -19,8 +19,9 @@ class Admin::PagesController < Admin::AdminController
     @admin_editing_language = admin_editing_language
     @page = Page.find(params[:id])
     @snippets_available = Snippet.available_for_pages
-    @layouts = Layout.all(cfg.theme_name)
-    @current_layout = Layout.find(cfg.theme_name, @page.layout_name)
+    theme = Theme.find!(cfg.theme_name)
+    @layouts = theme.layouts
+    @current_layout = theme.find_layout!(@page.layout_name)
     @snippets = @page.snippets.includes(:paste).order("pastes.position")
   end
 
@@ -62,8 +63,9 @@ class Admin::PagesController < Admin::AdminController
     @admin_editing_language = admin_editing_language
     @page = Page.find(params[:id])
     @root_page = Page.where(:title => @admin_editing_language, :ancestry => nil).first
-    @layouts = Layout.all(@cfg.theme_name)
-    @current_layout = Layout.find(@cfg.theme_name, @page.layout_name)
+    theme = Theme.find!(@cfg.theme_name)
+    @layouts = theme.layouts
+    @current_layout = theme.find_layout!(@page.layout_name)
   end
 
   def update
