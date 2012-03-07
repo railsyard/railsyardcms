@@ -15,7 +15,7 @@ gem 'ancestry',             '1.2.4'
 gem 'cancan',               '1.6.7'
 gem 'gravatar_image_tag',   '1.0.0'
 # support to asset pipeline
-gem 'themes_for_rails',     git: 'https://github.com/lucasefe/themes_for_rails.git'
+gem 'themes_for_rails',     :git => 'https://github.com/lucasefe/themes_for_rails.git'
 gem 'cells',                '3.8.0'
 gem 'cells-filters',        '0.0.1'
 gem 'paperclip',            '2.4.5'
