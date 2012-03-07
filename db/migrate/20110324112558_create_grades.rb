@@ -4,13 +4,6 @@ class CreateGrades < ActiveRecord::Migration
       t.references :role, :user
       t.timestamps
     end
-    
-    admin_role = Role.find_by_name('admin')
-    user = User.create :email => 'admin@example.com', :firstname => 'Admin', :lastname => 'Surname', :password => 'changeme', :password_confirmation => 'changeme'
-    user.confirmed_at, user.lang, user.enabled = Time.now, 'en', true
-    user.roles << admin_role
-    user.save
-    puts "------------------------- Creating user email \'#{user.email}\', password \'changeme\'-------------------------"
   end
 
   def self.down

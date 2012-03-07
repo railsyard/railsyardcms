@@ -7,14 +7,6 @@ class CreateArticleLayouts < ActiveRecord::Migration
     end
     
     add_column :associations, :article_layout_id, :integer
-    
-    theme = Setting.first.theme_name
-    first_layout = Layout.all(theme).first.filename
-    
-    ["it", "en", "de", "cn"].each do |lang|
-      ArticleLayout.create(:layout_name => first_layout, :lang => lang )
-    end
-    
   end
 
   def self.down
