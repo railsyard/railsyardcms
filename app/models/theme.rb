@@ -69,7 +69,7 @@ class Theme
 
   private
 
-  def self.available_theme_directories(path = Rails.root.join("themes"))
+  def self.available_theme_directories(path = Rails.root.join("app/assets/themes"))
     Dir[File.join(path, '*/')].select do |theme_path|
       File.readable?(File.join(theme_path, "theme_conf.yml"))
     end
