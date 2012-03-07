@@ -22,8 +22,25 @@ Railsyard2::Application.configure do
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
 
+  # Devise
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  # Don't care if the mailer can't send
+  config.action_mailer.raise_delivery_errors = false
+
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   :address              => "smtp.gmail.com",
+  #   :port                 => 587,
+  #   :domain               => 'gmail.com',
+  #   :user_name            => 'username@gmail.com',
+  #   :password             => 'password',
+  #   :authentication       => 'plain',
+  #   :enable_starttls_auto => true
+  # }
+
   # Raise exception on mass assignment protection for Active Record models
-  config.active_record.mass_assignment_sanitizer = :strict
+  # config.active_record.mass_assignment_sanitizer = :strict
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)

@@ -16,7 +16,7 @@ gem 'ancestry',             '1.2.4'
 gem 'cancan',               '1.6.7'
 gem 'gravatar_image_tag',   '1.0.0'
 # support to asset pipeline
-gem 'themes_for_rails',     git: 'https://github.com/lucasefe/themes_for_rails.git'
+gem 'themes_for_rails',     :git => 'https://github.com/lucasefe/themes_for_rails.git'
 gem 'cells',                '3.8.0'
 gem 'cells-filters',        '0.0.1'
 gem 'paperclip',            '2.4.5'
@@ -39,8 +39,8 @@ group :development, :test do
   gem 'cucumber-rails',     '1.2.1'
   gem 'webrat',             '0.7.3'
   gem 'capybara',           '1.1.2'
-  gem 'ruby-debug',         '~> 0.10.4' if RUBY_VERSION =~ /1.8/
-  gem 'ruby-debug19',       '~> 0.11.6' if RUBY_VERSION =~ /1.9/
+  gem 'ruby-debug',         '~> 0.10.4', :platforms => :ruby_18
+  gem 'ruby-debug19',       '~> 0.11.6', :platforms => :ruby_19
   gem 'deadweight',         '>=0.2.1'
   gem 'launchy'
   gem 'database_cleaner',   '0.7.1'
@@ -50,6 +50,6 @@ group :development, :test do
   unless ENV['TRAVIS']
     gem 'guard'
     gem 'guard-cucumber'
-    gem 'growl_notify'
+    gem 'growl_notify'  if RUBY_PLATFORM =~ /darwin/
   end
 end
