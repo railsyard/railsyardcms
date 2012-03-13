@@ -1,15 +1,15 @@
 class Admin::SnippetsController < Admin::AdminController
-  
+
   ## manual authorization
   before_filter do |controller|
     controller.check_role("admin")
   end
-  
+
   ## CanCan authorization - see Ability model
   authorize_resource
-  
+
   def edit
-    @snippet = Snippet.find(params[:id])  
+    @snippet = Snippet.find(params[:id])
     if @snippet.serialized_attributes && @snippet.serialized_attributes.any? {|att| att[1].eql? "article_categories"}
       @categories = Category.all
     end
@@ -18,7 +18,7 @@ class Admin::SnippetsController < Admin::AdminController
       format.dialog { render :layout => false }
     end
   end
-  
+
   def update
     @snippet = Snippet.find(params[:id])
     @categories = Category.all
@@ -36,7 +36,7 @@ class Admin::SnippetsController < Admin::AdminController
       end
     end
   end
-  
+
   ## Creation, sorting and moving between areas
   # TO-DO more efficient code. I'm rushing.
   def sort
@@ -45,7 +45,7 @@ class Admin::SnippetsController < Admin::AdminController
     elsif params[:page_id]
       @resource_snippets = Page.find(params[:page_id]).snippets
     end
-    
+
     params[:areas].map do |area|
       unless area[1].blank?
         area_name = area[0]
@@ -70,17 +70,17 @@ class Admin::SnippetsController < Admin::AdminController
     end
     # Renders sort.js.erb
   end
-  
+
   def purge
     #TO-DO empty trash bin (limbo)
   end
-  
+
   def destroy
     @snippet = Snippet.find(params[:id])
     if @snippet
       respond_to do |format|
         if @snippet.destroy && @snippet.errors.empty?
-          format.html { redirect_to admin_page_url(@snippet.page.id) }
+          format.html { redirect_to admin_page_url( params[:page_id] ) }
           format.json { render :json => {} }
         else
           format.html { render :action => 'edit' }
@@ -89,7 +89,5 @@ class Admin::SnippetsController < Admin::AdminController
       end
     end
   end
-  
+
 end
-
-
