@@ -6,6 +6,8 @@ it:
   admin:
     general:
       hi: Ciao
+      yes: si
+      no: no
       settings: Impostazioni
       logout: Esci
       last_login: Ultimo accesso

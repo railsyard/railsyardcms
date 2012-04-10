@@ -13,6 +13,8 @@ en:
   admin:
     general:
       hi: Hi
+      yes: yes
+      no: no
       settings: Settings
       logout: Logout
       last_login: Last login

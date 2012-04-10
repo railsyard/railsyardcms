@@ -6,14 +6,14 @@
         <%= l item.updated_at, :format => :date_with_parenthesized_time %>
     </td>
     <td calss="center">
-        <%= item.reserved ? 'v' : 'x' %>
+        <%= item.reserved ? t("admin.general.yes") : t("admin.general.no") %>
     </td>
     <td class="center">
-        <%= item.published ? (link_to "v", toggle_admin_page_path(item), :remote => true, :method => :post, :html => {:class => 'icon-v'}) : (link_to "x".hs, toggle_admin_page_path(item), :remote => true, :method => :post, :html => {:class => 'icon-x'}) %>
+        <%= item.published ? (link_to t("admin.general.yes"), toggle_admin_page_path(item), :remote => true, :method => :post, :html => {:class => 'icon-v'}) : (link_to t("admin.general.no"), toggle_admin_page_path(item), :remote => true, :method => :post, :html => {:class => 'icon-x'}) %>
     </td>
     <td class="center">
-        <%= link_to t("admin.general.properties"), edit_admin_page_path(item) %>
-        <%= link_to t("admin.general.contents"), admin_page_path(item) %>
-        <%= link_to t("admin.general.delete"), admin_page_path(item), :class => 'icon-delete', :method => :delete, :confirm => t('admin.pages.are_you_sure_to_delete', :name => item.title) %>
+        <%= link_to image_tag("../admin/images/icons/small/grey/Properties.png"), edit_admin_page_path(item) %>
+        <%= link_to image_tag("../admin/images/icons/small/grey/Pencil.png"), admin_page_path(item) %>
+        <%= link_to image_tag("../admin/images/icons/small/grey/View.png"), get_yard_url(item) %>
     </td>
 </tr>
