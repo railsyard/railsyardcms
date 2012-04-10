@@ -1,8 +1,7 @@
 <%= content_for :title do %><%= t('admin.pages.manage_contents', :title => @page.title) %><% end %>
 
 <header class="page_description">
-    <h2><%= t('admin.pages.manage_contents', :title => @page.title) %> [<%= @page.lang %>]</h2>
-    <small><%= link_to t("admin.pages.go_to_page_properties"), edit_admin_page_path(@page) %></small>
+    <h2>[<%= @page.lang %>] <%= t('admin.pages.manage_contents', :title => @page.title) %> - <%= link_to t("admin.pages.go_to_page_properties"), edit_admin_page_path(@page) %></h2>
 </header>
 
 <%= render :partial => "available_areas", :locals => {:current_layout => @current_layout, :snippets => @snippets, :page => @page} %>

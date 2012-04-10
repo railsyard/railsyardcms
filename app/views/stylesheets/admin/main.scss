@@ -419,6 +419,9 @@ body{
         letter-spacing: -1px;
         color: $cGreen;
         text-indent: 0px;
+        a{
+            float: right;
+        }
     }
     a.toggle{
         background: url(../images/toggle.png) 2px -14px no-repeat;

@@ -234,6 +234,7 @@ body { background-color: #fff; padding-bottom: 39px; }
 .page_description { margin-bottom: 0px; margin-top: 0px; width: 98% !important; }
 .page_description p, .page_description h1, .page_description h2, .page_description h3, .page_description h4, .page_description h5, .page_description h6 { text-shadow: 0px 1px 0px #fff; }
 .page_description > h2 { margin-bottom: 15px; font-weight: 600; font-size: 1.8; letter-spacing: -1px; color: #90b61e; text-indent: 0px; }
+.page_description > h2 a { float: right; }
 .page_description a.toggle { background: url(../images/toggle.png) 2px -14px no-repeat; display: block; height: 18px; width: 18px; position: absolute; right: 37px; top: 6px; }
 .page_description a.toggle_closed { background-position: 2px 2px; }
 
