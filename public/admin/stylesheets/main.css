@@ -313,7 +313,7 @@ body { background-color: #fff; padding-bottom: 39px; }
 
 .wrap > header > h2 { font-size: 13px; font-weight: 600; }
 
-.wrap .block { padding: 16px 20px 5px 20px; margin-top: 1px; position: relative; overflow: auto; }
+.wrap .block { padding: 4px 7px 5px 7px; margin-top: 1px; position: relative; overflow: auto; }
 
 .wrap .block label { display: block; font-size: 1.0em; font-weight: bold; color: #5b5f4f; margin-bottom: 3px; clear: both; margin-top: 10px; }
 
@@ -475,7 +475,7 @@ div.main_container .wrap ul.content_accordion li:last-child .content { border-bo
 
 .content_accordion h3.bar { background-color: #dfe2e4; display: block; *display: inline-block; margin: 0; line-height: 30px; padding: 0 20px; font-size: 13px; font-weight: normal; color: #5b5f4f; text-shadow: 0px 1px 0px #fff; border-bottom: 1px solid #bbb; border-top: 1px solid #fff; border-right: 1px solid #aaa; border-left: 1px solid #aaa; filter: none !important; }
 
-.content_accordion .content { padding: 20px 20px 0; margin: 0 0px; border-top: none; border-left: none; border-right: none; border-bottom: 1px solid #aaa; background-color: #fff; }
+.content_accordion .content { padding: 0 5px; margin: 0 0px; border-top: none; border-left: none; border-right: none; border-bottom: 1px solid #aaa; background-color: #fff; }
 
 ul.content_accordion li { position: relative; padding: 0; margin: 0; width: 100%; display: block; border: none; }
 
@@ -697,3 +697,9 @@ body .round_right { -webkit-border-radius: 0px; -moz-border-radius: 0px; border-
 
 form fieldset.group { border: 1px solid #e3e3e3; padding: 5px; }
 form fieldset.group legend { background-color: #90b61e; padding: 5px; color: #fff; }
+
+.wrap .block { padding: 0 5px; }
+.wrap .block section, .wrap .block aside { padding: 5px; }
+.wrap .block textarea { width: 100%; }
+
+.buttons { margin: 10px; text-align: center; }
