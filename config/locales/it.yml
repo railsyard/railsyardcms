@@ -137,6 +137,7 @@ it:
       hot: "In evidenza"
       articles_management: "Gestione articoli"
       articles_list: "Lista articoli"
+      article_options: "Opzioni articolo"
     users:
       users: Utenti
       new_user: Nuovo utente

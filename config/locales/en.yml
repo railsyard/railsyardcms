@@ -144,6 +144,8 @@ en:
       hot: "Highlight"
       articles_management: "Articles management"
       articles_list: "Articles list"
+      article_options: "Article options"
+
     users:
       users: Users
       new_user: New user
