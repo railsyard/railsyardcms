@@ -1,8 +1,11 @@
 <div class="wrap block">
      <div class="">  
-         <div class="block">                
+         <div class="block">
              <%= f.label :title, t('admin.general.title') %>
              <%= f.text_field :title, {:id=>"title", :title=>"Page title, can\'t be blank", :class=>"full required"} %>
+
+             <%= f.label :subtitle, t('admin.pages.subtitle') %>
+             <%= f.text_field :subtitle, {:id=>"subtitle", :title=>"Page subtitle, can be blank", :class=>"full"} %>
 
              <fieldset class="group">
                 <legend><%= t('admin.pages.page_options') %></legend>

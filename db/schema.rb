@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120118133001) do
+ActiveRecord::Schema.define(:version => 20120410231107) do
 
   create_table "article_layouts", :force => true do |t|
     t.string   "layout_name"
@@ -119,6 +119,7 @@ ActiveRecord::Schema.define(:version => 20120118133001) do
     t.string   "featured_image_content_type"
     t.integer  "featured_image_file_size"
     t.datetime "featured_image_updated_at"
+    t.string   "subtitle"
   end
 
   add_index "pages", ["ancestry"], :name => "index_pages_on_ancestry"

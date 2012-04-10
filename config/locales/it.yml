@@ -102,6 +102,8 @@ it:
       available_areas_in_this_layout: "Available areas in this layout"
       go_to_page_properties: "Vai alle proprietà della pagina"
       go_to_page_contents: "Vai ai contenuti della pagina"
+      subtitle: "Sottotitolo"
+
     snippets:
       add_a_new_snippet: Aggiungi un nuovo snippet
       edit_snippet: "Modifica lo snippet \"%{title}\""
