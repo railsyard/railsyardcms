@@ -1,7 +1,7 @@
 <%= content_for :title do %><%= t('admin.pages.edit_page', :title => @page.title) %><% end %>
 
 <header class="page_description">
-  <h2><%= t('admin.pages.edit_page', :title => @page.title) %> - <%= link_to t("admin.pages.go_to_page_contents"), admin_page_path(@page), :class=>"button" %></h2>
+  <h2>[<%= @page.lang %>] <%= t('admin.pages.edit_page', :title => @page.title) %> - <%= link_to t("admin.pages.go_to_page_contents"), admin_page_path(@page), :class=>"button" %></h2>
 </header>
 
 <div class="wrap cell_16">
