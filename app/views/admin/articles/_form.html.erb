@@ -5,32 +5,43 @@
                 <%= f.label :title, t('admin.general.title') %>
                 <%= f.text_field :title, {:id=>"title", :title=>"The main title of the article", :class=>"full" } %>
             </div>
-            <fieldset class="group">
-                <legend>Article options</legend>
-                <div class="cell_8">
-                    <%= f.label "Options" %>
-                    <div id="options_list" class="input_group">
-                        <%= f.check_box :published, {:id=>"published", :title=>"Immediately publish the article", :checked => article.published} %><%= t('admin.general.published') %><br/>
-                        <%= f.check_box :reserved, {:id=>"reserved", :title=>"Makes the article be visible only to premium users", :checked => article.reserved} %><%= t('admin.general.reserved') %><br/>
-                        <%= f.check_box :hot, {:id=>"hot", :title=>"Highlight/sticky news", :checked => article.hot} %><%= t('admin.general.hot') %>
-                    </div>
-                    <div class="cell_12">
-                        <p>Publication date:</p>
-                        <%= f.datetime_select :publish_at, :start_year => 2010, :class=>"full" %>
-                    </div>
-                </div>
-            
-                <div class="cell_8">
+            <div class="cell_10">
+                <%= f.label :short, t('admin.articles.abstract') %>
+                <%= f.cktext_area :short %>
+                
+                <%= f.label :body, t('admin.articles.body') %>
+                <%= f.cktext_area :body %>
+
+            </div>
+
+            <div class="cell_6">
+                <fieldset class="group">
+                    <legend><%= t("admin.articles.article_options") %></legend>
                     <%= f.label :lang, t('admin.articles.language') %>
                     <%= f.select :lang, options_from_collection_for_select(Language.all, 'short', 'name', @admin_editing_language) %>
 
+                    <div>
+
+                        <%= f.label "Options" %>
+                        <div id="options_list" class="input_group">
+                            <%= f.check_box :published, {:id=>"published", :title=>"Immediately publish the article", :checked => article.published} %><%= t('admin.general.published') %><br/>
+                            <%= f.check_box :reserved, {:id=>"reserved", :title=>"Makes the article be visible only to premium users", :checked => article.reserved} %><%= t('admin.general.reserved') %><br/>
+                            <%= f.check_box :hot, {:id=>"hot", :title=>"Highlight/sticky news", :checked => article.hot} %><%= t('admin.general.hot') %>
+                        </div>
+                        <div class="cell_12">
+                            <p>Publication date:</p>
+                            <%= f.datetime_select :publish_at, :start_year => 2010, :class=>"full" %>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="group">
+                    <legend>Multimedia</legend>
+                    <%= image_tag article.featured_image.url(:thumb) if article.featured_image.present? %></br>
                     <%= f.label :featured_image, t('admin.general.featured_image') %>
                     <%= f.file_field :featured_image %>                                
-                </div>
-            </fieldset>
-            
-            
-            <div class="cell_16">
+                </fieldset>
+
                 <fieldset class="group">
                     <legend>Categories</legend>
                     <div id='categories_list' class="input_group">   
@@ -46,14 +57,8 @@
                           <%= link_to "Save","#", :id => "save_category_link" %>
                         </div>                    
                     </div>
-                </fieldset>
+                </fieldset>                
             </div>
-
-            <%= f.label :short, t('admin.articles.abstract') %>
-            <%= f.cktext_area :short %>
-        
-            <%= f.label :body, t('admin.articles.body') %>
-            <%= f.cktext_area :body %>
         </div>
     </div>    
 </div>
