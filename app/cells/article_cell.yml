@@ -14,4 +14,6 @@ cell:
             serialized_attributes:
                 div_id: string
                 div_class: string
-            
+        -   name:   Categories
+            method: published_categories_list
+            desc:   List all the categories with published articles

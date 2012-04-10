@@ -5,20 +5,25 @@ class ArticleCell < Cell::Rails
   helper_method :current_user
   include Cell::Filters
   before_filter :fill_generic_variables
-  
+
   def article_show(args)
     @article = args[:article]
     render
   end
-  
+
   def comments(args)
-    @article = args[:article]    
-    @comments = @article.comments.published.paginate(:page => params[:pagination])   
+    @article = args[:article]
+    @comments = @article.comments.published.paginate(:page => params[:pagination])
     render
   end
-  
+
+  def published_categories_list(args)
+    @categories = Category.all_published
+    render
+  end
+
   private
-  
+
   def fill_generic_variables(state, opts)
     @page = opts[:page] ||= yard_home
     @options = opts[:options] ||= {}
@@ -30,5 +35,5 @@ class ArticleCell < Cell::Rails
   def cfg
     Setting.first
   end
-  
+
 end
