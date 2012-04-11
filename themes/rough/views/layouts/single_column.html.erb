@@ -1,7 +1,7 @@
 <!doctype html>
-<!--[if IE 7]><html class="ie7 no-js" lang="<%= @page.lang %>"><![endif]-->
-<!--[if lte IE 8]><html class="ie8 no-js" lang="<%= @page.lang %>"><![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--> <html class="not-ie no-js" lang="<%= @page.lang %>"><!--<![endif]-->
+<!--[if IE 7]><html class="ie7 no-js" lang="<%= params[:lang] %>"><![endif]-->
+<!--[if lte IE 8]><html class="ie8 no-js" lang="<%= params[:lang] %>"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="not-ie no-js" lang="<%= params[:lang] %>"><!--<![endif]-->
 <head>
     <%= render :partial => "partials/head" %>
     <link rel="stylesheet" href="<%= current_theme_stylesheet_path('single') %>">
