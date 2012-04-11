@@ -3,6 +3,7 @@
     <div class="block">
       <%= f.label 'Name' %>
       <%= f.text_field :name, {:id=>"name", :title=>"Category name, can\'t be blank", :class=>"large required"} %>
+      <%= f.text_field :pretty_url, {:id=>"pretty_url", :title=>"Pretty url", :class=>"large"} %>
       
       <script type="text/javascript"> 
           var name = new LiveValidation('name');

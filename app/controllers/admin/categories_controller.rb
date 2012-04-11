@@ -22,6 +22,7 @@ class Admin::CategoriesController < Admin::AdminController
   
   def create
     @category = Category.new(params[:category])
+    @category.pretty_url = @category.pretty_url.urlify.blank? ? @category.name.urlify : @category.pretty_url.urlify
     if @category && @category.save && @category.errors.empty?
       redirect_to admin_categories_path
     else
@@ -38,7 +39,9 @@ class Admin::CategoriesController < Admin::AdminController
   
   def update
     @category = Category.find(params[:id])
-    if @category && @category.update_attributes(params[:category]) && @category.errors.empty?
+    @category.attributes = params[:category]
+    @category.pretty_url = @category.pretty_url.urlify.blank? ? @category.name.urlify : @category.pretty_url.urlify
+    if @category && @category.save && @category.errors.empty?
       redirect_to admin_categories_path
     else
       # TO-DO alert msg if update ok or bad
@@ -56,6 +59,7 @@ class Admin::CategoriesController < Admin::AdminController
     
   def quick_create
     @category = Category.new(params[:category])
+    @category.pretty_url = @category.pretty_url.urlify.blank? ? @category.name.urlify : @category.pretty_url.urlify
     if @category && @category.save && @category.errors.empty?
       respond_to do |format|
         format.js #renders quick_create.js.erb
