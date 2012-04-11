@@ -35,7 +35,7 @@ gem 'will_paginate',        '3.0.2'
 # Example of snippet got via external gem ## broken in production due to bluecloth
 # gem 'railsyard-markdown-content', :path => 'vendor/gems/railsyard-markdown-content'
 
-group :development, :test do	
+group :development, :test do
   gem 'rspec',              '2.8.0'
   gem 'rspec-rails',        '2.8.1'
   gem 'cucumber',           '1.1.4'
@@ -54,7 +54,5 @@ group :development, :test do
   unless ENV['TRAVIS']
     gem 'guard'
     gem 'guard-cucumber'
-#    gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
-    gem 'growl_notify'
   end
 end
