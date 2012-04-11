@@ -1,5 +1,5 @@
 <ul>
   <% @categories.each do |category| %>
-  <li><%= link_to "#{category.name} (#{category.articles_count})", '#' %></li>
+  <li><%= link_to "#{category.name} (#{category.articles_count})", show_category_path(:pretty_url => category.pretty_url) %></li>
   <% end %>
 </ul>

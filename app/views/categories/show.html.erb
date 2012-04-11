@@ -1,0 +1,13 @@
+<% # FIXME: for categories#show %>
+<% content_for :categories do %>
+<%= render_cell :article, :published_categories_list, :user => current_user %>
+<% end %>
+
+<h1><%= @meta_title %></h1>
+<% @articles.each do |article| %>
+<div>
+  <h2><%= article.title %></h2>
+  <div><%= article.short.html_safe %></div>
+  <%= link_to t( 'public.articles.more' ), get_article_url(article) %>
+</div>
+<% end %>
