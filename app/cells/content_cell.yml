@@ -21,6 +21,7 @@ cell:
             desc:   A list of articles with category filter
             serialized_attributes:
                 categories: article_categories
+                per_page: integer
                 div_id: string
                 div_class: string
         -   name:   Twitter stream

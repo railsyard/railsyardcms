@@ -21,6 +21,9 @@ class ContentCell < Cell::Rails
     @articles = Article.published.where("lang = ?", get_lang).includes(:categorizations)
     @articles = @articles.not_reserved unless (args[:current_user] && args[:current_user].is_privileged?)
     @articles = @articles.where("categorizations.category_id IN (?)", args[:options][:categories]) if (args[:options] && args[:options][:categories])
+
+    per_page = ( args[:options][:per_page].blank? )? 10 : args[:options][:per_page]
+    @articles = @articles.paginate( :page => params[:page], :per_page => per_page )
     render
   end
   
