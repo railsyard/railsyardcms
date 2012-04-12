@@ -249,7 +249,8 @@ it:
     articles:
       articles: Articoli
       article: Articolo
-      more: "Leggi tutto..."
+      all_categories: "Tutte le categorie"
+      category: "Articoli nella categoria %{name}"
     pages:
       pages: Pagine
       page: Pagina

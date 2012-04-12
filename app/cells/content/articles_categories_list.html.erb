@@ -1,0 +1,5 @@
+<ul>
+  <% @categories.each do |category| %>
+  <li><%= link_to "#{category.name} (#{category.articles_count})", "#{@url}?category=#{category.pretty_url}" %></li>
+  <% end %>
+</ul>

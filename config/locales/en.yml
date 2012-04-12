@@ -255,7 +255,8 @@ en:
     articles:
       articles: Articles
       article: Article
-      more: "Read more..."
+      all_categories: "All categories"
+      category: "Articles in category %{name}"
     pages:
       pages: Pages
       page: Page

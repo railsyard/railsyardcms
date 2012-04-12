@@ -17,11 +17,6 @@ class ArticleCell < Cell::Rails
     render
   end
 
-  def published_categories_list(args)
-    @categories = Category.all_published
-    render
-  end
-
   private
 
   def fill_generic_variables(state, opts)

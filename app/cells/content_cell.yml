@@ -24,6 +24,11 @@ cell:
                 per_page: integer
                 div_id: string
                 div_class: string
+        -   name:   Articles Categories
+            method: articles_categories_list
+            desc:   List all the categories with published articles
+            serialized_attributes:
+                archive_url: string
         -   name:   Twitter stream
             method: twitter_stream
             desc:   Stream of tweets from a twitter account

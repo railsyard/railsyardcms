@@ -1,4 +1,5 @@
 <div class="articles_list">
+  <h1><%= @meta_title %></h1>
   <% @articles.map do |a| %>
     <div id="article_<%= a.id %>">
       <h2><%= a.title %></h2>
