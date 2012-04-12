@@ -21,14 +21,14 @@ Features
 * Pretty urls and other seo-friendly features
 * Drop-in themes
 * Drop-in snippets plugins (using Rails Cells)
-* Rails mountable engines support for heavy modification plugins 
+* Rails mountable engines support for heavy modification plugins
 * Backend heavily based on drag & drop
 * Built with Ruby on Rails
 
 Requirements:
 -------------
-* Ruby 1.9.2 or 1.8.7
-* Rails 3.1.3
+* Ruby 1.9.3, 1.9.2 or 1.8.7
+* Rails 3.2.1
 * MySQL, PostgreSQL or SQLite
 * Some gems - check Gemfile
 
@@ -36,23 +36,22 @@ Installation
 ------------
 We really suggest the use of Ruby RVM and Ruby 1.9.2
 
-run `rvm install ruby-1.9.2-p290`  
-run `rvm use ruby-1.9.2-p290`  
-run `rvm gemset create "railsyard"`  
-run `git clone https://github.com/cantierecreativo/railsyardcms.git`  
-run `cd railsyardcms`  
-run `gem install rails -v="3.1.3"`  
-run `gem install bundler`  
-run `bundle install`  
-edit config/database.yml according to your configuration  
-run `rake ry:init`  
-run `rake db:seed` to load some example pages  
+run `rvm install ruby-1.9.2-p290`
+run `rvm use ruby-1.9.2-p290`
+run `rvm gemset create "railsyard"`
+run `git clone https://github.com/cantierecreativo/railsyardcms.git`
+run `cd railsyardcms`
+run `gem install bundler`
+run `bundle install`
+edit config/database.yml according to your configuration
+run `rake ry:init`
+run `rake ry:example` to load some example pages
 
 Usage
 -----
-Admin interface is on `yoursite.tld/admin`  
-Username: `admin@example.com`  
-Password: `changeme`  
+Admin interface is on `yoursite.tld/admin`
+Username: `admin@example.com`
+Password: `changeme`
 
 Documentation wiki
 ------------------
