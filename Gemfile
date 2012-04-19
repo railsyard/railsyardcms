@@ -28,6 +28,7 @@ gem 'acts_as_commentable',  '3.0.1'
 gem 'recaptcha-rails3',     '0.3.4', :require => "recaptcha/rails"
 gem 'will_paginate',        '3.0.2'
 gem "comma",                '~> 3.0' # CSV export
+gem 'fastercsv',            :platforms => :ruby_18
 
 # For deploying on Heroku
 # gem 'heroku', '2.14.0'

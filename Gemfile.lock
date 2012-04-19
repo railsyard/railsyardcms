@@ -83,6 +83,7 @@ GEM
     erubis (2.7.0)
     factory_girl (2.5.0)
       activesupport
+    fastercsv (1.5.4)
     ffi (1.0.11)
     gherkin (2.7.4)
       json (>= 1.4.6)
@@ -225,6 +226,7 @@ DEPENDENCIES
   deadweight (>= 0.2.1)
   devise (= 1.5.0)
   factory_girl
+  fastercsv
   gravatar_image_tag (= 1.0.0)
   guard
   guard-cucumber
