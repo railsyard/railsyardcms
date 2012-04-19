@@ -703,3 +703,5 @@ form fieldset.group legend { background-color: #90b61e; padding: 5px; color: #ff
 .wrap .block textarea { width: 100%; }
 
 .buttons { margin: 10px; text-align: center; }
+
+.index_actions { text-align: right; }

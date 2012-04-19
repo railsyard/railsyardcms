@@ -1,23 +1,27 @@
 class Admin::UsersController < Admin::AdminController
-  
+
   ## manual authorization
   before_filter do |controller|
     controller.check_role("admin")
   end
-  
+
   ## CanCan authorization - see Ability model
   authorize_resource
-  
+
   def index
     @admin_editing_language = admin_editing_language
     @users = User.all
+    respond_to do |format|
+      format.html
+      format.csv { render :csv => @users, :filename => 'users' }
+    end
   end
-  
+
   def new
     @admin_editing_language = admin_editing_language
     @user = User.new
   end
-  
+
   def create
     @admin_editing_language = admin_editing_language
     @user = User.new(params[:user])
@@ -29,12 +33,12 @@ class Admin::UsersController < Admin::AdminController
       render :action => "new"
     end
   end
-  
+
   def edit
     @admin_editing_language = admin_editing_language
     @user = User.find(params[:id])
   end
-  
+
   def update
     @admin_editing_language = admin_editing_language
     @user = User.find(params[:id])
@@ -52,8 +56,8 @@ class Admin::UsersController < Admin::AdminController
       render :action => "edit"
     end
   end
-  
-  def destroy 
+
+  def destroy
     @user = User.find(params[:id])
     if @user && (User.admins.count > 1)
       first_admin = User.admins.where("users.id != ?", @user.id).first
@@ -65,11 +69,11 @@ class Admin::UsersController < Admin::AdminController
       redirect_to admin_users_path
     end
   end
-  
+
   def toggle
     @user = User.find(params[:id])
     @error = true unless @user && @user.toggle
     # Renders toggle.js.erb
   end
-  
+
 end

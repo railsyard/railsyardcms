@@ -25,8 +25,9 @@ gem 'paperclip',            '2.4.5'
 #gem 'ckeditor',             '3.7.0.rc2'
 gem 'ckeditor',             :path => 'vendor/gems/ckeditor'
 gem 'acts_as_commentable',  '3.0.1'
-gem 'recaptcha-rails3',		'0.3.4', :require => "recaptcha/rails"
+gem 'recaptcha-rails3',     '0.3.4', :require => "recaptcha/rails"
 gem 'will_paginate',        '3.0.2'
+gem "comma",                '~> 3.0' # CSV export
 
 # For deploying on Heroku
 # gem 'heroku', '2.14.0'

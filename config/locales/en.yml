@@ -74,6 +74,7 @@ en:
       field_cant_be_blank: "This field can't be left blank"
       are_you_sure_to_delete_with_name: "Are you sure to delete \"%{name}\"?"
       purge: "Purge"
+      csv_export: "Export CSV"
     pages:
       pages: Pages
       latest_pages: Recent pages

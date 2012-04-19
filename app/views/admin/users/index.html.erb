@@ -11,15 +11,19 @@
     <table class="fancy_rows datatable">
         <thead>
             <tr>
-                <th><%= t "admin.users.first_name" %></th> 
-                <th><%= t "admin.users.last_name" %></th> 
-                <th><%= t "admin.users.email" %></th> 
-                <th><%= t "admin.users.enabled" %></th> 
-                <th><%= t "admin.general.actions" %></th> 
+                <th><%= t "admin.users.first_name" %></th>
+                <th><%= t "admin.users.last_name" %></th>
+                <th><%= t "admin.users.email" %></th>
+                <th><%= t "admin.users.enabled" %></th>
+                <th><%= t "admin.general.actions" %></th>
             </tr>
         </thead>
         <tbody>
             <%= render :partial => "item", :collection => @users %>
         </tbody>
     </table>
+</div>
+
+<div class="cell_16 index_actions">
+  <%= link_to t('admin.general.csv_export'), admin_user_path(:format => :csv) %>
 </div>
