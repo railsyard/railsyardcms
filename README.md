@@ -4,7 +4,10 @@ Railsyard CMS
 
 This is a complete rewrite of Railsyard, a content management system heavily based on components and focused on easy theming and customization.
 
-[![Build Status](https://secure.travis-ci.org/cantierecreativo/railsyardcms.png?branch=master)](http://travis-ci.org/cantierecreativo/railsyardcms)
+[![Build
+Status](https://secure.travis-ci.org/cantierecreativo/railsyardcms.png?branch=master)](http://travis-ci.org/cantierecreativo/railsyardcms)
+
+(PS: Looking for the new version? https://github.com/cantierecreativo/railsyard-backend)
 
 
 Features
