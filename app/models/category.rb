@@ -6,12 +6,12 @@ class Category < ActiveRecord::Base
   validates_uniqueness_of :pretty_url
 
   def self.all_published
-    Category
-      .select("categories.id, categories.name, categories.pretty_url, COUNT(*) AS articles_count")
-      .joins(:articles)
-      .where("articles.published" => true)
-      .group("categories.id, categories.name, categories.pretty_url")
-      .order("categories.name ASC")
+    Category.
+      select("categories.id, categories.name, categories.pretty_url, COUNT(*) AS articles_count").
+      joins(:articles).
+      where("articles.published" => true).
+      group("categories.id, categories.name, categories.pretty_url").
+      order("categories.name ASC")
   end
 
 end
