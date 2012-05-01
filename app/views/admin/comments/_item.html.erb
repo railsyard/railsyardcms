@@ -1,21 +1,24 @@
 <tr id='comment_item_<%= item.id %>'>
-    <td>
-        <%= link_to item.commentable.title, get_article_url(item.commentable) %>
-    </td>
-    <td>
-        <%= item.username %>
-    </td>
-    <td>
-        <%= link_to item.body.truncate(60), admin_comment_path(item) %>
-    </td>
-    <td>
-        <%= l item.updated_at, :format => :date_with_parenthesized_time %>
-    </td>
-    <td calss="center">
-        <%= item.published ? 'v' : 'x' %>
-    </td>
-    <td class="center">
-        <%= link_to t("admin.general.toggle"), toggle_admin_comment_path(item), :remote => true, :method => :post %>
-        <%= link_to t("admin.general.delete"), admin_comment_path(item), :class => 'icon-delete', :method => :delete, :confirm => t('admin.comments.are_you_sure_to_delete') %>
-    </td>
+  <td>
+    <%= link_to item.commentable.title, get_article_url(item.commentable) %>
+  </td>
+  <td>
+    <%= item.username %>
+  </td>
+  <td>
+    <%= item.body.truncate(60) %>
+  </td>
+  <td>
+    <%= l item.updated_at, :format => :date_with_parenthesized_time %>
+  </td>
+  <td calss="center">
+    <%= item.published ? t("admin.general.yes") : t("admin.general.no") %>
+  </td>
+
+  <td class="center">
+    <%= link_to image_tag("../admin/images/icons/small/grey/Pencil.png"), edit_admin_comment_path(item) %>
+    <%= link_to image_tag("../admin/images/icons/small/grey/View.png"), get_article_url(item.commentable, :anchor => "comment-#{item.id}"), :class => "submit", :target => '_blank' %>
+    <%= link_to t("admin.general.toggle"), toggle_admin_comment_path(item), :remote => true, :method => :post %>
+    <%= link_to t("admin.general.delete"), admin_comment_path(item), :class => 'icon-delete', :method => :delete, :confirm => t('admin.comments.are_you_sure_to_delete') %>
+  </td>
 </tr>

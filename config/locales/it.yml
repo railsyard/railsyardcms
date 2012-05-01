@@ -30,6 +30,7 @@ it:
       delete: Elimina
       save: Salva
       save_and_close: Salva e chiudi
+      view: Mostra
       create: Crea
       back: Indietro
       attachments: Allegati
@@ -215,9 +216,9 @@ it:
       comments_management: "Gestione commenti"
       comments_list: "Lista commenti"
       are_you_sure_to_delete: "Sei sicuro di voler eliminare questo commento?"
-      websire: "Sito"
-      
-      
+      website: "Sito"
+      created_at: "Creato il"
+
   public:
     general:
       hi: Ciao

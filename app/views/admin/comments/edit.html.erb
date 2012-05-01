@@ -1,0 +1,46 @@
+<%= content_for :title do %><%= t('admin.comments.comment') %><% end %>
+
+<header class="page_description">
+  <h2><%= t('admin.comments.comment') %></h2>
+</header>
+
+<div class="wrap cell_16">
+  <%= form_for @comment, :url => admin_comment_path(@comment) do |f| %>
+  <div class="wrap block">
+    <div class="block">
+      <%= f.label t("admin.general.title") %>
+      <%= f.text_field :title %>
+      
+      <%= f.label t("admin.comments.comment") %>
+      <%= f.text_area :body %>
+
+      <%= f.label t("admin.general.author") %>
+      <%= f.text_field :username %>
+
+      <%= f.label t("admin.users.email") %>
+      <%= f.text_field :email %>
+
+      <%= f.label t("admin.comments.website") %>
+      <%= f.text_field :website %>
+
+      <%= f.label t("admin.comments.created_at") %>
+      <%= l @comment.created_at, :format => :date_with_parenthesized_time %>
+
+      <%= f.label t("admin.articles.article") %>
+      <%= @comment.commentable.title %>
+
+      <%= f.label t("admin.general.published") %>
+      <%= f.check_box :published %>
+      <%= t("admin.general.published") %>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <%= link_to t('admin.general.delete'), admin_comment_path(@comment), :class => 'submit delete', :method => :delete, :confirm => t('admin.comments.are_you_sure_to_delete') %>
+    <%= link_to t('admin.general.back'), admin_comments_url, :class => "submit" %>
+    <%= link_to t('admin.general.view'), get_article_url(@comment.commentable, :anchor => "comment-#{@comment.id}"), :class => "submit", :target => '_blank' %>
+    <%= submit_tag t('admin.general.save_and_close'), :class => "submit", :name => 'save_and_close' %>
+  </div>
+
+  <% end %>
+</div>

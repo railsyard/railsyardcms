@@ -37,6 +37,7 @@ en:
       delete: Delete
       save: Save
       save_and_close: Save and close
+      view: View
       create: Create
       back: Back
       attachments: Attachments
@@ -222,7 +223,8 @@ en:
       comments_management: "Comments management"
       comments_list: "Comments list"
       are_you_sure_to_delete: "Are you sure to delete this comment?"
-      websire: "Website"
+      website: "Website"
+      created_at: "Created at"
       
   public:
     general:

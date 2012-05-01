@@ -14,9 +14,20 @@ class Admin::CommentsController < Admin::AdminController
     @comments = Comment.all
   end
   
-  def show
+  def edit
     @admin_editing_language = admin_editing_language
-    @comment = Comment.find(params[:id])
+    @comment = Comment.find params[:id]
+  end
+
+  def update
+    @comment = Comment.find params[:id]
+    @comment.attributes = params[:comment]
+
+    if @comment.save && @comment.errors.empty? && params[:save_and_close]
+      redirect_to admin_comments_path
+    else
+      render :action => "edit"
+    end
   end
   
   def destroy
