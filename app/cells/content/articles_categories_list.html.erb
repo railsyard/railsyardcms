@@ -1,3 +1,4 @@
+<h3>Categories</h3>
 <ul>
   <% @categories.each do |category| %>
   <li><%= link_to "#{category.name} (#{category.articles_count})", "#{@url}?category=#{category.pretty_url}" %></li>

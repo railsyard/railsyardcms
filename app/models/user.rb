@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :firstname, :lastname, :email, :password, :password_confirmation, :remember_me, :lang, :pretty_url
-  
+
   has_many :grades
   has_many :roles, :through => :grades
   accepts_nested_attributes_for :grades
@@ -19,10 +19,12 @@ class User < ActiveRecord::Base
   validates :lastname, :presence => true
   validates :password, :presence => true, :length => { :minimum => 8 }
   validates :password_confirmation, :presence => true, :length => { :minimum => 8 }
-  
+
   scope :admins, includes(:grades, :roles).where("roles.name = ?", "admin")
   scope :writers, includes(:grades, :roles).where("roles.name = ?", "article_writer")
   scope :premiums, includes(:grades, :roles).where("roles.name = ?", "premium_user")
+
+  scope :active_writers, joins(:articles).select('DISTINCT users.*')
 
   # = CSV export =
   comma do

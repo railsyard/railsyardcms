@@ -27,8 +27,19 @@ class ContentCell < Cell::Rails
       @articles = @articles.where("categorizations.category_id IN (?)", args[:options][:categories]) if args[:options][:categories]
     else
       # show only current category
-      @meta_title = I18n.t 'public.articles.category', :name => Category.find_by_pretty_url( params[:category] ).name
-      @articles = @articles.joins(:categories).where( "categories.pretty_url = ?", params[:category] )
+      category = Category.find_by_pretty_url( params[:category] )
+      if category
+        @meta_title = I18n.t 'public.articles.category', :name => category.name
+        @articles = @articles.joins(:categories).where( "categories.pretty_url = ?", params[:category] )
+      end
+    end
+
+    unless params[:author].blank?
+      author = User.find_by_pretty_url( params[:author] )
+      if author
+        @meta_title = I18n.t 'public.articles.author', :name => "#{author.firstname} #{author.lastname}"
+        @articles = @articles.joins(:user).where( "users.pretty_url" => params[:author])
+      end
     end
 
     per_page = ( args[:options][:per_page].blank? )? 10 : args[:options][:per_page]
@@ -39,6 +50,12 @@ class ContentCell < Cell::Rails
 
   def articles_categories_list(args)
     @categories = Category.all_published
+    @url = args[:options][:archive_url]
+    render
+  end
+
+  def articles_authors_list(args)
+    @authors = User.active_writers
     @url = args[:options][:archive_url]
     render
   end

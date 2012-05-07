@@ -29,6 +29,11 @@ cell:
             desc:   List all the categories with published articles
             serialized_attributes:
                 archive_url: string
+        -   name:   Articles Authors
+            method: articles_authors_list
+            desc:   List all the users with published articles
+            serialized_attributes:
+                archive_url: string
         -   name:   Twitter stream
             method: twitter_stream
             desc:   Stream of tweets from a twitter account
