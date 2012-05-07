@@ -181,6 +181,7 @@ it:
       theme_name: "Tema"
       theme_change_warning: "Attenzione: cambiando tema verrà applicato il primo layout a tutte le pagine e tutti gli snippet saranno spostati nel limbo!"
       frontend_controls: "Controlli sul frontend"
+      archive_url: "Url archivio articoli"
     categories:
       categories: Categorie
       new_category: Nuova categoria

@@ -8,6 +8,8 @@ class ArticleCell < Cell::Rails
 
   def article_show(args)
     @article = args[:article]
+    archive_url = args[:options][:archive_url].blank? ? cfg.archive_url : args[:options][:archive_url]
+    @author_url = "#{archive_url}?author=#{@article.user.pretty_url}"
     render
   end
 

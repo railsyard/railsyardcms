@@ -14,6 +14,13 @@
         <p class="help">TIP: you can call this js code inside a script tag in your layout with @cfg.analytics</p>
         
     </fieldset>
+
+    <fieldset class="group">
+      <legend>Articles settings</legend>
+
+      <%= f.label t('admin.settings.archive_url') %><%= f.text_field :archive_url %>
+      <span class="help">Can be overwritten in every snippet configuration</span>
+    </fieldset>
     
     <fieldset class="group">
        <legend>RAILSYARD settings</legend>

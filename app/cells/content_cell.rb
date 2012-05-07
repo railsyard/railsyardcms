@@ -50,13 +50,15 @@ class ContentCell < Cell::Rails
 
   def articles_categories_list(args)
     @categories = Category.all_published
-    @url = args[:options][:archive_url]
+    @url = args[:options][:archive_url].blank? ? cfg.archive_url : args[:options][:archive_url]
+
     render
   end
 
   def articles_authors_list(args)
     @authors = User.active_writers
-    @url = args[:options][:archive_url]
+    @url = args[:options][:archive_url].blank? ? cfg.archive_url : args[:options][:archive_url]
+
     render
   end
 

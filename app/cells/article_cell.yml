@@ -8,6 +8,7 @@ cell:
             serialized_attributes:
                 div_id: string
                 div_class: string
+                archive_url: string
         -   name:   "Comments [BETA]"
             method: comments
             desc:   Shows the comments for the current article
