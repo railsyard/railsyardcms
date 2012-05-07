@@ -6,6 +6,9 @@
             
             <%= f.label :lastname, t('admin.users.last_name') %>
             <%= f.text_field :lastname, {:id=>"lastname", :title => t("admin.general.field_cant_be_blank"), :class=>"large required"} %>
+
+            <%= f.label :pretty_url, t('admin.users.pretty_url') %>
+            <%= f.text_field :pretty_url, {:class=>"large"} %>
             
             <%= f.label :email, t('admin.users.email') %>
             <%= f.text_field :email, {:id=>"email", :title => t("admin.general.field_cant_be_blank"), :class=>"large required"} %>
