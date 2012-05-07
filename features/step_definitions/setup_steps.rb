@@ -171,13 +171,13 @@ Given /^there are some example articles$/ do
           Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
           Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 
-  @first_article = Factory :article, :title => "First article", :short => abstract, :body => body
+  @first_article = Factory :article, :title => "First article", :short => abstract, :body => body, :user => @user_admin
   Factory :categorization, :article_id => @first_article.id, :category_id => @category_general.id
   
-  @second_article = Factory :article, :title => "Second article", :short => abstract, :body => body
+  @second_article = Factory :article, :title => "Second article", :short => abstract, :body => body, :user => @user_admin
   Factory :categorization, :article_id => @second_article.id, :category_id => @category_general.id
   
-  @third_article = Factory :article, :title => "Third article", :short => abstract, :body => body
+  @third_article = Factory :article, :title => "Third article", :short => abstract, :body => body, :user => @user_admin
   Factory :categorization, :article_id => @third_article.id, :category_id => @category_nerdy_stuff.id
   
 end
