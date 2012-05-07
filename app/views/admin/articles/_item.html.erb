@@ -3,7 +3,7 @@
         <%= item.title %>
     </td>
     <td>
-        <%= "#{item.user.firstname} #{item.user.lastname}" %>
+        <%= item.user.name %>
     </td>
     <td>
         <%= l item.updated_at, :format => :date_with_parenthesized_time %>

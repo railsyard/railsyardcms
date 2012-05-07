@@ -37,7 +37,7 @@ class ContentCell < Cell::Rails
     unless params[:author].blank?
       author = User.find_by_pretty_url( params[:author] )
       if author
-        @meta_title = I18n.t 'public.articles.author', :name => "#{author.firstname} #{author.lastname}"
+        @meta_title = I18n.t 'public.articles.author', :name => author.name
         @articles = @articles.joins(:user).where( "users.pretty_url" => params[:author])
       end
     end

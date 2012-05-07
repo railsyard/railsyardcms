@@ -38,6 +38,10 @@ class User < ActiveRecord::Base
   end
 
   # = Instance methods =
+  def name
+    "#{self.firstname} #{self.lastname}"
+  end
+
   def set_default_values
     self.lang = 'en' unless self.lang
     self.roles << Role.find_by_name('registered_user')
