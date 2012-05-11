@@ -61,7 +61,8 @@ Railsyard2::Application.routes.draw do
   resources :users
   resources :comments
   match ':lang/article/:year/:month/:day/:pretty_url' => 'articles#show', :as => 'show_article', :constraints => {:lang => $AVAILABLE_LANGUAGES, :year => /\d+/, :month => /\d+/, :day => /\d+/}
-    
+  match ':lang/feed' => 'articles#feed', :as => :feed, :defaults => { :format => 'atom' }
+
   # Main public pages globbing route
   match '/:lang' => "site#show", :constraints => {:lang => /[a-z]{2}/}
   scope "/:lang" do
