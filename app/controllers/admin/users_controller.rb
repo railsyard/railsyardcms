@@ -26,7 +26,11 @@ class Admin::UsersController < Admin::AdminController
     @admin_editing_language = admin_editing_language
     @user = User.new(params[:user])
     @user.set_roles(params[:user][:role_ids])
-    @user.pretty_url = @user.pretty_url.urlify.blank? ? "#{@user.firstname}-#{@user.lastname}".urlify : @user.pretty_url.urlify
+    if @user.pretty_url and @user.pretty_url.urlify.present?
+      @user.pretty_url = @user.pretty_url.urlify
+    else
+      @user.pretty_url = "#{@user.firstname}-#{@user.lastname}".urlify
+    end
     if @user && @user.save && @user.errors.empty?
       params[:user][:enabled] == '1' ? @user.enable! : @user.disable!
       redirect_to admin_users_path
@@ -50,7 +54,11 @@ class Admin::UsersController < Admin::AdminController
     end
     @user.set_roles(params[:user][:role_ids])
     @user.attributes = params[:user] unless @user.blank?
-    @user.pretty_url = @user.pretty_url.urlify.blank? ? "#{@user.firstname}-#{@user.lastname}".urlify : @user.pretty_url.urlify
+    if @user.pretty_url and @user.pretty_url.urlify.present?
+      @user.pretty_url = @user.pretty_url.urlify
+    else
+      @user.pretty_url = "#{@user.firstname}-#{@user.lastname}".urlify
+    end
     if @user && @user.save && @user.errors.empty?
       params[:user][:enabled] == '1' ? @user.enable! : @user.disable!
       params[:save_and_close] ? (redirect_to admin_users_path()) : (render :action => "edit")
