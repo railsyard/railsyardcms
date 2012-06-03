@@ -23,6 +23,7 @@ class Admin::ArticlesController < Admin::AdminController
   end
   
   def create
+    @categories = Category.all
     @article = current_user.articles.new(params[:article])
     @article.pretty_url = @article.pretty_url.urlify.blank? ? @article.title.urlify : @article.pretty_url.urlify
     @article.meta_title = @article.title if @article.meta_title.blank?
