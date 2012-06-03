@@ -7,8 +7,9 @@ class Article < ActiveRecord::Base
   belongs_to :user
   
   validates_presence_of :title
-  validates_length_of :title, :minimum => 3
+  validates_length_of :title, :minimum => 3, :maximum => 255
   validates_uniqueness_of :pretty_url
+  validates_length_of :meta_title, :meta_keywords, :meta_description, :pretty_url, :maximum => 255
   # validates_presence_of :categories
   
   acts_as_commentable
