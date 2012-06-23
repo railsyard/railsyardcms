@@ -150,7 +150,7 @@ en:
       articles_management: "Articles management"
       articles_list: "Articles list"
       article_options: "Article options"
-
+      article_author: "Article author"
     users:
       users: Users
       new_user: New user

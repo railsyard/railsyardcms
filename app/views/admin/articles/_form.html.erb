@@ -21,7 +21,6 @@
                     <%= f.select :lang, options_from_collection_for_select(Language.all, 'short', 'name', @admin_editing_language) %>
 
                     <div>
-
                         <%= f.label "Options" %>
                         <div id="options_list" class="input_group">
                             <%= f.check_box :published, {:id=>"published", :title=>"Immediately publish the article", :checked => article.published} %><%= t('admin.general.published') %><br/>
@@ -29,7 +28,11 @@
                             <%= f.check_box :hot, {:id=>"hot", :title=>"Highlight/sticky news", :checked => article.hot} %><%= t('admin.general.hot') %>
                         </div>
                         <div class="cell_12">
-                            <p>Publication date:</p>
+                          <%= f.label :user_id, t("admin.articles.article_author") %>
+                          <%= f.select :user_id, options_from_collection_for_select(User.writers, :id, :sign, @article.user.id) %>
+                        </div>
+                        <div class="cell_12">
+                            <%= f.label :publish_at, "Publication date" %>
                             <%= f.datetime_select :publish_at, :start_year => 2010, :class=>"full" %>
                         </div>
                     </div>
