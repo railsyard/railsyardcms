@@ -20,6 +20,7 @@ class Admin::ArticlesController < Admin::AdminController
     @admin_editing_language = admin_editing_language
     @article.meta_keywords = @cfg.default_page_keywords
     @article.meta_description = @cfg.default_page_desc
+    @tags = ''
   end
   
   def create
@@ -29,6 +30,8 @@ class Admin::ArticlesController < Admin::AdminController
     @article.meta_title = @article.title if @article.meta_title.blank?
     #@article.meta_keywords = @cfg.default_page_keywords if @article.meta_keywords.blank?
     #@article.meta_description = @cfg.default_page_desc if @article.meta_keywords.blank?
+    @article.tags = params[:tags].split(/\s*,\s*/).collect { |name| Tag.find_or_create_by_name(name) }
+    @tags = @article.tags.collect { |t| t.name }.join(', ')
     if @article && @article.save && @article.errors.empty?
       redirect_to admin_articles_path
     else
@@ -40,6 +43,7 @@ class Admin::ArticlesController < Admin::AdminController
     @categories = Category.all
     @admin_editing_language = admin_editing_language
     @article = Article.find(params[:id])
+    @tags = @article.tags.collect { |t| t.name }.join(', ')
   end
   
   def update
@@ -51,6 +55,8 @@ class Admin::ArticlesController < Admin::AdminController
     @article.meta_title = @article.title if @article.meta_title.blank?
     #@article.meta_keywords = @cfg.default_page_keywords if @article.meta_keywords.blank?
     #@article.meta_description = @cfg.default_page_desc if @article.meta_keywords.blank?
+    @article.tags = params[:tags].split(/\s*,\s*/).collect { |name| Tag.find_or_create_by_name(name) }
+    @tags = @article.tags.collect { |t| t.name }.join(', ')
     if @article && @article.save && @article.errors.empty?
       #redirect_to admin_articles_path
       params[:save_and_close] ? (redirect_to admin_articles_path()) : (render :action => "edit")

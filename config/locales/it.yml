@@ -255,6 +255,7 @@ it:
       article: Articolo
       all_categories: "Tutte le categorie"
       category: "Articoli nella categoria %{name}"
+      tag: "Articoli taggati %{name}"
       author: "Articoli di %{name}"
     pages:
       pages: Pagine

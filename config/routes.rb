@@ -54,6 +54,7 @@ Railsyard2::Application.routes.draw do
     resources :comments do
       post 'toggle', :on => :member
     end
+    resources :tags, :only => [:index]
   end
   
   # Public routes

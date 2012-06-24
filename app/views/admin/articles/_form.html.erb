@@ -8,7 +8,7 @@
             <div class="cell_10">
                 <%= f.label :short, t('admin.articles.abstract') %>
                 <%= f.cktext_area :short %>
-                
+
                 <%= f.label :body, t('admin.articles.body') %>
                 <%= f.cktext_area :body %>
 
@@ -42,28 +42,36 @@
                     <legend>Multimedia</legend>
                     <%= image_tag article.featured_image.url(:thumb) if article.featured_image.present? %></br>
                     <%= f.label :featured_image, t('admin.general.featured_image') %>
-                    <%= f.file_field :featured_image %>                                
+                    <%= f.file_field :featured_image %>
                 </fieldset>
 
                 <fieldset class="group">
                     <legend>Categories</legend>
-                    <div id='categories_list' class="input_group">   
-                    <% @categories.map do |category| %> 
+                    <div id='categories_list' class="input_group">
+                    <% @categories.map do |category| %>
                       <%= render :partial => "/admin/categories/checkbox", :object => category, :as => :category, :locals =>{:article => @article} %>
                     <% end %>
                     </div>
                     <div class="cell_12 b_40">
                         <%= link_to "Add a new category","#", :id => "new_category_link", :class=>"" %></br>
                         <div id='new_category_form' style="display:none">
-                          <span>  
+                          <span>
                           <%= text_field(:category, :name) %>
                           <%= link_to "Save","#", :id => "save_category_link" %>
-                        </div>                    
+                        </div>
                     </div>
-                </fieldset>                
+                </fieldset>
+
+                <fieldset class="group">
+                    <legend><%= t('admin.tags.tags') %></legend>
+
+                    <%= f.label :tags, t('admin.works.tags') %>
+                    <%= text_field_tag :tags, @tags, :class=>"large autocomplete" %>
+                </fieldset>
+
             </div>
         </div>
-    </div>    
+    </div>
 </div>
 
 <div class="wrap block">
@@ -89,7 +97,7 @@
                     <%= f.text_area :meta_keywords, {
                         :title => t("admin.pages.hint_meta_keywords"),
                         :class => "large"
-                    } %>                    
+                    } %>
                 </div>
                 <div class="cell_8">
                     <%= f.label 'Meta Description' %>
@@ -103,7 +111,7 @@
     </ul>
 </div>
 
-<script type="text/javascript"> 
+<script type="text/javascript">
   $('#new_category_link').click(function() {
     $('#new_category_form').show();
   });
@@ -118,10 +126,10 @@
   });
 </script>
 
-<script type="text/javascript"> 
+<script type="text/javascript">
     var title = new LiveValidation('title');
     title.add( Validate.Presence );
-    
+
     // var realemail = new LiveValidation('realemail');
     // realemail.add( Validate.Email );
     // var atleast = new LiveValidation('atleast');

@@ -261,6 +261,7 @@ en:
       article: Article
       all_categories: "All categories"
       category: "Articles in category %{name}"
+      tag: "Articles tagged %{name}"
       author: "Articles by %{name}"
     pages:
       pages: Pages
