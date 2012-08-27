@@ -35,7 +35,8 @@ class ArticlesController < ApplicationController
   end
 
   def check_publish_status(article)
-    true if article.published && (article.publish_at < Time.zone.now)
+    true if article.published && (article.publish_at < Time.zone.now) || # published
+      !article.published && current_user && current_user.roles?(["admin", "article_writer"]) # not published, but current user has permission to write
   end
 
 end

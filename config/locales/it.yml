@@ -69,6 +69,7 @@ it:
       are_you_sure_to_delete_with_name: "Sei sicuro di voler eliminare \"%{name}\"?"
       purge: "Svuota"
       csv_export: "Esporta CSV"
+      preview: "Anteprima"
     pages:
       pages: Pagine
       latest_pages: Pagine recenti
