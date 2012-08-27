@@ -108,7 +108,6 @@ $(function() {
                     return false;
                 },
                 select: function( event, ui ) {
-                    console.log( 'this:', this );
                     var terms = split( this.value );
                     // remove the current input
                     terms.pop();
