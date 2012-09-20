@@ -2,11 +2,13 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(:first, :conditions => ["pretty_url = ?", params[:pretty_url]])
-    @article_layout = ArticleLayout.find_by_lang(@article.lang)
-    @meta_title = "#{@article.meta_title} - #{@cfg.site_page_title}".truncate(70, :omission => '')
-    @meta_description = "#{@article.meta_description}".truncate(140, :omission => '')
-    @meta_keywords = "#{@article.meta_keywords}"
-    if check_path(@article) && check_permission(@article, current_user) && check_publish_status(@article)
+    if @article
+      @article_layout = ArticleLayout.find_by_lang(@article.lang)
+      @meta_title = "#{@article.meta_title} - #{@cfg.site_page_title}".truncate(70, :omission => '')
+      @meta_description = "#{@article.meta_description}".truncate(140, :omission => '')
+      @meta_keywords = "#{@article.meta_keywords}"
+    end
+    if @article && check_path(@article) && check_permission(@article, current_user) && check_publish_status(@article)
       render :layout => Layout.find(@cfg.theme_name, @article_layout.layout_name).path
     else
       render_error('404')
