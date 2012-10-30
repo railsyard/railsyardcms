@@ -7,12 +7,11 @@ class User < ActiveRecord::Base
   attr_accessible :firstname, :lastname, :email, :password, :password_confirmation, :remember_me, :lang, :pretty_url
 
   has_many :grades
-  has_many :roles, :through => :grades
+  has_many :roles, :through => :grades, :uniq => true
   accepts_nested_attributes_for :grades
   has_many :articles
 
-  # before_create :assign_user_role
-  before_save :set_default_values
+  before_create :set_default_values
 
   validates :email, :presence => true, :uniqueness => true
   validates :firstname, :presence => true
@@ -44,7 +43,7 @@ class User < ActiveRecord::Base
 
   def set_default_values
     self.lang = 'en' unless self.lang
-    self.roles << Role.find_by_name('registered_user')
+    self.roles << Role.find_by_name('registered_user') if self.roles.empty?
   end
 
   def is_admin?
